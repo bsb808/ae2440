@@ -1,0 +1,1900 @@
+
+{|class="wikitable sortable nowraplinks"
+|-
+!Ship name
+!Hull number
+!Class
+!Type
+!Commission date
+!Homeport
+!Note
+|-
+|{{USS|Abraham Lincoln|CVN-72|6}}
+|{{hs|CVN-0072}}CVN-72
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1989|11|11}}
+|[[Naval Air Station North Island|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=CVN72|title=''Abraham Lincoln''}}</ref>
+|-
+|{{USS|Alabama|SSBN-731|6}}
+|{{hs|SSBN-0731}}SSBN-731
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1985|5|25}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN731|title=''Alabama''}}</ref>
+|-
+|{{USS|Alaska|SSBN-732|6}}
+|{{hs|SSBN-0732}}SSBN-732
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1986|1|25}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN732|title=''Alaska''}}</ref>
+|-
+|{{USS|Albany|SSN-753|6}}
+|{{hs|SSN-0753}}SSN-753
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1990|04|7}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN753|title=''Albany''}}</ref>
+|-
+|{{USS|Alexandria|SSN-757|6}}
+|{{hs|SSN-0757}}SSN-757
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1991|6|29}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=SSN757|title=''Alexandria''}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1">{{cite magazine|first=Richard R.|last=Burgess|url=https://seapowermagazine.org/navy-plans-to-retire-48-ships-during-2022-2026|title=Navy Plans to Retire 48 Ships During 2022-2026|magazine=Seapower|date=11 December 2020}}</ref>
+|-
+|{{USS|America|LHA-6|6}}
+|{{hs|LHA-0006}}LHA-6
+|{{sclass|America|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|2014|10|11}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=LHA6|title=''America''}}</ref>
+|-
+|{{USS|Anchorage|LPD-23|6}}
+|{{hs|LPD-0023}}LPD-23
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2013|05|4}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LPD23|title=''Anchorage''}}</ref>
+|-
+|{{USS|Annapolis|SSN-760|6}}
+|{{hs|SSN-0760}}SSN-760
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1992|4|11}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=SSN760|title=''Annapolis''}}</ref>
+|-
+|{{USS|Arleigh Burke|DDG-51|6}}
+|{{hs|DDG-0051}}DDG-51
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1991|07|4}}
+|[[Naval Station Rota Spain|Rota, Spain]]
+|<ref>{{Naval Vessel Register URL|id=DDG51|title=''Arleigh Burke''}}</ref>
+|-
+|{{USS|Arlington|LPD-24|6}}
+|{{hs|LPD-0024}}LPD-24
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+| {{dts|format=dmy|2013|04|6}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LPD24|title=''Arlington''}}</ref>
+|-
+|{{USS|Asheville|SSN-758|6}}
+|{{hs|SSN-0758}}SSN-758
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1991|09|28}}
+|[[Joint Region Marianas|Apra Harbor, GU]]
+|<ref>{{Naval Vessel Register URL|id=SSN758|title=''Asheville''}}</ref>
+|-
+|{{USS|Ashland|LSD-48|6}}
+|{{hs|LSD-0048}}LSD-48
+|{{sclass|Whidbey Island|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1992|05|09}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=LSD48|title=''Ashland''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1" /><ref name="usni1">{{cite news|url=https://news.usni.org/2022/08/15/navy-wants-to-decommission-39-warships-in-2023|title=Navy Wants to Decommission 39 Warships in 2023|publisher=USNI News|date=15 August 2022}}</ref>
+|-
+|{{USS|Augusta|LCS-34|6}}
+|{{hs|LCS-0034}}LCS-34
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|30 September 2023}}
+||[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS34|title=Augusta}}</ref>
+|-
+|{{USS|Bainbridge|DDG-96|6}}
+|{{hs|DDG-0096}}DDG-96
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2005|11|12}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG96|title=''Bainbridge''}}</ref>
+|-
+|{{USS|Barry|DDG-52|6}}
+|{{hs|DDG-0052}}DDG-52
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1992|12|12}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG52|title=''Barry''}}</ref>
+|-
+|{{USS|Bataan|LHD-5|6}}
+|{{hs|LHD-0005}}LHD-5
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|1997|9|20}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LHD5|title=''Bataan''}}</ref>
+|-
+|{{USS|Benfold|DDG-65|6}}
+|{{hs|DDG-0065}}DDG-65
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1996|3|30}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|<ref>{{Naval Vessel Register URL|id=DDG65|title=''Benfold''}}</ref>
+|-
+|{{USS|Billings|LCS-15|6}}
+|{{hs|LCS-0015}}LCS-15
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2019|08|3}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS15|title=''Billings''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" />
+|-
+|{{USS|Blue Ridge|LCC-19|6}}
+|{{hs|LCC-0019}}LCC-19
+|{{sclass|Blue Ridge|command ship|5}}
+|[[Amphibious command ship]]
+|{{dts|format=dmy|1970|11|14}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|<ref>{{Naval Vessel Register URL|id=LCC19|title=''Blue Ridge''}}</ref> Oldest deployed ship
+|-
+|{{USS|Boise|SSN-764|6}}
+|{{hs|SSN-0764}}SSN-764
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1992|11|7}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN764|title=''Boise''}}</ref>
+|-
+|{{USS|Boxer|LHD-4|6}}
+|{{hs|LHD-0004}}LHD-4
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|1995|2|11}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LHD4|title=''Boxer''}}</ref>
+|-
+|{{USS|Bulkeley|DDG-84|6}}
+|{{hs|DDG-0084}}DDG-84
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2001|12|8}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG84|title=''Bulkeley''}}</ref>
+|-
+|{{USS|California|SSN-781|6}}
+|{{hs|SSN-0781}}SSN-781
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2011|10|29}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN781|title=''California''}}</ref>
+|-
+|{{USS|Canberra|LCS-30|6}}
+|{{hs|LCS-30}}LCS-30
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2023|07|22}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS30|title=''Canberra''}}</ref>
+|-
+|{{USS|Cape St. George|CG-71|6}}
+|{{hs|CG-0071}}CG-71
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1993|6|12}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=CG71|title=''Cape St. George''}}</ref>
+|-
+|{{USS|Carl M. Levin|DDG-120|6}}
+|{{hs|DDG-0120}}DDG-120
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2023|6|24}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG120|title=''Carl M. Levin''}}</ref>
+|-
+|{{USS|Carl Vinson|CVN-70|6}}
+|{{hs|CVN-0070}}CVN-70
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1982|3|13}}
+|[[Naval Base Kitsap|North Island, CA]]
+|<ref>{{Naval Vessel Register URL|id=CVN70|title=''Carl Vinson''}}</ref>
+|-
+|{{USS|Carney|DDG-64|6}}
+|{{hs|DDG-0064}}DDG-64
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1996|4|13}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG64|title=''Carney''}}</ref>
+|-
+|{{USS|Carter Hall|LSD-50|6}}
+|{{hs|LSD-0050}}LSD-50
+|{{sclass|Harpers Ferry|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1995|9|30}}
+|[[Naval Amphibious Base Little Creek|Little Creek, VA]]
+|<ref>{{Naval Vessel Register URL|id=LSD50|title=''Carter Hall''}}</ref> {{decommission|scheduled|2023}}<ref name= "spm1" />
+|-
+|{{USS|Chafee|DDG-90|6}}
+|{{hs|DDG-0090}}DDG-90
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2003|10|18}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG90|title=''Chafee''}}</ref>
+|-
+|{{USS|Charleston|LCS-18|6}}
+|{{hs|LCS-0018}}LCS-18
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2019|03|2}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS18|title=''Charleston''}}</ref>
+|-
+|{{USS|Charlotte|SSN-766|6}}
+|{{hs|SSN-0766}}SSN-766
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1994|9|16}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN766|title=''Charlotte''}}</ref>
+|-
+|{{USS|Cheyenne|SSN-773|6}}
+|{{hs|SSN-0773}}SSN-773
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1996|9|13}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN773|title=''Cheyenne''}}</ref>
+|-
+|{{USS|Chief|MCM-14|6}}
+|{{hs|MCM-0014}}MCM-14
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1994|11|5}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=MCM14|title=''Chief''}}</ref>
+|-
+|{{USS|Chosin|CG-65|6}}
+|{{hs|CG-0065}}CG-65
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1991|1|12}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=CG65|title=''Chosin''}}</ref>
+|-
+|{{USS|Chung-Hoon|DDG-93|6}}
+|{{hs|DDG-0093}}DDG-93
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2004|9|18}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG93|title=''Chung-Hoon''}}</ref>
+|-
+|{{USS|Cincinnati|LCS-20|6}}
+|{{hs|LCS-0020}}LCS-20
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2019|10|5}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS20|title=''Cincinnati''}}</ref>
+|-
+|{{USS|Cole|DDG-67|6}}
+|{{hs|DDG-0067}}DDG-67
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1996|06|8}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG67|title=''Cole''}}</ref>
+|-
+|{{USS|Colorado|SSN-788|6}}
+|{{hs|SSN-0788}}SSN-788
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2018|3|17}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=ssn788|title=''Colorado''}}</ref>
+|-
+|{{USS|Columbia|SSN-771|6}}
+|{{hs|SSN-0771}}SSN-771
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1995|10|9}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN771|title=''Columbia''}}</ref>
+|-
+|{{USS|Columbus|SSN-762|6}}
+|{{hs|SSN-0762}}SSN-762
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1993|7|24}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN762|title=''Columbus''}}</ref>
+|-
+|{{USS|Comstock|LSD-45|6}}
+|{{hs|LSD-0045}}LSD-45
+|{{sclass|Whidbey Island|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1990|02|3}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LSD45|title=''Comstock''}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1" />
+|-
+|{{USS|Connecticut|SSN-22|6}}
+|{{hs|SSN-0022}}SSN-22
+|{{sclass|Seawolf|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1998|12|11}}
+|[[Naval Base Kitsap|Bremerton, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSN22|title=''Connecticut''}}</ref>
+|-
+|{{USS|Constitution}}
+|—
+|[[Original six frigates of the United States Navy|Original six frigates]]
+|[[Frigate#Classic design|Classic frigate]]
+|{{dts|format=dmy|1797|10|1}}
+|[[Boston Navy Yard|Boston, MA]]
+|<ref>{{Naval Vessel Register URL|id=Constitution|title=''Constitution''}}</ref> The oldest commissioned vessel in the US Navy{{ref|Special|A}}
+|-
+|{{USS|Cooperstown|LCS-23|6}}
+|{{hs|LCS-0023}}LCS-23
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|6 May 2023}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS23|title=''Cooperstown''}}</ref>
+|-
+|{{USS|Curtis Wilbur|DDG-54|6}}
+|{{hs|DDG-0054}}DDG-54
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1994|3|19}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG54|title=''Curtis Wilbur''}}</ref>
+|-
+|{{USS|Daniel Inouye|DDG-118|6}}
+|{{hs|DDG-0118}}DDG-118
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2021|12|8}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG118|title=''Daniel Inouye''}}</ref>
+|-
+|{{USS|Decatur|DDG-73|6}}
+|{{hs|DDG-0073}}DDG-73
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1998|8|29}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG73|title=''Decatur''}}</ref>
+|-
+|{{USS|Delaware|SSN-791|6}}
+|{{hs|SSN-0791}}SSN-791
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2020|04|4}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN791|title=''Delaware''}}</ref>
+|-
+|{{USS|Delbert D. Black|DDG-119|6}}
+|{{hs|DDG-0119}}DDG-119
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2020|9|26}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG119|title=''Delbert D. Black''}}</ref>
+|-
+|{{USS|Devastator|MCM-6|6}}
+|{{hs|MCM-0006}}MCM-6
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1990|10|6}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=MCM6|title=''Devastator''}}</ref><ref name="USNI FY16 30Y plan">{{cite news|url=http://news.usni.org/2015/04/03/document-navys-30-year-shipbuilding-plan-to-congress-for-fiscal-year-2016|title=Document: Navy's 30-Year Shipbuilding Plan to Congress for Fiscal Year 2016|publisher=USNI News|date=3 April 2015}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1"/>
+|-
+|{{USS|Dewey|DDG-105|6}}
+|{{hs|DDG-0105}}DDG-105
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2010|03|6}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG105|title=''Dewey''}}</ref>
+|-
+|{{USS|Dextrous|MCM-13|6}}
+|{{hs|MCM-0013}}MCM-13
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1994|07|9}}
+|[[Manama]], [[Bahrain]]
+|<ref>{{Naval Vessel Register URL|id=MCM13|title=''Dextrous''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1"/>
+|-
+|{{USS|Donald Cook|DDG-75|6}}
+|{{hs|DDG-0075}}DDG-75
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1998|12|4}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG75|title=''Donald Cook''}}</ref>
+|-
+|{{USS|Dwight D. Eisenhower|CVN-69|6}}
+|{{hs|CVN-0069}}CVN-69
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1977|10|18}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=CVN69|title=''Dwight D. Eisenhower''}}</ref> Scheduled to be decommissioned 2027<ref>{{Cite web |date=2023-04-20 |title=The Navy Is Decommissioning Two Nuclear Aircraft Carriers in a Row |url=https://www.popularmechanics.com/military/navy-ships/a43646315/navy-decommissioning-uss-nimitz-uss-eisenhower/ |access-date=2023-08-08 |website=Popular Mechanics |language=en-US}}</ref>
+|-
+|{{USS|Emory S. Land|AS-39|6}}
+|{{hs|AS-0039}}AS-39
+|{{sclass|Emory S. Land|submarine tender|5}}
+|[[Submarine tender]]
+|{{dts|format=dmy|1979|07|7}}
+||[[Joint Region Marianas|Apra Harbor, GU]]
+|<ref>{{Naval Vessel Register URL|id=AS39|title=''Emory S. Land''}}</ref>
+|-
+|{{USS|Essex|LHD-2|6}}
+|{{hs|LHD-0002}}LHD-2
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|1992|8|24}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LHD2|title=''Essex''}}</ref>
+|-
+|{{USS|Farragut|DDG-99|6}}
+|{{hs|DDG-0099}}DDG-99
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2006|6|10}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG99|title=''Farragut''}}</ref>
+|-
+|{{USS|Fitzgerald|DDG-62|6}}
+|{{hs|DDG-0062}}DDG-62
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1995|10|14}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG62|title=''Fitzgerald''}}</ref>
+|-
+|{{USS|Florida|SSGN-728|6}}
+|{{hs|SSGN-0728}}SSGN-728
+|{{sclass|Ohio|submarine|5}}
+|[[Guided missile submarine]]
+|{{dts|format=dmy|1983|6|18}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSGN728|title=''Florida''}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1" />
+|-
+|{{USS|Forrest Sherman|DDG-98|6}}
+|{{hs|DDG-0098}}DDG-98
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2006|1|28}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG98|title=''Forrest Sherman''}}</ref>
+|-
+|{{USS|Fort Lauderdale|LPD-28|6}}
+|{{hs|LPD-0028}}LPD-28
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2022|7|30}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LPD28|title=''Fort Lauderdale''}}</ref>
+|-
+|{{USS|Fort Worth|LCS-3|6}}
+|{{hs|LCS-0003}}LCS-3
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2012|08|6}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS3|title=''Fort Worth''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" />
+|-
+|{{USS|Frank Cable|AS-40|6}}
+|{{hs|AS-0040}}AS-40
+|{{sclass|Emory S. Land|submarine tender|5}}
+|[[Submarine tender]]
+|{{dts|format=dmy|1979|10|29}}
+|[[Joint Region Marianas|Apra Harbor, GU]]
+|<ref>{{Naval Vessel Register URL|id=AS40|title=''Frank Cable''}}</ref>
+|-
+|{{USS|Frank E. Petersen Jr.|DDG-121|6}}
+|{{hs|DDG-121}}DDG-121
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2022|5|14}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG121|title=''Frank E. Petersen Jr.''}}</ref>
+|-
+|{{USS|Gabrielle Giffords|LCS-10|6}}
+|{{hs|LCS-0010}}LCS-10
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2017|6|10}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS10|title=''Gabrielle Giffords''}}</ref>
+|-
+|{{USS|George Washington|CVN-73|6}}
+|{{hs|CVN-0073}}CVN-73
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1992|07|4}}
+|[[United States Fleet Activities Yokosuka |Yokosuka, JP]]
+|<ref>{{Naval Vessel Register URL|id=CVN73|title=''George Washington''}}</ref>
+|-
+|{{USS|George H.W. Bush|CVN-77|6}}
+|{{hs|CVN-0077}}CVN-77
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|2009|1|10}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=CVN77|title=''George H. W. Bush''}}</ref>
+|-
+|{{USS|Georgia|SSGN-729|6}}
+|{{hs|SSGN-0729}}SSGN-729
+|{{sclass|Ohio|submarine|5}}
+|[[Guided missile submarine]]
+|{{dts|format=dmy|1984|2|11}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSGN729|title=''Georgia''}}</ref>  {{decommission|scheduled|2028}}<ref name="NavalNews">{{cite news|url=https://www.navalnews.com/naval-news/2024/03/retirement-of-ohio-class-ssgn-now-only-two-years-away/|title=Retirement Of US Navy Ohio-Class SSGN Now Only Two Years Away|publisher=Naval News|date=27 March 2024}}</ref>
+|-
+|{{USS|Gerald R. Ford|CVN-78|6}}
+|{{hs|CVN-0078}}CVN-78
+|{{sclass|Gerald R. Ford|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|2017|7|22}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=CVN78|title=''Gerald R. Ford''}}</ref>
+|-
+|{{USS|Germantown|LSD-42|6}}
+|{{hs|LSD-0042}}LSD-42
+|{{sclass|Whidbey Island|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1986|02|8}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=LSD42|title=''Germantown''}}</ref> {{decommission|scheduled|2025}}<ref name="usni2024-03-11" />
+|-
+|{{USS|Gettysburg|CG-64|6}}
+|{{hs|CG-0064}}CG-64
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1991|6|22}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=CG64|title=''Gettysburg''}}</ref>
+|-
+|{{USS|Gladiator|MCM-11|6}}
+|{{hs|MCM-0011}}MCM-11
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1993|9|18}}
+|[[Manama]], [[Bahrain]]
+|<ref>{{Naval Vessel Register URL|id=MCM11|title=''Gladiator''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1"/>
+|-
+|{{USS|Gonzalez|DDG-66|6}}
+|{{hs|DDG-0066}}DDG-66
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1996|10|12}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG66|title=''Gonzalez''}}</ref>
+|-
+|{{USS|Gravely|DDG-107|6}}
+|{{hs|DDG-0107}}DDG-107
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2010|11|20}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG107|title=''Gravely''}}</ref>
+|-
+|{{USS|Green Bay|LPD-20|6}}
+|{{hs|LPD-0020}}LPD-20
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2006|1|24}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=LPD20|title=''Green Bay''}}</ref>
+|-
+|{{USS|Greeneville|SSN-772|6}}
+|{{hs|SSN-0772}}SSN-772
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1996|2|16}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN772|title=''Greeneville''}}</ref>
+|-
+|{{USS|Gridley|DDG-101|6}}
+|{{hs|DDG-0101}}DDG-101
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2007|2|10}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG101|title=''Gridley''}}</ref>
+|-
+|{{USS|Gunston Hall|LSD-44|6}}
+|{{hs|LSD-0044}}LSD-44
+|{{sclass|Whidbey Island|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1989|4|22}}
+|[[Naval Amphibious Base Little Creek|Little Creek, VA]]
+|<ref>{{Naval Vessel Register URL|id=LSD44|title=''Gunston Hall''}}</ref> {{decommission|scheduled|2023}}<ref name= "spm1" /><ref name="usni1" />
+|-
+|{{USS|Halsey|DDG-97|6}}
+|{{hs|DDG-0097}}DDG-97
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2005|7|30}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG97|title=''Halsey''}}</ref>
+|-
+|{{USS|Hampton|SSN-767|6}}
+|{{hs|SSN-0767}}SSN-767
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1993|11|6}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=SSN767|title=''Hampton''}}</ref>
+|-
+|{{USS|Harpers Ferry|LSD-49|6}}
+|{{hs|LSD-0049}}LSD-49
+|{{sclass|Harpers Ferry|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1995|01|7}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LSD49|title=''Harpers Ferry''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1" />
+|-
+|{{USS|Harry S. Truman|CVN-75|6}}
+|{{hs|CVN-0075}}CVN-75
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1998|7|25}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=CVN75|title=''Harry S. Truman''}}</ref>
+|-
+|{{USS|Hartford|SSN-768|6}}
+|{{hs|SSN-0768}}SSN-768
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1994|12|10}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN768|title=''Hartford''}}</ref>
+|-
+|{{USS|Hawaii|SSN-776|6}}
+|{{hs|SSN-0776}}SSN-776
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2007|05|5}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN776|title=''Hawaii''}}</ref>
+|-
+|{{USS|Helena|SSN-725|6}}
+|{{hs|SSN-0725}}SSN-725
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1987|7|11}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN725|title=''Helena''}}</ref> {{decommission|scheduled|2025}}<ref name= "spm1" />
+|-
+|{{USS|Henry M. Jackson|SSBN-730|6}}
+|{{hs|SSBN-0730}}SSBN-730
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1984|10|6}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN730|title=''Henry M. Jackson''}}</ref>
+|-
+|{{USS|Hershel "Woody" Williams|ESB-4|6}}
+|{{hs|ESB-0004}}ESB-4
+|{{Sclass|Lewis B. Puller|expeditionary mobile base|5}}
+|[[Expeditionary mobile base]]
+|{{dts|format=dmy|2020|03|7}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=ESB4|title=''Hershel "Woody" Williams''}}</ref>
+|-
+|{{USS|Higgins|DDG-76|6}}
+|{{hs|DDG-0076}}DDG-76
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1999|4|24}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG76|title=''Higgins''}}</ref>
+|-
+|{{USS|Hopper|DDG-70|6}}
+|{{hs|DDG-0070}}DDG-70
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1997|09|6}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG70|title=''Hopper''}}</ref>
+|-
+|{{USS|Howard|DDG-83|6}}
+|{{hs|DDG-0083}}DDG-83
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2001|10|20}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG83|title=''Howard''}}</ref>
+|-
+|{{USS|Hyman G. Rickover|SSN-795|6}}
+|{{hs|SSN-0795}}SSN-795
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2023|10|14}}
+|[[Naval Station Groton|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN795|title=''Hyman G. Rickover''}}</ref>
+|-
+|{{USS|Illinois|SSN-786|6}}
+|{{hs|SSN-0786}}SSN-786
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2016|10|29}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN786|title=''Illinois''}}</ref>
+|-
+|{{USS|Indiana|SSN-789|6}}
+|{{hs|SSN-0789}}SSN-789
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2018|9|29}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=ssn789|title=''Indiana''}}</ref>
+|-
+|{{USS|Indianapolis|LCS-17|6}}
+|{{hs|LCS-0017}}LCS-17
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2019|10|26}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS17|title=''Indianapolis''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" />
+|-
+|{{USS|Iwo Jima|LHD-7|6}}
+|{{hs|LHD-0007}}LHD-7
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|2001|6|30}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LHD7|title=''Iwo Jima''}}</ref>
+|-
+|{{USS|Jackson|LCS-6|6}}
+|{{hs|LCS-0006}}LCS-6
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2015|12|5}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS6|title=''Jackson''}}</ref> {{decommission|scheduled|2025}}<ref name="usni2024-03-11" />
+|-
+|{{USS|Jack H. Lucas|DDG-125|6}}
+|{{hs|DDG-0125}}DDG-125
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2023|10|7}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG125|title=''Jack H. Lucas''}}</ref>
+|-
+|{{USS|James E. Williams|DDG-95|6}}
+|{{hs|DDG-0095}}DDG-95
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2004|12|11}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG95|title=''James E. Williams''}}</ref>
+|-
+|{{USS|Jason Dunham|DDG-109|6}}
+|{{hs|DDG-0109}}DDG-109
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2010|11|13}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG109|title=''Jason Dunham''}}</ref>
+|-
+|{{USS|Jefferson City|SSN-759|6}}
+|{{hs|SSN-0759}}SSN-759
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1992|2|29}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=SSN759|title=''Jefferson City''}}</ref>
+|-
+|{{USS|Jimmy Carter|SSN-23|6}}
+|{{hs|SSN-0023}}SSN-23
+|{{sclass|Seawolf|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2005|2|19}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSN23|title=''Jimmy Carter''}}</ref>
+|-
+|{{USS|John C. Stennis|CVN-74|6}}
+|{{hs|CVN-0074}}CVN-74
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1995|12|9}}
+|[[Naval Base Kitsap|Bremerton, WA]]
+|<ref>{{Naval Vessel Register URL|id=CVN74|title=''John C. Stennis''}}</ref>
+|-
+|{{USS|John Finn|DDG-113|6}}
+|{{hs|DDG-0113}}DDG-113
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2017|7|15}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG113|title=''John Finn''}}</ref>
+|-
+|{{USS|John L. Canley|ESB-6|6}}
+|{{hs|ESB-6}}ESB-6
+|{{Sclass|Lewis B. Puller|expeditionary mobile base|5}}
+|[[Expeditionary mobile base]]
+|{{dts|format=dmy|2024|2|17}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=ESB6|title=''John L. Canley''}}</ref>
+|-
+|{{USS|John P. Murtha|LPD-26|6}}
+|{{hs|LPD-0026}}LPD-26
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2016|10|8}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LPD26|title=''John P. Murtha''}}</ref>
+|-
+|{{USS|John Paul Jones|DDG-53|6}}
+|{{hs|DDG-0053}}DDG-53
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1993|12|18}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG53|title=''John Paul Jones''}}</ref>
+|-
+|{{USS|John S. McCain|DDG-56|6}}
+|{{hs|DDG-0056}}DDG-56
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1994|07|2}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG56|title=''John S. McCain''}}</ref>
+|-
+|{{USS|John Warner|SSN-785|6}}
+|{{hs|SSN-0785}}SSN-785
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2015|08|1}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=ssn785|title=''John Warner''}}</ref>
+|-
+|{{USS|Kansas City|LCS-22|6}}
+|{{hs|LCS-0022}}LCS-22
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2020|6|20}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS22|title=''Kansas City''}}</ref>
+|-
+|{{USS|Kearsarge|LHD-3|6}}
+|{{hs|LHD-0003}}LHD-3
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|1993|10|16}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LHD3|title=''Kearsarge''}}</ref>
+|-
+|{{USS|Kentucky|SSBN-737|6}}
+|{{hs|SSBN-0737}}SSBN-737
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1991|7|13}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN737|title=''Kentucky''}}</ref>
+|-
+|{{USS|Key West|SSN-722|6}}
+|{{hs|SSN-0722}}SSN-722
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1987|9|12}}
+|[[Joint Region Marianas|Apra Harbor, GU]]
+|<ref>{{Naval Vessel Register URL|id=SSN722|title=''Key West''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" /> {{decommission|scheduled|2024}}<ref name= "spm1" />
+|-
+|{{USS|Kidd|DDG-100|6}}
+|{{hs|DDG-0100}}DDG-100
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2007|06|9}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG100|title=''Kidd''}}</ref>
+|-
+|{{USS|Laboon|DDG-58|6}}
+|{{hs|DDG-0058}}DDG-58
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1995|3|18}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG58|title=''Laboon''}}</ref>
+|-
+|{{USS|Lake Erie|CG-70|6}}
+|{{hs|CG-0070}}CG-70
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1993|5|10}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=CG70|title=''Lake Erie''}}</ref> {{decommission|scheduled|2025}}<ref name="usni2024-03-11">{{cite news|url=https://news.usni.org/2024/03/11/new-navy-budget-seeks-6-battle-force-ships-10-decommissions-in-fy-2025|title=New Navy Budget Seeks 6 Battle Force Ships, Decommissions 19 Hulls in FY 2025|publisher=USNI News|date=11 March 2024}}</ref>
+|-
+|{{USS|Lassen|DDG-82|6}}
+|{{hs|DDG-0082}}DDG-82
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2001|4|21}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG82|title=''Lassen''}}</ref>
+|-
+|{{USS|Lenah Sutcliffe Higbee|DDG-123|6}}
+|{{hs|DDG-0123}}DDG-123
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2023|5|13}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG123|title=''Lenah Sutcliffe Higbee''}}</ref>
+|-
+|{{USS|Lewis B. Puller|ESB-3|6}}
+|{{hs|ESB-0003}}ESB-3
+|{{Sclass|Lewis B. Puller|expeditionary mobile base|5}}
+|[[Expeditionary mobile base]]
+|{{dts|format=dmy|2017|8|17}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=ESB3|title=''Lewis B. Puller''}}</ref>
+|-
+|{{USS|Louisiana|SSBN-743|6}}
+|{{hs|SSBN-0743}}SSBN-743
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1997|09|6}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN743|title=''Louisiana''}}</ref>
+|-
+|{{USS|Mahan|DDG-72|6}}
+|{{hs|DDG-0072}}DDG-72
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1998|2|14}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG72|title=''Mahan''}}</ref>
+|-
+|{{USS|Maine|SSBN-741|6}}
+|{{hs|SSBN-0741}}SSBN-741
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1995|7|29}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN741|title=''Maine''}}</ref>
+|-
+|{{USS|Makin Island|LHD-8|6}}
+|{{hs|LHD-0008}}LHD-8
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|2009|10|24}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LHD8|title=''Makin Island''}}</ref>
+|-
+|{{USS|Manchester|LCS-14|6}}
+|{{hs|LCS-0014}}LCS-14
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2018|5|26}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS14|title=''Manchester''}}</ref>
+|-
+|{{USS|Marinette|LCS-25|6}}
+|{{hs|LCS-0025}}LCS-25
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|16 September 2023}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS25|title=''Marinette''}}</ref><ref name="dvids1">{{cite web|url=https://www.dvidshub.net/news/453599/uss-marinette-commissions-wright-way|title=USS Marinette Commissions the Wright Way|website=dvidshub.net|date=16 September 2023|access-date=17 September 2023}}</ref>
+|-
+|{{USS|Maryland|SSBN-738|6}}
+|{{hs|SSBN-0738}}SSBN-738
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1992|6|13}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN738|title=''Maryland''}}</ref>
+|-
+|{{USS|Mason|DDG-87|6}}
+|{{hs|DDG-0087}}DDG-87
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2003|4|12}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG87|title=''Mason''}}</ref>
+|-
+|{{USS|McCampbell|DDG-85|6}}
+|{{hs|DDG-0085}}DDG-85
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2002|8|17}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG85|title=''McCampbell''}}</ref>
+|-
+|{{USS|McFaul|DDG-74|6}}
+|{{hs|DDG-0074}}DDG-74
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1998|4|25}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG74|title=''McFaul''}}</ref>
+|-
+|{{USS|Mesa Verde|LPD-19|6}}
+|{{hs|LPD-0019}}LPD-19
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2007|12|15}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LPD19|title=''Mesa Verde''}}</ref>
+|-
+|{{USS|Michael Monsoor|DDG-1001|6}}
+|{{hs|DDG-1001}}DDG-1001
+|{{sclass|Zumwalt|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2019|1|26}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG1001|title=''Michael Monsoor''}}</ref>
+|-
+|{{USS|Michael Murphy|DDG-112|6}}
+|{{hs|DDG-0112}}DDG-112
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2012|09|5}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG112|title=''Michael Murphy''}}</ref>
+|-
+|{{USS|Michigan|SSGN-727|6}}
+|{{hs|SSGN-0727}}SSGN-727
+|{{sclass|Ohio|submarine|5}}
+|[[Guided missile submarine]]
+|{{dts|format=dmy|1982|9|11}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSGN727|title=''Michigan''}}</ref> {{decommission|scheduled|2028}}<ref name="NavalNews" />
+|-
+|{{USS|Miguel Keith|ESB-5|6}}
+|{{hs|ESB-0005}}ESB-5
+|{{Sclass|Lewis B. Puller|expeditionary mobile base|5}}
+|[[Expeditionary mobile base]]
+|{{dts|format=dmy|2021|05|8}}
+|[[Naval Forces Japan (United States)|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=ESB5|title=''Miguel Keith''}}</ref>
+|-
+|{{USS|Milius|DDG-69|6}}
+|{{hs|DDG-0069}}DDG-69
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1996|11|23}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|<ref>{{Naval Vessel Register URL|id=DDG69|title=''Milius''}}</ref>
+|-
+|{{USS|Minnesota|SSN-783|6}}
+|{{hs|SSN-0783}}SSN-783
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2013|09|7}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN783|title=''Minnesota''}}</ref>
+|-
+|{{USS|Minneapolis-Saint Paul|LCS-21|6}}
+|{{hs|LCS-0021}}LCS-21
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2022|05|21}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS21|title=''Minneapolis-Saint Paul''}}</ref>
+|-
+|{{USS|Mississippi|SSN-782|6}}
+|{{hs|SSN-0782}}SSN-782
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2012|06|2}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN782|title=''Mississippi''}}</ref>
+|-
+|{{USS|Missouri|SSN-780|6}}
+|{{hs|SSN-0780}}SSN-780
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2010|7|31}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN780|title=''Missouri''}}</ref>
+|-
+|{{USS|Mitscher|DDG-57|6}}
+|{{hs|DDG-0057}}DDG-57
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1994|12|10}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG57|title=''Mitscher''}}</ref>
+|-
+|{{USS|Mobile|LCS-26|6}}
+|{{hs|LCS-0026}}LCS-26
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2021|5|22}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS26|title=''Mobile''}}</ref>
+|-
+|{{USS|Momsen|DDG-92|6}}
+|{{hs|DDG-0092}}DDG-92
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2004|8|28}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG92|title=''Momsen''}}</ref>
+|-
+|{{USS|Montana|SSN-794|6}}
+|{{hs|SSN-0794}}SSN-794
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2022|6|25}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN794|title=''Montana''}}</ref>
+|-
+|{{USS|Montgomery|LCS-8|6}}
+|{{hs|LCS-0008}}LCS-8
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2016|9|10}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS8|title=''Montgomery''}}</ref> {{decommission|scheduled|2025}}<ref name="usni2024-03-11" />
+|-
+|{{USS|Montpelier|SSN-765|6}}
+|{{hs|SSN-0765}}SSN-765
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1993|3|13}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN765|title=''Montpelier''}}</ref>
+|-
+|{{USS|Mount Whitney|LCC-20|6}}
+|{{hs|LCC-0020}}LCC-20
+|{{sclass|Blue Ridge|command ship|5}}
+|[[Amphibious command ship]]
+|{{dts|format=dmy|1971|1|16}}
+|[[Gaeta#NATO base|Gaeta, Italy]]
+|<ref>{{Naval Vessel Register URL|id=LCC20|title=''Mount Whitney''}}</ref>
+|-
+|{{USS|Mustin|DDG-89|6}}
+|{{hs|DDG-0089}}DDG-89
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2003|7|26}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|<ref>{{Naval Vessel Register URL|id=DDG89|title=''Mustin''}}</ref>
+|-
+|{{USS|Nebraska|SSBN-739|6}}
+|{{hs|SSBN-0739}}SSBN-739
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1993|7|10}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN739|title=''Nebraska''}}</ref>
+|-
+|{{USS|Nevada|SSBN-733|6}}
+|{{hs|SSBN-0733}}SSBN-733
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1986|8|16}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN733|title=''Nevada''}}</ref>
+|-
+|{{USS|New Hampshire|SSN-778|6}}
+|{{hs|SSN-0778}}SSN-778
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2008|10|25}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN778|title=''New Hampshire''}}</ref>
+|-
+|{{USS|New Jersey|SSN-796|6}}
+|{{hs|SSN-796}}SSN-796
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2024|9|14}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{cite web |title=Navy commissions USS New Jersey (SSN 796) |url=https://www.navy.mil/Press-Office/News-Stories/Article/3906606/navy-commissions-uss-new-jersey-ssn-796/ |publisher=US Navy |access-date=23 September 2024}}</ref>
+|-
+|{{USS|New Mexico|SSN-779|6}}
+|{{hs|SSN-0779}}SSN-779
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2010|3|27}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN779|title=''New Mexico''}}</ref>
+|-
+|{{USS|New Orleans|LPD-18|6}}
+|{{hs|LPD-0018}}LPD-18
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2007|03|5}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LPD18|title=''New Orleans''}}</ref>
+|-
+|{{USS|New York|LPD-21|6}}
+|{{hs|LPD-0021}}LPD-21
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2009|11|7}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LPD21|title=''New York''}}</ref>
+|-
+|{{USS|Newport News|SSN-750|6}}
+|{{hs|SSN-0750}}SSN-750
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1989|06|3}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN750|title=''Newport News''}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1" />
+|-
+|{{USS|Nimitz|CVN-68|6}}
+|{{hs|CVN-0068}}CVN-68
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1975|05|3}}
+|[[Naval Base Kitsap|Bremerton, WA]]
+|<ref>{{Naval Vessel Register URL|id=CVN68|title=''Nimitz''}}</ref> {{decommission|scheduled|2025}}<ref name= "spm1" /><ref>{{Cite web |last=McNeil |first=Harry |date=2024-08-01 |title=US Navy steps towards deactivating oldest active aircraft carrier |url=https://www.naval-technology.com/news/us-navy-steps-towards-deactivating-oldest-active-aircraft-carrier/ |access-date=2024-08-03 |website=Naval Technology |language=en-US}}</ref>
+|-
+|{{USS|Nitze|DDG-94|6}}
+|{{hs|DDG-0094}}DDG-94
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2005|03|5}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG94|title=''Nitze''}}</ref>
+|-
+|{{USS|Normandy|CG-60|6}}
+|{{hs|CG-0060}}CG-60
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1989|12|9}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=CG60|title=''Normandy''}}</ref>
+|-
+|{{USS|North Carolina|SSN-777|6}}
+|{{hs|SSN-0777}}SSN-777
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2008|05|3}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN777|title=''North Carolina''}}</ref>
+|-
+|{{USS|North Dakota|SSN-784|6}}
+|{{hs|SSN-0784}}SSN-784
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2014|10|25}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN784|title=''North Dakota''}}</ref>
+|-
+|{{USS|O'Kane|DDG-77|6}}
+|{{hs|DDG-0077}}DDG-77
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1999|10|23}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG77|title=''O'Kane''}}</ref>
+|-
+|{{USS|Oak Hill|LSD-51|6}}
+|{{hs|LSD-0051}}LSD-51
+|{{sclass|Harpers Ferry|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1996|06|8}}
+|[[Naval Amphibious Base Little Creek|Little Creek, VA]]
+|<ref>{{Naval Vessel Register URL|id=LSD51|title=''Oak Hill''}}</ref> {{decommission|scheduled|2025}}<ref name= "spm1" />
+|-
+|{{USS|Oakland|LCS-24|6}}
+|{{hs|LCS-0024}}LCS-24
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2021|4|17}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS24|title=''Oakland''}}</ref>
+|-
+|{{USS|Ohio|SSGN-726|6}}
+|{{hs|SSGN-0726}}SSGN-726
+|{{sclass|Ohio|submarine|5}}
+|[[Guided missile submarine]]
+|{{dts|format=dmy|1981|11|11}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSGN726|title=''Ohio''}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1" />
+|-
+|{{USS|Omaha|LCS-12|6}}
+|{{hs|LCS-0012}}LCS-12
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2018|02|3}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS12|title=''Omaha''}}</ref>
+|-
+|{{USS|Oregon|SSN-793|6}}
+|{{hs|SSN-793}}SSN-793
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2022|5|28}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN793|title=''Oregon''}}</ref>
+|-
+|{{USS|Oscar Austin|DDG-79|6}}
+|{{hs|DDG-0079}}DDG-79
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2000|8|19}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG79|title=''Oscar Austin''}}</ref>
+|-
+|{{USS|Pasadena|SSN-752|6}}
+|{{hs|SSN-0752}}SSN-752
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1989|2|11}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN752|title=''Pasadena''}}</ref> {{decommission|scheduled|2025}}<ref name= "spm1" />
+|-
+|{{USS|Patriot|MCM-7|6}}
+|{{hs|MCM-0007}}MCM-7
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1991|10|18}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=MCM7|title=''Patriot''}}</ref>
+|-
+|{{USS|Paul Hamilton|DDG-60|6}}
+|{{hs|DDG-0060}}DDG-60
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1995|5|27}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG60|title=''Paul Hamilton''}}</ref>
+|-
+|{{USS|Paul Ignatius|DDG-117|6}}
+|{{hs|DDG-0117}}DDG-117
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2019|7|27}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG117|title=''Paul Ignatius''}}</ref>
+|-
+|{{USS|Pearl Harbor|LSD-52|6}}
+|{{hs|LSD-0052}}LSD-52
+|{{sclass|Harpers Ferry|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1998|4|27}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LSD52|title=''Pearl Harbor''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1" />
+|-
+|{{USS|Pennsylvania|SSBN-735|6}}
+|{{hs|SSBN-0735}}SSBN-735
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1989|09|9}}
+|[[Naval Base Kitsap|Bangor, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN735|title=''Pennsylvania''}}</ref>
+|-
+|{{USS|Philippine Sea|CG-58|6}}
+|{{hs|CG-0058}}CG-58
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1989|3|18}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=CG58|title=''Philippine Sea''}}</ref>
+|-
+|{{USS|Pinckney|DDG-91|6}}
+|{{hs|DDG-0091}}DDG-91
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2004|5|29}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG91|title=''Pinckney''}}</ref>
+|-
+|{{USS|Pioneer|MCM-9|6}}
+|{{hs|MCM-0009}}MCM-9
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1992|12|7}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=MCM9|title=''Pioneer''}}</ref>
+|-
+|{{USS|Porter|DDG-78|6}}
+|{{hs|DDG-0078}}DDG-78
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1999|3|20}}
+|[[Naval Station Rota Spain|Rota, Spain]]
+|<ref>{{Naval Vessel Register URL|id=DDG78|title=''Porter''}}</ref>
+|-
+|{{USS|Portland|LPD-27|6}}
+|{{hs|LPD-0027}}LPD-27
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2017|12|14}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LPD27|title=''Portland''}}</ref>
+|-
+|{{USS|Preble|DDG-88|6}}
+|{{hs|DDG-0088}}DDG-88
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2002|11|9}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=DDG88|title=''Preble''}}</ref>
+|-
+|{{USS|Princeton|CG-59|6}}
+|{{hs|CG-0059}}CG-59
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1989|2|11}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=CG59|title=''Princeton''}}</ref>
+|-
+|{{USS|Pueblo|AGER-2|6}}
+|AGER-2
+|[[Banner-class environmental research ship|''Banner'']]
+|[[Technical research ship]]
+|{{dts|format=dmy|1945|04|7}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]<br />{{small|''(at time of capture)''}}
+|<ref>{{Naval Vessel Register URL|id=AGER2|title=''Pueblo''}}</ref> Captured and currently possessed by [[North Korea]]. Still actively commissioned{{ref|Special|A}}
+|-
+|{{USS|Rafael Peralta|DDG-115|6}}
+|{{hs|DDG-0115}}DDG-115
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2017|7|29}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG115|title=''Rafael Peralta''}}</ref>
+|-
+|{{USS|Ralph Johnson|DDG-114|6}}
+|{{hs|DDG-0114}}DDG-114
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2018|3|24}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG114|title=''Ralph Johnson''}}</ref>
+|-
+|{{USS|Ramage|DDG-61|6}}
+|{{hs|DDG-0061}}DDG-61
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1995|7|22}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG61|title=''Ramage''}}</ref>
+|-
+|{{USS|Rhode Island|SSBN-740|6}}
+|{{hs|SSBN-0740}}SSBN-740
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1994|07|9}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN740|title=''Rhode Island''}}</ref>
+|-
+|{{USS|Robert Smalls|CG-62|6}}
+|{{hs|CG-0062}}CG-62
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1989|11|4}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|formerly USS ''Chancellorsville'' until renamed on 27 February 2023,<ref>{{Naval Vessel Register URL|id=CG62|title=''Robert Smalls''}}</ref><ref>{{cite press release|url=https://www.navy.mil/Press-Office/Press-Releases/display-pressreleases/Article/3312337/secnav-renames-ticonderoga-class-guided-missile-cruiser-uss-chancellorsville-af/|title=SECNAV Renames Ticonderoga-class Guided Missile Cruiser USS Chancellorsville after Robert Smalls|publisher=United States Navy|date=27 February 2023|access-date=27 February 2023}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1" />
+|-
+|{{USS|Ronald Reagan|CVN-76|6}}
+|{{hs|CVN-0076}}CVN-76
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|2003|7|12}}
+|[[Naval Base Kitsap|Bremerton, WA]]
+|<ref>{{Naval Vessel Register URL|id=CVN76|title=''Ronald Reagan''}}</ref>
+|-
+|{{USS|Roosevelt|DDG-80|6}}
+|{{hs|DDG-0080}}DDG-80
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2000|10|14}}
+|[[Naval Station Rota Spain|Rota, Spain]]
+|<ref>{{Naval Vessel Register URL|id=DDG80|title=''Roosevelt''}}</ref>
+|-
+|{{USS|Ross|DDG-71|6}}
+|{{hs|DDG-0071}}DDG-71
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1997|6|28}}
+|[[Naval Station Rota Spain|Rota, Spain]]
+|<ref>{{Naval Vessel Register URL|id=DDG71|title=''Ross''}}</ref>
+|-
+|{{USS|Rushmore|LSD-47|6}}
+|{{hs|LSD-0047}}LSD-47
+|{{sclass|Whidbey Island|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1991|06|1}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LSD47|title=''Rushmore''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1" />
+|-
+|{{USS|Russell|DDG-59|6}}
+|{{hs|DDG-0059}}DDG-59
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1995|5|20}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG59|title=''Russell''}}</ref>
+|-
+|{{USS|Sampson|DDG-102|6}}
+|{{hs|DDG-0102}}DDG-102
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2007|11|3}}
+|[[Naval Station Everett|Everett, WA]]
+|<ref>{{Naval Vessel Register URL|id=DDG102|title=''Sampson''}}</ref>
+|-
+|{{USS|San Antonio|LPD-17|6}}
+|{{hs|LPD-0017}}LPD-17
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2006|1|14}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LPD17|title=''San Antonio''}}</ref>
+|-
+|{{USS|San Diego|LPD-22|6}}
+|{{hs|LPD-0022}}LPD-22
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2012|5|19}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LPD22|title=''San Diego''}}</ref>
+|-
+|{{USS|San Juan|SSN-751|6}}
+|{{hs|SSN-0751}}SSN-751
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1988|08|6}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN751|title=''San Juan''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1"/>
+|-
+|{{USS|Santa Barbara|LCS-32|6}}
+|{{hs|LCS-0032}}LCS-32
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2023|04|01}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS32|title=''Santa Barbara''}}</ref>
+|-
+|{{USS|Santa Fe|SSN-763|6}}
+|{{hs|SSN-0763}}SSN-763
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1994|01|8}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN763|title=''Santa Fe''}}</ref>
+|-
+|{{USS|Savannah|LCS-28|6}}
+|{{hs|LCS-0028}}LCS-28
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2022|02|5}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS28|title=''Savannah''}}</ref>
+|-
+|{{USS|Scranton|SSN-756|6}}
+|{{hs|SSN-0756}}SSN-756
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1991|1|26}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=SSN756|title=''Scranton''}}</ref> {{decommission|scheduled|2026}}<ref name= "spm1" />
+|-
+|{{USS|Seawolf|SSN-21|6}}
+|{{hs|SSN-0021}}SSN-21
+|{{sclass|Seawolf|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1997|7|19}}
+|[[Naval Base Kitsap|Bremerton, WA]]
+|<ref>{{Naval Vessel Register URL|id=SSN21|title=''Seawolf''}}</ref>
+|-
+|{{USS|Sentry|MCM-3|6}}
+|{{hs|MCM-0003}}MCM-3
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1989|09|2}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=MCM3|title=''Sentry''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1"/>
+|-
+|{{USS|Shiloh|CG-67|6}}
+|{{hs|CG-0067}}CG-67
+|{{sclass|Ticonderoga|cruiser|5}}
+|[[Cruiser]]
+|{{dts|format=dmy|1992|7|18}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|<ref>{{Naval Vessel Register URL|id=CG67|title=''Shiloh''}}</ref> {{decommission|scheduled|2025}}<ref name= "spm1" /><ref name="usni2024-03-11" />
+|-
+|{{USS|Shoup|DDG-86|6}}
+|{{hs|DDG-0086}}DDG-86
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2002|6|22}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG86|title=''Shoup''}}</ref>
+|-
+|{{USS|Somerset|LPD-25|6}}
+|{{hs|LPD-0025}}LPD-25
+|{{sclass|San Antonio|amphibious transport dock|5}}
+|[[Amphibious transport dock]]
+|{{dts|format=dmy|2014|3|1}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LPD25|title=''Somerset''}}</ref>
+|-
+|{{USS|South Dakota|SSN-790|6}}
+|{{hs|SSN-0790}}SSN-790
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2019|02|2}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=ssn790|title=''South Dakota''}}</ref>
+|-
+|{{USS|Springfield|SSN-761|6}}
+|{{hs|SSN-0761}}SSN-761
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1993|01|9}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN761|title=''Springfield''}}</ref>
+|-
+|{{USS|Spruance|DDG-111|6}}
+|{{hs|DDG-0111}}DDG-111
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2011|09|1}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG111|title=''Spruance''}}</ref>
+|-
+|{{USS|St. Louis|LCS-19|6}}
+|{{hs|LCS-0019}}LCS-19
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2020|08|8}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS19|title=''St. Louis''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" />
+|-
+|{{USS|Sterett|DDG-104|6}}
+|{{hs|DDG-0104}}DDG-104
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2008|08|9}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG104|title=''Sterett''}}</ref>
+|-
+|{{USS|Stethem|DDG-63|6}}
+|{{hs|DDG-0063}}DDG-63
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1995|10|21}}
+|[[United States Fleet Activities Yokosuka|Yokosuka, Japan]]
+|<ref>{{Naval Vessel Register URL|id=DDG63|title=''Stethem''}}</ref>
+|-
+|{{USS|Stockdale|DDG-106|6}}
+|{{hs|DDG-0106}}DDG-106
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2009|4|18}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG106|title=''Stockdale''}}</ref>
+|-
+|{{USS|Stout|DDG-55|6}}
+|{{hs|DDG-0055}}DDG-55
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1994|8|13}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG55|title=''Stout''}}</ref>
+|-
+|{{USS|Tennessee|SSBN-734|6}}
+|{{hs|SSBN-0734}}SSBN-734
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1988|12|17}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN734|title=''Tennessee''}}</ref>
+|-
+|{{USS|Texas|SSN-775|6}}
+|{{hs|SSN-0775}}SSN-775
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2006|09|9}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN775|title=''Texas''}}</ref>
+|-
+|{{USS|The Sullivans|DDG-68|6}}
+|{{hs|DDG-0068}}DDG-68
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|1997|4|19}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG68|title=''The Sullivans''}}</ref>
+|-
+|{{USS|Theodore Roosevelt|CVN-71|6}}
+|{{hs|CVN-0071}}CVN-71
+|{{sclass|Nimitz|aircraft carrier|5}}
+|[[Aircraft carrier]]
+|{{dts|format=dmy|1986|10|25}}
+|[[Naval Air Station North Island|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=CVN71|title=''Theodore Roosevelt''}}</ref>
+|-
+|{{USS|Thomas Hudner|DDG-116|6}}
+|{{hs|DDG-0116}}DDG-116
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2018|12|1}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=DDG116|title=''Thomas Hudner''}}</ref>
+|-
+|{{USS|Toledo|SSN-769|6}}
+|{{hs|SSN-0769}}SSN-769
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1995|2|24}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN769|title=''Toledo''}}</ref>
+|-
+|{{USS|Topeka|SSN-754|6}}
+|{{hs|SSN-0754}}SSN-754
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1989|10|21}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=SSN754|title=''Topeka''}}</ref> {{decommission|scheduled|2024}}<ref name= "spm1"/>
+|-
+|{{USS|Tortuga|LSD-46|6}}
+|{{hs|LSD-0046}}LSD-46
+|{{sclass|Whidbey Island|dock landing ship|5}}
+|[[Dock landing ship]]
+|{{dts|format=dmy|1990|11|17}}
+|[[Naval Amphibious Base Little Creek|Little Creek, VA]]
+|<ref>{{Naval Vessel Register URL|id=LSD46|title=''Tortuga''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" />
+|-
+|{{USS|Tripoli|LHA-7|6}}
+|{{hs|LHA-0007}}LHA-7
+|{{sclass|America|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|2020|7|15
+}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LHA7|title=''Tripoli''}}</ref>
+|-
+|{{USS|Truxtun|DDG-103|6}}
+|{{hs|DDG-0103}}DDG-103
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2009|4|25}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG103|title=''Truxtun''}}</ref>
+|-
+|{{USS|Tucson|SSN-770|6}}
+|{{hs|SSN-0770}}SSN-770
+|{{sclass|Los Angeles|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|1995|8|18}}
+|[[Naval Station Pearl Harbor|Pearl Harbor, HI]]
+|<ref>{{Naval Vessel Register URL|id=SSN770|title=''Tucson''}}</ref>
+|-
+|{{USS|Tulsa|LCS-16|6}}
+|{{hs|LCS-0016}}LCS-16
+|{{sclass|Independence|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2019|2|16}}
+|[[Naval Station San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=LCS16|title=''Tulsa''}}</ref>
+|-
+|{{USS|Vermont|SSN-792|6}}
+|{{hs|SSN-0792}}SSN-792
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2020|4|18}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN792|title=''Vermont''}}</ref>
+|-
+|{{USS|Virginia|SSN-774|6}}
+|{{hs|SSN-0774}}SSN-774
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2004|10|23}}
+|[[Naval Submarine Base New London|Groton, CT]]
+|<ref>{{Naval Vessel Register URL|id=SSN774|title=''Virginia''}}</ref>
+|-
+|{{USS|Warrior|MCM-10|6}}
+|{{hs|MCM-0010}}MCM-10
+|{{sclass|Avenger|mine countermeasures ship|5}}
+|[[Mine countermeasures ship]]
+|{{dts|format=dmy|1993|04|7}}
+|[[United States Fleet Activities Sasebo|Sasebo, Japan]]
+|<ref>{{Naval Vessel Register URL|id=MCM10|title=''Warrior''}}</ref>
+|-
+|{{USS|Washington|SSN-787|6}}
+|{{hs|SSN-0787}}SSN-787
+|{{sclass|Virginia|submarine|5}}
+|[[Attack submarine]]
+|{{dts|format=dmy|2017|10|7}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=SSN787|title=''Washington''}}</ref>
+|-
+|{{USS|Wasp|LHD-1|6}}
+|{{hs|LHD-0001}}LHD-1
+|{{sclass|Wasp|amphibious assault ship|5}}
+|[[Amphibious assault ship]]
+|{{dts|format=dmy|1989|07|6}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=LHD1|title=''Wasp''}}</ref>
+|-
+|{{USS|Wayne E. Meyer|DDG-108|6}}
+|{{hs|DDG-0108}}DDG-108
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2009|10|10}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG108|title=''Wayne E. Meyer''}}</ref>
+|-
+|{{USS|West Virginia|SSBN-736|6}}
+|{{hs|SSBN-0736}}SSBN-736
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1990|10|20}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN736|title=''West Virginia''}}</ref>
+|-
+|{{USS|William P. Lawrence|DDG-110|6}}
+|{{hs|DDG-0110}}DDG-110
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2011|5|19}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG110|title=''William P. Lawrence''}}</ref>
+|-
+|{{USS|Winston S. Churchill|DDG-81|6}}
+|{{hs|DDG-0081}}DDG-81
+|{{sclass|Arleigh Burke|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2001|3|10}}
+|[[Naval Station Norfolk|Norfolk, VA]]
+|<ref>{{Naval Vessel Register URL|id=DDG81|title=''Winston Churchill''}}</ref>
+|-
+|{{USS|Wichita|LCS-13|6}}
+|{{hs|LCS-0013}}LCS-13
+|{{sclass|Freedom|littoral combat ship|5}}
+|[[Littoral combat ship]]
+|{{dts|format=dmy|2019|1|12}}
+|[[Naval Station Mayport|Mayport, FL]]
+|<ref>{{Naval Vessel Register URL|id=LCS13|title=''Wichita''}}</ref> {{decommission|proposed|2023}}<ref name="usni1" />
+|-
+|{{USS|Wyoming|SSBN-742|6}}
+|{{hs|SSBN-0742}}SSBN-742
+|{{sclass|Ohio|submarine|5}}
+|[[Ballistic missile submarine]]
+|{{dts|format=dmy|1996|7|13}}
+|[[Naval Submarine Base Kings Bay|Kings Bay, GA]]
+|<ref>{{Naval Vessel Register URL|id=SSBN742|title=''Wyoming''}}</ref>
+|-
+|{{USS|Zumwalt|DDG-1000|6}}
+|{{hs|DDG-1000}}DDG-1000
+|{{sclass|Zumwalt|destroyer|5}}
+|[[Destroyer]]
+|{{dts|format=dmy|2016|10|15}}
+|[[Naval Base San Diego|San Diego, CA]]
+|<ref>{{Naval Vessel Register URL|id=DDG1000|title=''Zumwalt''}}</ref>
+|}
