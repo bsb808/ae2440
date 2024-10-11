@@ -4,9 +4,41 @@ import zipfile
 import tempfile
 import os
 #import shutil
-#import xml.etree.ElementTree as ET
+import xml.etree.ElementTree as ET
 import re 
 import argparse
+
+def replace_code_blocks_in_file(input_file, output_file):
+    # Define namespaces
+    ns = {
+        'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        'mc': 'http://schemas.openxmlformats.org/markup-compatibility/2006'
+    }
+
+    # Parse the XML file
+    tree = ET.parse(input_file)
+    root = tree.getroot()
+
+    # Iterate through all <w:p> elements in the document
+    for p in root.findall('.//w:p', ns):
+        # Check if <w:p> has a style <w:pStyle> with value "code"
+        p_style = p.find('.//w:pPr/w:pStyle', ns)
+        if p_style is not None and p_style.attrib.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val') == 'code':
+            # Check if it's inside mc:AlternateContent and skip those
+            if p.find('.//mc:AlternateContent', ns) is not None:
+                continue
+
+            # Find the <w:t> element that contains the CDATA
+            t_element = p.find('.//w:r/w:t', ns)
+            if t_element is not None:
+                # Check if the CDATA block contains specific code to replace
+                if t_element.text and ('x = 1' in t_element.text or '% Remove' in t_element.text):
+                    # Replace CDATA content with the new text
+                    t_element.text = '% Your code here'
+
+    # Write the modified XML back to a file
+    tree.write(output_file, encoding='utf-8', xml_declaration=True)
+
 
 def process_mlx_file(input_filename, output_filename):
     # Step 1: Expand the zip archive into a temporary directory
@@ -17,20 +49,10 @@ def process_mlx_file(input_filename, output_filename):
         # Step 2: Read and modify the XML file
         # Read the content of the XML file
         xml_file_path = os.path.join(temp_dir, "matlab", "document.xml")
-        with open(xml_file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
 
-        # Find all CDATA sections and replace their content
-        # Define the regex pattern for CDATA sections
-        cdata_pattern = r'<!\[CDATA\[(.*?)\]\]>'
-        # Replace CDATA content with the placeholder
-        modified_content = re.sub(cdata_pattern, '<![CDATA[% Your code here]]>', content, flags=re.DOTALL)
+        # Parse the XML file
+        replace_code_blocks_in_file(xml_file_path, xml_file_path)
         
-        # Step 3: Save the modified XML file
-        # Write the modified content back to a new the file
-        with open(xml_file_path, 'w', encoding='utf-8') as file:
-            file.write(modified_content)
-
         # Step 4: Recompress all files into a new zip archive
         with zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
             for root, _, files in os.walk(temp_dir):
