@@ -17,66 +17,60 @@ def lxml_replace_code_blocks_in_file(input_file, output_file):
     }
 
     # Parse the XML file
-    tree = etree.parse(input_file)
+    # Need this to avoid loosing the CDATA
+    tree = etree.parse(input_file, parser = etree.XMLParser(strip_cdata=False))
     root = tree.getroot()
 
     # Iterate through all <w:p> elements in the document
     for p in root.xpath('.//w:p', namespaces=ns):
         # Check if <w:p> has a style <w:pStyle> with value "code"
         p_style = p.find('.//w:pPr/w:pStyle', namespaces=ns)
-        if p_style is not None and p_style.attrib.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val') == 'code':
-            # Check if it's inside mc:AlternateContent and skip those
-            if p.find('.//mc:AlternateContent', namespaces=ns) is not None:
-                continue
-
-            for elem in p.iter():
-                if elem.text and "CDATA" in elem.text:
-                    print(elem.text)
-                    elem.text = "CDATA[% Your code here]"
-            # # Find the <w:t> element that contains the CDATA
-            # t_element = p.find('.//w:r/w:t', namespaces=ns)
-            # if t_element is not None:
-            #     # Check if the CDATA block contains specific code to replace
-            #     if t_element.text and ('x = 1' in t_element.text or '% Remove' in t_element.text):
-            #         # Replace CDATA content with the new text
-            #         t_element.text = '% Your code here'
-
+        if (p_style is not None) and (p_style.attrib.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val') == 'code'):
+            # Find the w:t elements
+            p_t = p.find('.//w:t', namespaces=ns)
+            if (p_t is not None):
+                print("--")
+                print(etree.tostring(p_t, pretty_print=True, encoding='unicode'))
+                p_t.text = etree.CDATA("% Your code here.       ")
+            
     # Write the modified XML back to a file
     # Using xml_declaration=True to include the XML declaration in the output file
-    with open(output_file, 'wb') as f:
-        f.write(b'<?xml version="1.0" encoding="UTF-8"?>\n')
-        f.write(etree.tostring(root, pretty_print=True, xml_declaration=False, encoding='UTF-8'))
+    for of in [output_file, './tmp.xml']:
+        with open(of, 'wb') as f:
+            #f.write(b'<?xml version="1.0" encoding="UTF-8"?>\n')
+            f.write(etree.tostring(root, pretty_print=False, xml_declaration=False, encoding='UTF-8'))
+    
 
-def replace_code_blocks_in_file(input_file, output_file):
-    # Define namespaces
-    ns = {
-        'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
-        'mc': 'http://schemas.openxmlformats.org/markup-compatibility/2006'
-    }
+# def replace_code_blocks_in_file(input_file, output_file):
+#     # Define namespaces
+#     ns = {
+#         'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+#         'mc': 'http://schemas.openxmlformats.org/markup-compatibility/2006'
+#     }
 
-    # Parse the XML file
-    tree = ET.parse(input_file)
-    root = tree.getroot()
+#     # Parse the XML file
+#     tree = ET.parse(input_file)
+#     root = tree.getroot()
 
-    # Iterate through all <w:p> elements in the document
-    for p in root.findall('.//w:p', ns):
-        # Check if <w:p> has a style <w:pStyle> with value "code"
-        p_style = p.find('.//w:pPr/w:pStyle', ns)
-        if p_style is not None and p_style.attrib.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val') == 'code':
-            # Check if it's inside mc:AlternateContent and skip those
-            if p.find('.//mc:AlternateContent', ns) is not None:
-                continue
+#     # Iterate through all <w:p> elements in the document
+#     for p in root.findall('.//w:p', ns):
+#         # Check if <w:p> has a style <w:pStyle> with value "code"
+#         p_style = p.find('.//w:pPr/w:pStyle', ns)
+#         if p_style is not None and p_style.attrib.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val') == 'code':
+#             # Check if it's inside mc:AlternateContent and skip those
+#             if p.find('.//mc:AlternateContent', ns) is not None:
+#                 continue
 
-            # Find the <w:t> element that contains the CDATA
-            t_element = p.find('.//w:r/w:t', ns)
-            if t_element is not None:
-                # Check if the CDATA block contains specific code to replace
-                if t_element.text and ('x = 1' in t_element.text or '% Remove' in t_element.text):
-                    # Replace CDATA content with the new text
-                    t_element.text = '% Your code here'
+#             # Find the <w:t> element that contains the CDATA
+#             t_element = p.find('.//w:r/w:t', ns)
+#             if t_element is not None:
+#                 # Check if the CDATA block contains specific code to replace
+#                 if t_element.text and ('x = 1' in t_element.text or '% Remove' in t_element.text):
+#                     # Replace CDATA content with the new text
+#                     t_element.text = '% Your code here'
 
-    # Write the modified XML back to a file
-    tree.write(output_file, encoding='utf-8', xml_declaration=True)
+#     # Write the modified XML back to a file
+#     tree.write(output_file, encoding='utf-8', xml_declaration=True)
 
 
 def process_mlx_file(input_filename, output_filename):
@@ -93,8 +87,8 @@ def process_mlx_file(input_filename, output_filename):
         xml_file_path = os.path.join(temp_dir, "matlab", "document.xml")
 
         # Parse the XML file
-        #lxml_replace_code_blocks_in_file(xml_file_path, xml_file_path)
-        replace_code_blocks_in_file(xml_file_path, xml_file_path)
+        lxml_replace_code_blocks_in_file(xml_file_path, xml_file_path)
+        #replace_code_blocks_in_file(xml_file_path, xml_file_path)
         
         # Step 4: Recompress all files into a new zip archive
         if os.path.exists(output_filename):
