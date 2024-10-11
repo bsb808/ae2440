@@ -5,8 +5,47 @@ import tempfile
 import os
 #import shutil
 import xml.etree.ElementTree as ET
+from lxml import etree
+
 import re 
 import argparse
+def lxml_replace_code_blocks_in_file(input_file, output_file):
+    # Define namespaces
+    ns = {
+        'w': 'http://schemas.openxmlformats.org/wordprocessingml/2006/main',
+        'mc': 'http://schemas.openxmlformats.org/markup-compatibility/2006'
+    }
+
+    # Parse the XML file
+    tree = etree.parse(input_file)
+    root = tree.getroot()
+
+    # Iterate through all <w:p> elements in the document
+    for p in root.xpath('.//w:p', namespaces=ns):
+        # Check if <w:p> has a style <w:pStyle> with value "code"
+        p_style = p.find('.//w:pPr/w:pStyle', namespaces=ns)
+        if p_style is not None and p_style.attrib.get('{http://schemas.openxmlformats.org/wordprocessingml/2006/main}val') == 'code':
+            # Check if it's inside mc:AlternateContent and skip those
+            if p.find('.//mc:AlternateContent', namespaces=ns) is not None:
+                continue
+
+            for elem in p.iter():
+                if elem.text and "CDATA" in elem.text:
+                    print(elem.text)
+                    elem.text = "CDATA[% Your code here]"
+            # # Find the <w:t> element that contains the CDATA
+            # t_element = p.find('.//w:r/w:t', namespaces=ns)
+            # if t_element is not None:
+            #     # Check if the CDATA block contains specific code to replace
+            #     if t_element.text and ('x = 1' in t_element.text or '% Remove' in t_element.text):
+            #         # Replace CDATA content with the new text
+            #         t_element.text = '% Your code here'
+
+    # Write the modified XML back to a file
+    # Using xml_declaration=True to include the XML declaration in the output file
+    with open(output_file, 'wb') as f:
+        f.write(b'<?xml version="1.0" encoding="UTF-8"?>\n')
+        f.write(etree.tostring(root, pretty_print=True, xml_declaration=False, encoding='UTF-8'))
 
 def replace_code_blocks_in_file(input_file, output_file):
     # Define namespaces
@@ -41,6 +80,9 @@ def replace_code_blocks_in_file(input_file, output_file):
 
 
 def process_mlx_file(input_filename, output_filename):
+    tmp_dir = tempfile.TemporaryDirectory()
+    # Perform operations in the directory
+    tmp_dir.cleanup()  # Manually remove the direc
     # Step 1: Expand the zip archive into a temporary directory
     with tempfile.TemporaryDirectory() as temp_dir:
         with zipfile.ZipFile(input_filename, 'r') as zip_ref:
@@ -51,15 +93,28 @@ def process_mlx_file(input_filename, output_filename):
         xml_file_path = os.path.join(temp_dir, "matlab", "document.xml")
 
         # Parse the XML file
+        #lxml_replace_code_blocks_in_file(xml_file_path, xml_file_path)
         replace_code_blocks_in_file(xml_file_path, xml_file_path)
         
         # Step 4: Recompress all files into a new zip archive
+        if os.path.exists(output_filename):
+            os.remove(output_filename)
+            print(f"File '{output_filename}' has been removed.")
+
         with zipfile.ZipFile(output_filename, 'w', zipfile.ZIP_DEFLATED) as zipf:
             for root, _, files in os.walk(temp_dir):
                 for file in files:
                     file_path = os.path.join(root, file)
                     arcname = os.path.relpath(file_path, temp_dir)
                     zipf.write(file_path, arcname)
+
+        print("Clean up temp dir")
+        # Perform operations in the directory
+        #temp_dir.cleanup()  # Manually remove the direc
+
+    tmp_dir = tempfile.TemporaryDirectory()
+    # Perform operations in the directory
+    tmp_dir.cleanup()  # Manually remove the direc
 
 def modify_filename(file_name):
     """
