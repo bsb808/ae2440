@@ -1,4 +1,4 @@
-function d = r2d(r)
+function d = rr2dd(r)
     % d = r2d(r)
     %
     % Convert angle from radians to degrees.
