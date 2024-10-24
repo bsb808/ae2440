@@ -6,7 +6,9 @@ rats_init = 1000;
 % Time span
 t_span = [0, 365];
 
-[tt, rats] = ode45(@rate_func, t_span, rats_init);
+opts = odeset(Stats="on");
+[tt, rats] = ode45(@rate_func, t_span, rats_init, opts);
+
 [tte, rats_euler] = euler(@rate_func, t_span, rats_init);
 
 figure(1);

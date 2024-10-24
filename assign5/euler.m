@@ -1,5 +1,5 @@
 function [tt, yy] = euler(odefun, tspan, y0)
-    %EULER  Solve differntial equations with Euler integration.
+    %EULER  Solve differential equations with Euler integration.
     %   [TOUT,YOUT] = EULER(ODEFUN,TSPAN,Y0) integrates the system of
     %   differential equations y' = f(t,y) from time TSPAN(1) to TSPAN(end)
     %   with initial conditions Y0. Each row in the solution array YOUT
