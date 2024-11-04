@@ -4,4 +4,4 @@ equation*.png
 *.aux
 *.log
 *.fdb_latexmk
-.*fls
+*.fls
