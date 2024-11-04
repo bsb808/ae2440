@@ -1,11 +1,21 @@
-
-
-\documentclass[multi={mymath},border=1pt]{standalone}
+\documentclass[multi={mymath,myarray},border=1pt]{standalone}
+%\documentclass{article}
 \usepackage{amsmath}
+\usepackage{IEEEtrantools}
 
 \newenvironment{mymath}{$\displaystyle}{$}
 
+%\newenvironment{myarray}
+%  {\begin{IEEEeqnarray*}{rCl}} % Start of myarray environment
+%  {\end{IEEEeqnarray*}}
+\newenvironment{myarray}{$\begin{aligned}[t]}{\end{aligned}$}
+  
 \begin{document}
+
+\begin{myarray}
+  t_{k+1} &= t_{k} + \Delta t &\\
+  y_{k+1} &= y_k + f_{\text{@odefun}}(t_k, y_k) \cdot \Delta t
+\end{myarray}
 
 \begin{mymath}
   \sigma = 10, \; \beta = 8/3, \; \rho = 20 .
@@ -26,8 +36,5 @@
 \begin{mymath}
 \sin(\theta) \approx \theta
 \end{mymath}
-    
-  
-
 
 \end{document}

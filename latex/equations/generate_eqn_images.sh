@@ -6,5 +6,8 @@ pdflatex equations.tex
 pdfseparate equations.pdf equation-%d.pdf
 for pdf_file in equation-*.pdf; do
     png_file="${pdf_file%.pdf}.png"
-    convert -density 120 -transparent white "$pdf_file" "$png_file"
+    # For wiki - text sized
+    #convert -density 120 -transparent white "$pdf_file" "$png_file"
+    # For slides
+    convert -density 300 -transparent white "$pdf_file" "$png_file"
 done
