@@ -1,6 +1,7 @@
 \documentclass{article}
 \usepackage{amsmath}
 \usepackage{matlab-prettifier}
+\usepackage{IEEEtrantools}
 
 \setlength\parindent{0pt}
 
@@ -40,6 +41,11 @@ Consider the second-order ODE of a damped harmonic oscillator:
 \[
 m \ddot{y} + c \dot{y} + k y = 0
 \]
+with initial conditions:
+\begin{IEEEeqnarray*}{rCl}
+y(t=0) &= & 1.0 \: \text{m}\\
+\dot{y}(t=0) &=& 0 \: \text{m/s}
+\end{IEEEeqnarray*}
 where:
 \begin{itemize}
     \item \( y \) is the displacement,
