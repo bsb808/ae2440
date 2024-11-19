@@ -1,5 +1,6 @@
 classdef BlackJackEnv < handle
-    % A template for reinforcement learning environments
+    % A MATLAB adaptation of the blackjack environment from the Farama
+    % Foundation - https://github.com/Farama-Foundation/Gymnasium/blob/main/gymnasium/envs/toy_text/blackjack.py
     
     properties
         % Define properties
@@ -10,11 +11,18 @@ classdef BlackJackEnv < handle
         deck
         dealer
         player
+        natural
     end
     
     methods
-        function obj = BlackJackEnv()
+        function obj = BlackJackEnv(natural)
             % Constructor: Initialize environment parameters
+            if nargin < 1
+                obj.natural = false;
+            else
+                obj.natural = natural;
+            end
+            
             obj.action_size = 1;
             obj.max_steps = 10;  % Maximum steps per episode
             obj.step_count = 0;
@@ -131,6 +139,9 @@ classdef BlackJackEnv < handle
                     obj.dealer(end+1) = obj.draw_card();
                 end
                 reward = obj.cmp(obj.score(obj.player), obj.score(obj.dealer));
+                if (obj.natural && obj.is_natural(obj.player) && reward==1.0)
+                    reward = 1.5;
+                end
             else
                 fprintf("Waring!  action should be 1 or 2, given <%f>\n", action);
             end
