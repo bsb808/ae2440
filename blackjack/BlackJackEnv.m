@@ -42,7 +42,7 @@ classdef BlackJackEnv < handle
         
         function hand = draw_hand(obj)
             % Draw two cards to form a hand
-            hand = [obj.draw_card(), obj.draw_card()];
+            hand = [obj.drsaw_card(), obj.draw_card()];
         end
         
         function result = usable_ace(obj, hand)
@@ -114,7 +114,7 @@ classdef BlackJackEnv < handle
             %   reward: Reward value
             %   terminated: Whether episode ended naturally
             %   truncated: Whether episode was artificially terminated
-            %   info: Additional information
+            %   info: Additional information as structure, e.g., step_count
             
             % Validate action
             assert(numel(action) == obj.action_size, 'Invalid action dimension');
