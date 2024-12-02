@@ -1,4 +1,5 @@
-% Using the BlackJackEnv.m environemnt, write a script to allow a user to play repeated hands of blackjack against the computer. The script should:
+% Using the BlackJackEnv.m environment, write a script to allow a user to play repeated hands of blackjack against the computer. 
+% The script, named *blackjack_game.m*, should:
 % 1. Initialize the environment
 % 2. reset the environment to start a new hand and display the initial observation
 % 3. Prompt the user to enter hit or stick
