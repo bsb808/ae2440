@@ -5,7 +5,7 @@
 m_to_pg = round(0.05*m) - round(0.03*pg);
 %m_to_pg = 0.05*m - 0.03*pg;
 
-m = m - m_to_pg;
-pg = pg + m_to_pg;
+m = m - m_to_pg
+pg = pg + m_to_pg
 
 
