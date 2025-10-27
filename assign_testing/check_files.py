@@ -28,6 +28,11 @@ def check_files_in_submission_folders(base_path, filenames):
             if not missing_files:
                 # All files exist
                 passing_folders.append(submission_path)
+                # In the file "comments.txt" , write "All required files are present" and a list of the file names
+                with open(os.path.join(subfolder_path, "comments.txt"), 'w') as comment_file:
+                    comment_file.write("All required files are present:\n")
+                    for f in filenames:
+                        comment_file.write(f"- {f}\n")
             else:
                 # Some files are missing, store folder, missing files, and its contents
                 failing_folders.append({
@@ -35,6 +40,17 @@ def check_files_in_submission_folders(base_path, filenames):
                     'missing_files': missing_files,
                     'folder_contents': files
                 })
+                # In the file "comments.txt" in the , write "Missing required files:" and then print this info:  print(f"- {fail['folder']}")
+                # print(f"  Missing files: {fail['missing_files']}")
+                # print(f"  Folder contents: {fail['folder_contents']}\n")
+                with open(os.path.join(subfolder_path, "comments.txt"), 'w') as comment_file:
+                    comment_file.write("Missing required files:\n")
+                    for f in missing_files:
+                        comment_file.write(f"- {f}\n")
+                    comment_file.write("\nFolder contents:\n")
+                    for f in filenames:
+                        comment_file.write(f"- {f}\n")
+                
         else:
             # "Submission attachment(s)" folder does not exist
             failing_folders.append({
@@ -57,5 +73,6 @@ def check_files_in_submission_folders(base_path, filenames):
 
 # Example usage:
 base_path = "/home/bsb/Classes/AE2440/StudentWork/AY25Q1/Assignment 1_ Models and Scripts /"
-filenames = ["penny.m", "pennywithair.mlx", "bike_share.m", "aquarium.mlx"]  # List of filenames to check
+base_path = "/Users/brianbingham/Classes/AE2440/StudentWork/Assignment 1_ Models and Scripts /"
+filenames = ["penny.m", "pennywithair.mlx", "bike_update.m", "aquarium.mlx"]  # List of filenames to check
 check_files_in_submission_folders(base_path, filenames)
