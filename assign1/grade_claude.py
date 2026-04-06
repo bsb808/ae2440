@@ -67,8 +67,8 @@ def setup_student_logger(comments_path: Path, student_name: str) -> logging.Logg
     fmt = logging.Formatter("%(asctime)s  %(levelname)s  %(message)s",
                             datefmt="%Y-%m-%d %H:%M:%S")
 
-    # File handler — append to comments.txt
-    fh = logging.FileHandler(comments_path, mode="a", encoding="utf-8")
+    # File handler — overwrite comments.txt each run
+    fh = logging.FileHandler(comments_path, mode="w", encoding="utf-8")
     fh.setFormatter(fmt)
     logger.addHandler(fh)
 
