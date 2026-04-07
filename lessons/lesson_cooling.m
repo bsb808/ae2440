@@ -1,42 +1,23 @@
-%% Example: Array Math and Vector Iteration
-%% Context
-% Newton's Law of cooling is a physical model that has proven to be useful to 
-% predict the dynamics of an object's temperature, $T$, as the object cools or 
-% warms toward and ambient temperature $T_{\text{env}}$.
-% 
-% The model is a first-order differential equation:
-% 
-% $\frac{dT}{dt}=-k \, (T-T_{\text{env}})$    (1)
-% 
-% where $k$ is the constant, positive cooling rate.
-% 
-% The solution to this ODE is
-% 
-% $T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})\,e^{-kt}$      (2)
-% 
-% To make this example specific, let's image the following example:
-%% 
-% * A strong HVAC system for a classroom would have a heating constant of $k 
-% = 0.10 \, \text{min}^{-1$
-% * The classroom starts at $T_0 =$10 $^o \text{C}$ and his heated to $T_{\text{env}} 
-% = 20 \, ^o \text{C$
-
+%[text] # Example: Array Math and Vector Iteration
+%[text] ## Context
+%[text] Newton's Law of cooling is a physical model that has proven to be useful to predict the dynamics of an object's temperature, $T$, as the object cools or warms toward and ambient temperature $T\_{\\text{env}}$.
+%[text] The model is a first-order differential equation:
+%[text]{"align":"center"} $\\frac{dT}{dt}=-k \\, (T-T\_{\\text{env}})$    (1)
+%[text] where $k$ is the constant, positive cooling rate.
+%[text] The solution to this ODE is
+%[text]{"align":"center"} $T(t) = T\_{\\text{env}} + (T\_0 - T\_{\\text{env}})\\,e^{-kt}$      (2)
+%[text] To make this example specific, let's image the following example:
+%[text] - A strong HVAC system for a classroom would have a heating constant of $k = 0.10 \\, \\text{min}^{-1$
+%[text] - The classroom starts at $T\_0 =$10 $^o \\text{C}$ and his heated to $T\_{\\text{env}} = 20 \\, ^o \\text{C$ \
 Tenv = 20;
 T0 = 10;
 k = 0.1;
-%% Exercise: Incrementally evaluate solution
-% Evaluate the solution, $T(t)$, for a set of time values by iterating through 
-% each time value, solving the equation (2) and adding a point to a plot.
-% 
-% Create a vector of time values from 0 -- 60 minutes where each element is 
-% 0.1 min larger than the previous.
-
+%%
+%[text] ## Exercise: Incrementally evaluate solution
+%[text] Evaluate the solution, $T(t)$, for a set of time values by iterating through each time value, solving the equation (2) and adding a point to a plot.
+%[text] Create a vector of time values from 0 -- 60 minutes where each element is 0.1 min larger than the previous.
 tt = 0:0.1:60
-%% 
-% Create a |for| loop that iterates through each element in the |tt| vector.  
-% For each iteration, calculate the value of $T(t)$ and add the new value to a 
-% 2d plot of time vs temperature.
-
+%[text] Create a `for` loop that iterates through each element in the `tt` vector.  For each iteration, calculate the value of $T(t)$ and add the new value to a 2d plot of time vs temperature.
 figure(1);
 clf()
 for ii = 1:length(tt)
@@ -48,39 +29,26 @@ for ii = 1:length(tt)
 end
 xlabel("Time [min]")
 ylabel("Temperature [C]")
-%% Exercise: Array arithmetic to evaluate solution
-% Use Array Operations to operate element-wise over the entire time vector, 
-% $tt$, with a single line that yields a new vector, $TT$, that his the same size 
-% as $tt$ and stores the value for $T(t) $ for each element of the time vector
-% 
-% $$T(t) = T_{\text{env}} + (T_0 - T_{\text{env}})\,e^{-kt}$$      
-
+%%
+%[text] ## Exercise: Array arithmetic to evaluate solution
+%[text] Use Array Operations to operate element-wise over the entire time vector, $tt$, with a single line that yields a new vector, $TT$, that his the same size as $tt$ and stores the value for $T(t) $ for each element of the time vector
+%[text] $T(t) = T\_{\\text{env}} + (T\_0 - T\_{\\text{env}})\\,e^{-kt}$ 
 tt = linspace(0, 60, 1000);
 TT = Tenv + (T0 - Tenv)*exp(-k*tt)
-%% 
-% And then plot both time and temperature vectors with a single plot command
-
+%[text] And then plot both time and temperature vectors with a single plot command
 figure(2)
 plot(tt,TT, 'o--')
 xlabel("Time [min]")
 ylabel("Temperature [C]")
-%% Exercise: Numerical approximation
-% So far, we have used the close-form solution provided in equation (2).   Another 
-% method is to approximate this solution with a _difference equation_, which is 
-% equivalent to defining a _sequence_: 
-% 
-% $$T_{n+1} = T_n - k \,(T_n - T_{\text{env}})\,\Delta t$$
-% 
-% $$t_{n+1} = t_n + \Delta t$$
-% 
-% Start with our initial values for time and temperature
-
+%%
+%[text] ## Exercise: Numerical approximation
+%[text] So far, we have used the close-form solution provided in equation (2).   Another method is to approximate this solution with a *difference equation*, which is equivalent to defining a *sequence*: 
+%[text] $T\_{n+1} = T\_n - k \\,(T\_n - T\_{\\text{env}})\\,\\Delta t$
+%[text] $t\_{n+1} = t\_n + \\Delta t$
+%[text] Start with our initial values for time and temperature
 t = 0;
 T = T0;
-%% 
-% Create a |for| loop to iterate 600 times.  Each time recalculate values for 
-% |t| and |T| using $\Delta t = 0.1$min.
-
+%[text] Create a `for` loop to iterate 600 times.  Each time recalculate values for `t` and `T` using $\\Delta t = 0.1$min.
 figure(3)
 clf();
 Dt = 0.1;
@@ -100,3 +68,9 @@ end
 plot(t_vec, temp_vec)
 xlabel("Time [min]")
 ylabel("Temperature [C]")
+
+%[appendix]{"version":"1.0"}
+%---
+%[metadata:view]
+%   data: {"layout":"onright","rightPanelPercent":19.6}
+%---

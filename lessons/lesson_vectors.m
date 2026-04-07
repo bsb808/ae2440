@@ -28,15 +28,12 @@ mm = [5 3.1 9.8 -2]
 nn = [5, 3.1, 9.8, -2]
 %%
 %[text] Manually as a column vector
-cc = [5; 
-    3.1; 
-    9.8; 
-    -2;]
+cc = [5; 3.1; 9.8; -2;]
 % As a column using transpose
 dd = [5 3.1 9.8 -2]'
 %%
 %[text] Linear spacing from A to B with N elements
-ll = linspace(0, 1, 5)
+ll = linspace(0, 1, 101)
 mm = 0:0.5:1
 %%
 
@@ -47,13 +44,9 @@ pp = logspace(-2, 2, 5)
 %[text] Find a comand to create the following vectors
 %[text] ![](text:image:2d13)
 42*ones(1,4)
-42*[1 1 1 1 
-    ]
 %[text] ![](text:image:2b40)
-4:-2:-4
-linspace(4,-4,5)
+
 %[text] ![](text:image:1e89)
-linspace(4,-4,5)'
 %[text] ![](text:image:1db5)
 
 %[text] ![](text:image:6c4a)
@@ -64,7 +57,9 @@ linspace(4,-4,5)'
 aa = 10:10:100
 %%
 %[text] Access an element by its index
-aa(3)
+aa(4)
+aa(5) = 3.14
+
 %%
 %[text] Slice a vector with a vector of indices
 aa(1:3)
@@ -115,10 +110,13 @@ cc = aa-bb
 %%
 %[text] Multiplication/Division
 %[text] Multiply by a scalar
+aa
 dd = aa*0.1
 %[text] Element-wise multiplication
 dd
 aa
+aa
+dd
 ee = dd.*aa
 %[text] but this throws an errror!
 %[text] ![](text:image:35cb)
@@ -140,7 +138,7 @@ hh = ff.^gg
 %[appendix]{"version":"1.0"}
 %---
 %[metadata:view]
-%   data: {"layout":"onright","rightPanelPercent":37.5}
+%   data: {"layout":"inline","rightPanelPercent":29}
 %---
 %[text:image:2d13]
 %   data: {"align":"baseline","height":51,"src":"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAANEAAAAzCAYAAAAJtu1mAAAH40lEQVR4Ae2ch2sUTxTH\/VcsUcSWWBFRozFqiKLYUcQSa9QEFexiARWxIBaMigVFFBtWxBaV2EWxYFdi7yV2g+X9+D7YZXazuV8mnrfH3ffBcbuzs3tvP7ffmdnZ97aK0EiABP6KQJW\/2ps7kwAJiCuinz9\/ytu3b6W4uFju3LnDDxnwGqjgNaAigoAePXokb968kR8\/frBtIQESsCCgIkIPBAHRSIAE7AmoiDCEYw9kD497kAAIqIhwD0QjARKoHIGEF9GfP3\/k6NGjMnz4cLl79641pdOnT8ugQYPk3bt31vtyh+QgkPAiWrJkiWzcuFEGDx4sX79+df\/V79+\/u8tY8K+j7OHDhzJmzBgZNWoUVmkkEEjAWkSXL1+W7OxsadWqlXTq1Elu3brlHnjYsGGybNkybbk7duwoo0ePlt+\/f7vbFy1aJG3bttXPkCFD5OPHj+62f7GAXgi9z9OnT2X8+PGen1iwYIFcunRJyz59+iRTp06V169fu3W+fPmiZbt375Z58+a55VwgAT8BaxFBHPv27dPjFBQUyIABA9xjjhw5Urp16yalpaWCafOMjAzBcAgGsWVmZmo51tevXy\/Hjh3DYkSbP3++1K9fv8zn3LlzEfczN549e1YWL15sFunwbNKkSYJGYdasWXLq1Cl3O8S3cOFCwX579uyRTZs2udu4QAJ+AtYiwrDn169fehy05G3atHGPCRGtWbPGXc\/NzZVt27bpOnoDiOHAgQOCVj6Wtn37dsHHb48fP9Zec+vWrZ5N8HnLli1atmLFCjlx4oRnO1dIwCRgLaJdu3ZJ9+7dpWvXrtKhQwdp3bq1ezyIyLwgMZwz10+ePCn9+\/eXOnXqCIZ+79+\/d\/f9lwvohdCrmIZhJoaea9eulQkTJsiLFy9088WLFwW9n9NQTJ48We7fv2\/uymUS8BCwEhF6k5SUFLl9+7Ye5MyZM1Yicn4ZPRGGUrgP+T+LxnAO90NPnjzx\/BSGk5hwgOF84M+HDx9k5syZei+Xn58veXl52lPhmw+jPfi4YhCwEtGNGzekbt26es+DlnzcuHHSpEkT93CReqLCwkKZMWOGW3f16tUVEpG7QyUXMCOHSQynZ3EOc+3aNcG9j2MQEu7lTMPs3MSJE80iLpNAGQJWIsJFhxa6ffv20rt3b7lw4YKkp6ermHDkSCL69u2b7ot7qHbt2snAgQM9s2FlPPvLgvPnz8vQoUNVQHjOg2VMINgYJhsw5KORQCQCViKKdCBuI4FkJUARJes\/z\/OOGgGKKGooeaBkJUARJes\/z\/OOGgGKKGooeaBkJUARJes\/z\/OOGgGKKGooeaBkJUARJes\/z\/OOGoGkEBEeCletWlUfDjvkHjx4IL169dKgWKRnHDlyxNkU6ndJSYk0btzY85AXYVJ4yJ2WlibNmjWTpUuXhuqj+eOIhezXr59ZpL43bdpUGjZsqKFTsQ449jhjrODBefXq1Y0S0YRN\/P8Ijsb1cO\/ePc\/2iqwkvIiQkoFgWYQnQUyOdenSRVauXKmhP0irQFAs8orCtilTpmgUiBkpMXfuXI24wHswXr58KS1atJCioqKwXZW9e\/eqr6aIEN7VsmVLefXqlSY65uTkaFpJ2M4iYh9pPKaIkK1cr149vS4QjbN8+XLp0aOHtasJL6JVq1YJ4vSysrJcESHuD7lQCEVyDCIzEwyd8lh+X7lyRcOUEJ5kiggXq5najmzbDRs2xNK1Mr+FBqdz586yc+dOT0+E9BgzdWTz5s0yYsSIMvvHugDxk8giMEX0\/PlzN+UF\/mB0kpqaau1aQovo2bNnmraB3sgUkZ8SLl4MPcJ84xECZNEKItrcLyLT38+fP2uvevXqVbM45ssIJkZu2KFDhzwi8juCtHw0YmHawYMHZfr06ZpJbYrI7xMaXPhrawktIrSAyFyFlSciCA3DD6SBh2nr1q3T3hE+lCciRJkjmBY5TmHa9evXtceED5FEhN4U3MNsnBDFj+E8ek68jqA8ESHYuFGjRtob2bJNWBEh9XzatGkujyARYZyMd0WEPTTCfQ56IfSYsCARIaMYke8Yyjn13JOL4QKGwn369BGwg5UnIrwgBkmbYedhzZkzR\/bv36++liei48ePa++OhMzKWMKKCHlAGKLhXgefGjVq6Hj38OHDygk3vhAQMnXDth07dkiDBg1cX2vXrq0THc4LUiAaCAhJjLiIwzS8bho34w5XzGrVrFlTevbs6bqFG3S0\/phpDNsw8+b4illPzNJiHW\/9hSGxtHnz5nLz5s1Ku5qwIvIT8fdEffv2jaupYtNff0+EKW3MgJlJhGb9MJf9PRHyuHCRxir13+bc\/T0RMpnhq81Lb4J+LylFhIxVtEho\/fHsxfngRjkezC8itJSYgnf8xPfs2bPjwdUyw7mxY8dKrVq1PL7icUI8mF9EeP9HtWrVPL6CLUYpNpY0IrKBwrokYEOAIrKhxbokEECAIgqAwiISsCFAEdnQYl0SCCBAEQVAYREJ2BCgiGxosS4JBBCgiAKgsIgEbAhQRDa0WJcEAghQRAFQWEQCNgQoIhtarEsCAQQoogAoLCIBGwIUkQ0t1iWBAAIUUQAUFpGADQGKyIYW65JAAAGKKAAKi0jAhoCKqLi4ONQ8eBuHWZcE4o2AigipsmHnwscbGPpDAhUloCJCDj9y5yGmMN\/MUlGnWY8E4onAfwxj+3Tx7IODAAAAAElFTkSuQmCC","width":209}
