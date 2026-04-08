@@ -131,9 +131,34 @@ gg = [-1 1 -1];
 hh = ff.^gg
 %[text] but this throws an errror!
 %[text] ![](text:image:63e4)
-%[text] 
-%[text] 
-%[text] 
+%%
+%[text] ### Idiom: Plotting a 2D Function with Vectors
+%[text] Model: Plot the function
+%[text] $y(x) = x \\, sin(x)$
+%[text] for  $0 \\leq x \\leq 2 \\pi$
+% Define x values using linspace
+xx = linspace(0, 2*pi, 100);
+
+% Compute y using element-wise operations (note the .*)
+yy = xx .* sin(xx);
+
+% Plot
+plot(xx, yy, 'LineWidth', 2)
+xlabel('x')
+ylabel('y')
+title('Example: y(x) = x .* sin(x)')
+grid on
+%%
+%[text] ### Growing an array
+% Make an array with one element
+clear aa
+aa(1) = 10;
+
+% Grow the array one element at a time
+for ii = 2:10
+    aa(ii) = aa(ii-1)*0.9;
+end
+plot(aa, "r--o")
 
 %[appendix]{"version":"1.0"}
 %---
