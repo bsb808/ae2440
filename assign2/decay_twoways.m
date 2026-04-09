@@ -23,7 +23,7 @@
 
 % Plot
 %[text] 
-%[text] ### Part 2: Solution via Discrete-Time Approximation}
+%[text] ### Part 2: Solution via Discrete-Time Approximation
 %[text] In Part 1 we could solve the ODE analytically, but for many real engineering problems an analytical solution does not exist. In those cases, we approximate the solution by stepping forward in time using only the value from the previous time step.
 %[text] This is called a *discrete-time approximation*, and it is described by the following difference equation:
 %[text] $    y\[n\] = y\[n-1\] \\cdot \\left(1 - k \\,\\Delta t\\right)\n$
