@@ -3,12 +3,13 @@ from setuptools import setup, find_packages
 setup(
     name="mlx_parse",  # Name of the package
     version="0.1",
-    py_modules=["mlx_soln2assign"],  # Module to be installed
+    py_modules=["mlx_soln2assign", "mlx_to_plain_m"],  # Modules to be installed
     packages=find_packages(),
     install_requires=[],
     entry_points={
         'console_scripts': [
             'mlx_soln2assign = mlx_soln2assign:main',  # Maps the command 'mlx_soln2assign' to the 'main' function in mlx_soln2assign.py
+            'mlx_to_plain_m = mlx_to_plain_m:main',
         ],
     },
     author="Brian Bingham",
