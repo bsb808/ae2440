@@ -76,6 +76,70 @@ The course is actively migrating **all content to `.mlx` live scripts**. When cr
 - Use `mlx_soln2assign.py` to produce the student-facing file rather than editing it manually.
 - LaTeX is used only for standalone reference documents (not assignments).
 
+## Grading Workflow
+
+### Sakai Download Format
+Assignments are downloaded from Sakai as a zip file and stored in `grading/`. The zip filename encodes the assignment name and download timestamp, e.g.:
+
+```
+grading/Assignment2_LoopsVectors_20260410224035.zip
+```
+
+The zip contains one subdirectory per student plus a `grades.csv`:
+
+```
+Assignment2_LoopsVectors/
+  grades.csv                              # import back to Sakai after grading
+  StudentName, First(username)/
+    timestamp.txt
+    comments.txt                          # append feedback here; imported by Sakai
+    Submission attachment(s)/             # student-submitted files
+    Feedback Attachment(s)/               # (empty; for instructor file returns)
+```
+
+### Grading Process
+1. Extract the zip to a working directory (e.g., `/tmp/`):
+   ```bash
+   unzip grading/AssignmentN_*.zip -d /tmp/submissions/
+   ```
+2. Inspect `Submission attachment(s)/` for each student. Required filenames are specified per assignment — **filenames are case-sensitive**.
+3. Edit `grades.csv` to fill in the `grade` column and append feedback text to each student's `comments.txt`.
+4. Repack the modified directory for Sakai upload:
+   ```bash
+   cd /tmp/submissions
+   zip -r AssignmentN_graded.zip AssignmentN_*/
+   ```
+
+### Reading Plain-Text MLX Submissions
+Student `.m` files submitted as live scripts contain large binary-encoded `%[output:...]` blocks. When reading them programmatically, skip those blocks to extract only the executable code and prose:
+
+```python
+import re
+
+def extract_code_text(path):
+    with open(path, 'r', encoding='utf-8', errors='replace') as f:
+        lines = f.readlines()
+    result = []
+    skip = False
+    for line in lines:
+        stripped = line.rstrip()
+        if re.match(r'%\[(output|appendix|metadata|text:image)', stripped):
+            skip = True; continue
+        if skip:
+            if re.match(r'%\[', stripped) and not re.match(r'%\[(output|metadata|text:image)', stripped):
+                skip = False
+            elif not stripped.startswith('%') or stripped.startswith('%[text'):
+                skip = False
+            else:
+                continue
+        if not skip:
+            result.append(stripped)
+    return '\n'.join(result)
+```
+
+### Assignment Reference Files
+Each `assignN/` directory contains the instructor solution and/or student template files for that assignment. These are the answer keys for grading. Solution `.mlx` files can be read as zip archives (`matlab/document.xml` contains the content as XML with CDATA code blocks).
+
 ## Key MATLAB Conventions Used in This Course
 
 - Suppress output with semicolons (`;`) except where output is intentional for student inspection.
