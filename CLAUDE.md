@@ -29,6 +29,12 @@ Some `.m` files in this repo use MATLAB's plain-text live script format — a ve
 % --- normal MATLAB code (no marker needed) ---
 x = 42;
 
+%[text:table]{"ignoreHeader":true}  % opening tag for a rendered table
+%[text] | Col A | Col B |           % header row
+%[text] | --- | --- |               % separator row (required inside table tags)
+%[text] | val 1 | val 2 |
+%[text:table]                       % closing tag
+
 %[output:HASH]                     % cached output block (auto-generated)
 %   data: {...}
 
@@ -40,6 +46,23 @@ x = 42;
 ```
 
 Section breaks use `%%` (same as traditional scripts). `%[text]` lines are prose; everything else is executable MATLAB.
+
+**Spacing conventions when authoring `.m` live scripts:**
+
+- No blank line between a `%[text]` block and the code that follows it.
+- No blank line before a `%%` section break.
+- Blank paragraph separator: use `%[text] ` (a `%[text]` line with a single trailing space) — do not use an empty `%[text]` line or a trailing ` \`.
+- Blank lines *within* a code block are fine to separate logical groups.
+
+**Required footer:** Every plain-text live script `.m` file must end with the following block or MATLAB will open it as a plain script instead of a live script. If MATLAB still opens it as a plain script, right-click the file and choose **Open as Live Script**.
+
+```matlab
+%[appendix]{"version":"1.0"}
+%---
+%[metadata:view]
+%   data: {"layout":"inline"}
+%---
+```
 
 ### Traditional Scripts (.m)
 Older lesson files use standard MATLAB cell-mode format (`%%` sections, `%` comments). These are being migrated to `.mlx`.
