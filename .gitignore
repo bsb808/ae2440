@@ -1,2 +1,5 @@
 # List of untracked files to ignore
 *.asv
+
+# Claude Code — machine-specific settings (do not commit)
+.claude/settings.local.json
