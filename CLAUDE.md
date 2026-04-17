@@ -51,8 +51,20 @@ Section breaks use `%%` (same as traditional scripts). `%[text]` lines are prose
 
 - No blank line between a `%[text]` block and the code that follows it.
 - No blank line before a `%%` section break.
-- Blank paragraph separator: use `%[text] ` (a `%[text]` line with a single trailing space) — do not use an empty `%[text]` line or a trailing ` \`.
+- Consecutive `%[text]` lines render as separate paragraphs automatically — do **not** insert a blank `%[text]` or `%[text] ` separator line between them; it creates an unwanted extra blank line in the output.
 - Blank lines *within* a code block are fine to separate logical groups.
+
+**LaTeX math in `.m` live scripts:**
+
+LaTeX inside math markers requires special handling in the plain-text `.m` format:
+
+- **Use `$...$` for all math** — both inline and display equations. Do NOT use `$$...$$`; it does not render and shows as plain text.
+- **Double all backslashes**: write `\\frac`, `\\theta`, `\\quad`, `\\Longrightarrow`, `\\mathrm`, etc. A single `\` will not render.
+- **Escape underscores in subscripts**: write `\_e`, `\_0`, etc. A bare `_` is interpreted as italic markdown.
+
+**Local functions in `.m` live scripts (MATLAB 2024+):**
+
+Local functions may be placed **inline** in the script at the point where they are introduced — they do not need to go at the bottom of the file. Place the `function...end` block immediately before the code that tests it, within the same section.
 
 **Required footer:** Every plain-text live script `.m` file must end with the following block or MATLAB will open it as a plain script instead of a live script. If MATLAB still opens it as a plain script, right-click the file and choose **Open as Live Script**.
 
@@ -98,6 +110,16 @@ The course is actively migrating **all content to `.mlx` live scripts**. When cr
 - Keep solution files named with the `_soln` suffix.
 - Use `mlx_soln2assign.py` to produce the student-facing file rather than editing it manually.
 - LaTeX is used only for standalone reference documents (not assignments).
+
+## Exercise Design Patterns
+
+### Two-Part Data Exercise
+For exercises where students work with a non-trivial data structure (struct arrays, formatted sensor data, etc.), separate the data creation from the exercise itself:
+
+1. **`*_gen.m`** — a short, complete script that creates the data and saves it as a `.mat` file. Given to students as a worked example showing how the data was built. Students run it but don't write it.
+2. **`*_soln.m`** — the exercise script. Loads the `.mat` file and has students inspect, manipulate, and report on the data.
+
+This separates the complexity of *constructing* a data structure from the skill being exercised (e.g., field access, type conversion, formatting). See `assign4/contact_gen.m` + `contact_soln.m` and `assign4/sensor_clean_soln.m` + `sensordata.mat` as examples.
 
 ## Grading Workflow
 

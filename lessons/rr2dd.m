@@ -8,7 +8,8 @@ function d = rr2dd(r)
     %
     % Output arguments:
     % * d: angle in degrees
-
+    x = 5;
+    y = 10*50;
     d = r*180.0/pi;
 end
 
