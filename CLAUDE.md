@@ -113,6 +113,21 @@ The course is actively migrating **all content to `.mlx` live scripts**. When cr
 
 ## Exercise Design Patterns
 
+### ODE Assignment Structure
+ODE assignments use a consistent two-file structure:
+
+1. **`*_soln.m`** — plain-text live script containing the full solution:
+   - **Model section**: state the ODE in `$...$` LaTeX and define all parameters
+   - **Rate function**: local function placed **inline** at the point it is introduced (MATLAB 2024+), accepting `(t, y)` even when the ODE does not depend on `t`. Parameters are defined inside the function body.
+   - **Test cell**: call the rate function at the initial condition to verify the initial rate before solving
+   - **ode45 solution**: `ode45(@rate_func, tspan, y0)`
+   - **Euler solution** (if included): call `euler(@rate_func, tspan, y0)` — requires `euler.m` in the same directory
+   - **Comparison**: overlay plot with a reference line at the equilibrium/terminal value; `fprintf` to report key scalar results
+
+2. **`euler.m`** — standalone primary function students write separately. Fixed step size `dt = (tspan(2)-tspan(1))/100`. Interface mirrors `ode45`: `[tt, yy] = euler(odefun, tspan, y0)`. See `assign6/euler.m` for the reference implementation.
+
+The initial rate-function test is the key scaffolding step: it confirms the physics before introducing the solver, and gives students a concrete value to check against intuition.
+
 ### Two-Part Data Exercise
 For exercises where students work with a non-trivial data structure (struct arrays, formatted sensor data, etc.), separate the data creation from the exercise itself:
 
