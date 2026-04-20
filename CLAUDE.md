@@ -61,6 +61,7 @@ LaTeX inside math markers requires special handling in the plain-text `.m` forma
 - **Use `$...$` for all math** — both inline and display equations. Do NOT use `$$...$$`; it does not render and shows as plain text.
 - **Double all backslashes**: write `\\frac`, `\\theta`, `\\quad`, `\\Longrightarrow`, `\\mathrm`, etc. A single `\` will not render.
 - **Escape underscores in subscripts**: write `\_e`, `\_0`, etc. A bare `_` is interpreted as italic markdown.
+- **`$$$` is valid**: a `%[text]` line may begin or end with `$$$` — this is intentional syntax for correct rendering and should not be treated as a typo.
 
 **Local functions in `.m` live scripts (MATLAB 2024+):**
 
@@ -199,6 +200,36 @@ def extract_code_text(path):
 
 ### Assignment Reference Files
 Each `assignN/` directory contains the instructor solution and/or student template files for that assignment. These are the answer keys for grading. Solution `.mlx` files can be read as zip archives (`matlab/document.xml` contains the content as XML with CDATA code blocks).
+
+## Assignment Grading Setups
+
+Per-assignment required files and grading narrative. Used by `grading/grading_utils.py`.
+
+### Assignment 2 — Loops and Vectors
+**Zip:** `grading/Assignment2_LoopsVectors_20260410224035.zip`
+
+**Required files:**
+- `fudge.m`, `span_statistics.m`, `lcs_flow.m`, `decay_twoways.m`
+
+**Grading narrative:** File presence only (100 if all present, 90 if any missing). No content deductions — formative feedback only.
+
+---
+
+### Assignment 3 — Functions and Conditionals
+**Zip:** `grading/Assignment 3_ Functions and Conditionals_20260419200756.zip`
+
+**Required files:**
+- `beaufort_main.m`, `beaufort_classify.m`, `functions_scope.m`
+- `triangle_classifier.m`, `is_valid_triangle.m`, `classify_triangle.m`
+
+**Grading narrative:** File presence only (100 if all present, 90 if any missing). No content deductions — formative feedback only.
+
+**Code review:** Read each student's `beaufort_classify.m` against the instructions in `assign3/beaufort_main.m`. This is students' first function; give constructive suggestions. Look for:
+- Unnecessarily complex conditional logic (redundant conditions, nested ifs that could be flat elseif chains)
+- Output printed inside the function (`disp`/`fprintf`) instead of returned — misunderstanding that return values and printed output are different things
+- Other first-function stumbles (e.g. modifying input variables expecting the caller to see the change)
+
+---
 
 ## Key MATLAB Conventions Used in This Course
 

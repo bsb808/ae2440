@@ -1,5 +1,8 @@
 # List of untracked files to ignore
 *.asv
 
+# Sakai grading zip archives (large binaries, not tracked)
+grading/*.zip
+
 # Claude Code — machine-specific settings (do not commit)
 .claude/settings.local.json
