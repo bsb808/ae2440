@@ -52,8 +52,15 @@ grid on
 %%
 %[text] Pick an initial guess from the plot, then pass the model to `fzero`:
 x0   = 50;
+%[text] Check to see how close the initial solution is to yielding a zero?
+initialsoln = coffee_cooling(50)
+%%
+%[text] Now apply solver.
 root = fzero(@coffee_cooling, x0)
 fprintf('Coffee reaches 50 deg C at t = %.1f min\n', root)
+%%
+%[text] Check to verify that the solution is a root of the function:
+check = coffee_cooling(root)
 %%
 %[text] ### Verbose Output
 %[text] `fzero` can return additional information — exit status, function value at the root, and solver diagnostics — as output arguments:
@@ -61,7 +68,7 @@ fprintf('Coffee reaches 50 deg C at t = %.1f min\n', root)
 %%
 %[text] ### Controlling the Algorithm
 %[text] An `options` structure (built with `optimset`) lets you tune solver behavior. Setting `Display` to `'iter'` prints each iteration so you can watch the algorithm converge:
-options = optimset('Display', 'iter');
+options = optimset('Display', 'iter')
 root = fzero(@coffee_cooling, x0, options)
 
 %[appendix]{"version":"1.0"}
