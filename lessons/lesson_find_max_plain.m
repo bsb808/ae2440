@@ -8,8 +8,8 @@
 % For demonstration purposes we'll create a time series, two coordinated
 % vectors of the same length, one holding time values (the independent
 % variable) and one containing the function values (states of the system).
-% CLAUDE: Insert a note about the MATLAB timeseries object, but that is
-% beyond the scope of the class.
+% (MATLAB also has a built-in `timeseries` object that bundles time and data
+% together — useful for larger projects, but we'll stick with plain vectors here.)
 
 % We are familiar with time series resulting from using array operations
 % (element-wise arithmetic) to evaluate a function over a vector of time
