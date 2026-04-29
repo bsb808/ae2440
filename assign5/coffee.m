@@ -1,4 +1,4 @@
-%[text] # Assignment 5 — Newton's Law of Cooling
+%[text] # Coffee Cooling Model: Newton's Law of Cooling
 %[text] ## Scenario
 %[text] You receive a cup of coffee at **90 °C**. From experience you know the hottest you can drink comfortably is **50 °C**.
 %[text] During the first minute the coffee drops **0.7 °C**. A quick estimate: you need to lose 40 °C, and at 0.7 °C/min that would take 40 ÷ 0.7 ≈ **57 minutes**. But this estimate assumes the cooling rate stays constant — it does not. The coffee cools fastest when it is far above room temperature and slows as it approaches room temperature. This assignment builds a physics-based model to get a better answer.
@@ -37,7 +37,7 @@ rate_check = coffee_rate(0, y0)
 %[text] Use `find` to locate the first time step where the temperature reaches 50 °C or below, then report the result with `fprintf`.
 %
 %[text] The constant-rate estimate predicted about **57 minutes**. Is the ODE answer shorter or longer? Explain why that result makes physical sense given how Newton's Law of Cooling works.
-%[text] 
+%[text] ADD A FEW WORDS OF TEXT HERE
 %[text] 
 %[text] 
 %[text] Once everything works and all cells show successful output, save the live script and submit **coffee.m** via Sakai.

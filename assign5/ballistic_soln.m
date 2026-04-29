@@ -1,4 +1,4 @@
-%[text] # Assignment 6 — Ballistic Drop with Drag
+%[text] # Ballistic Drop with Drag
 %[text] ## Scenario
 %[text] A munition is released from rest by an aircraft. Gravity pulls it downward while air drag resists the motion. As velocity increases the drag force grows until it exactly balances gravity — the munition then falls at a constant **terminal velocity**.
 %[text] This assignment models the fall, solves it two ways, and compares the results.
@@ -10,7 +10,7 @@
 %[text] - $v(t)$ — downward velocity (m/s)
 %[text] - $g = 9.81$ m/s$^2$ — gravitational acceleration
 %[text] - $m$ — munition mass (kg)
-%[text] - $b$ — drag coefficient (N·s/m)
+%[text] - $b$ — drag coefficient (N·s/m) \
 %[text] Setting $dv/dt = 0$ gives the **terminal velocity**:
 %[text] $v\_t = \\frac{mg}{b}$
 %%
@@ -28,10 +28,10 @@ v_term = m*g/b     % terminal velocity (m/s)
 %[text] Test the function at $v = 0$: with no drag, the initial acceleration should equal $g = 9.81$ m/s$^2$.
 
 function dvdt = drop_rate(t, v)
-g = 9.81;
-m = 50;
-b = 10;
-dvdt = g - (b/m) * v;
+    g = 9.81;
+    m = 50;
+    b = 10;
+    dvdt = g - (b/m) * v;
 end
 
 rate_check = drop_rate(0, v0)
@@ -68,6 +68,7 @@ fprintf('ode45 final velocity: %.2f m/s\n', v_ode(end))
 fprintf('Euler final velocity: %.2f m/s\n', v_euler(end))
 %[text] **Reflect:** Do the two solvers agree? Does Euler lead or lag the ode45 solution during the transient phase — and why?
 %[text] Once everything runs successfully, submit both **ballistic.m** and **euler.m** via Sakai.
+
 %[appendix]{"version":"1.0"}
 %---
 %[metadata:view]
