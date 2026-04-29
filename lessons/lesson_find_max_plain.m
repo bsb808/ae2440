@@ -35,13 +35,18 @@ legend('location', 'southeast', 'Interpreter','latex')
 % Consider the question: "How long does it take for the response to exeed
 % a value of 1.0?"
 
-% CLAUDE: Below is the code.  I'd like you to see if there are standard
-% names for this idiom.
-indx = find(yy <= 1.0)
+% The following is a common idiom to find the first index where the condition is met, and then use that index to find the corresponding time value.  
+indx = find(yy > 1.0)
 timeToExceed = tt(indx(1));
+% Equivalently, could ask find to return only the **first** index where the condition is met, which is more efficient.
+indxFirst = find(yy > 1.0, 1);
+
 
 hold on
 plot(tt(indx), yy(indx), 'rs', 'MarkerSize', 12, 'MarkerFaceColor', 'r',...
-    'DisplayName',"$y(t) \leq 1.2$")
+    'DisplayName',"$All y(t) > 1.0$")
+plot(tt(indxFirst), yy(indxFirst), 'ks', 'MarkerSize', 12, 'MarkerFaceColor', 'k',...
+    'DisplayName',"$First y(t) > 1.0$")
+legend('location', 'southeast', 'Interpreter','latex')
 
 
