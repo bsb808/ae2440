@@ -6,7 +6,7 @@
 %[text] ## Dead Reckoning
 %[text] Dead reckoning navigation: 
 %[text] 1. start where you are
-%[text] 2. apply a sequence of headings, speeds, and elapsed times to estimate where you wil be
+%[text] 2. apply a sequence of headings, speeds, and elapsed times to estimate where you will be
 %[text] 3. repeat \
 %[text] Each leg contributes a displacement in easting and northing:
 %[text] $\\Delta x = v\\,\\Delta t\\,\\sin\\theta, \\qquad \\Delta y = v\\,\\Delta t\\,\\cos\\theta$
@@ -28,7 +28,7 @@ dy      = dist * cos(hdg_rad)     % northing displacement, nm
 %[text] - Are the results what we expect? \
 %%
 %[text] ## Generalizing 
-%[text] With the single-leg logic working, avoid repeating ourselve with a for-loop, each iteration appends the next waypoint.
+%[text] With the single-leg logic working, avoid repeating ourselves with a for-loop; each iteration appends the next waypoint.
 
 headings_deg = [  0,  90, 180, 270];   % N, E, S, W
 speeds_kts   = [ 10,   8,  10,   8];   % knots
@@ -54,13 +54,19 @@ title('Dead Reckoning Track'); axis equal; grid on; legend
 %[text] - The inputs are still small enough we can verify with some quick geometry. \
 %%
 %[text] ## Wrapping in a Function
-%[text] Now we have all the logic, define it as a reuasable function.
-%[text] The key is to define the input and output arguments - the interface. 
-%[text] %CLAUDE: Instead of describing this, write function documentation in the code block to specify the function semantics and engineering units. 
-%[text] The loop body is already the complete algorithm. Package it: the three leg-description vectors become arguments, `[x, y]` become the return values.
+%[text] Now we have all the logic. Package it as a function — the documentation header defines the interface:
 
 function [x, y] = dead_reckoning(headings_deg, speeds_kts, times_hr)
-    % Inputs: 
+    % dead_reckoning  Dead reckoning track from a sequence of legs.
+    %
+    %   Inputs:
+    %     headings_deg  heading for each leg, degrees clockwise from north  (1 x n)
+    %     speeds_kts    speed for each leg, knots                           (1 x n)
+    %     times_hr      elapsed time for each leg, hours                    (1 x n)
+    %
+    %   Outputs:
+    %     x   easting  at each waypoint, nautical miles  (1 x n+1);  x(1) = 0
+    %     y   northing at each waypoint, nautical miles  (1 x n+1);  y(1) = 0
     n = length(headings_deg);
     x = zeros(1, n+1);
     y = zeros(1, n+1);
@@ -72,7 +78,8 @@ function [x, y] = dead_reckoning(headings_deg, speeds_kts, times_hr)
     end
 end
 
-%[text] **Test** — call the function on the single-leg prototype case and confirm the endpoint matches:
+%[text] **Test** 
+%[text] call the function on the single-leg prototype case and confirm the endpoint matches:
 [x_fn, y_fn] = dead_reckoning(90, 10, 2);
 x_fn(end)    % expect 20 nm east
 y_fn(end)    % expect  0 nm north
