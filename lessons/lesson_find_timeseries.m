@@ -9,7 +9,6 @@ clear;
 
 time = linspace(0, 10, 25);
 resp = 1 - exp(-0.6*time)./sqrt(1-0.3^2) .* sin(2*sqrt(1-0.3^2)*time + atan(sqrt(1-0.3^2)/0.3));
-
 %[text] We visualize the function by plotting the discrete points.
 figure(1);
 clf()
@@ -23,11 +22,11 @@ grid on
 legend('location', 'southeast', 'Interpreter','latex')
 %%
 %[text] ## Using `find` to Locate Element Values by Conditional
-%[text] Consider the question: "How long does it take for the response to exceed a value of 1.0?"
+%[text] Consider the question: 
+%[text]{"align":"center"} ***How long does it take for the response to exceed a value of 1.0?***
 %[text] A common question to ask about a time series. We use `find` verbosely here to show each step; a concise version follows at the end.
 %[text] `find` returns the **indices** of elements meeting the condition, not the values themselves — but we can use those indices to look up values in any parallel vector.
 index_vector = find(resp >= 1.0)
-
 %[text] With those indices we can retrieve the corresponding values from **both** parallel vectors.
 time_values = time(index_vector)
 resp_values = resp(index_vector)
@@ -49,6 +48,7 @@ timeExceeds = time(find(resp >= 1.0, 1))
 %[text] Two lines is a bit easier to follow.
 indexExceeds = find(resp >= 1.0);
 timeExceeds = time(indexExceeds(1))
+
 %[appendix]{"version":"1.0"}
 %---
 %[metadata:view]

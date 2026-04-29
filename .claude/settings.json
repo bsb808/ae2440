@@ -13,10 +13,12 @@
       "Read(//home/bsb/WorkingCopies/claude-global/**)",
       "Read(//home/bsb/.claude/**)",
       "Bash(git commit *)",
-      "Bash(code --diff /tmp/lesson_find_max_plain_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_find_max_plain.m)"
+      "Bash(code --diff /tmp/lesson_find_max_plain_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_find_max_plain.m)",
+      "Bash(code --diff /tmp/lesson_find_timeseries_plain_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_find_timeseries_plain.m)"
     ],
     "additionalDirectories": [
-      "/tmp"
+      "/tmp",
+      "/home/bsb/WorkingCopies/claude-global"
     ]
   }
 }
