@@ -49,10 +49,11 @@ Section breaks use `%%` (same as traditional scripts). `%[text]` lines are prose
 
 **Spacing conventions when authoring `.m` live scripts:**
 
-- No blank line between a `%[text]` block and the code that follows it.
+- No blank line at the boundary between `%[text]` lines and code — in either direction (code→`%[text]` or `%[text]`→code).
 - No blank line before a `%%` section break.
 - Consecutive `%[text]` lines render as separate paragraphs automatically — do **not** insert a blank `%[text]` or `%[text] ` separator line between them; it creates an unwanted extra blank line in the output.
 - Blank lines *within* a code block are fine to separate logical groups.
+- Leave one blank line before the `%[appendix]` footer.
 
 **LaTeX math in `.m` live scripts:**
 
