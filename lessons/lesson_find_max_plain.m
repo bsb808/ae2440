@@ -16,13 +16,7 @@
 % values.
 
 tt = linspace(0, 10, 25);
-% CLAUDE: Convert the next 5 lines into a single expression.
-zeta = 0.3;
-wn = 2;
-wd = wn*sqrt(1 - zeta^2);
-phi = atan(sqrt(1 - zeta^2)/zeta);
-yy = 1 - exp(-zeta*wn*tt)./sqrt(1 - zeta^2)...
-    .*sin(wd*tt + phi);
+yy = 1 - exp(-0.6*tt)./sqrt(1-0.3^2) .* sin(2*sqrt(1-0.3^2)*tt + atan(sqrt(1-0.3^2)/0.3));
 
 % We visualize the function by plotting the discrete points.
 figure(1);
