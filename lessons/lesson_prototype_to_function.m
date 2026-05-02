@@ -1,7 +1,7 @@
 %[text] # From Prototype to Function
 %%
 %[text] ## The Approach
-%[text] Writing new logic as a flat script first puts every intermediate variable in the workspace where you can inspect it directly — double-click an array in the Variables panel, plot results on the fly, catch mistakes in individual steps before they compound. Once the logic is confirmed, wrapping it in a function takes a minute.
+%[text] z`
 %%
 %[text] ## Dead Reckoning
 %[text] Dead reckoning navigation: 

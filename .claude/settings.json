@@ -15,7 +15,8 @@
       "Bash(git commit *)",
       "Bash(code --diff /tmp/lesson_find_max_plain_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_find_max_plain.m)",
       "Bash(code --diff /tmp/lesson_find_timeseries_plain_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_find_timeseries_plain.m)",
-      "Bash(code --diff /tmp/lesson_prototype_to_function_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_prototype_to_function.m)"
+      "Bash(code --diff /tmp/lesson_prototype_to_function_HEAD.m /home/bsb/WorkingCopies/ae2440/lessons/lesson_prototype_to_function.m)",
+      "Bash(code --diff /tmp/email_response_HEAD.md /home/bsb/WorkingCopies/ae2440/assign5/student-question/email_response.md)"
     ],
     "additionalDirectories": [
       "/tmp",
