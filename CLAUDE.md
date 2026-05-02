@@ -138,6 +138,14 @@ For exercises where students work with a non-trivial data structure (struct arra
 
 This separates the complexity of *constructing* a data structure from the skill being exercised (e.g., field access, type conversion, formatting). See `assign4/contact_gen.m` + `contact_soln.m` and `assign4/sensor_clean_soln.m` + `sensordata.mat` as examples.
 
+## Privacy — No Student Names
+
+**Never include student names** in any file checked into this repository, in commit messages, or in any other artifact intended to be persisted (notes, summaries, email drafts, grading records, etc.). This applies to first names, last names, full names, usernames, and any other identifying information.
+
+When referring to specific students, use a generic placeholder ("Student", "one student", "a student") and convey the relevant detail (the bug they had, the file they submitted) without identifying who. If a name is unavoidable for context inside a non-tracked working file, scrub it before commit.
+
+This rule supersedes any apparent convenience of naming individuals in grading summaries, email drafts, or class-themes notes.
+
 ## Grading Workflow
 
 ### Sakai Download Format

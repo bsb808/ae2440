@@ -41,7 +41,7 @@ Graded zip files are in `grading/`. Upload the `*_graded.zip` to Sakai.
 - Another student: function name inside file was `untitled` instead of `beaufort_classify`; no semicolons so all assignments echoed to console
 - One student used lookup table arrays + for loop — creative, worth encouraging
 - A couple of students extended scale to full Force 12 on their own initiative
-- Subtle boundary bug from one student: — exactly 40 kts unhandled (fell between `< 40` and `> 40`)
+- Subtle boundary bug from one student: exactly 40 kts unhandled (fell between `< 40` and `> 40`)
 - One student returned `bf_number = "9"` (string) instead of `9` (number) in last branch
 
 ---
