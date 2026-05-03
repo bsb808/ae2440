@@ -236,11 +236,13 @@ Outline only. From the original draft:
 
 ---
 
-### 8. Lorenz and the Butterfly (1961) — SKIPPED
+### 8. Lorenz and the Butterfly (1961) — PARKED (not a role-transition)
 
-% CLAUDE: Let's discuss if this should be pursued.   Does it provide important detail on our emerging themes arnd roles that isn't covered elswhere?  My concern is that the current writeup doesn't descrbe a transition from one set of roles and interfaces (interactions) to a new one.  It is interesting, but maybe as an element of one of the larger thematic "transitions"
+**Status:** Parked. The Lorenz/butterfly discovery is genuinely important for ODE numerics — sensitive dependence on initial conditions led directly to the modern emphasis on adaptive step-size control and to the statistical understanding of long-range prediction limits. But the contribution is an *insight about the behavior of nonlinear ODE systems*, not a new abstraction layer with a new set of human roles. Lorenz used an existing computer (Royal McBee LGP-30) in an existing way (numerical ODE simulation) and discovered something about what such simulations reveal. The article's role-transition arc has no natural slot for that.
 
-User skipped this point. Narrative was developed; no slide text was created. From the draft:
+Where Lorenz does substantively connect to this article's themes is the **validation** role: chaos sets a fundamental limit on what validation against ground truth can establish for long-range predictions of nonlinear systems. If we ever want to fold him in, the natural home is as a paragraph inside the validation discussion in the persistent-roles section, not as his own historical point. Otherwise the original draft is preserved below for the record.
+
+**Original draft (preserved):**
 
 > Edward Lorenz at MIT, running atmospheric simulation on a Royal McBee LGP-30, restarts mid-run from a printout (3 decimal places) instead of memory (6 decimal places). Difference of 0.000127 produces a totally different weather pattern. Publishes 1963: "Does the flap of a butterfly's wings in Brazil set off a tornado in Texas?"
 >
