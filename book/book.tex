@@ -1,27 +1,81 @@
 % AE 2440 — Introduction to Scientific Programming
-% Master book file. Each week is a standalone subfile under wNN_topic/chapter/.
-% Course schedule: weeks 3-11; week 9 (Thanksgiving) intentionally omitted.
+% Master book file. Each week is a directory wNN_topic/ with chapter/, lessons/,
+% assign/, and refs/ subdirs. Course schedule: weeks 3-11; week 9 (Thanksgiving)
+% intentionally omitted.
 
 \documentclass[12pt,oneside,openany]{book}
 
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
-\usepackage{amsmath}
-\usepackage{amssymb}
+\usepackage{amsmath,amsthm,amssymb}
 \usepackage{graphicx}
+\usepackage{epstopdf}
+\epstopdfsetup{outdir=./}
 \usepackage{booktabs}
-\usepackage{hyperref}
-\usepackage[capitalise]{cleveref}
-\usepackage{microtype}
+\usepackage[expansion=false]{microtype}
 \usepackage{fancyvrb}
 \usepackage{parskip}
-\usepackage{listings}
+\usepackage{upquote}
+\usepackage{enumitem}
+\usepackage{textcomp}
+\usepackage[table]{xcolor}
+\usepackage{makeidx}
+\usepackage{epigraph}
+\usepackage{pdfpages}
+\usepackage{siunitx}
+\sisetup{per-mode=symbol}
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
 
 \usepackage{array}
 \usepackage{tabularx}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
-\usepackage{subfiles}
+% ---- listings (MATLAB code styling), inherited from PMiM ----
+\definecolor{bgcolor}{HTML}{F0F0F0}
+\definecolor{codeblue}{RGB}{31, 119, 180}
+\definecolor{codegreen}{RGB}{78,121,53}
+\definecolor{codepurple}{RGB}{148, 103, 189}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+
+\usepackage{listings}
+\lstdefinestyle{mcode}{
+  language=matlab,
+  basicstyle=\ttfamily,
+  backgroundcolor=\color{bgcolor},
+  commentstyle=\color{codegreen},
+  keywordstyle=\color{codeblue},
+  stringstyle=\color{codepurple},
+  columns=fullflexible,
+  emph={label},
+  keepspaces=true,
+  showstringspaces=false,
+  upquote=true,
+  xleftmargin=0pt,
+  framexleftmargin=3pt,
+  aboveskip=\parskip,
+  belowskip=\parskip
+}
+\lstdefinestyle{mcode_numbers}{
+  style=mcode,
+  numbers=left,
+  numberstyle=\small\color{codegray}
+}
+\lstset{style=mcode}
+\lstnewenvironment{code}{}{}
+\lstnewenvironment{stdout}{\lstset{commentstyle=,keywordstyle=,stringstyle=}}{}
+\newcommand{\mcode}[1]{\lstinline{#1}}%{
+
+% ---- exercise environment ----
+\theoremstyle{definition}
+\newtheorem{ex}{Exercise}[chapter]
+
+% ---- light-weight macros used by chapters ----
+\newcommand{\console}[1]{>{}> \textbf{#1}}
+\newcommand{\keycap}{\textsf}
+\newcommand{\myreg}{\textsuperscript{{\tiny \textregistered}}}
 
 % Draft review flag: \verify{note} renders an inline orange callout.
 % Redefine to \newcommand{\verify}[1]{} to suppress all flags in a clean build.
@@ -37,6 +91,8 @@
 \author{Brian S. Bingham}
 \date{}
 
+\makeindex
+
 \begin{document}
 
 \frontmatter
@@ -45,22 +101,22 @@
 
 \mainmatter
 
-% Chapters are added in commit 2 (content migration). Each line below will
-% become an active \subfile{...} call once the chapter .tex files are in place.
-%
-% \subfile{w03_modeling_scripts/chapter/modeling}
-% \subfile{w03_modeling_scripts/chapter/scripts}
-% \subfile{w04_loops_vectors/chapter/loops}
-% \subfile{w04_loops_vectors/chapter/vectors}
-% \subfile{w05_functions_conditionals/chapter/functions}
-% \subfile{w05_functions_conditionals/chapter/conditionals}
-% \subfile{w06_datatypes_fzero/chapter/datatypes}
-% \subfile{w06_datatypes_fzero/chapter/zerofinding}
-% \subfile{w07_funcvectors_odes/chapter/functions_of_vectors}
-% \subfile{w07_funcvectors_odes/chapter/odes}
-% \subfile{w08_matrices_secondorder/chapter/matrices}
-% \subfile{w08_matrices_secondorder/chapter/second_order_systems}
-% \subfile{w10_rl_intro/chapter/rl_intro}
-% \subfile{w11_rl_blackjack/chapter/rl_blackjack}
+\input{w03_modeling_scripts/chapter/modeling}
+\input{w03_modeling_scripts/chapter/scripts}
+\input{w04_loops_vectors/chapter/loops}
+\input{w04_loops_vectors/chapter/vectors}
+\input{w05_functions_conditionals/chapter/functions}
+\input{w05_functions_conditionals/chapter/conditionals}
+\input{w06_datatypes_fzero/chapter/datatypes}
+\input{w06_datatypes_fzero/chapter/zerofinding}
+\input{w07_funcvectors_odes/chapter/functions_of_vectors}
+\input{w07_funcvectors_odes/chapter/odes}
+\input{w08_matrices_secondorder/chapter/matrices}
+\input{w08_matrices_secondorder/chapter/second_order_systems}
+\input{w10_rl_intro/chapter/rl_intro}
+\input{w11_rl_blackjack/chapter/rl_blackjack}
+
+\backmatter
+\printindex
 
 \end{document}
