@@ -4,21 +4,21 @@
 %[text] The water level of two tanks connected in series can be modeled as these two first-order **coupled** ODEs.  
 %[text]{"align":"center"} $\\frac{dh\_1}{dt} = \\frac{1}{A\_1}\\,(Q - k\\,h\_1)$
 %[text]{"align":"center"} $\\frac{dh\_2}{dt} = \\frac{k}{A\_2}\\,(h\_1 - h\_2)$
-%[text] The ***state*** of this model at any time is describe ty the height of the water level in each: $h\_1$ and $h\_2$. 
-%[text] The initial values are given as 
-%[text]{"align":"center"} $h\_1 = 1.5 \\, m \\\\\nh\_2 = 0.5 \\, m$
-%[text] The other variables represent physical characteristics of the model: inflow $Q$- water inlow, $k$ - drain coefficient, $A\_i$- the cross-sectional area o the $i^{\\mathrm{th}$ tank.  We are given these constants and know that we are intersted in simulating the model response for 2 hrs (120 min).
+%[text] The ***state*** of this model at any time is described by the height of the water level in each: $h\_1$ and $h\_2$.
+%[text] The initial values are given as
+%[text]{"align":"center"} $h\_1(0) = 1.5\\,\\mathrm{m}, \\qquad h\_2(0) = 0.5\\,\\mathrm{m}$
+%[text] The other variables represent physical characteristics of the model: $Q$ — water inflow rate, $k$ — drain coefficient, $A\_i$ — cross-sectional area of the $i^{\\mathrm{th}}$ tank. These are given constants; we are interested in simulating the model response for 2 hours (120 min).
 %%
 %[text] ## Define the State Vector Convention
 %[text] To use a numerical solver such as `ode45`, the model must be expressed as a single vector ODE:
 %[text]{"align":"center"} $\\frac{d\\mathbf{x}}{dt} = \\mathbf{f}(t, \\mathbf{x})$
 %[text] The **state vector** $\\mathbf{x}$ is an *ordered list* of the variables that fully describe the system's instantaneous condition. For two tanks we need two state variables, $h\_1$ and $h\_2$. We will adopt the convention
-%[text]{"align":"center"} $\\mathbf{x} = \\begin{bmatrix} h\_1 \\\\ h\_2 \\end{bmatrix}, \\qquad \\frac{d\\mathbf{x}}{dt} = \\begin{bmatrix} \\dot{h}\_1 \\\\ \\dot{h}\_2 \\end{bmatrix}$%CLAUDE: \\begin{bmatrix} doesn't work in matlab live code latex.
+%[text]{"align":"center"} $\\mathbf{x} = [\\,h\_1;\\, h\_2\\,]^\\top, \\qquad \\frac{d\\mathbf{x}}{dt} = [\\,\\dot{h}\_1;\\, \\dot{h}\_2\\,]^\\top$
 %[text] **The order is not unique.** (We could equally well have chosen $\\mathbf{x} = \[h\_2;\\, h\_1\]$). What matters is that the convention is **applied consistently everywhere it is used**:
 %[text] - in the initial condition vector $\\mathbf{x}(0)$,
 %[text] - inside the rate function — both when *unpacking* the input and *packing* the output,
 %[text] - when *interpreting the columns* of the solver's output. \
-%[text] Explicity write down, in your live code file as a mathematical model, your definition of the state vector.   
+%[text] Explicitly write down your state-vector definition in your live code file as part of the mathematical model.
 %[text] A swapped index is a common and insidious bug.  
 %%
 %[text] ## Initial Conditions
@@ -31,7 +31,8 @@ x0 = [h1_0; h2_0];
 % or
 x0 = [1.5, 0.5]';
 %[text] Also, from the problem definition we know the time window for the simulation (numerical solution).
-tspan = [0, 120];  
+tspan = [0, 120];
+%%
 %[text] ## A Verbose Rate Function
 %[text] The rate function takes the current time $t$ and current state $\\mathbf{x}$ and returns $\\dot{\\mathbf{x}}$. We write it in a deliberately *verbose* form: the state vector is **unpacked** into named scalar variables, the two rates are computed and named, and the result is **repacked** into a column vector. Naming each piece keeps the code readable against the math and makes the convention impossible to lose track of.
 function dxdt = rate_two_tanks(t, x)
@@ -62,7 +63,7 @@ dxdt0 = rate_two_tanks(0, x0)
 %[text] ## Solve with ode45
 %[text] Now calling the solver is the same, but with vectors/matrices.
 [tt, xx] = ode45(@rate_two_tanks, tspan, x0);
-%[text] `xx` is an $N \\times 2$ matrix. Each row corresponds to one time in `tt`. Each column corresponds to one state.  We can also unpack the output using our definition/convetion for the state vector.  
+%[text] `xx` is an $N \\times 2$ matrix. Each row corresponds to one time in `tt`. Each column corresponds to one state. We can also unpack the output using our definition/convention for the state vector.
 h1 = xx(:,1);
 h2 = xx(:,2);
 %%
@@ -81,7 +82,9 @@ legend('Location', 'southeast')
 %[text] How can we verify that ode45 is solving the mathematical model we defined?
 %[text] - Check that initial conditions in solution match those supplied.
 %[text] - Check steady-state compared to analytical
-%[text] - % CLAUDE: Others?  Without solving the ODE analytically? \
+%[text] - Tighten the solver tolerance with `odeset('RelTol',1e-8,'AbsTol',1e-10)` and re-run; the solution should be essentially unchanged (numerical convergence).
+%[text] - Re-run with a different solver (e.g. `ode23` or `ode15s`); a well-posed problem gives the same answer regardless of which solver computes it.
+%[text] - Try a **limiting case**. For example, set $Q = 0$ and confirm both tanks drain to zero, or start at the steady-state height $Q/k$ and confirm the heights stay flat. \
 
 %[appendix]{"version":"1.0"}
 %---
