@@ -9,14 +9,6 @@ disp(A);
 %[text] The `size` function reports `[rows, cols]` — note the order:
 size(A)
 fprintf("A has %d rows and %d columns\n", size(A,1), size(A,2));
-%[text] ### Reshape % CLAUDE: Move this section to a misc section at the end of other operations.  We don't use this in the class, but nice to know about.
-%[text] `reshape` rearranges elements into a new shape *without changing their order in memory*. MATLAB stores matrices in **column-major** order % CLAUDE insert parenthetical explaination of column-major
-%[text]  — element 1 lands at $(1,1)$, element 2 at $(2,1)$, then it wraps to the next column. This is why the row-vector `B = 1:8` reshapes as below:
-%[text]{"align":"center"} $B = \\left\[\\begin{array}{cccccccc} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\end{array}\\right\] \\quad \\Longrightarrow \\quad C = \\text{reshape}(B,2,4) = \\left\[\\begin{array}{cccc} 1 & 3 & 5 & 7 \\\\ 2 & 4 & 6 & 8 \\end{array}\\right\]$
-%[text] ![](text:image:33b0)
-B = 1:8
-C = reshape(B, 2, 4)
-D = reshape(B, [4, 2])
 %[text] ### Special Matrices
 %[text] The identity, ones, and zeros matrices come up constantly when assembling state-space models or preallocating arrays.
 %[text]{"align":"center"} $I\_4 = \\left\[\\begin{array}{cccc} 1 & 0 & 0 & 0 \\\\ 0 & 1 & 0 & 0 \\\\ 0 & 0 & 1 & 0 \\\\ 0 & 0 & 0 & 1 \\end{array}\\right\], \\quad \\mathbf{1}\_{2 \\times 3} = \\left\[\\begin{array}{ccc} 1 & 1 & 1 \\\\ 1 & 1 & 1 \\end{array}\\right\], \\quad \\mathbf{0}\_{2 \\times 2} = \\left\[\\begin{array}{cc} 0 & 0 \\\\ 0 & 0 \\end{array}\\right\]$
@@ -87,20 +79,32 @@ A_reconstructed = [col1, col2]
 %[text] Transpose of `H_concat`:
 H_concat_transpose = H_concat'
 %%
-%[text] ## Matrix Equivalence % CLAUDE: This is intended as an illustration of the differences in comparing elements and comparing containers.
-%[text] Two matrices are equal when they have the same shape *and* identical entries. `isequal(A, B)` returns a single logical (`true`/`false`); the elementwise operator `A == B` returns a matrix of logicals (and only works when shapes match).
+%[text] ## Matrix Equivalence
+%[text] There are two distinct ways to ask whether two matrices "are the same", and they answer different questions. The distinction is between comparing the **containers as wholes** and comparing **each pair of elements**:
+%[text] - `isequal(A, B)` is a *container-level* comparison. It returns a **single** logical answering "do these two arrays have the same shape and the same entries?" — one yes/no for the whole pair.
+%[text] - `A == B` is an *element-level* comparison. It returns a **matrix** of logicals, one Boolean per entry $a\_{ij}$ vs $b\_{ij}$, and so requires the two shapes to match (otherwise it errors).
+%[text] Use `all(...)` to collapse the element-wise result down to a single yes/no when that is what you really wanted.
 %[text]{"align":"center"} $A = B \\;\\iff\\; \\bigl(\\text{size}(A) = \\text{size}(B)\\bigr) \\;\\text{and}\\; \\bigl(a\_{ij} = b\_{ij} \\;\\forall\\, i,j\\bigr)$
-%[text] Compare `A` and `A_reconstructed`:
+%[text] **Container-level** comparison of `A` and `A_reconstructed` — one logical:
 isEqual = isequal(A, A_reconstructed)
-%[text] Element-wise comparison (only valid when shapes match):
+%[text] **Element-level** comparison — a matrix of logicals (only valid when shapes match):
 element_wise_equal = (A == A_reconstructed)
-%[text] Reduce the elementwise result to a single logical with `all`:
+%[text] Collapse the element-wise result with `all` to recover a single yes/no:
 all(A == A_reconstructed)
 all(A == A_reconstructed, "all")
 %[text] Compare two genuinely different matrices:
 %[text] ![](text:image:1812)
 isEqual_CD = isequal(C, D)
-%[text] 
+%%
+%[text] ## Miscellaneous
+%[text] ### Reshape
+%[text] `reshape` rearranges elements into a new shape *without changing their order in memory*. MATLAB stores matrices in **column-major** order — that is, the entries are listed by walking down the first column, then the second, and so on. So element 1 lands at $(1,1)$, element 2 at $(2,1)$, and the indexing wraps to the next column once the first is full. This is why the row-vector `B = 1:8` reshapes as below:
+%[text]{"align":"center"} $B = \\left[\\begin{array}{cccccccc} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\end{array}\\right] \\quad \\Longrightarrow \\quad C = \\text{reshape}(B,2,4) = \\left[\\begin{array}{cccc} 1 & 3 & 5 & 7 \\\\ 2 & 4 & 6 & 8 \\end{array}\\right]$
+%[text] ![](text:image:33b0)
+B = 1:8
+C = reshape(B, 2, 4)
+D = reshape(B, [4, 2])
+%[text]
 
 %[appendix]{"version":"1.0"}
 %---
