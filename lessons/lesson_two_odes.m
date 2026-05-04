@@ -13,7 +13,7 @@
 %[text] To use a numerical solver such as `ode45`, the model must be expressed as a single vector ODE:
 %[text]{"align":"center"} $\\frac{d\\mathbf{x}}{dt} = \\mathbf{f}(t, \\mathbf{x})$
 %[text] The **state vector** $\\mathbf{x}$ is an *ordered list* of the variables that fully describe the system's instantaneous condition. For two tanks we need two state variables, $h\_1$ and $h\_2$. We will adopt the convention
-%[text]{"align":"center"} $\\mathbf{x} = [\\,h\_1;\\, h\_2\\,]^\\top, \\qquad \\frac{d\\mathbf{x}}{dt} = [\\,\\dot{h}\_1;\\, \\dot{h}\_2\\,]^\\top$
+%[text]{"align":"center"} $\\mathbf{x} = \\left\[\\begin{array}{c} h\_1 \\\\ h\_2 \\end{array}\\right\], \\qquad \\frac{d\\mathbf{x}}{dt} = \\left\[\\begin{array}{c} \\dot{h}\_1 \\\\ \\dot{h}\_2 \\end{array}\\right\]$
 %[text] **The order is not unique.** (We could equally well have chosen $\\mathbf{x} = \[h\_2;\\, h\_1\]$). What matters is that the convention is **applied consistently everywhere it is used**:
 %[text] - in the initial condition vector $\\mathbf{x}(0)$,
 %[text] - inside the rate function — both when *unpacking* the input and *packing* the output,
@@ -56,6 +56,17 @@ end
 %[text] A few points worth noting:
 %[text] - The signature is `(t, x)` even though this model does not depend on time.
 %[text] - The output `dxdt` must be a **column** vector with the same length and ordering as `x`.  \
+%[text] Here is what the rate function might look like in concise form:
+%[text] ```matlabCodeExample
+%[text] function dxdt = rate_two_tanks(t, x)
+%[text]     A1 = 6;       
+%[text]     A2 = 3;        
+%[text]     k  = 0.2;    
+%[text]     Q  = 0.2;    
+%[text]     dxdt = [(Q - k*x(1)) / A1 ;
+%[text]             k*(x(1) - x(2)) / A2];
+%[text] end
+%[text] ```
 %[text] ### Test the rate function at the initial condition
 %[text] Before handing the rate function to `ode45`, do the initial rates make sense?
 dxdt0 = rate_two_tanks(0, x0)
@@ -77,14 +88,16 @@ xlabel('Time [min]')
 ylabel('Water height [m]')
 grid on
 legend('Location', 'southeast')
-%%
 %[text] ## Verification
 %[text] How can we verify that ode45 is solving the mathematical model we defined?
 %[text] - Check that initial conditions in solution match those supplied.
 %[text] - Check steady-state compared to analytical
 %[text] - Tighten the solver tolerance with `odeset('RelTol',1e-8,'AbsTol',1e-10)` and re-run; the solution should be essentially unchanged (numerical convergence).
-%[text] - Re-run with a different solver (e.g. `ode23` or `ode15s`); a well-posed problem gives the same answer regardless of which solver computes it.
-%[text] - Try a **limiting case**. For example, set $Q = 0$ and confirm both tanks drain to zero, or start at the steady-state height $Q/k$ and confirm the heights stay flat. \
+%[text] - Consider a limiting case. For example, set $Q = 0$ and confirm both tanks drain to zero, or start at the steady-state height $Q/k$ and confirm the heights stay flat. \
+%[text] ## Exercise
+%[text] Revise this live code document to use the alternate state vector definition
+%[text]{"align":"center"} $\\mathbf{x} = \\left\[\\begin{array}{c} h\_2 \\\\ h\_1 \\end{array}\\right\], $
+%[text] and show that the solution is unchanged.
 
 %[appendix]{"version":"1.0"}
 %---
