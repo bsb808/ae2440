@@ -1,0 +1,66 @@
+% AE 2440 — Introduction to Scientific Programming
+% Master book file. Each week is a standalone subfile under wNN_topic/chapter/.
+% Course schedule: weeks 3-11; week 9 (Thanksgiving) intentionally omitted.
+
+\documentclass[12pt,oneside,openany]{book}
+
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[capitalise]{cleveref}
+\usepackage{microtype}
+\usepackage{fancyvrb}
+\usepackage{parskip}
+\usepackage{listings}
+
+\usepackage{array}
+\usepackage{tabularx}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\usepackage{subfiles}
+
+% Draft review flag: \verify{note} renders an inline orange callout.
+% Redefine to \newcommand{\verify}[1]{} to suppress all flags in a clean build.
+\newcommand{\verify}[1]{\textcolor{orange}{\textbf{[?~#1]}}}
+
+\newcommand{\figplaceholder}[2][3in]{%
+  \begin{center}
+  \fbox{\parbox{#1}{\centering\vspace{0.5in}\textit{[Figure: #2]}\vspace{0.5in}}}
+  \end{center}
+}
+
+\title{Introduction to Scientific Programming}
+\author{Brian S. Bingham}
+\date{}
+
+\begin{document}
+
+\frontmatter
+\maketitle
+\tableofcontents
+
+\mainmatter
+
+% Chapters are added in commit 2 (content migration). Each line below will
+% become an active \subfile{...} call once the chapter .tex files are in place.
+%
+% \subfile{w03_modeling_scripts/chapter/modeling}
+% \subfile{w03_modeling_scripts/chapter/scripts}
+% \subfile{w04_loops_vectors/chapter/loops}
+% \subfile{w04_loops_vectors/chapter/vectors}
+% \subfile{w05_functions_conditionals/chapter/functions}
+% \subfile{w05_functions_conditionals/chapter/conditionals}
+% \subfile{w06_datatypes_fzero/chapter/datatypes}
+% \subfile{w06_datatypes_fzero/chapter/zerofinding}
+% \subfile{w07_funcvectors_odes/chapter/functions_of_vectors}
+% \subfile{w07_funcvectors_odes/chapter/odes}
+% \subfile{w08_matrices_secondorder/chapter/matrices}
+% \subfile{w08_matrices_secondorder/chapter/second_order_systems}
+% \subfile{w10_rl_intro/chapter/rl_intro}
+% \subfile{w11_rl_blackjack/chapter/rl_blackjack}
+
+\end{document}

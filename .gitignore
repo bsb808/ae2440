@@ -6,3 +6,19 @@ grading/*.zip
 
 # Claude Code — machine-specific settings (do not commit)
 .claude/settings.local.json
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
