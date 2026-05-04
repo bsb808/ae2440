@@ -6,12 +6,12 @@ Course materials for naval officer undergraduates at an engineering program. Tau
 
 The course is organized as a week-by-week book under `book/`. Each `book/wNN_topic/` directory holds one week of material with subdirs `chapter/` (LaTeX prose), `lessons/` (in-class MATLAB scripts), `assign/` (student-facing assignment files), and `refs/` (slides, supporting docs).
 
-Active weeks: `w03_modeling_scripts`, `w04_loops_vectors`, `w05_functions_conditionals`, `w06_datatypes_fzero`, `w07_funcvectors_odes`, `w08_matrices_secondorder`, `w10_rl_intro`, `w11_rl_blackjack`. Week 9 is Thanksgiving (no class). Each week corresponds to one numbered assignment (Week 3 → Assignment 1, …, Week 11 → Assignment 8).
+Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_conditionals`, `w04_datatypes_fzero`, `w05_funcvectors_odes`, `w06_matrices_secondorder`, `w07_twodim_optimization`, `w08_interpolation_curvefit`, `w09_rl_intro`, `w10_rl_blackjack`. Most weeks correspond to a numbered assignment (Week 1 → Assignment 1, …, Week 8 → Assignment 8; Week 9 has no graded assignment; Week 10 → Assignment 9).
 
 | Directory | Contents |
 |-----------|----------|
 | `book/` | Week-by-week book (chapters, lessons, assignments, refs). Built with `make book` from inside `book/`. |
-| `archive/` | Legacy content not on the current schedule (`legacy_optimization/`, `legacy_curvefit/`, `scratch/`) |
+| `archive/` | Off-schedule scratch material |
 | `examples/` | Standalone demos and worked examples |
 | `grading/` | Sakai grading workflow (per-assignment downloads + comments) |
 | `mlx_parse/` | Python tooling for generating student assignment files |
@@ -106,8 +106,8 @@ The instructor solution lives in the private companion repo `~/WorkingCopies/ae2
 
 ```bash
 # Auto-names output: removes _soln or appends _nocode
-python mlx_parse/mlx_soln2assign.py ../ae2440-solutions/w03_modeling_scripts/aquarium_soln.mlx \
-    -o book/w03_modeling_scripts/assign/aquarium.mlx
+python mlx_parse/mlx_soln2assign.py ../ae2440-solutions/w01_modeling_scripts/aquarium_soln.mlx \
+    -o book/w01_modeling_scripts/assign/aquarium.mlx
 ```
 
 The script treats `.mlx` files as zip archives, edits `matlab/document.xml` inside, and repackages.
@@ -134,7 +134,7 @@ ODE assignments use a consistent two-file structure:
    - **Euler solution** (if included): call `euler(@rate_func, tspan, y0)` — requires `euler.m` in the same directory
    - **Comparison**: overlay plot with a reference line at the equilibrium/terminal value; `fprintf` to report key scalar results
 
-2. **`euler.m`** — standalone primary function students write separately. Fixed step size `dt = (tspan(2)-tspan(1))/100`. Interface mirrors `ode45`: `[tt, yy] = euler(odefun, tspan, y0)`. See `book/w07_funcvectors_odes/lessons/euler_reference.m` for the reference implementation. (The simpler `book/w07_funcvectors_odes/lessons/euler.m` is the didactic version cited from `chapter/odes.tex`.)
+2. **`euler.m`** — standalone primary function students write separately. Fixed step size `dt = (tspan(2)-tspan(1))/100`. Interface mirrors `ode45`: `[tt, yy] = euler(odefun, tspan, y0)`. See `book/w05_funcvectors_odes/lessons/euler_reference.m` for the reference implementation. (The simpler `book/w05_funcvectors_odes/lessons/euler.m` is the didactic version cited from `chapter/odes.tex`.)
 
 The initial rate-function test is the key scaffolding step: it confirms the physics before introducing the solver, and gives students a concrete value to check against intuition.
 
@@ -144,7 +144,7 @@ For exercises where students work with a non-trivial data structure (struct arra
 1. **`*_gen.m`** — a short, complete script that creates the data and saves it as a `.mat` file. Given to students as a worked example showing how the data was built. Students run it but don't write it.
 2. **`*_soln.m`** — the exercise script. Loads the `.mat` file and has students inspect, manipulate, and report on the data.
 
-This separates the complexity of *constructing* a data structure from the skill being exercised (e.g., field access, type conversion, formatting). See `book/w06_datatypes_fzero/assign/contact_gen.m` (with `contact_soln.m` in `ae2440-solutions/w06_datatypes_fzero/`) and `book/w06_datatypes_fzero/assign/sensor_clean.m` + `sensordata.mat` as examples.
+This separates the complexity of *constructing* a data structure from the skill being exercised (e.g., field access, type conversion, formatting). See `book/w04_datatypes_fzero/assign/contact_gen.m` (with `contact_soln.m` in `ae2440-solutions/w04_datatypes_fzero/`) and `book/w04_datatypes_fzero/assign/sensor_clean.m` + `sensordata.mat` as examples.
 
 ## Privacy — No Student Names
 
@@ -241,7 +241,7 @@ Per-assignment required files and grading narrative. Used by `grading/grading_ut
 
 **Grading narrative:** File presence only (100 if all present, 90 if any missing). No content deductions — formative feedback only.
 
-**Code review:** Read each student's `beaufort_classify.m` against the instructions in `book/w05_functions_conditionals/assign/beaufort_main.m`. This is students' first function; give constructive suggestions. Look for:
+**Code review:** Read each student's `beaufort_classify.m` against the instructions in `book/w03_functions_conditionals/assign/beaufort_main.m`. This is students' first function; give constructive suggestions. Look for:
 - Unnecessarily complex conditional logic (redundant conditions, nested ifs that could be flat elseif chains)
 - Output printed inside the function (`disp`/`fprintf`) instead of returned — misunderstanding that return values and printed output are different things
 - Other first-function stumbles (e.g. modifying input variables expecting the caller to see the change)

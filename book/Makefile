@@ -10,7 +10,7 @@ CHAPTERS_PDF    := $(CHAPTERS_TEX:.tex=.pdf)
 ASSIGNMENTS_TEX := $(wildcard w*/assign/*.tex)
 ASSIGNMENTS_PDF := $(ASSIGNMENTS_TEX:.tex=.pdf)
 
-WEEK_NUMS    := 03 04 05 06 07 08 10 11
+WEEK_NUMS    := 01 02 03 04 05 06 07 08 09 10
 WEEK_TARGETS := $(addprefix w,$(WEEK_NUMS))
 
 .PHONY: all chapters assignments book clean distclean help $(WEEK_TARGETS)

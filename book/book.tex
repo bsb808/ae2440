@@ -10,6 +10,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{amsmath,amsthm,amssymb}
 \usepackage{graphicx}
+\usepackage{subcaption}
 \usepackage{epstopdf}
 \epstopdfsetup{outdir=./}
 \usepackage{booktabs}
@@ -77,6 +78,19 @@
 \newcommand{\keycap}{\textsf}
 \newcommand{\myreg}{\textsuperscript{{\tiny \textregistered}}}
 
+% Vector typesetting (used by two_dimensions chapter)
+\usepackage{bm}
+\renewcommand{\vec}[1]{\bm{\mathbf{#1}}}
+\newcommand{\uveci}{{\bm{\hat{\textnormal{\bfseries\i}}}}}
+\newcommand{\uvecj}{{\bm{\hat{\textnormal{\bfseries\j}}}}}
+\DeclareRobustCommand{\uvec}[1]{{%
+  \ifcsname uvec#1\endcsname
+     \csname uvec#1\endcsname
+   \else
+    \bm{\hat{\mathbf{#1}}}%
+   \fi
+}}
+
 % Draft review flag: \verify{note} renders an inline orange callout.
 % Redefine to \newcommand{\verify}[1]{} to suppress all flags in a clean build.
 \newcommand{\verify}[1]{\textcolor{orange}{\textbf{[?~#1]}}}
@@ -101,20 +115,23 @@
 
 \mainmatter
 
-\input{w03_modeling_scripts/chapter/modeling}
-\input{w03_modeling_scripts/chapter/scripts}
-\input{w04_loops_vectors/chapter/loops}
-\input{w04_loops_vectors/chapter/vectors}
-\input{w05_functions_conditionals/chapter/functions}
-\input{w05_functions_conditionals/chapter/conditionals}
-\input{w06_datatypes_fzero/chapter/datatypes}
-\input{w06_datatypes_fzero/chapter/zerofinding}
-\input{w07_funcvectors_odes/chapter/functions_of_vectors}
-\input{w07_funcvectors_odes/chapter/odes}
-\input{w08_matrices_secondorder/chapter/matrices}
-\input{w08_matrices_secondorder/chapter/second_order_systems}
-\input{w10_rl_intro/chapter/rl_intro}
-\input{w11_rl_blackjack/chapter/rl_blackjack}
+\input{w01_modeling_scripts/chapter/modeling}
+\input{w01_modeling_scripts/chapter/scripts}
+\input{w02_loops_vectors/chapter/loops}
+\input{w02_loops_vectors/chapter/vectors}
+\input{w03_functions_conditionals/chapter/functions}
+\input{w03_functions_conditionals/chapter/conditionals}
+\input{w04_datatypes_fzero/chapter/datatypes}
+\input{w04_datatypes_fzero/chapter/zerofinding}
+\input{w05_funcvectors_odes/chapter/functions_of_vectors}
+\input{w05_funcvectors_odes/chapter/odes}
+\input{w06_matrices_secondorder/chapter/matrices}
+\input{w06_matrices_secondorder/chapter/second_order_systems}
+\input{w07_twodim_optimization/chapter/two_dimensions}
+\input{w07_twodim_optimization/chapter/optimization}
+\input{w08_interpolation_curvefit/chapter/interpolation_curvefit}
+\input{w09_rl_intro/chapter/rl_intro}
+\input{w10_rl_blackjack/chapter/rl_blackjack}
 
 \backmatter
 \printindex

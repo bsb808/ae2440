@@ -22,3 +22,5 @@ grading/*.zip
 *.out
 *.synctex.gz
 *.toc
+# Sutton & Barto reference PDF (~73MB) — chapter cites the online URL
+RLbook2020.pdf
