@@ -1,3 +1,6 @@
+\documentclass[../../book.tex]{subfiles}
+\begin{document}
+
 \chapter{Interpolation, Curve Fitting, and Regression}
 \label{interpolation_curvefit}
 
@@ -266,3 +269,5 @@ vv = [13.55 8.50 6.80 4.31 3.35 3.86 2.94 1.14 1.79 0.65];
 \begin{ex}\label{ex:nlin_starting_point}
 The nonlinear regression in Section~3 worked well with the initial guess \lstinline{params0 = [13.5, 0.25, 0.5]}.  Try the same fit with progressively worse initial guesses --- e.g.\ \lstinline{[10, 1, 0]}, \lstinline{[1, 1, 1]}, \lstinline{[100, 0.01, 0]}.  At what point does \lstinline{nlinfit} fail to find the right parameters, or fail to converge at all?  This is the price of fitting models that are nonlinear in their parameters.
 \end{ex}
+
+\end{document}

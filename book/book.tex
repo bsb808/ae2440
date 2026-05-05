@@ -31,6 +31,7 @@
 
 \usepackage{array}
 \usepackage{tabularx}
+\usepackage{subfiles}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 
@@ -115,23 +116,23 @@
 
 \mainmatter
 
-\input{w01_modeling_scripts/chapter/modeling}
-\input{w01_modeling_scripts/chapter/scripts}
-\input{w02_loops_vectors/chapter/loops}
-\input{w02_loops_vectors/chapter/vectors}
-\input{w03_functions_conditionals/chapter/functions}
-\input{w03_functions_conditionals/chapter/conditionals}
-\input{w04_datatypes_fzero/chapter/datatypes}
-\input{w04_datatypes_fzero/chapter/zerofinding}
-\input{w05_funcvectors_odes/chapter/functions_of_vectors}
-\input{w05_funcvectors_odes/chapter/odes}
-\input{w06_matrices_secondorder/chapter/matrices}
-\input{w06_matrices_secondorder/chapter/second_order_systems}
-\input{w07_twodim_optimization/chapter/two_dimensions}
-\input{w07_twodim_optimization/chapter/optimization}
-\input{w08_interpolation_curvefit/chapter/interpolation_curvefit}
-\input{w09_rl_intro/chapter/rl_intro}
-\input{w10_rl_blackjack/chapter/rl_blackjack}
+\subfile{w01_modeling_scripts/chapter/modeling}
+\subfile{w01_modeling_scripts/chapter/scripts}
+\subfile{w02_loops_vectors/chapter/loops}
+\subfile{w02_loops_vectors/chapter/vectors}
+\subfile{w03_functions_conditionals/chapter/functions}
+\subfile{w03_functions_conditionals/chapter/conditionals}
+\subfile{w04_datatypes_fzero/chapter/datatypes}
+\subfile{w04_datatypes_fzero/chapter/zerofinding}
+\subfile{w05_funcvectors_odes/chapter/functions_of_vectors}
+\subfile{w05_funcvectors_odes/chapter/odes}
+\subfile{w06_matrices_secondorder/chapter/matrices}
+\subfile{w06_matrices_secondorder/chapter/second_order_systems}
+\subfile{w07_twodim_optimization/chapter/two_dimensions}
+\subfile{w07_twodim_optimization/chapter/optimization}
+\subfile{w08_interpolation_curvefit/chapter/interpolation_curvefit}
+\subfile{w09_rl_intro/chapter/rl_intro}
+\subfile{w10_rl_blackjack/chapter/rl_blackjack}
 
 \backmatter
 \printindex
