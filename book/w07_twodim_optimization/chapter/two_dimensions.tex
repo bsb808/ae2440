@@ -82,7 +82,9 @@ There are two ways to get the \emph{direction} of a vector.  One convention is t
 ans = 0.9273
 \end{code}
 
-In this example, the angle is about \SI{0.9}{\radian}.  But for computational purposes, we often represent direction with a \emph{unit vector}, which is a vector with length~1.  To get a unit vector we can divide a vector by its length:
+In this example, the angle is about \SI{0.9}{\radian}.  The same function gives the angle from one point to another by taking \lstinline{atan2} of the differences in coordinates---for example, \lstinline{atan2(y2-y1, x2-x1)} returns the bearing from point 1 to point 2.
+
+But for computational purposes, we often represent direction with a \emph{unit vector}, which is a vector with length~1.  To get a unit vector we can divide a vector by its length:
 
 \begin{code}
 function res = hat(V)
@@ -92,6 +94,8 @@ end
 
 This function takes a vector, \lstinline{V}, and returns a unit vector with the same direction as \lstinline{V}.  It's called \lstinline{hat} because in mathematical notation, unit vectors are written with a ``hat'' symbol.
 For example, the unit vector with the same direction as $\vec{P}$ would be written $\uvec{P}$.
+
+The two representations of direction are interchangeable.  Given an angle $\theta$, the corresponding unit vector is $[\cos\theta, \sin\theta]$.  Given a unit vector $\uvec{P}$, the corresponding angle is \lstinline{atan2(P(2), P(1))}.  Which form is easier to work with depends on the problem: forces and additions favor the vector form, while a vehicle's heading is often more natural as a single angle.
 
 \index{unit vector}
 \index{vector!unit}
@@ -132,6 +136,8 @@ Later in the chapter, we'll use vector addition to add accelerations due to diff
 \label{projectile}
 
 So far we've used \lstinline{ode45} to solve a system of first-order equations and a single second-order equation.  Now we'll take one more step, solving a system  of second-order equations.
+
+The recipe is the same regardless of where the physics comes from: assemble a state vector, write a rate function that returns $\dot{\mathbf{x}}$, and hand it to \lstinline{ode45}.  In this chapter the rate function comes from Newton's laws---forces produce accelerations.  Other 2D models are \emph{kinematic}: the inputs are velocities, and there is no $F=ma$ step.  Many vehicle models in robotics and naval architecture take this form.  Either way, the structure of the program is identical.
 
 As an example, we'll simulate the flight of a baseball.
 If there is no wind and no spin on the ball, the ball travels in a vertical plane, so we can think of the system as two-dimensional, with $x$ representing the horizontal distance
