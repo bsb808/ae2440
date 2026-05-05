@@ -20,7 +20,7 @@ Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_condit
 
 ### Companion private repo: `bsb808/ae2440-solutions`
 
-Instructor `_soln.mlx` / `_soln.m` files for **graded assignments** live in the private companion repo at `~/WorkingCopies/ae2440-solutions/`, organized by week (`wNN_topic/<assignment>_soln.<ext>`). Lesson `_soln` files (used for in-class demos) **stay public** in `book/wNN_topic/lessons/`.
+Instructor `_soln.mlx` / `_soln.m` files for **graded assignments** live in the private companion repo at `~/WorkingCopies/ae2440/ae2440-solutions/` (sibling to this repo under the umbrella `~/WorkingCopies/ae2440/`), organized by week (`wNN_topic/<assignment>_soln.<ext>`). Lesson `_soln` files (used for in-class demos) **stay public** in `book/wNN_topic/lessons/`.
 
 ## File Formats
 
@@ -102,7 +102,7 @@ Older lesson files use standard MATLAB cell-mode format (`%%` sections, `%` comm
 
 `mlx_parse/mlx_soln2assign.py` converts a solution `.mlx` into a student version by replacing all code-block CDATA content with `% Your code here.`
 
-The instructor solution lives in the private companion repo `~/WorkingCopies/ae2440-solutions/`; the generated student file lands in this repo's `book/wNN_topic/assign/`.
+The instructor solution lives in the private companion repo `~/WorkingCopies/ae2440/ae2440-solutions/`; the generated student file lands in this repo's `book/wNN_topic/assign/`.
 
 ```bash
 # Auto-names output: removes _soln or appends _nocode
@@ -216,7 +216,7 @@ def extract_code_text(path):
 ```
 
 ### Assignment Reference Files
-Student-facing assignment files live under `book/wNN_topic/assign/`; matching instructor solutions live in the private companion repo at `~/WorkingCopies/ae2440-solutions/wNN_topic/`. Solution `.mlx` files can be read as zip archives (`matlab/document.xml` contains the content as XML with CDATA code blocks).
+Student-facing assignment files live under `book/wNN_topic/assign/`; matching instructor solutions live in the private companion repo at `~/WorkingCopies/ae2440/ae2440-solutions/wNN_topic/`. Solution `.mlx` files can be read as zip archives (`matlab/document.xml` contains the content as XML with CDATA code blocks).
 
 ## Assignment Grading Setups
 
