@@ -1,0 +1,194 @@
+\documentclass[../../book.tex]{subfiles}
+\begin{document}
+
+\chapter{Q-Learning and Blackjack}
+\label{rl_blackjack}
+
+
+In the previous chapter we sketched the general framework of reinforcement learning --- agent, environment, state, action, reward, value --- and saw a tic-tac-toe example that learned to play by repeatedly updating estimates of state values.  In this chapter we sharpen that idea into a specific algorithm, \emph{Q-learning}, and use it to train an agent to play the simple casino game of blackjack.  By the end of this chapter you will have written code that begins from no knowledge at all and, after a few hundred thousand simulated hands, plays blackjack about as well as it can be played.
+
+\section{Action-Value Functions}
+
+\index{action-value function}
+\index{Q function}
+
+The tic-tac-toe player in the previous chapter learned a \emph{state-value} function $V(s)$ --- one number per state, estimating how good it is to be in that state.  This worked because, in tic-tac-toe, we have a model of the game: from any state we can simulate every legal move and look at the resulting next state.  We picked the move that led to the next state with the highest value.
+
+In blackjack we don't have such a clean model.  The agent does not know how the dealer will play, and the cards drawn are random.  Rather than estimate the value of states, we estimate the value of \emph{state-action pairs}.  Define
+
+\begin{equation*}
+    Q(s, a) = \text{the expected long-run reward of taking action } a \text{ in state } s \text{ and acting optimally thereafter.}
+\end{equation*}
+
+\noindent The function $Q(s, a)$ is called the \emph{action-value function}.  If we know $Q$, choosing the best action in a given state is trivial: just take the action with the largest $Q$-value.
+
+\begin{equation*}
+    \pi(s) = \arg\max_a\, Q(s, a).
+\end{equation*}
+
+\noindent The challenge, of course, is that we don't know $Q$ to start with.  Q-learning is a way to estimate $Q$ from experience.
+
+\section{The Q-Learning Update Rule}
+
+\index{Q-learning}
+
+Q-learning is an iterative algorithm.  The agent interacts with the environment one step at a time.  On each step, it is in state $S$, picks an action $A$, observes a reward $R$ and a next state $S'$, and updates its current estimate of $Q(S, A)$ to be a little closer to a new \emph{target}.  The target combines the immediate reward with the agent's current estimate of the value of the next state:
+
+\begin{equation*}
+    Q(S, A) \;\leftarrow\; Q(S, A) + \alpha \Big[ R + \gamma \max_a Q(S', a) - Q(S, A) \Big].
+\end{equation*}
+
+\noindent Three parameters appear in this equation:
+
+\begin{itemize}
+    \item $\alpha \in (0, 1]$ is the \emph{learning rate}, also known as the step-size parameter.  It controls how aggressively each update changes the estimate.  Small $\alpha$ means slow but stable learning; large $\alpha$ means fast but noisier learning.
+    \item $\gamma \in [0, 1]$ is the \emph{discount factor}.  It controls how much the agent cares about future rewards versus the immediate reward.  $\gamma = 0$ makes the agent purely myopic (only the current reward matters); $\gamma = 1$ weights all future rewards equally.  For episodic tasks like blackjack, where each hand ends after a few moves, $\gamma = 1$ is a reasonable choice.
+    \item The action selection is governed by an \emph{exploration parameter} $\varepsilon$: with probability $\varepsilon$, pick a random action; otherwise pick $\arg\max_a Q(S, a)$.
+\end{itemize}
+
+The update rule has a nice interpretation.  The quantity in brackets is the \emph{temporal-difference error}:
+
+\begin{equation*}
+    \delta = R + \gamma \max_a Q(S', a) - Q(S, A).
+\end{equation*}
+
+\noindent It is the difference between the agent's revised estimate of the value of $(S, A)$ --- ``actually, the reward was $R$ and from $S'$ I think I can do at most $\max_a Q(S', a)$ from here'' --- and the agent's previous estimate.  The Q-learning update moves the previous estimate a fraction $\alpha$ of the way toward the new target.  Repeat enough times, with enough exploration, and the estimates converge.
+
+\section{Q-Learning in Procedural Form}
+
+Putting the pieces together, here is the algorithm in pseudocode (Sutton and Barto, Section 6.5):
+
+\begin{quote}
+\begin{tabbing}
+\hspace{0.4em}\=\hspace{0.4em}\=\hspace{0.4em}\=\hspace{0.4em}\=\kill
+Initialize $Q(s, a)$ for all $s, a$ (often to zero) \\
+\textbf{for} each episode: \\
+\>Initialize state $S$ \\
+\>\textbf{for} each step of episode: \\
+\>\>Choose action $A$ from $S$ using $\varepsilon$-greedy on $Q$ \\
+\>\>Take action $A$, observe reward $R$ and next state $S'$ \\
+\>\>$Q(S, A) \leftarrow Q(S, A) + \alpha [\,R + \gamma \max_a Q(S', a) - Q(S, A)\,]$ \\
+\>\>$S \leftarrow S'$ \\
+\>\textbf{until} $S$ is terminal
+\end{tabbing}
+\end{quote}
+
+\noindent An \emph{episode} is one self-contained run of the task: in blackjack, one hand from initial deal to bust or stand.  Q-learning trains by playing episode after episode, updating $Q$ after every action.
+
+\section{The Blackjack Environment}
+
+\index{blackjack}
+\index{matlab\_gymnasium@\texttt{matlab\_gymnasium}}
+
+To experiment with Q-learning we need a blackjack \emph{environment} --- a piece of software that, given the agent's action, simulates the game's response and returns a reward and the new state.  We use the simplified blackjack environment from \texttt{matlab\_gymnasium}\footnote{\url{https://github.com/bsb808/matlab_gymnasium}}, modeled after the OpenAI Gym Python library.  The environment exposes three methods that the agent calls:
+
+\begin{description}
+    \item[\lstinline{[state, ~] = env.reset()}] Start a new hand. Returns the initial state.
+    \item[\lstinline{[state, reward, terminated, ~, ~] = env.step(action)}] Take an action.  Returns the next state, the reward, and a flag indicating whether the hand is over.
+    \item[\lstinline{actions = env.actionSpace}] List of legal actions in the current state (typically \lstinline{[0 1]} for ``stand'' and ``hit'').
+\end{description}
+
+The \emph{state} in this environment is a triple \lstinline{[player_sum, dealer_card, usable_ace]}: the sum of the player's cards, the value of the dealer's visible upcard, and a flag for whether the player has an ace counted as 11.  The \emph{actions} are 0 (stand --- stop drawing cards) and 1 (hit --- draw another card).  The \emph{reward} is $+1$ for winning the hand, $-1$ for losing, and $0$ for a tie.  Reward is delivered only at the end of the hand.
+
+The state space is finite: there are roughly 200 reachable triples.  Small enough that we can store $Q(s, a)$ as a table indexed by state, with one row per state and one column per action.  In MATLAB, the natural way to do this is with the \lstinline{dictionary} type introduced in Chapter~7, which lets us index by composite keys (vectors of integers, in this case) without having to flatten them to a single integer first.
+
+\section{Implementation Walkthrough}
+
+A Q-learning training loop in MATLAB looks roughly like this:
+
+\begin{code}
+% Hyperparameters
+alpha = 0.1;       % learning rate
+gamma = 1.0;       % discount factor (no discount for episodic blackjack)
+epsilon = 0.1;     % exploration probability
+n_episodes = 100000;
+
+% Initialize Q-table as a dictionary
+Q = dictionary();
+
+% Construct the environment
+env = BlackJackEnv();
+
+for ep = 1:n_episodes
+    [state, ~] = env.reset();
+    state_key = {state};
+    if ~isKey(Q, state_key);  Q(state_key) = {zeros(1, 2)};  end
+
+    terminated = false;
+    while ~terminated
+        % epsilon-greedy action selection
+        if rand() < epsilon
+            action = randi([0, 1]);
+        else
+            qvals = Q({state});
+            qvals = qvals{1};
+            [~, idx] = max(qvals);
+            action = idx - 1;     % MATLAB indexing offset
+        end
+
+        % Take the action and observe the result
+        [next_state, reward, terminated, ~, ~] = env.step(action);
+        next_key = {next_state};
+        if ~isKey(Q, next_key);  Q(next_key) = {zeros(1, 2)};  end
+
+        % Q-learning update
+        qcurr = Q({state});         qcurr = qcurr{1};
+        qnext = Q({next_state});    qnext = qnext{1};
+        target = reward + gamma * max(qnext);
+        qcurr(action + 1) = qcurr(action + 1) + alpha * (target - qcurr(action + 1));
+        Q({state}) = {qcurr};
+
+        state = next_state;
+    end
+end
+\end{code}
+
+\noindent Read this slowly --- every line is doing something the algorithm box requires.  The dictionary $Q$ is indexed by state vectors wrapped in cell arrays (a quirk of MATLAB's \lstinline{dictionary} interface for non-scalar keys).  Each entry stores a 2-element vector of action values, one per action.  When we encounter a new state, we initialize its entry to zeros.
+
+After enough episodes, the entries of $Q$ stabilize.  We can then \emph{evaluate} the learned policy by running new episodes \emph{without} exploration ($\varepsilon = 0$) and counting wins, losses, and ties.
+
+\section{Why It Works}
+
+\index{off-policy}
+
+Q-learning has a remarkable property: it converges to the optimal action-value function $Q^*$ regardless of the policy that is generating the experience, as long as every state-action pair continues to be visited and the learning rate decays appropriately.  This is what is meant by saying Q-learning is \emph{off-policy}: the policy used to choose actions during training (the $\varepsilon$-greedy policy) can be different from the policy whose value is being learned (the greedy policy with respect to $Q$).
+
+The exploration parameter $\varepsilon$ determines how often actions are taken that are \emph{not} currently best.  Without exploration, the agent might never discover a state-action pair that is in fact optimal.  Too much exploration, and the agent wastes its time on actions it already knows are bad.  In practice, schedules that start with a relatively large $\varepsilon$ (say, 0.5) and decay it toward zero over training often work well.
+
+\section{Exercise: A Different Reinforcement Learning Problem}
+\label{sec:rl_problem_design}
+
+A worthwhile capstone is to step away from blackjack and apply Q-learning to a problem of your own choosing.  Some examples:
+
+\begin{itemize}
+    \item A grid-world navigation task with obstacles and a goal cell.
+    \item A simplified inventory-management problem: each day, decide whether to reorder, given uncertain demand.
+    \item A toy elevator dispatcher: given a current floor and a set of pending requests, choose which to service next.
+    \item A multi-armed bandit, the simplest possible RL problem (single state, multiple actions, stochastic rewards) --- a useful sanity check before tackling anything more complicated.
+\end{itemize}
+
+In every case the steps are the same: define the state, action, and reward; build an environment that implements \lstinline{reset()} and \lstinline{step(action)}; pick reasonable values of $\alpha$, $\gamma$, and $\varepsilon$; train; evaluate the learned policy.
+
+\section{Chapter Review}
+
+Q-learning is a model-free reinforcement learning algorithm that estimates the action-value function $Q(s, a)$ --- the expected long-run reward of taking action $a$ in state $s$ --- by iterative temporal-difference updates.  The learning rate $\alpha$ controls update step size; the discount factor $\gamma$ trades off immediate vs.\ long-run reward; the exploration parameter $\varepsilon$ keeps the agent from getting stuck on apparently-good actions before it has tried other options.
+
+For a finite, small state space we can store $Q$ as a table.  In MATLAB the \lstinline{dictionary} type lets us index a Q-table by compound state keys without manual flattening.
+
+The blackjack environment in \texttt{matlab\_gymnasium} is a clean small example: discrete states, two actions, rewards only at episode end.  After enough training episodes, Q-learning converges to a policy close to the known-optimal blackjack strategy.
+
+\section{Exercises}
+
+\begin{ex}\label{ex:hyperparams}
+Train a Q-learning agent on blackjack for $10\,000$, $100\,000$, and $1\,000\,000$ episodes.  Evaluate each trained agent over $10\,000$ test episodes (with $\varepsilon = 0$).  Plot the average reward per episode against the training duration.  At what point do further episodes stop helping?
+\end{ex}
+
+\begin{ex}\label{ex:explore_only}
+Train a Q-learning agent with $\varepsilon = 1$ (i.e., always take a random action during training).  Evaluate the resulting greedy policy.  Then train with $\varepsilon = 0$ (always greedy during training).  Compare and explain the resulting performance.
+\end{ex}
+
+\begin{ex}\label{ex:rl_problem}
+Design a small reinforcement learning problem of your own (see Section~\ref{sec:rl_problem_design} for ideas).  Write down the state, action, and reward definitions; implement an environment with \lstinline{reset()} and \lstinline{step(action)} methods; train a Q-learning agent on it; and evaluate the learned policy.  Submit a short write-up describing the problem, your design choices, and the results.
+\end{ex}
+
+\end{document}
