@@ -35,6 +35,8 @@ tspan = [0, 120];
 %%
 %[text] ## A Verbose Rate Function
 %[text] The rate function takes the current time $t$ and current state $\\mathbf{x}$ and returns $\\dot{\\mathbf{x}}$. We write it in a deliberately *verbose* form: the state vector is **unpacked** into named scalar variables, the two rates are computed and named, and the result is **repacked** into a column vector. Naming each piece keeps the code readable against the math and makes the convention impossible to lose track of.
+%[text]{"align":"center"} $\\frac{dh\_1}{dt} = \\frac{1}{A\_1}\\,(Q - k\\,h\_1)$
+%[text]{"align":"center"} $\\frac{dh\_2}{dt} = \\frac{k}{A\_2}\\,(h\_1 - h\_2)$
 function dxdt = rate_two_tanks(t, x)
     % Constant parameters of the model
     A1 = 6;        % cross-sectional area of tank 1 [m^2]
@@ -51,7 +53,7 @@ function dxdt = rate_two_tanks(t, x)
     dh2dt = k*(h1 - h2) / A2;
 
     % Repack - match the definition
-    dxdt = [dh1dt; dh2dt];
+    dxdt = [dh1dt, dh2dt]';
 end
 %[text] A few points worth noting:
 %[text] - The signature is `(t, x)` even though this model does not depend on time.
@@ -70,6 +72,7 @@ end
 %[text] ### Test the rate function at the initial condition
 %[text] Before handing the rate function to `ode45`, do the initial rates make sense?
 dxdt0 = rate_two_tanks(0, x0)
+
 %%
 %[text] ## Solve with ode45
 %[text] Now calling the solver is the same, but with vectors/matrices.

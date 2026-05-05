@@ -34,7 +34,12 @@ size(xx)
 %[text] ## Verify
 figure;
 clf;
-plot(tt, xx)
+plot(tt, xx(:,1), "DisplayName","Position")
+hold on
+plot(tt, xx(:,2), "DisplayName","Velocity")
+legend()
+
+%[text] 
 %[text] What would be the correct legend?
 %[text] What are the units?
 
