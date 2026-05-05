@@ -186,9 +186,9 @@ Listing~\ref{lst:baseball_rate_func} shows a rate function, named \lstinline{sta
 \lstinputlisting[style=mcode, firstline=31, lastline=58, caption={A rate function we can use to model the flight of a baseball}, label={lst:baseball_rate_func}]
 {w07_twodim_optimization/lessons/baseball_statespace.m}
 
-The second argument of is understood to be a vector,\lstinline{xx}, with four elements.  To avoid a hard-to-find semantic bug, it is key that you use a consistent interpretation of the meaning of this vector, that it includes the variables in the order that we defined in Equation~\ref{ebstate}.  Having a written mathematical model, Equation~\ref{e:baseballstate}, is a good defense.
+The second argument is understood to be a vector, \lstinline{xx}, with four elements.  To avoid a hard-to-find semantic bug, it is key that you use a consistent interpretation of the meaning of this vector --- that it includes the variables in the order that we defined in Equation~\ref{e:bstate}.  Having a written mathematical model, Equation~\ref{e:baseballstate}, is a good defense.
 
-The goal of the rate function is to compute the derivative of the state vector \lstinline{xx}, the left-hand side of Equation\~ref{e:baseballstate}.   
+The goal of the rate function is to compute the derivative of the state vector \lstinline{xx}, the left-hand side of Equation~\ref{e:baseballstate}.
 
 For now, we'll ignore air resistance, so the only force on the baseball is gravity.  We represent acceleration due to gravity with a vector that has magnitude \lstinline{g} and direction along the negative y-axis.
 

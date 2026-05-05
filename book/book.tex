@@ -32,6 +32,16 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{subfiles}
+
+% Cross-document references: when a chapter is compiled standalone via
+% subfiles, pull in labels from the master book.aux so references to
+% labels in other chapters (\ref{vecseq}, \ref{fzero}, etc.) resolve.
+% The IfFileExists guard prevents an error when book.aux doesn't exist
+% yet (e.g., on a clean tree --- run `make book` once first to populate it).
+\usepackage{xr-hyper}
+\ifSubfilesClassLoaded{%
+  \IfFileExists{../../book.aux}{\externaldocument{../../book}}{}%
+}{}
 \newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
 \newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 

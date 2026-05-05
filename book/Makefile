@@ -31,10 +31,14 @@ chapters: $(CHAPTERS_PDF)
 assignments: $(ASSIGNMENTS_PDF)
 book: book.pdf
 
-book.pdf: book.tex $(CHAPTERS_TEX)
+book.pdf book.aux &: book.tex $(CHAPTERS_TEX)
 	$(LATEXMK) -cd $< || test -f $@
 
-$(CHAPTERS_PDF) $(ASSIGNMENTS_PDF): %.pdf: %.tex
+# Standalone chapter / assignment PDFs depend on book.aux so that
+# cross-chapter references (e.g. \ref{fzero} from the optimization
+# chapter) resolve via xr-hyper. book.aux is produced as a side-effect
+# of building book.pdf.
+$(CHAPTERS_PDF) $(ASSIGNMENTS_PDF): %.pdf: %.tex book.aux
 	$(LATEXMK) -cd $< || test -f $@
 
 # Per-week shortcut: make w03, make w04, ...
