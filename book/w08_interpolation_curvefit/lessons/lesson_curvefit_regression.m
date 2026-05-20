@@ -1,17 +1,18 @@
 %[text] # Curve Fitting and Regression
-%[text] Both **curve fitting** and **regression** are tools for modeling relationships between variables based on observed data. 
-%[text] **Curve Fitting**
-%[text] Curve fitting is a **broader numerical technique** that finds a curve that best approximates the relationship between variables—**not necessarily statistically motivated**.
-%[text] - May involve fitting arbitrary functions (e.g., polynomials, exponentials, splines).
-%[text] - Often used in **engineering and physics** where a known functional form is hypothesized.
-%[text] - Focuses more on **interpolation or approximation** than on inference.
-%[text] - MATLAB example: `polyfit`, `lsqcurvefit, fit` (from Curve Fitting Toolbox) \
-%[text] **Regression**
-%[text] Regression is a **statistical method** used to model the relationship between a dependent variable and one or more independent variables. The goal is often **prediction** or understanding relationships.
-%[text] - Typically assumes a probabilistic model.
-%[text] - Can include **linear regression**, **multiple regression**, **logistic regression**, etc.
-%[text] - Emphasizes **statistical properties**, such as minimizing the residual error in a least squares sense, and evaluating goodness of fit (e.g., R², p-values).
-%[text] - MATLAB example: `fitlm`, `regress`, or `LinearModel.fit`. \
+%[text] Both **curve fitting** and **regression** find model parameters that minimize the squared error between the model and the data — the underlying math is largely the same. What differs is **where the model comes from** and **whether its parameters mean anything**.
+%[text] **Curve fitting — empirical models**
+%[text] The model is chosen for **convenience**, not because it represents the underlying process. A polynomial of degree $n$ is flexible enough to bend through almost any data set, but its coefficients are just numbers — they carry no physical meaning and have no units of their own.
+%[text] - Use when you want a smooth curve to **describe, smooth, or interpolate** the data.
+%[text] - Trust the fit **inside** the data range; be cautious extrapolating.
+%[text] - Watch for **overfitting** — a model flexible enough to chase the noise.
+%[text] - MATLAB: `polyfit`, `spline`, `fit` (Curve Fitting Toolbox) \
+%[text] **Regression — mechanistic models**
+%[text] The model comes from the **physics or theory of the process**. Its parameters have **physical meaning and units** — initial voltage, decay rate, cutoff voltage — and estimating those parameters is often the whole point.
+%[text] - Use when a physical model gives the functional form.
+%[text] - Parameters can be reported with units, compared across experiments, and used to extrapolate via the mechanism.
+%[text] - Watch for **bad initial guesses** sending the solver to a junk minimum.
+%[text] - MATLAB: `nlinfit`, `fitnlm`, `lsqcurvefit` \
+%[text] A separate, orthogonal distinction is whether the model is **linear in its parameters**, which determines how it can be solved. We come back to this with the battery model below. \
 %%
 %[text] ## Fitting a Line to Data with `polyfit()`
 %[text] Given some data - often from experimental measurements, find the "best" line that describes the linear relationship.  Notice that we are choosing an underlying model of a line (a polynomial of degree 1): $y = mx + b$
@@ -96,14 +97,14 @@ plot(t_fit, v_fitn, 'g--', 'DisplayName', sprintf('%d Order Model: %.2f', n, Sn.
 %[text] - High R² on training data masks poor predictive power \
 %[text] Einstein: *Everything should be as simple as possible, but not simpler.*
 %%
-%[text] ## Nonlinear Regression with `nlfit`
+%[text] ## Nonlinear Regression with `nlinfit`
 %[text] Often we have a model of the underyling phenomena that comes from a physical model of the process.  For our battery data an exponential model is often a good predictor of the voltage drain over time:
 %[text] $V(t) = (V\_o -c) \\,e^{-kt} + c \\\\\n\nV(t) = V\_o \\,e^{-kt} + c (1-e^{-kt})$
 %[text] The ***parameters*** of this model are
 %[text] - $V\_o$ - initial voltage
 %[text] - $k$ - decay rate and
 %[text] - $c$ - cuttoff voltage. \
-%[text] The reason this is a non-linear (as opposed to linear) regression problem is that the parameter $k$ enters nonlinearly in the term $\\,e^{-kt}$.
+%[text] This is a **nonlinear** regression problem because the parameter $k$ enters nonlinearly through $e^{-kt}$ — the model cannot be written as a sum of terms where each parameter multiplies a function of $t$. `polyfit`, which only handles models that are **linear in their parameters**, cannot solve this. `nlinfit` handles the general case, but it must iterate from an initial guess instead of solving in one shot — which is why we have to supply starting values for $V\_o$, $k$, and $c$ below.
 figure;
 clf;
 plot(tt, vv, 'ko', 'DisplayName','Data','MarkerFaceColor','k')
@@ -168,7 +169,7 @@ plot(tt_reg, vv_reg, 'b--', 'DisplayName','NL Regression')
 %[text] 
 %%
 %[text] ## Figure of Merit for NL Regression
-%[text] We can optionally call the [`nlfit`](https://www.mathworks.com/help/stats/nlinfit.html) sovler with additional outputs to provide insight into the quality of the fit - how well the model describes the data.   The mean squared error (MSE) is another common metric for quantifying the goodness-of-fit.  We can call the same command as before, but assign the additional, optional output variables...
+%[text] We can optionally call the [`nlinfit`](https://www.mathworks.com/help/stats/nlinfit.html) solver with additional outputs to provide insight into the quality of the fit - how well the model describes the data.   The mean squared error (MSE) is another common metric for quantifying the goodness-of-fit.  We can call the same command as before, but assign the additional, optional output variables...
 [beta,R,J,CovB,MSE,ErrorModelInfo] = nlinfit(tt, vv, @batt_model2, params0);
 fprintf("MSE = %.3f [V]\n", MSE);
 %%
@@ -192,9 +193,12 @@ grid('on')
 legend()
 %%
 %[text] ## Summary
-%[text] In this demonstration we covered two closely related topics: curve-fitting for finding a descriptive model and regression for creating a predictive model.  The example illustrates to MATLAB algorithms:
-%[text] - `polyfit()` for fitting a polynomial model to data
-%[text] - `nlinfit()` for non-linear regression using a user-supplied model. \
+%[text] In this demonstration we covered two closely related topics:
+%[text] - **Curve fitting**: an **empirical** model chosen for convenience (a polynomial), whose coefficients are just numbers.
+%[text] - **Regression**: a **mechanistic** model chosen because it represents the physics, whose parameters have physical meaning and units.
+%[text] Both minimize least-squares error, but they answer different questions. The example illustrates two MATLAB algorithms:
+%[text] - `polyfit()` for fitting a polynomial model — works because polynomials are linear in their parameters.
+%[text] - `nlinfit()` for nonlinear regression with a user-supplied model — needed when parameters enter the model nonlinearly. \
 
 %[appendix]{"version":"1.0"}
 %---
