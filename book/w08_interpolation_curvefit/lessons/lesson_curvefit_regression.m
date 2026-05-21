@@ -22,17 +22,18 @@
 %[text] ### Step 3 — Choose an error metric
 %[text] By far the most common metric — and the one we use throughout this lesson — is the sum of squared residuals (L2, least squares):
 %[text] $E(p) = \\sum\_i \\left( y\_i - f(p, x\_i) \\right)^2$
-%[text] It is smooth, mathematically clean, and matches a Gaussian-noise assumption that is reasonable for many engineering measurements - it is a very useful model. 
+%[text] It is smooth, mathematically clean, and matches a Gaussian-noise assumption that is reasonable for many engineering measurements - it is a *very* useful model. 
 %[text] But it is a modeling choice, not a default. Other metrics — absolute residuals, weighted residuals, robust losses — are useful when those assumptions break down. See the appendix for alternatives.
 %[text] ### Step 4 — Optimize
 %[text] How the optimization is solved depends on **both** the model and the error metric, but one combination is dramatically easier than all the others:
 %[text] - **Linear Least Squares:** Linear-in-parameters model + squared residuals $\\to$ closed-form solution via linear algebra. One shot, no iteration, guaranteed global best fit. This is the algorithm inside `polyfit`, `fitlm`, `regress`, and `LinearModel.fit`.
 %[text] - **Anything else** $\\to$ **iterative search** from an initial guess. Can land in a local minimum, sensitive to the starting point, harder to verify. This is `nlinfit`. \
-%[text] A polynomial $y = a\_0 + a\_1 x + a\_2 x^2 + \\dots + a\_n x^n$ is **linear in the parameters** $a\_i$ — they appear with coefficient 1, never multiplied together, never inside a transcendental function. The "linear" in "linear regression" means **linear in the parameters**, *not* linear in $x$. So `polyfit` is actually doing linear regression, restricted to a polynomial basis. The more general tools (`fitlm`, `regress`) allow arbitrary basis functions — $a\_0 + a\_1 \\sin(x) + a\_2 e^{-x}$ is still linear regression — and multiple predictors, but they all share the same one-shot linear-algebra solver under the hood.
+%[text] A polynomial $y = a\_0 + a\_1 x + a\_2 x^2 + \\dots + a\_n x^n$ is **linear in the parameters** $a\_i$ — they appear with coefficient 1, never multiplied together, never inside a transcendental function. The "linear" in "linear regression" means **linear in the parameters**, *not* linear in $x$. 
+%[text] So `polyfit` is actually doing linear regression, restricted to a polynomial basis. The more general tools (`fitlm`, `regress`) allow arbitrary basis functions — $a\_0 + a\_1 \\sin(x) + a\_2 e^{-x}$ is still linear regression — and multiple predictors, but they all share the same one-shot linear-algebra solver under the hood.
 %[text] The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$, by contrast, has $k$ buried inside an exponential — **nonlinear in the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
 %%
 %[text] ## Fitting a Line to Data with `polyfit()`
-%[text] - Given data and a linear (first-order polynomial, AKA a line) model of the data: $\\hat{y} = mx + b$
+%[text] - Given data and a **first-order polynomial** (straight-line) model: $\\hat{y} = mx + b$
 %[text] - Find parameter values (slope and y-intercept) that minimize the sum of squared residuals (L2 / Least Squares) \
 %[text] As a demonstration, consider that measured the discharge of a 12 V battery over time with a particular load.
 tt = [0 1 2 3 4 5 6 7 8 9]; % hrs
@@ -49,27 +50,27 @@ title ("Battery Discharge") %[output:05c9c79b]
 %[text] ### `polyfit() Interface:`
 %[text] ![](text:image:2a28)
 %[text] ### Model: Linear in parameters, linear in x
-%[text] So if we want to use a **linear polynomial model** to discribe the data, minimizing the **least-squares** error of the fit.
+%[text] So if we want to use a **first-order polynomial** (a straight line) to describe the data, minimizing the **least-squares** error of the fit.
 n = 1;
 p = polyfit(tt, vv, n) %[output:0476909c]
 %[text] MATLAB uses a vector to represent the coefficients of a polynomial in descending order, so we interpret `p` as the polynomial, so
 %[text] $\\text{\[-1.18, 10.01\] \\rightarrow y = (-1.18) \\, x + 10.01$
 %%
-%[text] The `polyval` function uses the same representation for a polynomial and evaluates the polynomial over a range of values.  So we can visualize our linear model by adding to our plot of the data.
+%[text] The `polyval` function uses the same representation for a polynomial and evaluates the polynomial over a range of values.  So we can visualize our straight-line fit by adding to our plot of the data.
 t_fit = linspace(min(tt), max(tt), 100);
 v_fit = polyval(p, t_fit);
 % Equivalently
 v_fit = p(1)*t_fit + p(2);
 
 hold on; %[output:00c98f27]
-plot(t_fit, v_fit, 'r--', 'DisplayName', 'Linear Model'); %[output:00c98f27]
+plot(t_fit, v_fit, 'r--', 'DisplayName', 'Straight Line'); %[output:00c98f27]
 legend('Location','northeast') %[output:00c98f27]
 %%
 %[text] ### How 'good' is the fit?
 %[text] Polyfit also provides a output (as a structure) with a few measures of "goodness" of the fit. So if we call the algorithm with a second output...
 [p, S] = polyfit(tt, vv, 1) %[output:386f6a79] %[output:3a1474c1]
 %[text] For now we'll focus on the $R^2$ value, *coefficient of determination.*
-fprintf("The R^2 value for the linear fit: %.2f", S.rsquared); %[output:5ab25a99]
+fprintf("The R^2 value for the straight-line fit: %.2f", S.rsquared); %[output:5ab25a99]
 %[text] **Explanation of R²:**
 %[text] - R² values range from **0 to 1**.
 %[text] - **1.0** indicates a **perfect fit** — the model explains **100% of the variability** in the data.
@@ -78,7 +79,7 @@ fprintf("The R^2 value for the linear fit: %.2f", S.rsquared); %[output:5ab25a99
 %[text] - In **engineering applications**, an R² value greater than **0.90** is typically considered acceptable. \
 %[text] This is a bit of a hack to change the legend entry after the fact
 lstr = legend().String %[output:5dce2225]
-lstr{2} = sprintf(sprintf("Linear Model: %.2f", S.rsquared));
+lstr{2} = sprintf(sprintf("Straight Line: %.2f", S.rsquared));
 legend(lstr) %[output:0649dde5]
 %%
 %[text] ### Maybe a higher order polynomial is better?
@@ -96,7 +97,7 @@ plot(t_fit, v_fit2, 'b--', 'DisplayName', sprintf('Quadratic Model: %.2f', S2.rs
 %[text] Build the design matrix directly and inspect:
 % Build the design matrix: column of 1s, column of t, column of t^2.
 A = [ones(numel(tt),1), tt(:), tt(:).^2]
-%[text] Each row of $A$ tells the model what to multiply $[a\_0, a\_1, a\_2]^\\top$ by to predict the voltage at that time. The least-squares solution — the $\\mathbf{p}$ that makes $A\\mathbf{p}$ as close as possible to the measured $\\mathbf{v}$ — comes from MATLAB's **backslash** operator. No iteration, no initial guess; the answer drops out of linear algebra in one step. This is exactly what `polyfit` does internally.
+%[text] Each row of $A$ tells the model what to multiply $\[a\_0, a\_1, a\_2\]^\\top$ by to predict the voltage at that time. The least-squares solution — the $\\mathbf{p}$ that makes $A\\mathbf{p}$ as close as possible to the measured $\\mathbf{v}$ — comes from MATLAB's **backslash** operator. No iteration, no initial guess; the answer drops out of linear algebra in one step. This is exactly what `polyfit` does internally.
 % Backslash solves the least-squares problem A*p = v in one shot.
 p_LA = A \ vv(:) %[output:2af9f50b]
 %[text] Compare against `polyfit` (which returns coefficients in **descending** order, the opposite of how we stacked the columns of $A$):
@@ -254,6 +255,31 @@ legend() %[output:2e3dee3e]
 %[text] - Minimize the **worst-case** residual, not the average.
 %[text] - **When**: you need a hard guarantee — "no point in the operating range can be off by more than $X$". Common in approximation theory and tolerancing; uncommon for fitting noisy data. \
 %[text] **The unifying point**: picking squared residuals is implicitly saying "the noise is symmetric, well-behaved, no big outliers, and roughly the same magnitude across all my data points." When any of those is false, a different metric is principled, not exotic.
+%%
+%[text] ## Appendix — "linear" is overloaded
+%[text] The word **linear** does two different jobs in this lesson, and keeping them straight prevents a real source of confusion.
+%[text] ### Two senses of "linear"
+%[text] **1. Linear in the independent variable.** The *graph* is a straight line: $y = a\_0 + a\_1 x$. This applies *only* to the first-order polynomial — for $n \\ge 2$, the polynomial's graph is no longer a line.
+%[text] **2. Linear in the parameters.** The *unknowns* $a\_i$ enter only as coefficients of fixed functions of $x$ — never multiplied together, never inside a transcendental function. Every polynomial of every degree has this property; so does $a\_0 + a\_1 \\sin x + a\_2 e^{-x}$, even though its graph is anything but a line. \\
+%[text] These are **independent** properties — a model can have one without the other:
+%[text] - $y = a\_0 + a\_1 x$ — linear in **both** senses. The classic "linear fit".
+%[text] - $y = a\_0 + a\_1 x + a\_2 x^2$ — linear in the parameters, **not** linear in $x$. (A parabola, but `polyfit` solves it in one shot.)
+%[text] - $y = a\_0 \\, e^{-a\_1 x}$ — linear in **neither**. (`nlinfit` territory.) \
+%[text] ### "Linear in the parameters" is the same as "linear in the basis"
+%[text] If we write the model as
+%[text] $y = a\_0 \\, \\phi\_0(x) + a\_1 \\, \\phi\_1(x) + \\dots + a\_n \\, \\phi\_n(x)$
+%[text] for some fixed **basis functions** $\\phi\_j$, then by construction it is linear in the parameters $a\_j$ — they enter only as coefficients of the (fixed) $\\phi\_j$. The basis can be anything:
+%[text] - $\\{1, x, x^2, \\dots, x^n\\}$ — **polynomial basis** (what `polyfit` uses).
+%[text] - $\\{1, \\sin x, \\cos x, \\sin 2x, \\cos 2x, \\dots\\}$ — **Fourier basis**.
+%[text] - B-splines, wavelets, radial basis functions, and so on. \
+%[text] So "linear-in-parameters" and "linear-in-the-basis" describe the **same property**: the model is a linear combination of fixed basis functions. What makes it "linear" is that the unknowns are the **coefficients**, nothing more.
+%[text] ### Why it matters
+%[text] **Linear in the parameters** is the property that makes the optimization solvable by one-shot linear algebra. It is the *only* property that matters for whether `polyfit`-style closed-form regression works. It has nothing to do with whether the resulting curve is a straight line.
+%[text] ### Terminology
+%[text] - For `polyfit(t, v, 1)`: say **straight-line fit** or **first-order polynomial fit** — not just "linear fit".
+%[text] - For `polyfit(t, v, n)` generally: $n$**-th order polynomial fit**. Linear in the parameters; not linear in $x$ for $n \\ge 2$.
+%[text] - **Linear regression**: reserve for the statistical sense — *linear in the parameters, with any fixed basis*. `polyfit` is a special case (polynomial basis); `fitlm` / `regress` generalize the basis.
+%[text] - When in doubt, **qualify**: say "linear in the parameters" or "linear in $x$" — never just "linear". \
 
 %[appendix]{"version":"1.0"}
 %---

@@ -44,12 +44,12 @@ p = polyfit(tt, vv, n)
 t_fit = linspace(min(tt), max(tt), 100);
 v_fit = polyval(p, t_fit);
 plot(tt, vv, 'ko', t_fit, v_fit, 'r--')
-%[text] The `ko` markers show the data; the dashed red line is the linear fit. The line clearly captures the overall downward trend, even though it doesn't pass through any individual data point.
+%[text] The `ko` markers show the data; the dashed red line is the first-order polynomial (straight-line) fit. The line clearly captures the overall downward trend, even though it doesn't pass through any individual data point.
 %[text] ### How Good is the Fit?
 %[text] `polyfit` can return additional output that summarizes how well the fit describes the data. We're going to focus on one number, the *coefficient of determination* $R^2$:
 [p, S] = polyfit(tt, vv, 1);
 fprintf('R^2 = %.2f\n', S.rsquared);
-%[text] $R^2$ ranges from $0$ to $1$. A value of $1$ means the model passes through every data point. A value of $0$ means the model does no better than just using the mean of the data — i.e., a horizontal line through $\\bar{v}$. In between, $R^2$ tells you what fraction of the variability in the data is explained by the model. An $R^2$ of $0.82$ says the linear model captures 82% of the variance; the remaining 18% is the part of the data the line doesn't account for. As a rule of thumb, engineering applications often look for $R^2 > 0.9$ before considering a fit “good enough,” but the right threshold depends on the application.
+%[text] $R^2$ ranges from $0$ to $1$. A value of $1$ means the model passes through every data point. A value of $0$ means the model does no better than just using the mean of the data — i.e., a horizontal line through $\\bar{v}$. In between, $R^2$ tells you what fraction of the variability in the data is explained by the model. An $R^2$ of $0.82$ says the first-order polynomial captures 82% of the variance; the remaining 18% is the part of the data the line doesn't account for. As a rule of thumb, engineering applications often look for $R^2 > 0.9$ before considering a fit “good enough,” but the right threshold depends on the application.
 %[text] ### Higher-Order Polynomials
 %[text] A line is just the simplest case. We can fit a polynomial of any degree:
 p2 = polyfit(tt, vv, 2);   % parabola
@@ -81,7 +81,7 @@ end
 params0 = [13.5, 0.25, 0.5];           % initial guess
 params  = nlinfit(tt, vv, @batt_model, params0)
 %[text] We interpret the result as $V\_0 = 13.2$\,V, $k = 0.40$\,1/hr, and $c = 1.05$\,V. The time constant of the discharge is $1/k \\approx 2.5$ hours.
-%[text] Why an initial guess? Unlike the linear case, nonlinear regression is an iterative algorithm — it starts from a guess and refines it. If the initial guess is far from the true parameters, the algorithm can get stuck at a poor local minimum, or fail to converge. A reasonable initial guess made from looking at the data goes a long way.
+%[text] Why an initial guess? Unlike the linear-in-parameters case, nonlinear regression is an iterative algorithm — it starts from a guess and refines it. If the initial guess is far from the true parameters, the algorithm can get stuck at a poor local minimum, or fail to converge. A reasonable initial guess made from looking at the data goes a long way.
 %[text] ### Goodness of Fit for Nonlinear Models
 %[text] `nlinfit` can also report a measure of fit quality. Calling it with additional output arguments returns the residuals (the differences between data and model) and a covariance estimate:
 [params, resid, ~, ~, MSE] = nlinfit(tt, vv, @batt_model, params0);
