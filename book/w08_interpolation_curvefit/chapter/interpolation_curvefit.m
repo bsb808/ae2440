@@ -62,7 +62,7 @@ p3 = polyfit(tt, vv, 3);   % cubic
 %[text] Choose the lowest order that captures the structure you actually believe is there. If a line is enough, don't fit a parabola.
 %%
 %[text] ## Nonlinear Regression
-%[text] `polyfit` is a special case of a more general idea: *regression*, the statistical task of choosing model parameters to minimize the discrepancy between a model and a set of measurements. Polynomial fits are linear in their parameters — doubling a coefficient doubles the model's contribution from that term — which makes them tractable using a single matrix equation. But many physical models are not linear in their parameters.
+%[text] `polyfit` is a special case of a more general idea: *regression*, the statistical task of choosing model parameters to minimize the discrepancy between a model and a set of measurements. Polynomial fits are **linear with respect to (wrt) their parameters** — doubling a coefficient doubles the model's contribution from that term — which makes them tractable using a single matrix equation. But many physical models are not linear wrt their parameters.
 %[text] The battery discharge example again: from physical reasoning we expect the voltage to decay exponentially toward a cutoff voltage, not linearly. A reasonable model is
 %[text] $V(t) = (V\_0 - c)\\,e^{-k t} + c,$
 %[text] which has three parameters: the initial voltage $V\_0$, the decay rate $k$, and the cutoff voltage $c$. This model is *nonlinear* in $k$ because $k$ appears inside the exponential. We can't fit it with `polyfit`.
@@ -81,7 +81,7 @@ end
 params0 = [13.5, 0.25, 0.5];           % initial guess
 params  = nlinfit(tt, vv, @batt_model, params0)
 %[text] We interpret the result as $V\_0 = 13.2$\,V, $k = 0.40$\,1/hr, and $c = 1.05$\,V. The time constant of the discharge is $1/k \\approx 2.5$ hours.
-%[text] Why an initial guess? Unlike the linear-in-parameters case, nonlinear regression is an iterative algorithm — it starts from a guess and refines it. If the initial guess is far from the true parameters, the algorithm can get stuck at a poor local minimum, or fail to converge. A reasonable initial guess made from looking at the data goes a long way.
+%[text] Why an initial guess? Unlike the linear-wrt-parameters case, nonlinear regression is an iterative algorithm — it starts from a guess and refines it. If the initial guess is far from the true parameters, the algorithm can get stuck at a poor local minimum, or fail to converge. A reasonable initial guess made from looking at the data goes a long way.
 %[text] ### Goodness of Fit for Nonlinear Models
 %[text] `nlinfit` can also report a measure of fit quality. Calling it with additional output arguments returns the residuals (the differences between data and model) and a covariance estimate:
 [params, resid, ~, ~, MSE] = nlinfit(tt, vv, @batt_model, params0);
@@ -100,7 +100,7 @@ R2 = 1 - SSE/SST;
 %%
 %[text] ## Chapter Review
 %[text] This chapter introduced two related families of techniques for working with measured data. *Interpolation* produces a function that passes exactly through your samples, useful when you need to estimate values between samples and you trust the data. MATLAB provides `interp1` for piecewise-linear (and other) interpolation, and `spline` for smooth cubic-spline interpolation.
-%[text] *Curve fitting* produces a function that approximates your data using a model with a small number of parameters. When the model is a polynomial, `polyfit` finds the best-fit coefficients in the least-squares sense; `polyval` evaluates the polynomial at query points. When the model is nonlinear in its parameters, `nlinfit` finds the parameters by iterative optimization, starting from an initial guess.
+%[text] *Curve fitting* produces a function that approximates your data using a model with a small number of parameters. When the model is a polynomial, `polyfit` finds the best-fit coefficients in the least-squares sense; `polyval` evaluates the polynomial at query points. When the model is nonlinear wrt its parameters, `nlinfit` finds the parameters by iterative optimization, starting from an initial guess.
 %[text] The coefficient of determination $R^2$ summarizes how well a model captures the variability in the data. An $R^2$ near $1$ is good; an $R^2$ near $0$ is poor. But high $R^2$ alone does not guarantee a useful model: an over-flexible model can chase noise rather than describe trend, a problem called *overfitting*. The right model is the simplest one that captures the structure you believe is in the data.
 %%
 %[text] ## Exercises
@@ -116,7 +116,7 @@ tt = [0 1 2 3 4 5 6 7 8 9];
 vv = [13.55 8.50 6.80 4.31 3.35 3.86 2.94 1.14 1.79 0.65];
 %[text] fit a polynomial of degree $1$, $2$, $3$, and $7$. For each fit, report the $R^2$ value and plot the fitted polynomial against the data. Comment on the trade-off between fit quality and model complexity. At what order does the fit start to look “wiggly”?
 %[text] **Exercise.**
-%[text] The nonlinear regression in Section 3 worked well with the initial guess `params0 = [13.5, 0.25, 0.5]`. Try the same fit with progressively worse initial guesses — e.g. `[10, 1, 0]`, `[1, 1, 1]`, `[100, 0.01, 0]`. At what point does `nlinfit` fail to find the right parameters, or fail to converge at all? This is the price of fitting models that are nonlinear in their parameters.
+%[text] The nonlinear regression in Section 3 worked well with the initial guess `params0 = [13.5, 0.25, 0.5]`. Try the same fit with progressively worse initial guesses — e.g. `[10, 1, 0]`, `[1, 1, 1]`, `[100, 0.01, 0]`. At what point does `nlinfit` fail to find the right parameters, or fail to converge at all? This is the price of fitting models that are nonlinear wrt their parameters.
 %[appendix]{"version":"1.0"}
 %---
 %[metadata:view]

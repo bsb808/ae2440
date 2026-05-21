@@ -26,13 +26,17 @@
 %[text] But it is a modeling choice, not a default. Other metrics — absolute residuals, weighted residuals, robust losses — are useful when those assumptions break down. See the appendix for alternatives.
 %[text] ### Step 4 — Optimize
 %[text] How the optimization is solved depends on **both** the model and the error metric, but one combination is dramatically easier than all the others:
-%[text] - **Linear Least Squares:** Linear-in-parameters model + squared residuals $\\to$ closed-form solution via linear algebra. One shot, no iteration, guaranteed global best fit. This is the algorithm inside `polyfit`, `fitlm`, `regress`, and `LinearModel.fit`.
+%[text] - **Linear Least Squares:** A model that is **linear with respect to the parameters** (abbreviated **wrt** below) combined with squared residuals $\\to$ closed-form solution via linear algebra. One shot, no iteration, guaranteed global best fit. This is the algorithm inside `polyfit`, `fitlm`, `regress`, and `LinearModel.fit`.
 %[text] - **Anything else** $\\to$ **iterative search** from an initial guess. Can land in a local minimum, sensitive to the starting point, harder to verify. This is `nlinfit`. \
-%[text] A polynomial $y = a\_0 + a\_1 x + a\_2 x^2 + \\dots + a\_n x^n$ is **linear in the parameters** $a\_i$ — they appear with coefficient 1, never multiplied together, never inside a transcendental function. The "linear" in "linear regression" means **linear in the parameters**, *not* linear in $x$. 
+%[text] A polynomial $y = a\_0 + a\_1 x + a\_2 x^2 + \\dots + a\_n x^n$ is **linear wrt the parameters** $a\_i$ — they appear with coefficient 1, never multiplied together, never inside a transcendental function. The "linear" in "linear regression" means **linear wrt the parameters**, *not* linear wrt $x$.
 %[text] So `polyfit` is actually doing linear regression, restricted to a polynomial basis. The more general tools (`fitlm`, `regress`) allow arbitrary basis functions (e.g., $a\_0 + a\_1 \\sin(x) + a\_2 e^{-x}$) is still linear regression, but they all share the same one-shot linear-algebra solution.
-%[text] Nonlinear models typically refer to models that are nonline with respect to the parameters
-%[text] %CLAUDE: Add examples of other models that are nonlinear with respect top the paramterss
-%[text]  uin the  the The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$, by contrast, has $k$ buried inside an exponential — **nonlinear in the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
+%[text] **Nonlinear models** typically refer to models that are nonlinear wrt the parameters. Familiar engineering examples include:
+%[text] - **Exponential decay**: $y = A\\, e^{-k x}$ — the rate $k$ sits inside the exponential.
+%[text] - **Power law**: $y = A\\, x^{b}$ — the exponent $b$ is itself a parameter.
+%[text] - **Saturating / logistic**: $y = L / \\left( 1 + e^{-k (x - x\_0)} \\right)$ — both $k$ and $x\_0$ live inside the exponential.
+%[text] - **Gaussian peak**: $y = A\\, \\exp\\!\\left( -(x - \\mu)^2 / (2 \\sigma^2) \\right)$ — $\\mu$ and $\\sigma$ enter through a transcendental function.
+%[text] - **Damped oscillation**: $y = A\\, e^{-\\gamma t} \\cos(\\omega t + \\phi)$ — $\\gamma$, $\\omega$, and $\\phi$ all enter nonlinearly. \
+%[text] The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$ from this lesson is the same story — $k$ is buried inside the exponential, so the model is **nonlinear wrt the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
 %%
 %[text] ## Fitting a Line to Data with `polyfit()`
 %[text] - Given data and a **first-order polynomial** (straight-line) model: $\\hat{y} = mx + b$
@@ -51,7 +55,7 @@ title ("Battery Discharge") %[output:05c9c79b]
 %%
 %[text] ### `polyfit() Interface:`
 %[text] ![](text:image:2a28)
-%[text] ### Model: Linear in parameters, linear in x
+%[text] ### Model: Linear wrt parameters, linear wrt x
 %[text] So if we want to use a **first-order polynomial** (a straight line) to describe the data, minimizing the **least-squares** error of the fit.
 n = 1;
 p = polyfit(tt, vv, n) %[output:0476909c]
@@ -94,7 +98,7 @@ v_fit2 = p2(1)*t_fit.^2 + p2(2)*t_fit + p2(3);
 plot(t_fit, v_fit2, 'b--', 'DisplayName', sprintf('Quadratic Model: %.2f', S2.rsquared)); %[output:60a7f1ee]
 %%
 %[text] ### Aside — under the hood: linear algebra
-%[text] The quadratic model $\\hat{y} = a\_2 t^2 + a\_1 t + a\_0$ is **linear in the parameters** $a\_0, a\_1, a\_2$. That means we can stack the predictions for all $n$ data points into a single matrix equation $\\mathbf{\\hat{y}} = A \\, \\mathbf{p}$, where the **design matrix** $A$ has one row per measurement and one column per parameter — a column of 1's, a column of $t$ values, and a column of $t^2$ values:
+%[text] The quadratic model $\\hat{y} = a\_2 t^2 + a\_1 t + a\_0$ is **linear wrt the parameters** $a\_0, a\_1, a\_2$. That means we can stack the predictions for all $n$ data points into a single matrix equation $\\mathbf{\\hat{y}} = A \\, \\mathbf{p}$, where the **design matrix** $A$ has one row per measurement and one column per parameter — a column of 1's, a column of $t$ values, and a column of $t^2$ values:
 %[text] $A = \\left\[ \\matrix{1 & t\_1 & t\_1^2 \\cr 1 & t\_2 & t\_2^2 \\cr \\vdots & \\vdots & \\vdots \\cr 1 & t\_n & t\_n^2} \\right\], \\qquad \\mathbf{p} = \\left\\{ \\matrix{a\_0 \\cr a\_1 \\cr a\_2} \\right\\}$
 %[text] Build the design matrix directly and inspect:
 % Build the design matrix: column of 1s, column of t, column of t^2.
@@ -127,7 +131,7 @@ plot(t_fit, v_fitn, 'g--', 'DisplayName', sprintf('%d Order Model: %.2f', n, Sn.
 %[text] - $V\_o$ - initial voltage
 %[text] - $k$ - decay rate and
 %[text] - $c$ - cuttoff voltage. \
-%[text] This is a **nonlinear** regression problem because the parameter $k$ enters nonlinearly through $e^{-kt}$ — the model cannot be written as a sum of terms where each parameter multiplies a function of $t$. `polyfit`, which only handles models that are **linear in their parameters**, cannot solve this. `nlinfit` handles the general case, but it must iterate (recall optimzation) from an initial estimate instead of solving in one shot, which is why we have to supply initial values for $V\_o$, $k$, and $c$ below.
+%[text] This is a **nonlinear** regression problem because the parameter $k$ enters nonlinearly through $e^{-kt}$ — the model cannot be written as a sum of terms where each parameter multiplies a function of $t$. `polyfit`, which only handles models that are **linear wrt their parameters**, cannot solve this. `nlinfit` handles the general case, but it must iterate (recall optimzation) from an initial estimate instead of solving in one shot, which is why we have to supply initial values for $V\_o$, $k$, and $c$ below.
 figure; %[output:46ba6dd8]
 clf; %[output:46ba6dd8]
 plot(tt, vv, 'ko', 'DisplayName','Data','MarkerFaceColor','k') %[output:46ba6dd8]
@@ -219,15 +223,15 @@ legend() %[output:2e3dee3e]
 %%
 %[text] ## Summary
 %[text] Both halves of this lesson followed the same 4-step recipe — **data** $\\to$ **model** $\\to$ **metric** $\\to$ **optimize** — using the same metric (squared residuals) but different choices for the model:
-%[text] - **Curve fitting** with `polyfit()`: an **empirical** polynomial model. Linear in its parameters, so the optimization is solved in **one shot by linear algebra**.
-%[text] - **Regression** with `nlinfit()`: a **mechanistic** exponential model from the physics. Nonlinear in its parameters, so the optimization must **iterate from an initial guess**. \
+%[text] - **Curve fitting** with `polyfit()`: an **empirical** polynomial model. Linear wrt its parameters, so the optimization is solved in **one shot by linear algebra**.
+%[text] - **Regression** with `nlinfit()`: a **mechanistic** exponential model from the physics. Nonlinear wrt its parameters, so the optimization must **iterate from an initial guess**. \
 %[text] The metric was a deliberate pick, not a law. See the appendix below for when other metrics are more appropriate.
 %%
 %[text] ## Appendix — Choosing an error metric
 %[text] We used the **sum of squared residuals** (L2, least squares) throughout this lesson. It is the default for a reason — but it is a modeling choice, not a law of nature. Below are the alternatives an engineer is most likely to encounter, and the situations that motivate them.
 %[text] ### Sum of squared residuals (L2 / least squares)
 %[text] $E(p) = \\sum\_i \\left( y\_i - f(p, x\_i) \\right)^2$
-%[text] - **Why so common**: smooth, differentiable, closed-form solution when the model is linear in its parameters; the maximum-likelihood estimator under Gaussian noise.
+%[text] - **Why so common**: smooth, differentiable, closed-form solution when the model is linear wrt its parameters; the maximum-likelihood estimator under Gaussian noise.
 %[text] - **Downside**: squaring amplifies large errors, so a single outlier can yank the fit toward it.
 %[text] - **MATLAB**: `polyfit`, `fitlm`, `regress`, `nlinfit` (default). \
 %[text] ### Sum of absolute residuals (L1 / least absolute deviations)
@@ -261,27 +265,27 @@ legend() %[output:2e3dee3e]
 %[text] ## Appendix — "linear" is overloaded
 %[text] The word **linear** does two different jobs in this lesson, and keeping them straight prevents a real source of confusion.
 %[text] ### Two senses of "linear"
-%[text] **1. Linear in the independent variable.** The *graph* is a straight line: $y = a\_0 + a\_1 x$. This applies *only* to the first-order polynomial — for $n \\ge 2$, the polynomial's graph is no longer a line.
-%[text] **2. Linear in the parameters.** The *unknowns* $a\_i$ enter only as coefficients of fixed functions of $x$ — never multiplied together, never inside a transcendental function. Every polynomial of every degree has this property; so does $a\_0 + a\_1 \\sin x + a\_2 e^{-x}$, even though its graph is anything but a line. \\
+%[text] **1. Linear wrt the independent variable.** The *graph* is a straight line: $y = a\_0 + a\_1 x$. This applies *only* to the first-order polynomial — for $n \\ge 2$, the polynomial's graph is no longer a line.
+%[text] **2. Linear wrt the parameters.** The *unknowns* $a\_i$ enter only as coefficients of fixed functions of $x$ — never multiplied together, never inside a transcendental function. Every polynomial of every degree has this property; so does $a\_0 + a\_1 \\sin x + a\_2 e^{-x}$, even though its graph is anything but a line. \\
 %[text] These are **independent** properties — a model can have one without the other:
 %[text] - $y = a\_0 + a\_1 x$ — linear in **both** senses. The classic "linear fit".
-%[text] - $y = a\_0 + a\_1 x + a\_2 x^2$ — linear in the parameters, **not** linear in $x$. (A parabola, but `polyfit` solves it in one shot.)
+%[text] - $y = a\_0 + a\_1 x + a\_2 x^2$ — linear wrt the parameters, **not** linear wrt $x$. (A parabola, but `polyfit` solves it in one shot.)
 %[text] - $y = a\_0 \\, e^{-a\_1 x}$ — linear in **neither**. (`nlinfit` territory.) \
-%[text] ### "Linear in the parameters" is the same as "linear in the basis"
+%[text] ### "Linear wrt the parameters" is the same as "linear wrt the basis"
 %[text] If we write the model as
 %[text] $y = a\_0 \\, \\phi\_0(x) + a\_1 \\, \\phi\_1(x) + \\dots + a\_n \\, \\phi\_n(x)$
-%[text] for some fixed **basis functions** $\\phi\_j$, then by construction it is linear in the parameters $a\_j$ — they enter only as coefficients of the (fixed) $\\phi\_j$. The basis can be anything:
+%[text] for some fixed **basis functions** $\\phi\_j$, then by construction it is linear wrt the parameters $a\_j$ — they enter only as coefficients of the (fixed) $\\phi\_j$. The basis can be anything:
 %[text] - $\\{1, x, x^2, \\dots, x^n\\}$ — **polynomial basis** (what `polyfit` uses).
 %[text] - $\\{1, \\sin x, \\cos x, \\sin 2x, \\cos 2x, \\dots\\}$ — **Fourier basis**.
 %[text] - B-splines, wavelets, radial basis functions, and so on. \
-%[text] So "linear-in-parameters" and "linear-in-the-basis" describe the **same property**: the model is a linear combination of fixed basis functions. What makes it "linear" is that the unknowns are the **coefficients**, nothing more.
+%[text] So "linear-wrt-parameters" and "linear-wrt-the-basis" describe the **same property**: the model is a linear combination of fixed basis functions. What makes it "linear" is that the unknowns are the **coefficients**, nothing more.
 %[text] ### Why it matters
-%[text] **Linear in the parameters** is the property that makes the optimization solvable by one-shot linear algebra. It is the *only* property that matters for whether `polyfit`-style closed-form regression works. It has nothing to do with whether the resulting curve is a straight line.
+%[text] **Linear wrt the parameters** is the property that makes the optimization solvable by one-shot linear algebra. It is the *only* property that matters for whether `polyfit`-style closed-form regression works. It has nothing to do with whether the resulting curve is a straight line.
 %[text] ### Terminology
 %[text] - For `polyfit(t, v, 1)`: say **straight-line fit** or **first-order polynomial fit** — not just "linear fit".
-%[text] - For `polyfit(t, v, n)` generally: $n$**-th order polynomial fit**. Linear in the parameters; not linear in $x$ for $n \\ge 2$.
-%[text] - **Linear regression**: reserve for the statistical sense — *linear in the parameters, with any fixed basis*. `polyfit` is a special case (polynomial basis); `fitlm` / `regress` generalize the basis.
-%[text] - When in doubt, **qualify**: say "linear in the parameters" or "linear in $x$" — never just "linear". \
+%[text] - For `polyfit(t, v, n)` generally: $n$**-th order polynomial fit**. Linear wrt the parameters; not linear wrt $x$ for $n \\ge 2$.
+%[text] - **Linear regression**: reserve for the statistical sense — *linear wrt the parameters, with any fixed basis*. `polyfit` is a special case (polynomial basis); `fitlm` / `regress` generalize the basis.
+%[text] - When in doubt, **qualify**: say "linear wrt the parameters" or "linear wrt $x$" — never just "linear". \
 
 %[appendix]{"version":"1.0"}
 %---
