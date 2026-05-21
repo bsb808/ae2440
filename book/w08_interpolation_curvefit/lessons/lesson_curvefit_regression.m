@@ -1,36 +1,25 @@
 %[text] # Curve Fitting and Regression
-%[text] Both **curve fitting** and **regression** find model parameters that minimize the squared error between the model and the data — the underlying math is largely the same. What differs is **where the model comes from** and **whether its parameters mean anything**.
-%[text] **Curve fitting — empirical models**
+%[text] Both **curve fitting** and **regression** find model parameters that minimize the squared error between the model and the data — the underlying math is largely the same. 
+%[text] What differs is where the model comes from and whether its parameters mean anything.
+%[text] ### Curve fitting — empirical models
 %[text] The model is chosen for **convenience**, not because it represents the underlying process. A polynomial of degree $n$ is flexible enough to bend through almost any data set, but its coefficients are just numbers — they carry no physical meaning and have no units of their own.
 %[text] - Use when you want a smooth curve to **describe, smooth, or interpolate** the data.
 %[text] - Trust the fit **inside** the data range; be cautious extrapolating.
 %[text] - Watch for **overfitting** — a model flexible enough to chase the noise.
 %[text] - MATLAB: `polyfit`, `spline`, `fit` (Curve Fitting Toolbox) \
-%[text] **Regression — mechanistic models**
+%[text] ### **Regression — principled models**
 %[text] The model comes from the **physics or theory of the process**. Its parameters have **physical meaning and units** — initial voltage, decay rate, cutoff voltage — and estimating those parameters is often the whole point.
 %[text] - Use when a physical model gives the functional form.
 %[text] - Parameters can be reported with units, compared across experiments, and used to extrapolate via the mechanism.
-%[text] - Watch for **bad initial guesses** sending the solver to a junk minimum.
-%[text] - MATLAB: `nlinfit`, `fitnlm`, `lsqcurvefit` \
-%[text] A separate, orthogonal distinction is whether the model is **linear in its parameters**, which determines how it can be solved. We come back to this with the battery model below. \
+%[text] - Watch for **bad initial guesses** sending the solver to a local minimum.
+%[text] - MATLAB `nlinfit`, `fitnlm`, `lsqcurvefit` (Statistics and Machine Learning Toolbox) \
+%[text] A separate, orthogonal distinction is whether the model is **linear in its parameters**, which determines how it can be solved. We come back to this with the battery model below. 
 %%
 %[text] ## Fitting a Line to Data with `polyfit()`
-%[text] Given some data - often from experimental measurements, find the "best" line that describes the linear relationship.  Notice that we are choosing an underlying model of a line (a polynomial of degree 1): $y = mx + b$
+%[text] Given some data - often from experimental measurements, find the "best" line that describes the linear relationship.  
+%[text] Notice that we are choosing an underlying model of a line (a polynomial of degree 1: 
+%[text] $y = mx + b$
 %[text] As a demonstration, consider that measured the discharge of a 12 V battery over time with a particular load.
-%[text]  **`Time (hrs)`** **`Voltage (V)`**
-%[text]  **`__________`** **`___________`**
-%[text] 
-%[text]  `0           13.552` 
-%[text]  `1           8.5037` 
-%[text]  `2           6.8038` 
-%[text]  `3           4.3123` 
-%[text]  `4           3.3543` 
-%[text]  `5           3.8569` 
-%[text]  `6           2.9397` 
-%[text]  `7           1.1442` 
-%[text]  `8           1.7904` 
-%[text]  `9           0.6489` 
-%[text] 
 tt = [0 1 2 3 4 5 6 7 8 9]; % hrs
 vv = [13.5521	8.5037	6.8038	4.3123	3.3543	3.8569	2.9397	1.1442	1.7904	0.6489]; % V
 
@@ -54,6 +43,8 @@ p = polyfit(tt, vv, n)
 %[text] The `polyval` function uses the same representation for a polynomial and evaluates the polynomial over a range of values.  So we can visualize our linear model by adding to our plot of the data.
 t_fit = linspace(min(tt), max(tt), 100);
 v_fit = polyval(p, t_fit);
+% Equivalently
+v_fit = p(1)*t_fit + p(2);
 
 hold on;
 plot(t_fit, v_fit, 'r--', 'DisplayName', 'Linear Model');
@@ -69,8 +60,8 @@ fprintf("The R^2 value for the linear fit: %.2f", S.rsquared);
 %[text] - **1.0** indicates a **perfect fit** — the model explains **100% of the variability** in the data.
 %[text] - **0.0** means the model is **no better than simply using the mean** of the data — like fitting a horizontal line.
 %[text] - For example, an R² of **0.82** means the model explains **82%** of the variability; the remaining **18%** is due to other factors not captured by the model.
-%[text] - In **engineering applications**, an R² value greater than **0.9** is typically considered acceptable. \
-%[text] This is a bit of a hack to change the legend entry after the 
+%[text] - In **engineering applications**, an R² value greater than **0.90** is typically considered acceptable. \
+%[text] This is a bit of a hack to change the legend entry after the fact
 lstr = legend().String
 lstr{2} = sprintf(sprintf("Linear Model: %.2f", S.rsquared));
 legend(lstr)
@@ -80,6 +71,8 @@ legend(lstr)
 [p2, S2] = polyfit(tt, vv, 2)
 %[text] 
 v_fit2 = polyval(p2, t_fit);
+% Equivalently
+v_fit2 = p2(1)*t_fit.^2 + p2(2)*t_fit + p2(3);
 plot(t_fit, v_fit2, 'b--', 'DisplayName', sprintf('Quadratic Model: %.2f', S2.rsquared));
 %[text] 
 %%
@@ -87,7 +80,6 @@ plot(t_fit, v_fit2, 'b--', 'DisplayName', sprintf('Quadratic Model: %.2f', S2.rs
 %[text] How many degrees are too many?
 n = 7;
 [pn, Sn] = polyfit(tt, vv, n)
-%[text] 
 v_fitn = polyval(pn, t_fit);
 plot(t_fit, v_fitn, 'g--', 'DisplayName', sprintf('%d Order Model: %.2f', n, Sn.rsquared));
 %[text] Overfitting occurs when your model fits the training data too closely, capturing noise rather than just the underlying relationship. 
@@ -104,7 +96,7 @@ plot(t_fit, v_fitn, 'g--', 'DisplayName', sprintf('%d Order Model: %.2f', n, Sn.
 %[text] - $V\_o$ - initial voltage
 %[text] - $k$ - decay rate and
 %[text] - $c$ - cuttoff voltage. \
-%[text] This is a **nonlinear** regression problem because the parameter $k$ enters nonlinearly through $e^{-kt}$ — the model cannot be written as a sum of terms where each parameter multiplies a function of $t$. `polyfit`, which only handles models that are **linear in their parameters**, cannot solve this. `nlinfit` handles the general case, but it must iterate from an initial guess instead of solving in one shot — which is why we have to supply starting values for $V\_o$, $k$, and $c$ below.
+%[text] This is a **nonlinear** regression problem because the parameter $k$ enters nonlinearly through $e^{-kt}$ — the model cannot be written as a sum of terms where each parameter multiplies a function of $t$. `polyfit`, which only handles models that are **linear in their parameters**, cannot solve this. `nlinfit` handles the general case, but it must iterate (recall optimzation) from an initial estimate instead of solving in one shot, which is why we have to supply initial values for $V\_o$, $k$, and $c$ below.
 figure;
 clf;
 plot(tt, vv, 'ko', 'DisplayName','Data','MarkerFaceColor','k')
@@ -118,6 +110,8 @@ title("Battery Discharge")
 Vo = 13.5;  % V
 k = 1/4;    % 1/hr
 c = 0.5;    % V
+%[text] The regression analysis is a generic process for 
+%[text] $V(t) = (V\_o -c) \\,e^{-kt} + c $
 %[text] Let's define a function that evaluates our model using these paramameters, where the parameters are in a vector.
 function v = batt_model(params, t)
     Vo = params(1);
@@ -195,7 +189,7 @@ legend()
 %[text] ## Summary
 %[text] In this demonstration we covered two closely related topics:
 %[text] - **Curve fitting**: an **empirical** model chosen for convenience (a polynomial), whose coefficients are just numbers.
-%[text] - **Regression**: a **mechanistic** model chosen because it represents the physics, whose parameters have physical meaning and units.
+%[text] - **Regression**: a **mechanistic** model chosen because it represents the physics, whose parameters have physical meaning and units. \
 %[text] Both minimize least-squares error, but they answer different questions. The example illustrates two MATLAB algorithms:
 %[text] - `polyfit()` for fitting a polynomial model — works because polynomials are linear in their parameters.
 %[text] - `nlinfit()` for nonlinear regression with a user-supplied model — needed when parameters enter the model nonlinearly. \
