@@ -3,17 +3,18 @@
 %[text] What differs is where the model comes from and whether its parameters mean anything.
 %[text] ### Curve fitting — empirical models
 %[text] The model is chosen for **convenience**, not because it represents the underlying process. A polynomial of degree $n$ is flexible enough to bend through almost any data set, but its coefficients are just numbers — they carry no physical meaning and have no units of their own.
-%[text] - Use when you want a smooth curve to **describe, smooth, or interpolate** the data.
-%[text] - Trust the fit **inside** the data range; be cautious extrapolating.
-%[text] - Watch for **overfitting** — a model flexible enough to chase the noise.
+%[text] - Use when you want a smooth curve to describe, smooth, or interpolate the data.
+%[text] - Trust the fit inside the data range; be cautious extrapolating.
+%[text] - Watch for overfitting — a model flexible enough to chase the noise.
 %[text] - MATLAB: `polyfit`, `spline`, `fit` (Curve Fitting Toolbox) \
 %[text] ### **Regression — principled models**
-%[text] The model comes from the **physics or theory of the process**. Its parameters have **physical meaning and units** — initial voltage, decay rate, cutoff voltage — and estimating those parameters is often the whole point.
+%[text] The model comes from the **physics** or theory of the process. Its parameters have physical meaning and units — initial voltage, decay rate, cutoff voltage — and estimating those parameters is often the whole point.
 %[text] - Use when a physical model gives the functional form.
 %[text] - Parameters can be reported with units, compared across experiments, and used to extrapolate via the mechanism.
-%[text] - Watch for **bad initial guesses** sending the solver to a local minimum.
+%[text] - Watch for bad initial guesses sending the solver to a local minimum.
 %[text] - MATLAB `nlinfit`, `fitnlm`, `lsqcurvefit` (Statistics and Machine Learning Toolbox) \
-%[text] A separate, orthogonal distinction is whether the model is **linear in its parameters**, which determines how it can be solved. We come back to this with the battery model below. 
+%[text] Underneath, both halves of this lesson are the same optimization problem: given data and a parameterized model $f(p, x)$, choose the parameters $p$ that minimize an error metric — here the sum of squared residuals $\\sum\_i (y\_i - f(p, x\_i))^2$. What changes between curve fitting and regression is the model $f$ used; the optimization machinery is the 
+%[text] A separate, orthogonal distinction is whether the model is linear in its parameters, which determines how it can be solved. We come back to this with the battery model below.
 %%
 %[text] ## Fitting a Line to Data with `polyfit()`
 %[text] Given some data - often from experimental measurements, find the "best" line that describes the linear relationship.  
