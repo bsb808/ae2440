@@ -36,12 +36,14 @@
 %[text] - **Damped oscillation**: $y = A\\, e^{-\\gamma t} \\cos(\\omega t + \\phi)$ — $\\gamma$, $\\omega$, and $\\phi$ all enter nonlinearly. \
 %[text] The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$ from this lesson is the same story — $k$ is buried inside the exponential, so the model is **nonlinear wrt the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
 %%
-%[text] % CLAUDE: This starts with the solver.   Introduces section as making the choice to use models that are linear wrt to the parmaters.  Remind folks that we are assumign the metric is least squares as that is most common.  Relate fitting a curve fitting with a polynial to linear regression.   (It seems like when i hear of "linear regression" it is often in business or OR terms.  Are they using "regression" in the same way?   It doesn't seem like the underyling models in this case have any physical, explanational or sematic meaning?)
-%[text] 
-%[text] ## Fitting a Line to Data with `polyfit()`
-%[text] - Given data and a **first-order polynomial** (straight-line) model: $\\hat{y} = mx + b$
-%[text] - Find parameter values (slope and y-intercept) that minimize the sum of squared residuals (L2 / Least Squares) \
-%[text] As a demonstration, consider that measured the discharge of a 12 V battery over time with a particular load.
+%[text] ## Polynomial curve fitting with `polyfit`: an instance of linear regression
+%[text] For the rest of this lesson we commit to a specific path through the recipe and walk through an example:
+%[text] - **Model (step 2)** — an **empirical**, **linear-wrt-parameters** model: a polynomial $\\hat{y} = a\_0 + a\_1 t + a\_2 t^2 + \\dots + a\_n t^n$. We pick polynomials for their convenience (flexible, generic), not because they describe any physics. The simplest case ($n=1$) is the **first-order polynomial** $\\hat{y} = m t + b$ — a straight line.
+%[text] - **Metric (step 3)** — **sum of squared residuals** (L2 / least squares). This is the most common choice and what `polyfit` is built around.
+%[text] - **Solver (step 4)** — linear-wrt-parameters + L2 $\\Rightarrow$ **closed-form solution via linear algebra**. `polyfit` runs the solver internally; the aside below shows what it is doing step by step. \
+%[text] Fitting a linear-wrt-parameters model with squared residuals is exactly **linear regression** in the statistical sense. `polyfit` *is* linear regression, restricted to a polynomial basis; `fitlm` and `regress` are the same machinery with arbitrary basis functions.
+%[text] **A note on terminology.** You may have seen "linear regression" in business or operations research — e.g. *sales = $\\beta\_0 + \\beta\_1 \\cdot \\text{advertising}$*, or models that predict stock returns or election outcomes. That is the same regression in the algebraic sense: linear wrt the parameters, minimum-squared-error fit. What differs is the *purpose*: those models are usually **empirical** — the $\\beta$ coefficients are descriptive ("for each \\$1 of advertising, expected sales increase by \\$$\\beta\_1$") rather than physical, and the goal is forecasting or hypothesis testing rather than measuring a physical constant. The math is identical to what `polyfit` does here; only the interpretation differs. \
+%[text] **Battery discharge example.** As a demonstration, suppose we measured the discharge of a 12 V battery over time with a particular load.
 tt = [0 1 2 3 4 5 6 7 8 9]; % hrs
 vv = [13.5521	8.5037	6.8038	4.3123	3.3543	3.8569	2.9397	1.1442	1.7904	0.6489]; % V
 
@@ -105,12 +107,16 @@ plot(t_fit, v_fit2, 'b--', 'DisplayName', sprintf('Quadratic Model: %.2f', S2.rs
 A = [ones(length(tt),1), tt(:), tt(:).^2]
 %[text] Each row of $A$ tells the model what to multiply $\[a\_0, a\_1, a\_2\]^\\top$ by to predict the voltage at that time. The least-squares solution — the $\\mathbf{p}$ that makes $A\\mathbf{p}$ as close as possible to the measured $\\mathbf{v}$ — comes from MATLAB's **backslash** operator. No iteration, no initial guess; the answer drops out of linear algebra in one step. This is exactly what `polyfit` does internally.
 % Backslash solves the least-squares problem A*p = v in one shot.
-% CLAUDE: Can you also do this via simple linear algebra?   I thought there
-% was a alternative method? 
 p_LA = A \ vv(:) %[output:2af9f50b]
+%[text] **An alternative: the normal equations.** There is a second linear-algebra recipe you may have seen. The least-squares cost $\\| A \\mathbf{p} - \\mathbf{v} \\|^2$ is minimized when its gradient wrt $\\mathbf{p}$ vanishes, which (after a line of calculus) gives the **normal equations**
+%[text] $A^\\top A \\, \\mathbf{p} = A^\\top \\mathbf{v}$
+%[text] This is a square $3 \\times 3$ linear system in the three unknowns $a\_0, a\_1, a\_2$ — solvable directly by backslash on the square matrix $A^\\top A$:
+% Alternative: form and solve the normal equations explicitly.
+p_NE = (A' * A) \ (A' * vv(:))
+%[text] `p_LA`, `p_NE`, and `flip(p_pf)` are mathematically identical. In MATLAB practice the `A \ vv` form is preferred — it uses a QR factorization that is more numerically stable than explicitly forming $A^\\top A$ — but the normal equations are the most direct way to *see* that the optimization reduces to solving a single linear system.
 %[text] Compare against `polyfit` (which returns coefficients in **descending** order, the opposite of how we stacked the columns of $A$):
 p_pf = polyfit(tt, vv, 2) %[output:16321243]
-%[text] Reversing one to match the other shows the two computations give the same fit, up to floating-point noise:
+%[text] Reversing one to match the other shows the three computations give the same fit, up to floating-point noise:
 flip(p_LA(:))' - p_pf %[output:1b104db2]
 %%
 %[text] ### Beware the overfit
