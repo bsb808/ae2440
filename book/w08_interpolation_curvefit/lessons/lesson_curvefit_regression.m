@@ -29,8 +29,10 @@
 %[text] - **Linear Least Squares:** Linear-in-parameters model + squared residuals $\\to$ closed-form solution via linear algebra. One shot, no iteration, guaranteed global best fit. This is the algorithm inside `polyfit`, `fitlm`, `regress`, and `LinearModel.fit`.
 %[text] - **Anything else** $\\to$ **iterative search** from an initial guess. Can land in a local minimum, sensitive to the starting point, harder to verify. This is `nlinfit`. \
 %[text] A polynomial $y = a\_0 + a\_1 x + a\_2 x^2 + \\dots + a\_n x^n$ is **linear in the parameters** $a\_i$ — they appear with coefficient 1, never multiplied together, never inside a transcendental function. The "linear" in "linear regression" means **linear in the parameters**, *not* linear in $x$. 
-%[text] So `polyfit` is actually doing linear regression, restricted to a polynomial basis. The more general tools (`fitlm`, `regress`) allow arbitrary basis functions — $a\_0 + a\_1 \\sin(x) + a\_2 e^{-x}$ is still linear regression — and multiple predictors, but they all share the same one-shot linear-algebra solver under the hood.
-%[text] The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$, by contrast, has $k$ buried inside an exponential — **nonlinear in the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
+%[text] So `polyfit` is actually doing linear regression, restricted to a polynomial basis. The more general tools (`fitlm`, `regress`) allow arbitrary basis functions (e.g., $a\_0 + a\_1 \\sin(x) + a\_2 e^{-x}$) is still linear regression, but they all share the same one-shot linear-algebra solution.
+%[text] Nonlinear models typically refer to models that are nonline with respect to the parameters
+%[text] %CLAUDE: Add examples of other models that are nonlinear with respect top the paramterss
+%[text]  uin the  the The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$, by contrast, has $k$ buried inside an exponential — **nonlinear in the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
 %%
 %[text] ## Fitting a Line to Data with `polyfit()`
 %[text] - Given data and a **first-order polynomial** (straight-line) model: $\\hat{y} = mx + b$
