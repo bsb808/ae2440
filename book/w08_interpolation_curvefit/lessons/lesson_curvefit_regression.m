@@ -33,11 +33,11 @@
 %[text] **Nonlinear models** typically refer to models that are nonlinear wrt the parameters. Familiar engineering examples include:
 %[text] - **Exponential decay**: $y = A\\, e^{-k x}$ — the rate $k$ sits inside the exponential.
 %[text] - **Power law**: $y = A\\, x^{b}$ — the exponent $b$ is itself a parameter.
-%[text] - **Saturating / logistic**: $y = L / \\left( 1 + e^{-k (x - x\_0)} \\right)$ — both $k$ and $x\_0$ live inside the exponential.
-%[text] - **Gaussian peak**: $y = A\\, \\exp\\!\\left( -(x - \\mu)^2 / (2 \\sigma^2) \\right)$ — $\\mu$ and $\\sigma$ enter through a transcendental function.
 %[text] - **Damped oscillation**: $y = A\\, e^{-\\gamma t} \\cos(\\omega t + \\phi)$ — $\\gamma$, $\\omega$, and $\\phi$ all enter nonlinearly. \
 %[text] The battery model $V(t) = (V\_o - c)\\,e^{-kt} + c$ from this lesson is the same story — $k$ is buried inside the exponential, so the model is **nonlinear wrt the parameters**. No closed form. `polyfit` can't solve it; `nlinfit` has to iterate.
 %%
+%[text] % CLAUDE: This starts with the solver.   Introduces section as making the choice to use models that are linear wrt to the parmaters.  Remind folks that we are assumign the metric is least squares as that is most common.  Relate fitting a curve fitting with a polynial to linear regression.   (It seems like when i hear of "linear regression" it is often in business or OR terms.  Are they using "regression" in the same way?   It doesn't seem like the underyling models in this case have any physical, explanational or sematic meaning?)
+%[text] 
 %[text] ## Fitting a Line to Data with `polyfit()`
 %[text] - Given data and a **first-order polynomial** (straight-line) model: $\\hat{y} = mx + b$
 %[text] - Find parameter values (slope and y-intercept) that minimize the sum of squared residuals (L2 / Least Squares) \
@@ -102,9 +102,11 @@ plot(t_fit, v_fit2, 'b--', 'DisplayName', sprintf('Quadratic Model: %.2f', S2.rs
 %[text] $A = \\left\[ \\matrix{1 & t\_1 & t\_1^2 \\cr 1 & t\_2 & t\_2^2 \\cr \\vdots & \\vdots & \\vdots \\cr 1 & t\_n & t\_n^2} \\right\], \\qquad \\mathbf{p} = \\left\\{ \\matrix{a\_0 \\cr a\_1 \\cr a\_2} \\right\\}$
 %[text] Build the design matrix directly and inspect:
 % Build the design matrix: column of 1s, column of t, column of t^2.
-A = [ones(numel(tt),1), tt(:), tt(:).^2]
+A = [ones(length(tt),1), tt(:), tt(:).^2]
 %[text] Each row of $A$ tells the model what to multiply $\[a\_0, a\_1, a\_2\]^\\top$ by to predict the voltage at that time. The least-squares solution — the $\\mathbf{p}$ that makes $A\\mathbf{p}$ as close as possible to the measured $\\mathbf{v}$ — comes from MATLAB's **backslash** operator. No iteration, no initial guess; the answer drops out of linear algebra in one step. This is exactly what `polyfit` does internally.
 % Backslash solves the least-squares problem A*p = v in one shot.
+% CLAUDE: Can you also do this via simple linear algebra?   I thought there
+% was a alternative method? 
 p_LA = A \ vv(:) %[output:2af9f50b]
 %[text] Compare against `polyfit` (which returns coefficients in **descending** order, the opposite of how we stacked the columns of $A$):
 p_pf = polyfit(tt, vv, 2) %[output:16321243]
