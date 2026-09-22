@@ -24,3 +24,14 @@ grading/*.zip
 *.toc
 # Sutton & Barto reference PDF (~73MB) — chapter cites the online URL
 RLbook2020.pdf
+
+# Compiled chapter/book PDFs (rebuild from .tex)
+book/book.pdf
+book/w*/chapter/*.pdf
+
+# draw.io autosave backups
+.$*.drawio.bkp
+
+# Local scratch and student submissions (not for the repo)
+trash/
+studentwork/
