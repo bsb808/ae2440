@@ -16,6 +16,11 @@ website:
   search: false
   navbar:
     pinned: true
+    # Distinguish from the ME2801 site (stock cosmo blue): deep teal drawn from the membrane logo, plus the logo itself.
+    background: "#1f4e5f"
+    foreground: "#ffffff"
+    logo: favicon.png
+    logo-alt: "AE 2440"
     left:
       - href: index.qmd
         text: Home
