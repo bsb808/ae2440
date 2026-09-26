@@ -36,8 +36,8 @@ LaTeX comments on their own line, invisible in the PDF, immediately before the e
 
 | Week | Chapter | Directives | Regenerated | Lint | Tier B | Author read | Released | Notes |
 |---|---|---|---|---|---|---|---|---|
-| 1 | 1 Modeling and Simulation | 2026-09-26 (3 noexec) | 2026-09-26 | clean | 2026-09-26 | 2026-09-26 | | author read: cut the dated `sin pi` / `abs pi` passage from the `.tex`; release without outputs |
-| 1 | 2 Scripts and Live Scripts | 2026-09-26 (13 noexec) | 2026-09-26 | clean | 2026-09-26 | | | sessions that need `myscript`, `fibonacci1`, `swap`, `bike_update` or show errors are examples; the two `\includepdf` pages are embedded as page images |
+| 1 | 1 Modeling and Simulation | 2026-09-26 (3 noexec) | 2026-09-26 | clean | 2026-09-26 | 2026-09-26 | 2026-09-26 | author read: cut the dated `sin pi` / `abs pi` passage from the `.tex`; release without outputs |
+| 1 | 2 Scripts and Live Scripts | 2026-09-26 (13 noexec) | 2026-09-26 | clean | 2026-09-26 | 2026-09-26 | 2026-09-26 | sessions that need `myscript`, `fibonacci1`, `swap`, `bike_update` or show errors are examples; the two `\includepdf` pages are embedded as page images |
 | 2 | 3 Loops | | | | | | | nested lists |
 | 2 | 4 Vectors | | | | | | | |
 | 3 | 5 Functions | | | | | | | |

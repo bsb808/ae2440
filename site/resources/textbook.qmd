@@ -15,7 +15,7 @@ Each week's reading is also released chapter by chapter from the [Schedule](../s
 | Week | Chapter | Formats |
 |---|---|---|
 | 1 | 1. Modeling and Simulation | [PDF](../weeks/w01_modeling_scripts/files/modeling.pdf) · [Live script](../weeks/w01_modeling_scripts/files/modeling.m){download="modeling.m"} |
-| 1 | 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) |
+| 1 | 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) · [Live script](../weeks/w01_modeling_scripts/files/scripts.m){download="scripts.m"} |
 | 2 | 3. Loops | [PDF](../weeks/w02_loops_vectors/files/loops.pdf) |
 | 2 | 4. Vectors | [PDF](../weeks/w02_loops_vectors/files/vectors.pdf) |
 

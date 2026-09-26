@@ -45,7 +45,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai (
 
 **Wednesday:** Scripts and live scripts
 
-- Before class: Read Chapter 2, Scripts: [PDF](weeks/w01_modeling_scripts/files/scripts.pdf)
+- Before class: Read Chapter 2, Scripts: [PDF](weeks/w01_modeling_scripts/files/scripts.pdf) · [Live script](weeks/w01_modeling_scripts/files/scripts.m){download="scripts.m"} (beta)
 - Preview: [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd)
 
 **Thursday:** Work on Assignment 1

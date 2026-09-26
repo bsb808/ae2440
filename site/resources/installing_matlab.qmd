@@ -6,7 +6,7 @@ NPS maintains a site license for MATLAB and Simulink. Follow the instructions on
 
 ## Release
 
-It is highly recommended that you install **Release 2025b** of MATLAB and Simulink. **Release 2025a or higher is required.**
+It is highly recommended that you install **Release 2026b** of MATLAB and Simulink. **Release 2025b or higher is required.**
 
 It helps with debugging if everyone in the class is using the latest release.
 
@@ -19,9 +19,7 @@ MATLAB and Simulink products (toolboxes) are offered à la carte. The NPS licens
 
 Required:
 
-- Simulink
 - Control System Toolbox
-- Image Processing Toolbox
 - Optimization Toolbox
 - Signal Processing Toolbox
 - Symbolic Math Toolbox
@@ -31,17 +29,19 @@ For reference, here is the release and toolbox listing from the instructor's ins
 ```
 >> ver
 -----------------------------------------------------------------------------------------------------------------
-MATLAB Version: 25.2.0.3177638 (R2025b) Update 5
-Operating System: Linux 6.8.0-101-generic #101~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 11 13:19:54 UTC  x86_64
+MATLAB Version: 26.2.0.3386108 (R2026b)
+Operating System: Linux 6.8.0-138-generic #138~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  7 13:43:15 UTC  x86_64
 Java Version: Java is not loaded
 -----------------------------------------------------------------------------------------------------------------
-MATLAB                                                Version 25.2        (R2025b)
-Simulink                                              Version 25.2        (R2025b)
-Control System Toolbox                                Version 25.2        (R2025b)
-Curve Fitting Toolbox                                 Version 25.2        (R2025b)
-Deep Learning Toolbox                                 Version 25.2        (R2025b)
-Optimization Toolbox                                  Version 25.2        (R2025b)
-ROS Toolbox                                           Version 25.2        (R2025b)
-Signal Processing Toolbox                             Version 25.2        (R2025b)
-Symbolic Math Toolbox                                 Version 25.2        (R2025b)
+MATLAB                                                Version 26.2        (R2026b)
+Simulink                                              Version 26.2        (R2026b)
+Aerospace Blockset                                    Version 26.2        (R2026b)
+Aerospace Toolbox                                     Version 26.2        (R2026b)
+Control System Toolbox                                Version 26.2        (R2026b)
+Curve Fitting Toolbox                                 Version 26.2        (R2026b)
+Deep Learning Toolbox                                 Version 26.2        (R2026b)
+MATLAB Copilot                                        Version 26.2        (R2026b)
+Navigation Toolbox                                    Version 26.2        (R2026b)
+Optimization Toolbox                                  Version 26.2        (R2026b)
+Statistics and Machine Learning Toolbox               Version 26.2        (R2026b)
 ```
