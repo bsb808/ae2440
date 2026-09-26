@@ -9,7 +9,7 @@ title: "AE 2440 — Introduction to Scientific Programming"
 - [Syllabus and Course Policies](syllabus.qmd)
 - [Schedule](schedule.qmd)
 - [Assignments](assignments.qmd)
-- [Sakai site]({{< var sakai_url >}}) ({{< var quarter >}}, NPS login) for submitting assignments
+- [Sakai site]({{< var sakai_url >}}) - for submitting assignments
 
 ## References
 
