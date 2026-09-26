@@ -13,7 +13,7 @@ ASSIGNMENTS_PDF := $(ASSIGNMENTS_TEX:.tex=.pdf)
 WEEK_NUMS    := 01 02 03 04 05 06 07 08 09 10
 WEEK_TARGETS := $(addprefix w,$(WEEK_NUMS))
 
-.PHONY: all chapters assignments book clean distclean help $(WEEK_TARGETS)
+.PHONY: all chapters assignments book images-png clean distclean help $(WEEK_TARGETS)
 
 all: chapters assignments book
 
@@ -24,6 +24,7 @@ help:
 	@echo "  chapters     Build all standalone chapter PDFs"
 	@echo "  assignments  Build all assignment PDFs"
 	@echo "  wNN          Build chapter + assignment for week NN (e.g. make w03)"
+	@echo "  images-png   Rasterize PDF/EPS figures in images/ to PNG for the live-script chapters"
 	@echo "  clean        Remove latexmk aux files (keep PDFs)"
 	@echo "  distclean    Remove all generated files including PDFs"
 
@@ -47,6 +48,25 @@ w$(1): $(patsubst %.tex,%.pdf,$(wildcard w$(1)_*/chapter/*.tex)) \
        $(patsubst %.tex,%.pdf,$(wildcard w$(1)_*/assign/*.tex))
 endef
 $(foreach n,$(WEEK_NUMS),$(eval $(call week_rule,$(n))))
+
+# PNG twins of the vector figures, for the live-script chapters (the Live
+# Editor cannot show PDF or EPS). EPS is preferred as the source: the EPS files
+# carry a tight bounding box, while several of the PDF twins are full letter
+# pages with the drawing rotated. PDF-only figures are trimmed after rendering.
+# Rebuilt only when the source is newer.
+IMAGES_EPS      := $(wildcard images/*.eps)
+IMAGES_PDF_ONLY := $(filter-out $(IMAGES_EPS:.eps=.pdf),$(wildcard images/*.pdf))
+IMAGES_SKIP     := images/figure04_01_new_v1.png images/matlab_circleart.png
+IMAGES_PNG      := $(filter-out $(IMAGES_SKIP),$(IMAGES_EPS:.eps=.png) $(IMAGES_PDF_ONLY:.pdf=.png))
+
+images-png: $(IMAGES_PNG)
+
+images/%.png: images/%.eps
+	gs -q -dSAFER -dBATCH -dNOPAUSE -dEPSCrop -sDEVICE=png16m -r150 -sOutputFile=$@ $<
+
+images/%.png: images/%.pdf
+	pdftoppm -png -r 150 -singlefile $< images/$*
+	convert $@ -trim +repage -bordercolor white -border 12 $@
 
 clean:
 	@for f in $(CHAPTERS_TEX) $(ASSIGNMENTS_TEX) book.tex; do \

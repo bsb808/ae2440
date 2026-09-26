@@ -39,3 +39,7 @@ site/.quarto/
 # Local scratch and student submissions (not for the repo)
 trash/
 studentwork/
+
+# Python
+__pycache__/
+*.pyc

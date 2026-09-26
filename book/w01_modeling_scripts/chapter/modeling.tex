@@ -471,6 +471,7 @@ That way, your code resembles the familiar formula $a = \pi r^2$.
 You might also use a variable to break a long computation into a sequence of steps.
 Suppose you're evaluating a big, hairy expression like this:
 
+% mlive: noexec
 \begin{code}
 p = ((x - theta) * sqrt(2 * pi) * sigma)^-1 * ...
 exp(-1/2 * (log(x - theta) - zeta)^2 / sigma^2)
@@ -483,6 +484,7 @@ next.
 \index{ellipsis}But often it's better to break the computation into a sequence of
 steps and assign intermediate results to variables:
 
+% mlive: noexec
 \begin{code}
 shiftx = x - theta
 denom = shiftx * sqrt(2 * pi) * sigma
@@ -511,6 +513,7 @@ Later, when you make accidental errors, you'll know what the messages mean.
 Let's look at some common errors. A big one for beginners is leaving out the \lstinline{*}
 for multiplication, as in this example:
 
+% mlive: noexec
 \begin{code}
 area = pi r^2
 \end{code}
@@ -536,6 +539,7 @@ Another common error is to leave out the parentheses around the
 arguments of a function.  For example, in math notation it's common
 to write something like $\sin \pi$, but in MATLAB if you write
 
+% mlive: error
 \begin{code}
 sin pi
 \end{code}

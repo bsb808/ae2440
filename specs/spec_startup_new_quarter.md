@@ -43,7 +43,7 @@ Background:
 - Notes:
   - Page layout: overview table (Week, Starts, Topic, Due) with a symbol per holiday or shift day and a note under the table saying which class days are affected; then one section per week with bold day labels and bullet lists.
   - Placeholder week sections carry a "Details will be posted by <Monday two weeks before>" note, the holiday and shift-day impacts, and the week's due items.
-  - Reading pair: each chapter reading is one line, `Before class: Read Chapter N, Title: [PDF](weeks/wNN_topic/files/<name>.pdf)`. When the live-script experiment starts, add ` · [Live script](weeks/wNN_topic/files/<name>.mlx)` to the same line. Nothing else changes.
+  - Reading pair: each chapter reading is one line, `Before class: Read Chapter N, Title: [PDF](weeks/wNN_topic/files/<name>.pdf)`. When the chapter's live script is released (see `spec_live_scripts.md`), add ` · [Live script](weeks/wNN_topic/files/<name>.m){download="<name>.m"} (beta)` to the same line. Nothing else changes.
 
 ## 2a. Post week details (rolling, during the quarter)
 
@@ -52,7 +52,7 @@ Background:
 - Inputs: the archived previous-quarter schedule (baseline) or, for Fall 2026, the wiki extract `../tmp/wiki_extract/schedule_26_3.md`; the week mapping in the quarter log; the overview table's due items; any notes for that week in the quarter log.
 - Steps:
   1. Copy the mapped section(s) from the baseline; fix link prefixes; update dates, due items, holiday and shift-day notes; apply the week's notes.
-  2. Reading pair: `cd book && make wNN` to rebuild the week's chapter PDFs, copy them into `site/weeks/wNN_topic/files/` (same basename as the `.tex`), and write the reading lines. Once the live-script experiment starts, also copy the chapter `.mlx` files.
+  2. Reading pair: `cd book && make wNN` to rebuild the week's chapter PDFs, copy them into `site/weeks/wNN_topic/files/` (same basename as the `.tex`), and write the reading lines. A released chapter live script (`<name>.m` with cached outputs, per `spec_live_scripts.md`) goes into the same `files/` directory.
   3. Lesson files are linked to `book/` on GitHub with `{{< var repo_blob >}}`; slides and other files not in `book/` are copied into the week's `files/`.
   4. Add the week's row(s) to the chapter table in `site/resources/textbook.qmd`.
   5. Open the diff for the author to tune.

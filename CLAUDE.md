@@ -15,9 +15,9 @@ Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_condit
 | `examples/` | Standalone demos and worked examples |
 | `grading/` | Sakai grading workflow (per-assignment downloads + comments) |
 | `site/` | Quarto course website, published to https://bsb808.github.io/ae2440/ (see Course Website below) |
-| `specs/` | Spec-anchored runbooks: `spec_startup_new_quarter.md` (recurring), `spec_wiki_transition.md` (one-time) |
+| `specs/` | Spec-anchored runbooks: `spec_startup_new_quarter.md` (recurring), `spec_live_scripts.md` (chapter live-script rollout), `spec_wiki_transition.md` (one-time) |
 | `utils/` | `wiki_migrate/extract.py` (Confluence export → Markdown extracts), `check_schedule_dates.py` |
-| `mlx_parse/` | Python tooling for generating student assignment files |
+| `mlx_parse/` | Python tooling: `tex2mlive.py` (chapter `.tex` to live script), `mlx_soln2assign.py` (student assignment files) |
 | `images/` | Course-level images (separate from `book/images/`) |
 | `dev/`, `misc/` | Development scratch |
 
@@ -33,7 +33,7 @@ Conventions:
 
 - `site/weeks/wNN_topic/` uses the same week names as `book/wNN_topic/`. Each holds `assignment.qmd` (one page per assignment) and `files/` for static files released to students (slide PDFs, chapter PDFs, screenshots, datasets not in `book/`).
 - Files that already live in `book/` are linked on GitHub via `{{< var repo_blob >}}/book/...`, never copied into `site/`. Prefer linking the plain-text `.m` live script when both `.m` and `.mlx` exist.
-- Readings on the schedule use one fixed line per chapter: `Before class: Read Chapter N, Title` followed by format links (`[PDF](weeks/.../files/name.pdf)`, later also `[Live script](weeks/.../files/name.mlx)`). Chapter PDFs are gitignored in `book/`; releasing a chapter means `make wNN` in `book/` and copying the PDF (and `.mlx` once the live-script experiment starts) into the week's `files/`.
+- Readings on the schedule use one fixed line per chapter: `Before class: Read Chapter N, Title` followed by format links (`[PDF](weeks/.../files/name.pdf)` and, once the chapter's live script is released, ` · [Live script](weeks/.../files/name.m){download="name.m"} (beta)`). Chapter PDFs are gitignored in `book/`; releasing a chapter means `make wNN` in `book/` and copying the PDF into the week's `files/`. The live-script release follows `specs/spec_live_scripts.md` (convert with `mlx_parse/tex2mlive.py`, verify, author read, copy the output-bearing `.m` into `files/`).
 - The site is a GitHub Pages project site served under `/ae2440/`, so links must be relative. Never write a root-absolute link (`/foo`).
 - Per-quarter values (`quarter`, `term_start`, `meeting`, ...) live in `site/_variables.yml` and are used as `{{< var name >}}`. Previous quarters are archived under `site/archive/<ayNNqN>/` with an "Archived" callout.
 - No solutions on the site. Solutions stay in the private `ae2440-solutions` repo and reach students via Sakai.
@@ -42,11 +42,11 @@ Conventions:
 
 ## File Formats
 
-### MATLAB Live Scripts (.mlx)
-The primary authoring format for this course. `.mlx` files are binary (Microsoft OOXML/ZIP). They are tracked in git as binary (see `.gitattributes`). Do not diff or merge `.mlx` files directly.
+### Plain-text live scripts (.m) are the format
+Live scripts in this course are plain-text `.m` files (MATLAB R2025a and later): the source in `book/`, the released chapter copies, the assignments students submit. Do not create `.mlx` files; the ones still in the repo are legacy from before MathWorks offered plain text and are left alone (binary in git, see `.gitattributes`; do not diff or merge them).
 
 ### Plain-Text MLX Format (.m with MLX markers)
-Some `.m` files in this repo use MATLAB's plain-text live script format — a version-control-friendly representation of live scripts. Key markers:
+The plain-text live script format is a version-control-friendly representation of live scripts. Key markers:
 
 ```matlab
 %[text] Markdown prose goes here (supports **bold**, `code`, LaTeX math, images)
@@ -132,9 +132,9 @@ The script treats `.mlx` files as zip archives, edits `matlab/document.xml` insi
 
 ## Development Direction
 
-The course is actively migrating **all content to `.mlx` live scripts**. When creating or editing course materials:
+The course is migrating all content to plain-text live scripts. When creating or editing course materials:
 
-- Prefer `.mlx` over traditional `.m` scripts for lessons and assignments.
+- Write plain-text `.m` live scripts for lessons and assignments; never `.mlx`.
 - Keep solution files named with the `_soln` suffix.
 - Use `mlx_soln2assign.py` to produce the student-facing file rather than editing it manually.
 - LaTeX is used only for standalone reference documents (not assignments).
