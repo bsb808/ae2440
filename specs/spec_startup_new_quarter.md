@@ -30,7 +30,7 @@ Background:
 - Outputs: [site/syllabus.qmd](../site/syllabus.qmd); [site/_variables.yml](../site/_variables.yml) (`quarter`, `term_start`, `term_end`, `meeting`, `sakai_url`)
 - Owner: AI, author review
 - Verification: PMR; skim `index.qmd` and `syllabus.qmd` for stale references (term, dates, links, Sakai site).
-- Status: review (AY27Q1). `meeting` still holds the Spring 2026 value until the author confirms.
+- Status: done (AY27Q1). Meeting time M–R 1400–1450 confirmed by the author; room WA-147 carried over from Spring, to confirm.
 
 ## 2. Start new schedule
 
@@ -72,7 +72,7 @@ Background:
 
 ## 4. Class info (human tasks)
 
-- [ ] Verify class meeting days, times, and room in Python; add the class meetings to Outlook; update `meeting` in `site/_variables.yml`.
+- [x] Meeting days and time set (M–R 1400–1450). [ ] Confirm the room in Python and add the class meetings to Outlook.
 - [ ] Pull roster from Python, put a copy in OneDrive.
 - [x] Request the new Sakai site; set `sakai_url` in `site/_variables.yml` (done for AY27Q1).
 - [ ] Update the Initial Class Survey form if needed (the link is reused every quarter).
@@ -106,7 +106,7 @@ Key dates (NPS AY2027 academic calendar, same as recorded for ME2801):
 Constraints:
 
 - No class the week of 12–16 October (instructor travel), in addition to Columbus Day.
-- Meeting days, time and room not yet confirmed; `_variables.yml` carries the Spring 2026 value (M–R, 0900–0950, WA-147) as a placeholder.
+- Class meets M–R 1400–1450 (confirmed by the author 26 Sep). Room WA-147 carried over from Spring 2026 pending confirmation.
 - The site launched this quarter (wiki migration); only the Spring 2026 schedule and Assignments 1–8 exist as sources. Weeks 10–11 (reinforcement learning) have no wiki source and are written from `book/w09_rl_intro` and `book/w10_rl_blackjack`.
 
 Decisions:
