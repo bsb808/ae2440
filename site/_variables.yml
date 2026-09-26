@@ -1,0 +1,11 @@
+# Per-quarter values used in pages as {{< var name >}}. Edit here at the start of each quarter
+# (see specs/spec_startup_new_quarter.md, task 1).
+quarter: "Fall 2026"
+term_start: "2026-09-28"
+term_end: "2026-12-11"
+# PLACEHOLDER: this is the Spring 2026 (AY26Q3) value. Confirm the Fall 2026 days, time, and room in Python.
+meeting: "M–R, 0900–0950, WA-147"
+instructor: "Brian Bingham"
+instructor_email: "bbingham@nps.edu"
+# Base URL for linking files that live in the course repo (lessons, student assignment files).
+repo_blob: "https://github.com/bsb808/ae2440/blob/main"

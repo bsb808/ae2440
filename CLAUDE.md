@@ -14,6 +14,9 @@ Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_condit
 | `archive/` | Off-schedule scratch material |
 | `examples/` | Standalone demos and worked examples |
 | `grading/` | Sakai grading workflow (per-assignment downloads + comments) |
+| `site/` | Quarto course website, published to https://bsb808.github.io/ae2440/ (see Course Website below) |
+| `specs/` | Spec-anchored runbooks: `spec_startup_new_quarter.md` (recurring), `spec_wiki_transition.md` (one-time) |
+| `utils/` | `wiki_migrate/extract.py` (Confluence export → Markdown extracts), `check_schedule_dates.py` |
 | `mlx_parse/` | Python tooling for generating student assignment files |
 | `images/` | Course-level images (separate from `book/images/`) |
 | `dev/`, `misc/` | Development scratch |
@@ -21,6 +24,21 @@ Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_condit
 ### Companion private repo: `bsb808/ae2440-solutions`
 
 Instructor `_soln.mlx` / `_soln.m` files for **graded assignments** live in the private companion repo at `~/WorkingCopies/ae2440/ae2440-solutions/` (sibling to this repo under the umbrella `~/WorkingCopies/ae2440/`), organized by week (`wNN_topic/<assignment>_soln.<ext>`). Lesson `_soln` files (used for in-class demos) **stay public** in `book/wNN_topic/lessons/`.
+
+## Course Website
+
+The public course site is a Quarto website under `site/`, published by GitHub Actions to the `gh-pages` branch and served at https://bsb808.github.io/ae2440/. It replaced the NPS Confluence wiki in September 2026. Preview with `quarto preview site` from the repo root.
+
+Conventions:
+
+- `site/weeks/wNN_topic/` uses the same week names as `book/wNN_topic/`. Each holds `assignment.qmd` (one page per assignment) and `files/` for static files released to students (slide PDFs, chapter PDFs, screenshots, datasets not in `book/`).
+- Files that already live in `book/` are linked on GitHub via `{{< var repo_blob >}}/book/...`, never copied into `site/`. Prefer linking the plain-text `.m` live script when both `.m` and `.mlx` exist.
+- Readings on the schedule use one fixed line per chapter: `Before class: Read Chapter N, Title` followed by format links (`[PDF](weeks/.../files/name.pdf)`, later also `[Live script](weeks/.../files/name.mlx)`). Chapter PDFs are gitignored in `book/`; releasing a chapter means `make wNN` in `book/` and copying the PDF (and `.mlx` once the live-script experiment starts) into the week's `files/`.
+- The site is a GitHub Pages project site served under `/ae2440/`, so links must be relative. Never write a root-absolute link (`/foo`).
+- Per-quarter values (`quarter`, `term_start`, `meeting`, ...) live in `site/_variables.yml` and are used as `{{< var name >}}`. Previous quarters are archived under `site/archive/<ayNNqN>/` with an "Archived" callout.
+- No solutions on the site. Solutions stay in the private `ae2440-solutions` repo and reach students via Sakai.
+- When reporting a created or edited `.qmd`, list both the live URL (`https://bsb808.github.io/ae2440/<path>.html`) and the source path (`site/<path>.qmd`).
+- The MOSS similarity-check tooling is kept outside this repo (it carries a personal user ID).
 
 ## File Formats
 

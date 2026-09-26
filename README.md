@@ -2,6 +2,20 @@
 
 Course materials for AE2440 at NPS — an introductory MATLAB programming course for naval-officer undergraduates.
 
+## Course website
+
+[bsb808.github.io/ae2440](https://bsb808.github.io/ae2440/) — Quarto site under `site/`, deployed to GitHub Pages (branch `gh-pages`) by `.github/workflows/publish-site.yml` on every push to `main` that touches `site/**`.
+
+To preview locally, run from this repo's root:
+
+```bash
+quarto preview site
+```
+
+Quarto renders the site, prints a `http://localhost:NNNN/` URL, opens it in your browser, and live-reloads on file changes. `Ctrl+C` to stop. Do not run `quarto render` while a preview is running; the two collide on the Sass cache.
+
+Site layout: `site/weeks/wNN_topic/` mirrors the `book/wNN_topic/` week names and holds each week's `assignment.qmd` plus a `files/` folder for released static files (slides, chapter PDFs, screenshots). Files that already live in `book/` are linked on GitHub, not copied. Per-quarter values live in `site/_variables.yml`; the quarter startup runbook is `specs/spec_startup_new_quarter.md` and the one-time wiki migration is `specs/spec_wiki_transition.md`.
+
 ## Layout
 
 The course is organized as a week-by-week book under `book/`, following the per-week pattern used by `me2801/introduction-to-feedback-control`. The course runs ten weeks of class material.
@@ -70,6 +84,9 @@ The solutions repo mirrors the per-week layout: `wNN_topic/<assignment>_soln.<ex
 | `archive/` | Off-schedule scratch material |
 | `examples/` | Standalone MATLAB demos referenced from chapters |
 | `grading/` | Sakai grading workflow; per-assignment downloads + comments. See `CLAUDE.md` for the workflow |
+| `site/` | Quarto course website (see above) |
+| `specs/` | Working specs: quarter startup runbook, wiki migration |
+| `utils/` | Small tools: wiki extractor, schedule date check |
 | `images/` | Course-level images (separate from `book/images/`) |
 | `mlx_parse/` | Python tooling for generating student assignment files from solution `.mlx` |
 | `dev/`, `misc/` | Development scratch |

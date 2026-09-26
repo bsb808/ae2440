@@ -32,6 +32,10 @@ book/w*/chapter/*.pdf
 # draw.io autosave backups
 .$*.drawio.bkp
 
+# Quarto site build output (site/ is rendered by GitHub Actions)
+site/_site/
+site/.quarto/
+
 # Local scratch and student submissions (not for the repo)
 trash/
 studentwork/

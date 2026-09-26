@@ -1,0 +1,21 @@
+---
+title: "AE 2440 — Introduction to Scientific Programming"
+---
+
+*Quarter:* {{< var quarter >}}
+
+## Course Information
+
+- [Syllabus and Course Policies](syllabus.qmd)
+- [Schedule](schedule.qmd)
+- [Assignments](assignments.qmd)
+- Sakai site ({{< var quarter >}}, coming soon)
+
+## References
+
+- [Textbook](resources/textbook.qmd): *Physical Modeling in MATLAB*, AE2440 adaptation
+
+## Resources
+
+- [Installing MATLAB](resources/installing_matlab.qmd)
+- [MATLAB Resources](resources/matlab.qmd)
