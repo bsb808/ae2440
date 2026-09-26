@@ -25,10 +25,10 @@ website:
         text: Schedule
       - href: assignments.qmd
         text: Assignments
+      - href: resources/textbook.qmd
+        text: Textbook
       - text: Resources
         menu:
-          - href: resources/textbook.qmd
-            text: Textbook
           - href: resources/installing_matlab.qmd
             text: Installing MATLAB
           - href: resources/matlab.qmd
