@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Read(//tmp/**)",
+      "Bash(git commit:*)",
+      "Bash(python3:*)"
+    ],
+    "additionalDirectories": [
+      "/tmp"
+    ]
+  }
+}

@@ -1,0 +1,41 @@
+# List of untracked files to ignore
+*.asv
+
+# Sakai grading zip archives (large binaries, not tracked)
+grading/*.zip
+
+# Claude Code — machine-specific settings (do not commit)
+.claude/settings.local.json
+
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.idx
+*.ilg
+*.ind
+*.log
+*.lof
+*.lot
+*.out
+*.synctex.gz
+*.toc
+# Sutton & Barto reference PDF (~73MB) — chapter cites the online URL
+RLbook2020.pdf
+
+# Compiled chapter/book PDFs (rebuild from .tex)
+book/book.pdf
+book/w*/chapter/*.pdf
+
+# draw.io autosave backups
+.$*.drawio.bkp
+
+# Quarto site build output (site/ is rendered by GitHub Actions)
+site/_site/
+site/.quarto/
+
+# Local scratch and student submissions (not for the repo)
+trash/
+studentwork/

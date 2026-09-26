@@ -1,0 +1,89 @@
+<mxfile host="Electron">
+  <diagram name="Unicycle (faithful)" id="unicycle-faithful">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="450" pageHeight="240" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="wx" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;strokeColor=#000000;endSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="50" y="200" as="sourcePoint" />
+            <mxPoint x="160" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wy" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;strokeColor=#000000;endSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="50" y="200" as="sourcePoint" />
+            <mxPoint x="50" y="100" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="wxlbl" value="&lt;i&gt;x&lt;/i&gt;&lt;sub&gt;w&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="156" y="206" width="24" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="wylbl" value="&lt;i&gt;y&lt;/i&gt;&lt;sub&gt;w&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="22" y="120" width="24" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="href" edge="1" parent="1" style="endArrow=none;html=1;rounded=0;strokeWidth=1;strokeColor=#000000;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="140" as="sourcePoint" />
+            <mxPoint x="400" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vehicle" value="" style="rounded=1;whiteSpace=wrap;html=1;arcSize=40;fillColor=#1a3a5e;strokeColor=#1a3a5e;rotation=-25;" vertex="1" parent="1">
+          <mxGeometry x="240" y="128" width="80" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="xb" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;strokeColor=#000000;endSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="140" as="sourcePoint" />
+            <mxPoint x="350" y="108" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="xblbl" value="&lt;i&gt;x&lt;/i&gt;&lt;sub&gt;b&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="354" y="92" width="24" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="yb" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;strokeColor=#000000;endSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="140" as="sourcePoint" />
+            <mxPoint x="250" y="76" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="yblbl" value="&lt;i&gt;y&lt;/i&gt;&lt;sub&gt;b&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="234" y="58" width="24" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="vbx" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=2.5;strokeColor=#1976d2;endSize=10;endFill=1;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="280" y="140" as="sourcePoint" />
+            <mxPoint x="332" y="116" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vbxlbl" value="&lt;i&gt;v&lt;/i&gt;&lt;sub&gt;b,x&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="288" y="96" width="40" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="omegaArrow" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;strokeColor=#1976d2;curved=1;endSize=8;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="262" y="148" as="sourcePoint" />
+            <mxPoint x="252" y="138" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="252" y="158" />
+              <mxPoint x="242" y="148" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="omegaLbl" value="&lt;i&gt;ω&lt;/i&gt;&lt;sub&gt;b,z&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=14;fontColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="190" y="158" width="42" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="thetaArc" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;strokeWidth=1.5;strokeColor=#1976d2;curved=1;endSize=7;">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="320" y="140" as="sourcePoint" />
+            <mxPoint x="313" y="123" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="319" y="131" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="thetaLbl" value="&lt;i&gt;θ&lt;/i&gt;" style="text;html=1;align=center;verticalAlign=middle;fontSize=16;fontColor=#1976d2;" vertex="1" parent="1">
+          <mxGeometry x="328" y="118" width="18" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

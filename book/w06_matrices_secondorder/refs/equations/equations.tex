@@ -1,0 +1,53 @@
+\documentclass[multi={mymath,myarray},border=1pt]{standalone}
+%\documentclass{article}
+\usepackage{amsmath}
+\usepackage{IEEEtrantools}
+
+\newenvironment{mymath}{$\displaystyle}{$}
+
+%\newenvironment{myarray}
+%  {\begin{IEEEeqnarray*}{rCl}} % Start of myarray environment
+%  {\end{IEEEeqnarray*}}
+\newenvironment{myarray}{$\begin{aligned}[t]}{\end{aligned}$}
+  
+\begin{document}
+
+\begin{myarray}
+  t_{k+1} &= t_{k} + \Delta t &\\
+  y_{k+1} &= y_k + f_{\text{@odefun}}(t_k, y_k) \cdot \Delta t
+\end{myarray}
+
+\begin{mymath}
+  \sigma = 10, \; \beta = 8/3, \; \rho = 28 .
+\end{mymath}
+
+\begin{mymath}
+  \mathbf{\dot{x}}(t) = \mathbf{f}(\mathbf{x}(t), t)
+\end{mymath}
+
+\begin{mymath}
+  \theta(0) = \theta_0 = 0.1 \, \text{rad}, \: \omega(0) = 0
+\end{mymath}
+
+\begin{mymath}
+  \theta(t) \approx \theta_0 \cos(\omega_n t)
+\end{mymath}
+
+\begin{mymath}
+\sin(\theta) \approx \theta
+\end{mymath}
+
+\begin{mymath}
+  V(t) = V_o (t-b)(1-e^{-kt})+c
+\end{mymath}
+
+\begin{myarray}
+  a_t \\
+  s_t \\
+  r_t \\
+  o_t \\
+  a_t = \pi(o_t)
+\end{myarray}
+
+
+\end{document}
