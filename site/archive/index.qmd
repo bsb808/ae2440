@@ -1,0 +1,9 @@
+---
+title: "Archive"
+---
+
+Schedules and assignments from previous quarters, kept for reference only.
+
+| Quarter | Schedule | Assignments |
+|---|---|---|
+| Spring 2026 (AY26Q3) | [Schedule](ay26q3/schedule.qmd) | [Assignments](ay26q3/assignments.qmd) |

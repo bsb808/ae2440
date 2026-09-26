@@ -2,4 +2,18 @@
 title: "MATLAB Resources"
 ---
 
-Coming soon.
+A short list of references beyond the [textbook](textbook.qmd). More to come.
+
+## MATLAB
+
+- [Installing MATLAB](installing_matlab.qmd) for this course.
+- [MATLAB Onramp](https://matlabacademy.mathworks.com/details/matlab-onramp/gettingstarted): MathWorks' free two-hour interactive introduction.
+- [Plain-text live code format](https://www.mathworks.com/help/matlab/matlab_prog/plain-text-file-format-for-live-scripts.html): the `.m` live-script format used for all assignments in this course.
+- [Format text in the Live Editor](https://www.mathworks.com/help/matlab/matlab_prog/format-live-scripts.html).
+
+## Other introductory programming courses
+
+The collaboration policy in the [syllabus](../syllabus.qmd#collaboration-and-use-of-generative-ai) borrows from these courses, which are also good models of how to learn programming.
+
+- [Harvard CS50's Introduction to Programming with Python](https://cs50.harvard.edu/python/2022/)
+- [USNA IC210](https://www.usna.edu/Users/cs/choi/ic210/resources/index.html)

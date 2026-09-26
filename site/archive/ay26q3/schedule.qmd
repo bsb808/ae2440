@@ -1,0 +1,10 @@
+---
+title: "Schedule — Spring 2026 (AY26Q3)"
+---
+
+::: {.callout-warning}
+## Archived
+This is the Spring 2026 schedule, kept for reference only. See the [current schedule](../../schedule.qmd).
+:::
+
+The Spring 2026 schedule is being migrated from the course wiki and will appear here.

@@ -4,4 +4,83 @@ title: "Syllabus and Course Policies"
 
 *Quarter:* {{< var quarter >}}
 
-Coming soon.
+## Course Information
+
+| | |
+|---|---|
+| **Schedule** | {{< var meeting >}} |
+| **Instructor** | {{< var instructor >}} <{{< var instructor_email >}}> |
+| **Office Hours** | By appointment. See Outlook for schedule constraints and send a meeting request. |
+| **Website** | This site for course content. Sakai for submitting assignments. |
+| **Textbook** | *Physical Modeling in MATLAB*, Allen B. Downey and Brian S. Bingham (see [Textbook](resources/textbook.qmd)) |
+| **Prerequisites** | Knowledge of single-variable calculus and matrix algebra. |
+
+## Course Catalog Description
+
+This course offers an introduction to computer system operations and program development using NPS computer facilities. The main goal of the course is to provide an overview of different structured programming techniques, along with an introduction to MATLAB/Simulink/GUIDE, and to use modeling as a tool for scientific and engineering applications. The course discusses the accuracy of digital computations, ways to incorporate symbolic computations, and presents numerical methods in MATLAB functions.
+
+## Learning Objectives
+
+As a result of successfully finishing this course you should be able to:
+
+Knowledge
+
+- Apply the generic concepts of programming (loops, conditionals, functions, data types, and so on) to computational problem solving.
+- Evaluate alternative computational approaches and make appropriate trade-offs in selecting methods.
+
+Skills
+
+- Use the programming capabilities of MATLAB to solve engineering problems with computational techniques.
+- Present graphical and textual results from computation clearly, following engineering conventions.
+- Apply debugging and testing techniques to improve and verify computations.
+- Use MATLAB capabilities (functions, toolboxes, external code) to solve domain-specific problems.
+
+Attitudes
+
+- Approach "programming" as a set of tools to be used in solving engineering problems.
+- Internalize the concepts of modeling as fundamental to the practice of engineering.
+- Be constructively skeptical of computational solutions and devise tests to improve confidence in solutions.
+
+## Assignments and Grading
+
+The course deliverables are weekly assignments to be completed individually. There will be nominally nine assignments. These assignments, weighted equally, account for 90% of your course grade. The remaining 10% of the course grade is based on class participation.
+
+If you successfully complete all the assignments on time, your grade will reflect that success. See the [Assignment Evaluation Framework](assignments.qmd#assignment-evaluation-framework) for how each assignment is graded.
+
+## Late Work
+
+Credit for work submitted past the announced deadline will be reduced by 10% per day (or portion of a day) up to 50%. Work will not be accepted more than 5 days late. Deadline extensions will not be granted within 24 hours of assignment deadlines without extenuating circumstances. If there are conflicts with deadlines, please notify the instructor so that other arrangements can be made.
+
+## Collaboration and Use of Generative AI {#collaboration-and-use-of-generative-ai}
+
+The goal of this policy is to encourage meaningful learning and prevent activities that hinder your educational development.
+
+Our guiding principle for academic honesty is: **"be reasonable."** You are encouraged to collaborate thoughtfully, both with classmates and generative AI tools, but only to the extent that it aids your learning without compromising your individual work. Your submitted assignments must be your own work. In this course, learning comes through practice, including debugging on your own. Frustration can be a valuable part of the learning process: "every moment of frustration is a sign you're learning something new."
+
+We view working with other people and using generative AI tools similarly: both are valuable resources that can enhance your learning when used properly. However, they must be used responsibly to support, rather than undermine, your educational growth.
+
+Below are examples (not exhaustive) of what constitutes acceptable and unacceptable collaboration. If unsure, always seek approval from the instructor before proceeding.
+
+| Reasonable | Not Reasonable |
+|---|---|
+| Discussing ideas and concepts with classmates or an AI tool to enhance understanding. | Sharing code with others, either directly or through an AI tool. |
+| Collaborating with classmates on pseudocode or diagrams without sharing actual code. | Using AI tools to develop or refine actual code instead of doing it yourself. |
+| Asking an AI tool to explain concepts or programming techniques. | Asking a classmate or AI tool to provide solutions or answers to assignments. |
+| Seeking external resources for clarification or technical troubleshooting (not for outright solutions). | Searching for or using online solutions to assessments. |
+| Providing or receiving conceptual help on assignments (not code-specific). | Dividing an assignment and combining work with another student. |
+| Using a few lines of code found online, provided they are not solutions to the assignment, and citing them. | Submitting code found online or from others as your own, without proper citation. |
+| Assisting classmates by discussing debugging techniques without directly sharing code. "Looking over the shoulder" of a classmate to identify and fix bugs. | Sharing or receiving code to solve bugs or complete an assignment. |
+| Reviewing general concepts or strategies from prior offerings to aid your understanding. | Using solutions, code, or completed assignments from prior offerings of the course to complete your own work, even if modified. |
+| Reviewing general study guides or topics covered in past exams to inform your study approach. | Accessing or using previous exams, quizzes, or their solutions (if not explicitly provided in this course) to prepare for current assessments. |
+
+In all cases, any external code or ideas incorporated must be cited in your code comments, respecting academic integrity.
+
+Attribution: this policy borrows from many other course policies, including [Harvard's CS50](https://cs50.harvard.edu/python/2022/) and [USNA's IC210](https://www.usna.edu/Users/cs/choi/ic210/resources/index.html).
+
+## NPS Honor Code and Academic Integrity
+
+The NPS Student Information Handbook in "Section 218: Academic Honor Code" clearly establishes that "Students must follow the [Academic Honor Code](https://nps.edu/documents/105858948/106279825/NPSINST+5370.4D+-+ACADEMIC+HONOR+CODE.pdf/2125a8f9-a2e8-4348-8520-6560e6e3bc1b?t=1540915845000) (NPS instruction 5370.4 series) at all times. The highest standards of honesty and integrity are expected of all students. Plagiarism, fraud, cheating, and verbal or written misrepresentation, constitute a violation of the Academic Honor Code."
+
+## Generative AI and Academic Integrity
+
+NPS policy encourages you to explore generative AI tools, and you must use them ethically and responsibly. Your coursework must accurately represent your underlying work, knowledge, and ideas, not the capabilities of an AI tool. If you use generative AI tools, state how you did so and describe how you remained in control of decisions and verification of information. Carefully read the [NPS Interim Guiding Principles for Use of Generative Artificial Intelligence (AI) Tools](https://nps.edu/documents/106660594/140848999/Interim-Guidance-on-Generative-AI-3.15.23+Memo.pdf/9cde404a-b369-d959-ef26-74832a7b429b?t=1678990400801). Never input classified or controlled unclassified information into a generative AI tool unless the platform has been explicitly approved by DoD or DON CIO for such use.

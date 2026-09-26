@@ -2,6 +2,52 @@
 title: "Assignments"
 ---
 
-*Quarter:* {{< var quarter >}}
+*Quarter:* {{< var quarter >}} · Previous quarters: [Archive](archive/index.qmd)
 
-Coming soon.
+Assignments are due Fridays at 1700 and are submitted through Sakai. Each assignment page lists the exercises, the required file names, and any files you need. See the [Schedule](schedule.qmd) for how each assignment fits the week.
+
+| Assignment | Topic | Due |
+|---|---|---|
+| [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | Fri 2 Oct |
+| Assignment 2 (posted by Mon 28 Sep) | Loops and Vectors | Fri 9 Oct |
+| Assignment 3 (posted by Mon 5 Oct) | Functions and Conditionals | Fri 23 Oct |
+| Assignment 4 (posted by Mon 12 Oct) | Data Types, Function Handles and Zero-Finding | Fri 30 Oct |
+| Assignment 5 (posted by Mon 19 Oct) | Solving First-Order Ordinary Differential Equations | Fri 6 Nov |
+| Assignment 6 (posted by Mon 26 Oct) | Matrices and Systems of ODEs | Fri 13 Nov |
+| Assignment 7 (posted by Mon 2 Nov) | Two Dimensions and Optimization | Fri 20 Nov |
+| Assignment 8 (posted by Mon 9 Nov) | Interpolation, Curve Fitting and Regression | Fri 4 Dec |
+| Assignment 9 (posted by Mon 23 Nov) | Q-Learning and Blackjack | Fri 11 Dec |
+
+## Assignment Evaluation Framework
+
+### Intent
+
+Assignments in this course are designed to build confidence and competence in applying programming to engineering problem solving. Each assignment includes several exercises, but only one representative exercise is graded for evaluation.
+
+The primary goal is to encourage consistent engagement and improvement, not to penalize small mistakes. Grading emphasizes understanding, effort, and clarity of communication. Students who complete the work thoughtfully and demonstrate learning will typically earn A or B grades.
+
+### Grading rubric for the selected exercise
+
+| Criterion | Weight | A (Excellent) | B (Satisfactory) | Incomplete |
+|---|---|---|---|---|
+| Problem understanding and approach | 25% | Shows a clear understanding of the problem and applies an appropriate, well-reasoned method. | Demonstrates general understanding; approach is reasonable but may not be the most efficient or fully explained. | Misinterprets or only partially addresses the problem. |
+| Implementation and code quality | 35% | Code runs correctly or nearly correctly; organized, readable, and follows MATLAB conventions. | Code mostly works; minor syntax or logic errors but demonstrates solid effort and structure. | Code incomplete or largely incorrect; intent unclear. |
+| Testing and debugging effort | 20% | Demonstrates testing or checking of results; identifies or discusses potential issues. | Some checking or validation attempted, though not systematic. | No evidence of checking, testing, or debugging. |
+| Presentation and communication | 20% | Output and plots are clear, labeled, and briefly explained following engineering conventions. | Output mostly clear; minor labeling or explanation issues. | Output unclear or missing explanation. |
+
+### Grade scale (mastery-focused)
+
+| Score | Grade | Meaning |
+|---|---|---|
+| 90–100 | A | Excellent mastery and presentation |
+| 80–89 | B | Proficient understanding with minor issues |
+| below 80 | Feedback only | Encouraged to discuss or revise |
+
+### Summary
+
+This grading approach:
+
+- Rewards consistent effort and steady improvement.
+- Encourages sound engineering habits: testing, verification, and clear communication.
+- Keeps grading meaningful while reducing performance pressure.
+- Ensures every assignment contributes to the development of practical programming competence.

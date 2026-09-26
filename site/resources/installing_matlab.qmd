@@ -2,4 +2,46 @@
 title: "Installing MATLAB"
 ---
 
-Coming soon.
+NPS maintains a site license for MATLAB and Simulink. Follow the instructions on the MathWorks NPS portal to install the software: [mathworks.com/academia/tah-portal/naval-postgraduate-school](https://www.mathworks.com/academia/tah-portal/naval-postgraduate-school-30827417.html).
+
+## Release
+
+It is highly recommended that you install **Release 2025b** of MATLAB and Simulink. **Release 2025a or higher is required.**
+
+It helps with debugging if everyone in the class is using the latest release.
+
+- The online documentation from MathWorks is for the latest release, so older releases can behave differently from the documentation you find online.
+- There are subtle gotchas that make code that works in one release problematic in another. For example, prior to R2024a, local functions had to be at the bottom of the file; see the [release notes](https://www.mathworks.com/help/matlab/release-notes.html#mw_694e8a08-77b2-4046-99a2-cf5a0f63cbb1). Release-dependent bugs like this can be infuriating and can be avoided by using the latest release.
+
+## Toolboxes
+
+MATLAB and Simulink products (toolboxes) are offered à la carte. The NPS license gives you access to [all the toolboxes](https://www.mathworks.com/products.html), but installing them all is overkill. Here are the requirements and recommendations. You can re-run the installer to add tools to your install if you find you are missing capabilities.
+
+Required:
+
+- Simulink
+- Control System Toolbox
+- Image Processing Toolbox
+- Optimization Toolbox
+- Signal Processing Toolbox
+- Symbolic Math Toolbox
+
+For reference, here is the release and toolbox listing from the instructor's install:
+
+```
+>> ver
+-----------------------------------------------------------------------------------------------------------------
+MATLAB Version: 25.2.0.3177638 (R2025b) Update 5
+Operating System: Linux 6.8.0-101-generic #101~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 11 13:19:54 UTC  x86_64
+Java Version: Java is not loaded
+-----------------------------------------------------------------------------------------------------------------
+MATLAB                                                Version 25.2        (R2025b)
+Simulink                                              Version 25.2        (R2025b)
+Control System Toolbox                                Version 25.2        (R2025b)
+Curve Fitting Toolbox                                 Version 25.2        (R2025b)
+Deep Learning Toolbox                                 Version 25.2        (R2025b)
+Optimization Toolbox                                  Version 25.2        (R2025b)
+ROS Toolbox                                           Version 25.2        (R2025b)
+Signal Processing Toolbox                             Version 25.2        (R2025b)
+Symbolic Math Toolbox                                 Version 25.2        (R2025b)
+```

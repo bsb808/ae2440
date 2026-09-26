@@ -1,0 +1,10 @@
+---
+title: "Assignments — Spring 2026 (AY26Q3)"
+---
+
+::: {.callout-warning}
+## Archived
+These are the Spring 2026 assignments, kept for reference only. See the [current assignments](../../assignments.qmd).
+:::
+
+The Spring 2026 assignment list is being migrated from the course wiki and will appear here.

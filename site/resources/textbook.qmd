@@ -2,4 +2,28 @@
 title: "Textbook"
 ---
 
-Coming soon.
+## Physical Modeling in MATLAB
+
+We use an adaptation of *Physical Modeling in MATLAB* by Allen Downey ([Green Tea Press](https://greenteapress.com/wp/physical-modeling-in-matlab/)), revised for AE2440 by Brian Bingham. The whole book is available as a PDF:
+
+- [PhysicalModelingInMatlabAE2440.pdf](files/PhysicalModelingInMatlabAE2440.pdf) (release 25-3)
+
+## Chapters by week
+
+Each week's reading is also released chapter by chapter from the [Schedule](../schedule.qmd), so you can read just what is assigned. The chapters are the same text as the whole-book PDF.
+
+| Week | Chapter | Formats |
+|---|---|---|
+| 1 | 1. Modeling and Simulation | [PDF](../weeks/w01_modeling_scripts/files/modeling.pdf) |
+| 1 | 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) |
+| 2 | 3. Loops | [PDF](../weeks/w02_loops_vectors/files/loops.pdf) |
+| 2 | 4. Vectors | [PDF](../weeks/w02_loops_vectors/files/vectors.pdf) |
+
+Later weeks are added as they are posted.
+
+## Code
+
+The source code for the book (`.m` and `.mlx` files) is on GitHub: [bsb808/PhysicalModelingInMatlab, branch `ae2440-dev`, `code/`](https://github.com/bsb808/PhysicalModelingInMatlab/tree/ae2440-dev/code).
+
+- To download one file, open it on GitHub and use the "Download raw file" button (the down-arrow icon at the top right of the file view).
+- To download all the code, go to the [repository main page](https://github.com/bsb808/PhysicalModelingInMatlab/tree/ae2440-dev), select the green "Code" button, then "Download ZIP".
