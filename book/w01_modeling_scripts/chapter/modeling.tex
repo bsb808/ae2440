@@ -172,7 +172,7 @@ most important human who will read your code is you.
 And that brings us to the First Theorem of Debugging:
 
 \begin{quote}
-Readable code is debuggable code.
+\textbf{Readable code is debuggable code.}
 \end{quote}
 
 It's worth spending time to make your code pretty; it will save
@@ -534,32 +534,6 @@ The message indicates that the expression is invalid and suggests several things
 In this case, one of its guesses is right: we're missing a multiplication operator.
 
 \index{parentheses}
-
-Another common error is to leave out the parentheses around the
-arguments of a function.  For example, in math notation it's common
-to write something like $\sin \pi$, but in MATLAB if you write
-
-% mlive: error
-\begin{code}
-sin pi
-\end{code}
-you should get the following error message:
-
-\begin{stdout}
-Undefined function 'sin' for input arguments of type 'char'.
-\end{stdout}
-
-The problem is that when you leave out the parentheses, MATLAB treats
-the argument as a string of characters (which have type \lstinline{'char'}).
-In this case the error message is helpful, but in other cases the results can be baffling.
-For example, if you call \lstinline{abs}, which computes absolute values, and forget the parentheses, you get a surprising result:
-
-\begin{code}
->> abs pi
-ans =  112   105
-\end{code}
-
-I won't explain this result; for now, I'll just suggest that you should \mbox{\emph{always}} put parentheses around arguments.
 
 \index{error message}
 

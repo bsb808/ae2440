@@ -14,12 +14,16 @@ Each week's reading is also released chapter by chapter from the [Schedule](../s
 
 | Week | Chapter | Formats |
 |---|---|---|
-| 1 | 1. Modeling and Simulation | [PDF](../weeks/w01_modeling_scripts/files/modeling.pdf) |
+| 1 | 1. Modeling and Simulation | [PDF](../weeks/w01_modeling_scripts/files/modeling.pdf) · [Live script](../weeks/w01_modeling_scripts/files/modeling.m){download="modeling.m"} |
 | 1 | 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) |
 | 2 | 3. Loops | [PDF](../weeks/w02_loops_vectors/files/loops.pdf) |
 | 2 | 4. Vectors | [PDF](../weeks/w02_loops_vectors/files/vectors.pdf) |
 
 Later weeks are added as they are posted.
+
+### Live script format (beta)
+
+Some chapters are also offered as a MATLAB live script: the same text, with the chapter's examples as code you can run and change in place. The file is a plain-text `.m` live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose "Open as Live Script". The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor.
 
 ## Code
 

@@ -52,7 +52,7 @@ Background:
 - Inputs: the archived previous-quarter schedule (baseline) or, for Fall 2026, the wiki extract `../tmp/wiki_extract/schedule_26_3.md`; the week mapping in the quarter log; the overview table's due items; any notes for that week in the quarter log.
 - Steps:
   1. Copy the mapped section(s) from the baseline; fix link prefixes; update dates, due items, holiday and shift-day notes; apply the week's notes.
-  2. Reading pair: `cd book && make wNN` to rebuild the week's chapter PDFs, copy them into `site/weeks/wNN_topic/files/` (same basename as the `.tex`), and write the reading lines. A released chapter live script (`<name>.m` with cached outputs, per `spec_live_scripts.md`) goes into the same `files/` directory.
+  2. Reading pair: `cd book && make wNN` to rebuild the week's chapter PDFs, copy them into `site/weeks/wNN_topic/files/` (same basename as the `.tex`), and write the reading lines. A released chapter live script (`<name>.m`, no cached outputs, per `spec_live_scripts.md`) goes into the same `files/` directory.
   3. Lesson files are linked to `book/` on GitHub with `{{< var repo_blob >}}`; slides and other files not in `book/` are copied into the week's `files/`.
   4. Add the week's row(s) to the chapter table in `site/resources/textbook.qmd`.
   5. Open the diff for the author to tune.
