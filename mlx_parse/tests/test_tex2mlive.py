@@ -78,6 +78,18 @@ class Structure(unittest.TestCase):
         self.assertFalse(any(ord(c) < 32 and c not in "\n\t" for c in out))
 
 
+class Headings(unittest.TestCase):
+    def test_footnote_lifted_out_of_heading(self):
+        out, _ = convert("""
+            \\section[What?]{What?\\protect\\footnote{From \\href{https://x.y}{Book}, 2e.}}
+            Body.
+            """)
+        lines = body_lines(out)
+        i = lines.index("%[text] ## 3.1 What?")
+        self.assertEqual(lines[i + 1], "%[text] *From* [Book](https://x.y)*, 2e.*")
+        self.assertEqual(lines[i + 2], "%[text] Body.")
+
+
 class Code(unittest.TestCase):
     def test_session_becomes_runnable(self):
         out, _ = convert("""
@@ -208,6 +220,20 @@ class Prose(unittest.TestCase):
         self.assertIn("See [the site](https://x.y) (note: A note.).", out)
 
 
+class Escaping(unittest.TestCase):
+    def test_prose_escapes_underscore_and_gt(self):
+        out, _ = convert("Click \\textbf{New->Script}; the file \\emph{bike\\textunderscore update.m} and `a_b` and $i > 2$ and [u](https://x.y/a_b).")
+        self.assertIn("Click **New-\\>Script**; the file *bike\\_update.m* and `a_b` and $i \\> 2$ and [u](https://x.y/a_b).", out)
+
+    def test_math_escapes_brackets(self):
+        out, _ = convert("$\\left[ x \\right]$")
+        self.assertIn("$\\\\left\\[ x \\\\right\\]$", out)
+
+    def test_example_blocks_are_not_escaped(self):
+        out, _ = convert("\\begin{stdout}\n>> a_b\n\\end{stdout}")
+        self.assertIn("%[text] >> a_b\n", out)
+
+
 class Lists(unittest.TestCase):
     def test_quote_is_centered_italic(self):
         out, _ = convert("""
@@ -245,6 +271,10 @@ class Lists(unittest.TestCase):
             \\end{description}
             """)
         self.assertIn("%[text] - **Key** — the value \\", out)
+
+    def test_description_label_with_colon(self):
+        out, _ = convert("\\begin{description}\n\\item[input:] Get data.\n\\end{description}")
+        self.assertIn("%[text] - **input:** Get data. \\", out)
 
     def test_exercise_numbering_and_first_paragraph(self):
         out, _ = convert("""
@@ -297,6 +327,20 @@ class Figures(unittest.TestCase):
             self.assertTrue(lines[i + 1].endswith('"width":2}'))
             self.assertEqual(lines[i + 2], "%---")
 
+    def test_includepdf_embeds_png_twin(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d) / "book"
+            (root / "w01" / "lessons").mkdir(parents=True)
+            (root / "w01" / "lessons" / "x.pdf").write_bytes(b"%PDF-1.4\n")
+            png = (Path(__file__).parent / "fixture.png")
+            (root / "w01" / "lessons" / "x.png").write_bytes(png.read_bytes()) if png.exists() else None
+            if not png.exists():
+                self.skipTest("no fixture.png")
+            out, conv = convert("\\includepdf[pages=-]{w01/lessons/x.pdf}", source_path=root / "c.tex", book_root=root)
+            self.assertEqual(conv.warnings, [])
+            self.assertRegex(out, r"!\[Page 1 of x.pdf\]\(text:image:[0-9a-f]{4}\)")
+
     def test_vector_only_figure_is_an_error(self):
         import tempfile
         with tempfile.TemporaryDirectory() as d:
@@ -306,6 +350,20 @@ class Figures(unittest.TestCase):
             with self.assertRaises(t.ConversionError):
                 convert("\\begin{figure}\\includegraphics{images/fig}\\caption{x}\\end{figure}",
                         source_path=root / "c.tex", book_root=root)
+
+
+class Comments(unittest.TestCase):
+    def test_commented_includepdf_is_ignored(self):
+        out, conv = convert("Text.\n%\\includepdf[pages=-]{w01/x.pdf}\nMore.")
+        self.assertNotIn("x.pdf", out)
+        self.assertEqual(conv.warnings, [])
+
+    def test_chapter_number_from_toc_line(self):
+        import tempfile
+        with tempfile.NamedTemporaryFile("w", suffix=".aux", delete=False) as f:
+            f.write("\\@writefile{toc}{\\contentsline {chapter}{\\numberline {2}Scripts and Live Scripts}{13}{chapter.2}}\n")
+        labels = t.load_labels(Path(f.name))
+        self.assertEqual(labels["chapter:Scripts and Live Scripts"], t.Label("chapter", "2", "Scripts and Live Scripts"))
 
 
 class Counts(unittest.TestCase):

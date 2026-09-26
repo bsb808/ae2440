@@ -59,6 +59,11 @@ IMAGES_PDF_ONLY := $(filter-out $(IMAGES_EPS:.eps=.pdf),$(wildcard images/*.pdf)
 IMAGES_SKIP     := images/figure04_01_new_v1.png images/matlab_circleart.png
 IMAGES_PNG      := $(filter-out $(IMAGES_SKIP),$(IMAGES_EPS:.eps=.png) $(IMAGES_PDF_ONLY:.pdf=.png))
 
+# Pages included with \includepdf (live-script exports in chapter 2) get a
+# PNG of their first page next to the PDF, framed like a page.
+INCLUDEPDF_PNG  := $(patsubst %.pdf,%.png,$(shell grep -oh '^\\includepdf.*{[^{}]*\.pdf}' w*/chapter/*.tex | sed 's/.*{\([^{}]*\.pdf\)}/\1/'))
+IMAGES_PNG      += $(INCLUDEPDF_PNG)
+
 images-png: $(IMAGES_PNG)
 
 images/%.png: images/%.eps
@@ -67,6 +72,10 @@ images/%.png: images/%.eps
 images/%.png: images/%.pdf
 	pdftoppm -png -r 150 -singlefile $< images/$*
 	convert $@ -trim +repage -bordercolor white -border 12 $@
+
+%.png: %.pdf
+	pdftoppm -png -r 150 -singlefile $< $*
+	convert $@ -trim +repage -bordercolor white -border 24 -bordercolor gray60 -border 1 $@
 
 clean:
 	@for f in $(CHAPTERS_TEX) $(ASSIGNMENTS_TEX) book.tex; do \

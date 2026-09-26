@@ -219,9 +219,17 @@ _NEWLABEL_RE = re.compile(
 )
 
 
+_TOC_CHAPTER_RE = re.compile(r"\\contentsline \{chapter\}\{\\numberline \{([^}]*)\}([^}]*)\}")
+
+
 def load_labels(aux_path: Path) -> dict[str, Label]:
+    """Labels from `\\newlabel` plus one synthetic `chapter:<title>` entry per
+    chapter from the table-of-contents lines, for chapters without a label."""
     labels: dict[str, Label] = {}
     for line in aux_path.read_text(encoding="utf-8", errors="replace").splitlines():
+        t = _TOC_CHAPTER_RE.search(line)
+        if t:
+            labels.setdefault(f"chapter:{t.group(2).strip()}", Label("chapter", t.group(1), t.group(2).strip()))
         m = _NEWLABEL_RE.search(line)
         if not m:
             continue
@@ -246,7 +254,9 @@ def _convert_math_body(body: str) -> str:
     body = re.sub(r"\\uvec\b", r"\\hat", body)
     body = re.sub(r"\\-", "", body)
     body = body.replace("\\", "\\\\")
-    body = body.replace("_", "\\_")
+    # MATLAB escapes these inside `$...$` on re-save; emitting them keeps the
+    # round trip clean.
+    body = body.replace("_", "\\_").replace("[", "\\[").replace("]", "\\]").replace(">", "\\>")
     return re.sub(r"\s+", " ", body)
 
 
@@ -565,8 +575,9 @@ class Converter:
         s = re.sub(r"\{\\(bf|em|it|tt)\s+([^{}]*)\}",
                    lambda m: f"**{m.group(2)}**" if m.group(1) == "bf" else
                    (f"`{m.group(2)}`" if m.group(1) == "tt" else f"*{m.group(2)}*"), s)
-        s = re.sub(r"\\textunderscore\b", "_", s)
-        s = re.sub(r"\\textdegree\b", "°", s)
+        s = re.sub(r"\\textunderscore\s*", "_", s)
+        s = re.sub(r"\\textdegree\s*", "°", s)
+
         s = re.sub(r"\\(?:l|d)?dots\b", "…", s)
         s = re.sub(r"\\LaTeX\b", "LaTeX", s)
         s = sub_balanced(s, re.compile(r"\\href\s*\{"),
@@ -593,6 +604,13 @@ class Converter:
     def _fix_hrefs(self, s: str) -> str:
         return sub_balanced(s, re.compile(r"\x04HREF([^\x04]*)\x04\s*\{"),
                             lambda m, label: f"[{label}]({m.group(1)})")
+
+    @staticmethod
+    def _split_italic_links(s: str) -> str:
+        """An italic span holding a link is written split around the link.
+        Not idempotent: apply once, after links are resolved."""
+        return re.sub(r"(?<![*\\])\*([^*\n]*\[[^\]]*\]\([^)]*\)[^*\n]*)\*(?!\*)",
+                      lambda m: _italic_para(m.group(1)), s)
 
     def _epigraphs(self, s: str) -> str:
         out: list[str] = []
@@ -621,7 +639,7 @@ class Converter:
         raw = strip_command_balanced(raw, "index")
         raw = re.sub(r"\\label\{[^}]*\}", "", raw)
         raw = re.sub(r"\\lstinline\{([^}]*)\}", lambda m: f"`{m.group(1)}`", raw)
-        return re.sub(r"\s+", " ", self._fix_hrefs(self.inline(raw))).strip()
+        return re.sub(r"\s+", " ", self._split_italic_links(self._fix_hrefs(self.inline(raw)))).strip()
 
     @staticmethod
     def _alt_text(raw: str) -> str:
@@ -733,6 +751,14 @@ class Converter:
         return f"\n\n{prefix}{_CODE}\n{body.strip(chr(10))}\n{_ENDCODE}\n\n"
 
     def render_verbatim(self, m: re.Match) -> str:
+        # Comments are stripped after this pass (code bodies may hold `%`), so
+        # an environment that starts on a commented line is left alone here and
+        # the comment stripper removes the line.
+        line_start = m.string.rfind("\n", 0, m.start()) + 1
+        if re.search(r"(?<!\\)%", m.string[line_start:m.start()]):
+            if "\n" in m.group(0).strip():
+                self.warn("a commented-out environment spans several lines; only its first line is a comment")
+            return m.group(0)
         directive = m.group("dir")
         if directive is not None and directive not in DIRECTIVES:
             self.warn(f"unknown directive `mlive: {directive}`")
@@ -773,9 +799,11 @@ class Converter:
         if m.group("figure") is not None:
             return self.render_figure(m.group("figure"))
         if m.group("pdf") is not None:
+            # A PDF page (a live-script export in chapter 2) is shown as an
+            # image of its first page; `make images-png` writes the PNG twin.
             name = m.group("pdf")
-            self.warn(f"\\includepdf{{{name}}} is not converted; a placeholder was written")
-            return f"\n\n%[text] *(PDF export of `{name}` is shown in the printed chapter.)*\n\n"
+            stem = name[:-4] if name.lower().endswith(".pdf") else name
+            return "\n\n" + self._image_ref(stem, f"Page 1 of {Path(name).name}") + "\n\n"
         return m.group(0)
 
     # -- lists and other block environments ----------------------------------
@@ -803,7 +831,8 @@ class Converter:
                 marker = "- "
                 if head.startswith("["):
                     label, rest_text = _split_desc_label(head)
-                    head = f"**{label}** — {rest_text}" if label is not None else head
+                    if label is not None:
+                        head = f"**{label}** {rest_text}" if label.endswith(":") else f"**{label}** — {rest_text}"
             out.append(marker + head)
             for ln in rest:
                 out.append(ln if ln.startswith("%[") or ln.startswith("\x02") else "  " + ln)
@@ -855,6 +884,8 @@ class Converter:
         s = re.sub(r"\\documentclass\b.*?(?=\\begin\{document\})", "", s, flags=re.S)
         s = re.sub(r"\\(?:begin|end)\{document\}", "", s)
 
+        s = _lift_heading_footnotes(s)
+
         # Directives become tokens glued to the following environment.
         s = _DIR_LINE_RE.sub(lambda m: f"\x03{m.group(1).lower()}\x03", s)
 
@@ -888,7 +919,7 @@ class Converter:
 
         # 5. Inline prose pass.
         s = self.inline(s)
-        s = self._fix_hrefs(s)
+        s = self._split_italic_links(self._fix_hrefs(s))
 
         # 6. Block environments.
         s = self.stash_lists(s)
@@ -946,6 +977,7 @@ class Converter:
         title = f"Chapter {self.chapter_num}: {self.chapter_title}" if self.chapter_num else self.chapter_title
         out: list[str] = [f"%[text] # {title}"]
         i, n = 0, len(raw_lines)
+        in_fence = False
         while i < n:
             ln = raw_lines[i]
             stripped = ln.strip()
@@ -972,12 +1004,21 @@ class Converter:
                 continue
             if stripped.startswith("%[") or stripped.startswith("%%"):
                 # `%[text] ` with a trailing space is an empty paragraph; keep it.
-                out.append("%[text] " if stripped == "%[text]" else stripped)
+                if stripped == "%[text]":
+                    out.append("%[text] ")
+                elif "```" in stripped:
+                    in_fence = not in_fence
+                    out.append(stripped)
+                elif in_fence or not stripped.startswith("%[text"):
+                    out.append(stripped)
+                else:
+                    tm = re.match(r"(%\[text\](?:\{[^}]*\})? )(.*)$", stripped)
+                    out.append(tm.group(1) + _escape_prose(tm.group(2)) if tm else stripped)
                 i += 1
                 continue
             lm = _LIST_ITEM_RE.match(ln)
             if lm:
-                out.append(f"%[text] {lm.group(1)}{lm.group(2).rstrip()}")
+                out.append(f"%[text] {lm.group(1)}{_escape_prose(lm.group(2).rstrip())}")
                 i += 1
                 continue
             para = [stripped]
@@ -991,7 +1032,7 @@ class Converter:
                 i += 1
             joined = re.sub(r"\s+", " ", " ".join(para)).strip()
             if joined:
-                out.append(f"%[text] {joined}")
+                out.append(f"%[text] {_escape_prose(joined)}")
         while out and out[-1] in ("", "%%"):
             out.pop()
         out.append("")
@@ -1022,6 +1063,44 @@ class Converter:
 # ---------------------------------------------------------------------------
 # Small helpers
 # ---------------------------------------------------------------------------
+
+_PROSE_SKIP_RE = re.compile(r"`[^`]*`|(?<!\\)\$[^$]*\$|\]\([^)]*\)")
+
+
+def _escape_prose(text: str) -> str:
+    """Escape `_` and `>` the way MATLAB writes them, outside code spans, math
+    and link targets (verified by re-save in R2026b; URLs are left alone)."""
+    out = []
+    pos = 0
+    for m in _PROSE_SKIP_RE.finditer(text):
+        out.append(_escape_run(text[pos:m.start()]))
+        out.append(m.group(0))
+        pos = m.end()
+    out.append(_escape_run(text[pos:]))
+    return "".join(out)
+
+
+def _escape_run(text: str) -> str:
+    text = re.sub(r"(?<!\\)_", r"\\_", text)
+    return re.sub(r"(?<!\\)>", r"\\>", text)
+
+
+def _lift_heading_footnotes(s: str) -> str:
+    """`\\section{Title\\footnote{note}}` becomes `\\section{Title}` followed by the
+    note as its own italic paragraph; a note inside a heading renders badly."""
+    head = re.compile(r"\\(section|subsection|subsubsection)(\*?)(\[[^\]]*\])?\s*\{")
+
+    def lift(m: re.Match, title: str) -> str:
+        fm = re.search(r"\\protect\s*\\footnote\s*\{|\\footnote\s*\{", title)
+        if not fm:
+            return m.group(0) + title + "}"
+        note, end = balanced(title, fm.end())
+        if note is None:
+            return m.group(0) + title + "}"
+        clean = (title[:fm.start()] + title[end:]).strip()
+        return f"\\{m.group(1)}{m.group(2)}{m.group(3) or ''}{{{clean}}}\n\n\\emph{{{note.strip()}}}\n\n"
+    return sub_balanced(s, head, lift)
+
 
 def _strip_comments(s: str) -> str:
     """Drop `%` comments (not `\\%`, not inside backticks), line by line."""
@@ -1064,18 +1143,27 @@ def _replace_outside_backticks(text: str, needle: str, repl: str) -> str:
 
 
 def _italic_para(text: str) -> str:
-    """Wrap a paragraph in italics the way MATLAB writes it back: an inner
-    `*x*` becomes bold-italic and the span is split around it,
-    `*a* ***x*** *b*` (verified by re-save in R2026b)."""
-    parts = re.split(r"(?<!\*)\*([^*]+)\*(?!\*)", text)
+    """Wrap a paragraph in italics the way MATLAB writes it back (verified by
+    re-save in R2026b): the span is split around an inner `*x*`, which becomes
+    bold-italic, and around a link, keeping the original spacing:
+    `*a* ***x*** *b*` and `*a,* [x](u)*, b*`."""
+    parts = re.split(r"(?<!\*)\*([^*]+)\*(?!\*)|(\[[^\]]*\]\([^)]*\))", text)
     out = []
     for i, part in enumerate(parts):
-        if i % 2 == 0:
+        if part is None:
+            continue
+        if i % 3 == 0:
             if part.strip():
-                out.append(f"*{part.strip()}*")
-        else:
+                lead = part[:len(part) - len(part.lstrip())]
+                trail = part[len(part.rstrip()):]
+                out.append(f"{lead}*{part.strip()}*{trail}")
+            else:
+                out.append(part)
+        elif i % 3 == 1:
             out.append(f"***{part}***")
-    return " ".join(out)
+        else:
+            out.append(part)
+    return "".join(out).strip()
 
 
 def _split_desc_label(it: str) -> tuple[str | None, str]:

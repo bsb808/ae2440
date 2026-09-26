@@ -72,6 +72,7 @@ Now click the green \textbf{Run} button.  You might get a message that says the 
 If so, click the button that says Change Folder and it should run.  
 
 A handy way to discover the current folder in which the Command Window is operating is to issue the \lstinline{pwd} command - for 'print working directory'.  You can also issue the \lstinline{ls} command to display a listing of the files and folders in the current working directory, for example
+% mlive: noexec
 \begin{code}
   >> ls
 bike_update.m	     fibonacci1_live.pdf  mylivescript.mlx  myscript.m
@@ -84,6 +85,7 @@ fibonacci1_live.mlx  fibonacci1.m	  mylivescript.pdf  swap.m
 
 You can also run a script by typing its name in the Command Window and pressing \keycap{enter}. For example, if you enter \lstinline{myscript}, MATLAB should execute your script and display the result:
 
+% mlive: noexec
 \begin{code}
 >> myscript
 x = 5
@@ -91,6 +93,7 @@ x = 5
 
 There are a few things to keep in mind when using scripts. First, you should not include the extension \emph{.m} when you run a script.  If you do, you'll get an error message like this:
 
+% mlive: noexec
 \begin{code}
 >> myscript.m
 Undefined variable "myscript" or class "myscript.m".
@@ -106,6 +109,7 @@ Also, the name of the script cannot contain spaces.  If you create
 a file named \emph{my script.m}, MATLAB will complain when you try
 to run it:
 
+% mlive: noexec
 \begin{code}
 >> my script
 Undefined function or variable 'my'.
@@ -162,6 +166,7 @@ F_n = \frac{1}{\sqrt{5}}
 
 We can translate this expression into MATLAB, like this:
 
+% mlive: noexec
 \begin{code}
 s5 = sqrt(5);
 t1 = (1 + s5) / 2;
@@ -176,6 +181,7 @@ I use temporary variables like \lstinline{t1} and \lstinline{t2} to make the cod
 
 If we save this script in a file named \emph{fibonacci1.m}, we can run it like this:
 
+% mlive: noexec
 \begin{code}
 >> n = 10
 >> fibonacci1
@@ -185,6 +191,7 @@ ans = 55.0000
 Before calling this script, you have to assign a value to \lstinline{n}.
 If \lstinline{n} is not defined, you get an error:
 
+% mlive: noexec
 \begin{code}
 >> clear n
 >> fibonacci1
@@ -381,6 +388,7 @@ For example, I might put something like this at the beginning of \emph{fibonacci
 \index{documentation!function}
 \index{function!documentation}
 
+% mlive: noexec
 \begin{code}
 % Computes a numerical approximation of the nth Fibonacci number.
 % Precondition: you must assign a value to n before running this script.
@@ -399,6 +407,7 @@ If there is a comment at the beginning of a script, MATLAB assumes
 it's the documentation for the script. So if you type \lstinline{help fibonacci1}, you get the contents of the comment (without the percent
 signs).
 
+% mlive: noexec
 \begin{code}
 >> help fibonacci1
   Computes a numerical approximation of the nth Fibonacci number.
@@ -439,6 +448,7 @@ x = 2
 
 But this is not:
 
+% mlive: noexec
 \begin{code}
 >> y + 1 = x
  y + 1 = x
@@ -492,6 +502,7 @@ You can create a live script by clicking the \textbf{New->Live Script} button in
 Then press the \textbf{Save} button to save the file as \emph{mylivescript.mlx}.
 
 Now click the same green \textbf{Run} button (or hit F5) to run the script and see the result in the same document.  You can still call the live script from the Command Window:
+% mlive: noexec
 \begin{code}
   >> mylivescript
   x =
@@ -549,6 +560,7 @@ Put your code in a script called \emph{swap.m} and test it.
 
 If it works correctly, you should be able to run it like this:
 
+% mlive: noexec
 \begin{code}
 >> x = 1, y = 2
 x = 1
@@ -582,6 +594,7 @@ is that \lstinline{m} and \lstinline{pg} have been modified to reflect the net m
 
 To test your program, initialize \lstinline{m} and \lstinline{pg} at
 the command prompt, then execute the script.  
+% mlive: noexec
 \begin{code}
 >> m = 100
 >> pg = 100
