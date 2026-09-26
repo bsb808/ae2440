@@ -11,7 +11,7 @@ title: "Syllabus and Course Policies"
 | **Schedule** | {{< var meeting >}} |
 | **Instructor** | {{< var instructor >}} <{{< var instructor_email >}}> |
 | **Office Hours** | By appointment. See Outlook for schedule constraints and send a meeting request. |
-| **Website** | This site for course content. Sakai for submitting assignments. |
+| **Website** | This site for course content. [Sakai]({{< var sakai_url >}}) for submitting assignments. |
 | **Textbook** | *Physical Modeling in MATLAB*, Allen B. Downey and Brian S. Bingham (see [Textbook](resources/textbook.qmd)) |
 | **Prerequisites** | Knowledge of single-variable calculus and matrix algebra. |
 

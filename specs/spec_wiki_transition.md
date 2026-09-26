@@ -62,6 +62,6 @@ Context-window management: never read raw wiki HTML or list `attachments/` unbou
 
 - [ ] Make `bsb808/ae2440` public (GitHub Pages needs it on a personal plan). `moss/` was removed first because it carried a personal MOSS user ID; student names were scrubbed earlier (commit `94678d4`).
 - [ ] After the first Action run creates `gh-pages`: Settings → Pages → Source: Deploy from a branch → `gh-pages` / root. If the Action fails before the branch exists, run `cd site && quarto publish gh-pages` once locally.
-- [ ] Replace the "coming soon" Sakai link on the home page with the Fall 2026 Sakai site URL.
+- [x] Sakai link for Fall 2026 added as `sakai_url` in `site/_variables.yml` (used by the home page, syllabus, schedule, and assignments index).
 - [ ] Confirm the Fall 2026 meeting days, time and room; update `meeting` in `site/_variables.yml`.
 - [ ] Decide whether the Assignment 1 aquarium figure stays hot-linked from engineeringstatics.org (CC BY-NC-SA 4.0) or is redrawn.

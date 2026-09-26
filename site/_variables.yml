@@ -7,5 +7,7 @@ term_end: "2026-12-11"
 meeting: "M–R, 0900–0950, WA-147"
 instructor: "Brian Bingham"
 instructor_email: "bbingham@nps.edu"
+# Sakai site for this quarter (assignment submission). New site each quarter.
+sakai_url: "https://cle.nps.edu/portal/directtool/5a3445ee-66c9-47da-902f-d382eea628ab/"
 # Base URL for linking files that live in the course repo (lessons, student assignment files).
 repo_blob: "https://github.com/bsb808/ae2440/blob/main"

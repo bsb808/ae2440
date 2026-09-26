@@ -4,7 +4,7 @@ title: "Assignments"
 
 *Quarter:* {{< var quarter >}} · Previous quarters: [Archive](archive/index.qmd)
 
-Assignments are due Fridays at 1700 and are submitted through Sakai. Each assignment page lists the exercises, the required file names, and any files you need. See the [Schedule](schedule.qmd) for how each assignment fits the week.
+Assignments are due Fridays at 1700 and are submitted through [Sakai]({{< var sakai_url >}}). Each assignment page lists the exercises, the required file names, and any files you need. See the [Schedule](schedule.qmd) for how each assignment fits the week.
 
 | Assignment | Topic | Due |
 |---|---|---|

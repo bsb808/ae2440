@@ -50,7 +50,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai (
 
 **Thursday:** Work on Assignment 1
 
-- Due Friday 2 Oct, 1700: [Assignment 1: Models and Scripts](weeks/w01_modeling_scripts/assignment.qmd), submit via Sakai
+- Due Friday 2 Oct, 1700: [Assignment 1: Models and Scripts](weeks/w01_modeling_scripts/assignment.qmd), submit via [Sakai]({{< var sakai_url >}})
 
 ## Week 2 — 5 Oct: Loops; Vectors {#week-2}
 

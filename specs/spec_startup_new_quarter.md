@@ -27,7 +27,7 @@ Background:
 
 - Objective: update the syllabus with the new course days of the week, times, and room.
 - Inputs: meeting days/times/room (supplied by author)
-- Outputs: [site/syllabus.qmd](../site/syllabus.qmd); [site/_variables.yml](../site/_variables.yml) (`quarter`, `term_start`, `term_end`, `meeting`)
+- Outputs: [site/syllabus.qmd](../site/syllabus.qmd); [site/_variables.yml](../site/_variables.yml) (`quarter`, `term_start`, `term_end`, `meeting`, `sakai_url`)
 - Owner: AI, author review
 - Verification: PMR; skim `index.qmd` and `syllabus.qmd` for stale references (term, dates, links, Sakai site).
 - Status: review (AY27Q1). `meeting` still holds the Spring 2026 value until the author confirms.
@@ -74,7 +74,7 @@ Background:
 
 - [ ] Verify class meeting days, times, and room in Python; add the class meetings to Outlook; update `meeting` in `site/_variables.yml`.
 - [ ] Pull roster from Python, put a copy in OneDrive.
-- [ ] Request the new Sakai site; update the Sakai link on `site/index.qmd`.
+- [x] Request the new Sakai site; set `sakai_url` in `site/_variables.yml` (done for AY27Q1).
 - [ ] Update the Initial Class Survey form if needed (the link is reused every quarter).
 
 ## 5. Publish
