@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -27,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -34,10 +38,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-43077eb8b3705e3564d666be9f3b1bee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5ea73e4b3f7bd5fa36f395da17fbdf98.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -64,6 +68,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../favicon.png" alt="AE 2440" class="navbar-logo light-content">
+    <img src="../favicon.png" alt="AE 2440" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">AE 2440 — Introduction to Scientific Programming</span>
     </a>
@@ -89,15 +97,15 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../assignments.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../resources/textbook.html"> 
+<span class="menu-text">Textbook</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Resources</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
-        <li>
-    <a class="dropdown-item" href="../resources/textbook.html">
- <span class="dropdown-text">Textbook</span></a>
-  </li>  
         <li>
     <a class="dropdown-item" href="../resources/installing_matlab.html">
  <span class="dropdown-text">Installing MATLAB</span></a>
@@ -161,7 +169,7 @@ ul.task-list li input[type="checkbox"] {
 <p>NPS maintains a site license for MATLAB and Simulink. Follow the instructions on the MathWorks NPS portal to install the software: <a href="https://www.mathworks.com/academia/tah-portal/naval-postgraduate-school-30827417.html">mathworks.com/academia/tah-portal/naval-postgraduate-school</a>.</p>
 <section id="release" class="level2">
 <h2 class="anchored" data-anchor-id="release">Release</h2>
-<p>It is highly recommended that you install <strong>Release 2025b</strong> of MATLAB and Simulink. <strong>Release 2025a or higher is required.</strong></p>
+<p>It is highly recommended that you install <strong>Release 2026b</strong> of MATLAB and Simulink. <strong>Release 2025b or higher is required.</strong></p>
 <p>It helps with debugging if everyone in the class is using the latest release.</p>
 <ul>
 <li>The online documentation from MathWorks is for the latest release, so older releases can behave differently from the documentation you find online.</li>
@@ -173,9 +181,7 @@ ul.task-list li input[type="checkbox"] {
 <p>MATLAB and Simulink products (toolboxes) are offered à la carte. The NPS license gives you access to <a href="https://www.mathworks.com/products.html">all the toolboxes</a>, but installing them all is overkill. Here are the requirements and recommendations. You can re-run the installer to add tools to your install if you find you are missing capabilities.</p>
 <p>Required:</p>
 <ul>
-<li>Simulink</li>
 <li>Control System Toolbox</li>
-<li>Image Processing Toolbox</li>
 <li>Optimization Toolbox</li>
 <li>Signal Processing Toolbox</li>
 <li>Symbolic Math Toolbox</li>
@@ -183,19 +189,21 @@ ul.task-list li input[type="checkbox"] {
 <p>For reference, here is the release and toolbox listing from the instructor’s install:</p>
 <pre><code>&gt;&gt; ver
 -----------------------------------------------------------------------------------------------------------------
-MATLAB Version: 25.2.0.3177638 (R2025b) Update 5
-Operating System: Linux 6.8.0-101-generic #101~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 11 13:19:54 UTC  x86_64
+MATLAB Version: 26.2.0.3386108 (R2026b)
+Operating System: Linux 6.8.0-138-generic #138~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  7 13:43:15 UTC  x86_64
 Java Version: Java is not loaded
 -----------------------------------------------------------------------------------------------------------------
-MATLAB                                                Version 25.2        (R2025b)
-Simulink                                              Version 25.2        (R2025b)
-Control System Toolbox                                Version 25.2        (R2025b)
-Curve Fitting Toolbox                                 Version 25.2        (R2025b)
-Deep Learning Toolbox                                 Version 25.2        (R2025b)
-Optimization Toolbox                                  Version 25.2        (R2025b)
-ROS Toolbox                                           Version 25.2        (R2025b)
-Signal Processing Toolbox                             Version 25.2        (R2025b)
-Symbolic Math Toolbox                                 Version 25.2        (R2025b)</code></pre>
+MATLAB                                                Version 26.2        (R2026b)
+Simulink                                              Version 26.2        (R2026b)
+Aerospace Blockset                                    Version 26.2        (R2026b)
+Aerospace Toolbox                                     Version 26.2        (R2026b)
+Control System Toolbox                                Version 26.2        (R2026b)
+Curve Fitting Toolbox                                 Version 26.2        (R2026b)
+Deep Learning Toolbox                                 Version 26.2        (R2026b)
+MATLAB Copilot                                        Version 26.2        (R2026b)
+Navigation Toolbox                                    Version 26.2        (R2026b)
+Optimization Toolbox                                  Version 26.2        (R2026b)
+Statistics and Machine Learning Toolbox               Version 26.2        (R2026b)</code></pre>
 
 
 </section>

@@ -46,14 +46,14 @@
     "href": "schedule.html",
     "title": "Schedule",
     "section": "",
-    "text": "Quarter: Fall 2026 · Previous quarters: Archive\nClass meets M–R, 0900–0950, WA-147. Assignments are due Fridays at 1700 via Sakai (see Assignments). Readings refer to the course textbook; each chapter is linked from the week it is assigned."
+    "text": "Quarter: Fall 2026 · Previous quarters: Archive\nClass meets M–R, 1400–1450, WA-147. Assignments are due Fridays at 1700 via Sakai (see Assignments). Readings refer to the course textbook; each chapter is linked from the week it is assigned."
   },
   {
     "objectID": "schedule.html#week-1",
     "href": "schedule.html#week-1",
     "title": "Schedule",
     "section": "Week 1 — 28 Sep: Modeling and Simulation; Scripts",
-    "text": "Week 1 — 28 Sep: Modeling and Simulation; Scripts\nMonday: Course introduction and MATLAB overview\n\nSlides: ae2440_introduction.pdf (NPS login)\n\nTuesday: MATLAB IDE and variables\n\nBefore class:\n\nInstall MATLAB: Installing MATLAB\nComplete the Initial Class Survey (5 min)\nRead Chapter 1, Modeling and Simulation: PDF\n\nSlides: ae2440_modeling_and_sim_scripts.pdf\nLessons: lesson_intro_ide.m, lesson_intro_workspace_path.m\n\nWednesday: Scripts and live scripts\n\nBefore class: Read Chapter 2, Scripts: PDF\nPreview: Assignment 1\n\nThursday: Work on Assignment 1\n\nDue Friday 2 Oct, 1700: Assignment 1: Models and Scripts, submit via Sakai"
+    "text": "Week 1 — 28 Sep: Modeling and Simulation; Scripts\nMonday: Course introduction and MATLAB overview\n\nSlides: ae2440_introduction.pdf (NPS login)\n\nTuesday: MATLAB IDE and variables\n\nBefore class:\n\nInstall MATLAB: Installing MATLAB\nComplete the Initial Class Survey (5 min)\nRead Chapter 1, Modeling and Simulation: PDF · Live script (beta)\n\nSlides: ae2440_modeling_and_sim_scripts.pdf\nLessons: lesson_intro_ide.m, lesson_intro_workspace_path.m\n\nWednesday: Scripts and live scripts\n\nBefore class: Read Chapter 2, Scripts: PDF · Live script (beta)\nPreview: Assignment 1\n\nThursday: Work on Assignment 1\n\nDue Friday 2 Oct, 1700: Assignment 1: Models and Scripts, submit via Sakai"
   },
   {
     "objectID": "schedule.html#week-2",
@@ -158,7 +158,7 @@
     "href": "index.html#course-information",
     "title": "AE 2440 — Introduction to Scientific Programming",
     "section": "Course Information",
-    "text": "Course Information\n\nSyllabus and Course Policies\nSchedule\nAssignments\nSakai site (Fall 2026, coming soon)"
+    "text": "Course Information\n\nSyllabus and Course Policies\nSchedule\nAssignments\nSakai site (Fall 2026, NPS login) for submitting assignments"
   },
   {
     "objectID": "index.html#references",
@@ -221,14 +221,14 @@
     "href": "resources/installing_matlab.html#release",
     "title": "Installing MATLAB",
     "section": "Release",
-    "text": "Release\nIt is highly recommended that you install Release 2025b of MATLAB and Simulink. Release 2025a or higher is required.\nIt helps with debugging if everyone in the class is using the latest release.\n\nThe online documentation from MathWorks is for the latest release, so older releases can behave differently from the documentation you find online.\nThere are subtle gotchas that make code that works in one release problematic in another. For example, prior to R2024a, local functions had to be at the bottom of the file; see the release notes. Release-dependent bugs like this can be infuriating and can be avoided by using the latest release."
+    "text": "Release\nIt is highly recommended that you install Release 2026b of MATLAB and Simulink. Release 2025b or higher is required.\nIt helps with debugging if everyone in the class is using the latest release.\n\nThe online documentation from MathWorks is for the latest release, so older releases can behave differently from the documentation you find online.\nThere are subtle gotchas that make code that works in one release problematic in another. For example, prior to R2024a, local functions had to be at the bottom of the file; see the release notes. Release-dependent bugs like this can be infuriating and can be avoided by using the latest release."
   },
   {
     "objectID": "resources/installing_matlab.html#toolboxes",
     "href": "resources/installing_matlab.html#toolboxes",
     "title": "Installing MATLAB",
     "section": "Toolboxes",
-    "text": "Toolboxes\nMATLAB and Simulink products (toolboxes) are offered à la carte. The NPS license gives you access to all the toolboxes, but installing them all is overkill. Here are the requirements and recommendations. You can re-run the installer to add tools to your install if you find you are missing capabilities.\nRequired:\n\nSimulink\nControl System Toolbox\nImage Processing Toolbox\nOptimization Toolbox\nSignal Processing Toolbox\nSymbolic Math Toolbox\n\nFor reference, here is the release and toolbox listing from the instructor’s install:\n&gt;&gt; ver\n-----------------------------------------------------------------------------------------------------------------\nMATLAB Version: 25.2.0.3177638 (R2025b) Update 5\nOperating System: Linux 6.8.0-101-generic #101~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Wed Feb 11 13:19:54 UTC  x86_64\nJava Version: Java is not loaded\n-----------------------------------------------------------------------------------------------------------------\nMATLAB                                                Version 25.2        (R2025b)\nSimulink                                              Version 25.2        (R2025b)\nControl System Toolbox                                Version 25.2        (R2025b)\nCurve Fitting Toolbox                                 Version 25.2        (R2025b)\nDeep Learning Toolbox                                 Version 25.2        (R2025b)\nOptimization Toolbox                                  Version 25.2        (R2025b)\nROS Toolbox                                           Version 25.2        (R2025b)\nSignal Processing Toolbox                             Version 25.2        (R2025b)\nSymbolic Math Toolbox                                 Version 25.2        (R2025b)"
+    "text": "Toolboxes\nMATLAB and Simulink products (toolboxes) are offered à la carte. The NPS license gives you access to all the toolboxes, but installing them all is overkill. Here are the requirements and recommendations. You can re-run the installer to add tools to your install if you find you are missing capabilities.\nRequired:\n\nControl System Toolbox\nOptimization Toolbox\nSignal Processing Toolbox\nSymbolic Math Toolbox\n\nFor reference, here is the release and toolbox listing from the instructor’s install:\n&gt;&gt; ver\n-----------------------------------------------------------------------------------------------------------------\nMATLAB Version: 26.2.0.3386108 (R2026b)\nOperating System: Linux 6.8.0-138-generic #138~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  7 13:43:15 UTC  x86_64\nJava Version: Java is not loaded\n-----------------------------------------------------------------------------------------------------------------\nMATLAB                                                Version 26.2        (R2026b)\nSimulink                                              Version 26.2        (R2026b)\nAerospace Blockset                                    Version 26.2        (R2026b)\nAerospace Toolbox                                     Version 26.2        (R2026b)\nControl System Toolbox                                Version 26.2        (R2026b)\nCurve Fitting Toolbox                                 Version 26.2        (R2026b)\nDeep Learning Toolbox                                 Version 26.2        (R2026b)\nMATLAB Copilot                                        Version 26.2        (R2026b)\nNavigation Toolbox                                    Version 26.2        (R2026b)\nOptimization Toolbox                                  Version 26.2        (R2026b)\nStatistics and Machine Learning Toolbox               Version 26.2        (R2026b)"
   },
   {
     "objectID": "resources/textbook.html",
@@ -249,7 +249,7 @@
     "href": "resources/textbook.html#chapters-by-week",
     "title": "Textbook",
     "section": "Chapters by week",
-    "text": "Chapters by week\nEach week’s reading is also released chapter by chapter from the Schedule, so you can read just what is assigned. The chapters are the same text as the whole-book PDF.\n\n\n\nWeek\nChapter\nFormats\n\n\n\n\n1\n1. Modeling and Simulation\nPDF\n\n\n1\n2. Scripts\nPDF\n\n\n2\n3. Loops\nPDF\n\n\n2\n4. Vectors\nPDF\n\n\n\nLater weeks are added as they are posted."
+    "text": "Chapters by week\nEach week’s reading is also released chapter by chapter from the Schedule, so you can read just what is assigned. The chapters are the same text as the whole-book PDF.\n\n\n\nWeek\nChapter\nFormats\n\n\n\n\n1\n1. Modeling and Simulation\nPDF · Live script\n\n\n1\n2. Scripts\nPDF · Live script\n\n\n2\n3. Loops\nPDF\n\n\n2\n4. Vectors\nPDF\n\n\n\nLater weeks are added as they are posted.\n\nLive script format (beta)\nSome chapters are also offered as a MATLAB live script: the same text, with the chapter’s examples as code you can run and change in place. The file is a plain-text .m live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose “Open as Live Script”. The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor."
   },
   {
     "objectID": "resources/textbook.html#code",
@@ -270,7 +270,7 @@
     "href": "syllabus.html#course-information",
     "title": "Syllabus and Course Policies",
     "section": "Course Information",
-    "text": "Course Information\n\n\n\nSchedule\nM–R, 0900–0950, WA-147\n\n\nInstructor\nBrian Bingham &lt;bbingham@nps.edu&gt;\n\n\nOffice Hours\nBy appointment. See Outlook for schedule constraints and send a meeting request.\n\n\nWebsite\nThis site for course content. Sakai for submitting assignments.\n\n\nTextbook\nPhysical Modeling in MATLAB, Allen B. Downey and Brian S. Bingham (see Textbook)\n\n\nPrerequisites\nKnowledge of single-variable calculus and matrix algebra."
+    "text": "Course Information\n\n\n\nSchedule\nM–R, 1400–1450, WA-147\n\n\nInstructor\nBrian Bingham &lt;bbingham@nps.edu&gt;\n\n\nOffice Hours\nBy appointment. See Outlook for schedule constraints and send a meeting request.\n\n\nWebsite\nThis site for course content. Sakai for submitting assignments.\n\n\nTextbook\nPhysical Modeling in MATLAB, Allen B. Downey and Brian S. Bingham (see Textbook)\n\n\nPrerequisites\nKnowledge of single-variable calculus and matrix algebra."
   },
   {
     "objectID": "syllabus.html#course-catalog-description",

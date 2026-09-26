@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -27,6 +30,7 @@ ul.task-list li input[type="checkbox"] {
 
 
 <script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<link href="../favicon.png" rel="icon" type="image/png">
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -34,10 +38,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-43077eb8b3705e3564d666be9f3b1bee.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-5ea73e4b3f7bd5fa36f395da17fbdf98.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -64,6 +68,10 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
+    <a href="../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../favicon.png" alt="AE 2440" class="navbar-logo light-content">
+    <img src="../favicon.png" alt="AE 2440" class="navbar-logo dark-content">
+    </a>
     <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">AE 2440 — Introduction to Scientific Programming</span>
     </a>
@@ -89,15 +97,15 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../assignments.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../resources/textbook.html" aria-current="page"> 
+<span class="menu-text">Textbook</span></a>
+  </li>  
   <li class="nav-item dropdown ">
     <a class="nav-link dropdown-toggle" href="#" id="nav-menu-resources" role="link" data-bs-toggle="dropdown" aria-expanded="false">
  <span class="menu-text">Resources</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
-        <li>
-    <a class="dropdown-item" href="../resources/textbook.html">
- <span class="dropdown-text">Textbook</span></a>
-  </li>  
         <li>
     <a class="dropdown-item" href="../resources/installing_matlab.html">
  <span class="dropdown-text">Installing MATLAB</span></a>
@@ -132,7 +140,10 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#physical-modeling-in-matlab" id="toc-physical-modeling-in-matlab" class="nav-link active" data-scroll-target="#physical-modeling-in-matlab">Physical Modeling in MATLAB</a></li>
-  <li><a href="#chapters-by-week" id="toc-chapters-by-week" class="nav-link" data-scroll-target="#chapters-by-week">Chapters by week</a></li>
+  <li><a href="#chapters-by-week" id="toc-chapters-by-week" class="nav-link" data-scroll-target="#chapters-by-week">Chapters by week</a>
+  <ul class="collapse">
+  <li><a href="#live-script-format-beta" id="toc-live-script-format-beta" class="nav-link" data-scroll-target="#live-script-format-beta">Live script format (beta)</a></li>
+  </ul></li>
   <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
   </ul>
 </nav>
@@ -181,12 +192,12 @@ ul.task-list li input[type="checkbox"] {
 <tr class="odd">
 <td>1</td>
 <td>1. Modeling and Simulation</td>
-<td><a href="../weeks/w01_modeling_scripts/files/modeling.pdf">PDF</a></td>
+<td><a href="../weeks/w01_modeling_scripts/files/modeling.pdf">PDF</a> · <a href="../weeks/w01_modeling_scripts/files/modeling.m" download="modeling.m">Live script</a></td>
 </tr>
 <tr class="even">
 <td>1</td>
 <td>2. Scripts</td>
-<td><a href="../weeks/w01_modeling_scripts/files/scripts.pdf">PDF</a></td>
+<td><a href="../weeks/w01_modeling_scripts/files/scripts.pdf">PDF</a> · <a href="../weeks/w01_modeling_scripts/files/scripts.m" download="scripts.m">Live script</a></td>
 </tr>
 <tr class="odd">
 <td>2</td>
@@ -201,6 +212,10 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Later weeks are added as they are posted.</p>
+<section id="live-script-format-beta" class="level3">
+<h3 class="anchored" data-anchor-id="live-script-format-beta">Live script format (beta)</h3>
+<p>Some chapters are also offered as a MATLAB live script: the same text, with the chapter’s examples as code you can run and change in place. The file is a plain-text <code>.m</code> live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose “Open as Live Script”. The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor.</p>
+</section>
 </section>
 <section id="code" class="level2">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
