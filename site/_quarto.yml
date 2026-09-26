@@ -11,6 +11,7 @@ website:
   title: "AE 2440 — Introduction to Scientific Programming"
   # GitHub Pages project site: served under /ae2440/, so all links must be relative (never start with /).
   site-url: https://bsb808.github.io/ae2440/
+  favicon: favicon.png
   repo-url: https://github.com/bsb808/ae2440
   search: false
   navbar:
