@@ -1,0 +1,19 @@
+/* Schedule table: group the rows by week.
+   Days within a week are separated by a faint line; each new week starts
+   with a heavy rule.  A week's first row is the one whose Week cell holds
+   a link (later days in the same week leave that cell empty), so :has()
+   can pick it out without per-row markup in the Markdown table. */
+
+.table-responsive tbody tr > td {
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: none;
+}
+
+.table-responsive tbody tr:has(td:first-child a) > td {
+  border-top: 3px solid rgba(0, 0, 0, 0.45);
+}
+
+/* The first week needs no rule above it — the header already closes it off. */
+.table-responsive tbody tr:first-child > td {
+  border-top: none;
+}
