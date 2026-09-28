@@ -36,12 +36,12 @@ Background:
 
 - Objective: new schedule page for the quarter. At the start of the quarter it holds a complete overview table (dates, topic, due items, holiday and shift-day notes) and full details for the first two weeks; the remaining weeks are placeholders (see task 2a).
 - Inputs: previous offering as a template; NPS calendar key dates; quarter constraints.
-- Outputs: [site/schedule.qmd](../site/schedule.qmd) for the new quarter; previous schedule kept under `site/archive/<quarter>/schedule.qmd` with a note at the top saying it is archived and just for reference.
+- Outputs: [site/index.qmd](../site/index.qmd) (the schedule is the landing page) for the new quarter; previous schedule kept under `site/archive/<quarter>/schedule.qmd` with a note at the top saying it is archived and just for reference.
 - Owner: AI initiates with constraints, author review
 - Verification: `python3 utils/check_schedule_dates.py` passes (every week row and heading is a Monday exactly N−1 weeks after `term_start`, and every "Ddd DD Mon" mention on the page has the right weekday); PMR.
 - Status: review (AY27Q1)
 - Notes:
-  - Page layout: overview table (Week, Starts, Topic, Due) with a symbol per holiday or shift day and a note under the table saying which class days are affected; then one section per week with bold day labels and bullet lists.
+  - Page layout (since AY27Q1, modeled on the ME2801 site): a one-line meeting note, then the overview table with columns Week, Date, Topic, Prep, Content, Do (Due). Posted weeks have one row per class day (`Mon 28 Sep`, ...), with the `[N](#week-N)` link only in the first row's Week cell; unposted weeks are one collapsed row with a date range (`19–22 Oct`). Cells hold Bootstrap icons linking to the week section: Prep `bi-book` for a reading, Content `bi-card-list` for slides and lessons, Do `bi-pencil-square` for the assignment due (linked to the assignment page once posted). A symbol per holiday or shift day and a note under the table say which class days are affected; then one section per week with bold day labels and bullet lists. `styles.css` draws the week-grouping rules from the empty Week cells.
   - Placeholder week sections carry a "Details will be posted by <Monday two weeks before>" note, the holiday and shift-day impacts, and the week's due items.
   - Reading pair: each chapter reading is one line, `Before class: Read Chapter N, Title: [PDF](weeks/wNN_topic/files/<name>.pdf)`. When the chapter's live script is released (see `spec_live_scripts.md`), add ` · [Live script](weeks/wNN_topic/files/<name>.m){download="<name>.m"} (beta)` to the same line. Nothing else changes.
 
@@ -52,11 +52,12 @@ Background:
 - Inputs: the archived previous-quarter schedule (baseline) or, for Fall 2026, the wiki extract `../tmp/wiki_extract/schedule_26_3.md`; the week mapping in the quarter log; the overview table's due items; any notes for that week in the quarter log.
 - Steps:
   1. Copy the mapped section(s) from the baseline; fix link prefixes; update dates, due items, holiday and shift-day notes; apply the week's notes.
+  1a. Expand the week's collapsed overview row into one row per class day (a no-class day gets its own row with an italic topic and the footnote mark) and fill the Prep / Content / Do cells with icons linking to the week section; the Do icon links to the assignment page once it is posted (task 3).
   2. Reading pair: `cd book && make wNN` to rebuild the week's chapter PDFs, copy them into `site/weeks/wNN_topic/files/` (same basename as the `.tex`), and write the reading lines. A released chapter live script (`<name>.m`, no cached outputs, per `spec_live_scripts.md`) goes into the same `files/` directory.
   3. Lesson files are linked to `book/` on GitHub with `{{< var repo_blob >}}`; slides and other files not in `book/` are copied into the week's `files/`.
   4. Add the week's row(s) to the chapter table in `site/resources/textbook.qmd`.
   5. Open the diff for the author to tune.
-- Outputs: updated week section in [site/schedule.qmd](../site/schedule.qmd); the Due column and the week section must agree.
+- Outputs: updated week section and overview rows in [site/index.qmd](../site/index.qmd); the Do (Due) column and the week section must agree.
 - Owner: AI drafts, author tunes and resolves
 - Verification: PMR; `utils/check_schedule_dates.py`; `quarto render` clean.
 - Status: weeks 1–2 posted (AY27Q1); weeks 4–11 to post.
@@ -65,7 +66,7 @@ Background:
 
 - Objective: start a new assignments index based on the most recent one, with the first assignment page live; the rest are posted as the quarter progresses.
 - Outputs: [site/assignments.qmd](../site/assignments.qmd) (index plus the evaluation framework); one page per assignment at `site/weeks/wNN_topic/assignment.qmd`; previous index kept under `site/archive/<quarter>/assignments.qmd`, noted as archived.
-- Steps for "post assignment N": migrate or update `site/weeks/wNN_topic/assignment.qmd`; link student files in `book/wNN_topic/assign/` on GitHub (move any student file that only exists in `ae2440-solutions` into `book/` first, verifying it contains no solution code); turn the index row into a link.
+- Steps for "post assignment N": migrate or update `site/weeks/wNN_topic/assignment.qmd`; link student files in `book/wNN_topic/assign/` on GitHub (move any student file that only exists in `ae2440-solutions` into `book/` first, verifying it contains no solution code); turn the index row into a link; link the Do icon in the schedule's overview table to the new page.
 - Owner: AI, author review
 - Verification: grep for links to the archived page from current pages returns nothing; PMR.
 - Status: index done, Assignment 1 posted (AY27Q1); Assignments 2–9 to post.

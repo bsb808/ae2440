@@ -10,7 +10,7 @@ We use an adaptation of *Physical Modeling in MATLAB* by Allen Downey ([Green Te
 
 ## Chapters by week
 
-Each week's reading is also released chapter by chapter from the [Schedule](../schedule.qmd), so you can read just what is assigned. The chapters are the same text as the whole-book PDF.
+Each week's reading is also released chapter by chapter from the [Schedule](../index.qmd), so you can read just what is assigned. The chapters are the same text as the whole-book PDF.
 
 | Week | Chapter | Formats |
 |---|---|---|

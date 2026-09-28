@@ -23,11 +23,9 @@ website:
     logo-alt: "AE 2440"
     left:
       - href: index.qmd
-        text: Home
+        text: Schedule
       - href: syllabus.qmd
         text: Syllabus
-      - href: schedule.qmd
-        text: Schedule
       - href: assignments.qmd
         text: Assignments
       - href: resources/textbook.qmd
@@ -49,6 +47,7 @@ website:
 format:
   html:
     theme: cosmo
+    css: styles.css
     toc: true
     html-math-method: mathjax
     link-external-newwindow: true

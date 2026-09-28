@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """
-Check the dates on site/schedule.qmd against site/_variables.yml.
+Check the dates on site/index.qmd (the schedule) against site/_variables.yml.
 
-- Every overview row  `| [N](#week-N) | DD Mon |`  and every heading  `## Week N — DD Mon`
-  must be a Monday exactly N-1 weeks after term_start.
+- Every week's first overview row  `| [N](#week-N) | Mon DD Mon |`  (or a collapsed
+  `| [N](#week-N) | DD–DD Mon |` row for an unposted week) and every heading
+  `## Week N — DD Mon` must be a Monday exactly N-1 weeks after term_start.
+  Continuation rows (empty Week cell) are covered by the weekday check below.
 - Every "Ddd DD Mon" mention on the page (e.g. "Fri 2 Oct", "Tue 20 Oct") must name the
   right weekday for that date in the term's year.
 
-Usage: python3 utils/check_schedule_dates.py [site/schedule.qmd]
+Usage: python3 utils/check_schedule_dates.py [site/index.qmd]
 Exit status 1 if anything fails. See specs/spec_startup_new_quarter.md, task 2.
 """
 import re
@@ -34,12 +36,13 @@ def to_date(day, mon, start):
 
 
 def main():
-    path = Path(sys.argv[1]) if len(sys.argv) > 1 else REPO / 'site' / 'schedule.qmd'
+    path = Path(sys.argv[1]) if len(sys.argv) > 1 else REPO / 'site' / 'index.qmd'
     text = path.read_text()
     start = term_start()
     fails = []
 
-    rows = re.findall(r'^\|\s*\[(\d+)\]\(#week-\d+\)\s*\|\s*(\d{1,2}) (\w{3})\s*\|', text, re.M)
+    # First date in the Date cell of a week's first row: "Mon 28 Sep", "12–15 Oct" or "30 Nov–3 Dec".
+    rows = re.findall(r'^\|\s*\[(\d+)\]\(#week-\d+\)\s*\|\s*(?:Mon )?(\d{1,2})(?:–\d{1,2})? (\w{3})', text, re.M)
     heads = re.findall(r'^## Week (\d+) — (\d{1,2}) (\w{3})', text, re.M)
     for label, items in (('overview row', rows), ('heading', heads)):
         for n, d, mon in items:
