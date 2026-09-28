@@ -13,11 +13,11 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 | Week | Date | Topic | Prep | Content | Do (Due) |
 |---|---|---|---|---|---|
 | [1](#week-1) | Mon 28 Sep | Course introduction and MATLAB overview |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-1 "Slides") |  |
-|  | Tue 29 Sep | MATLAB IDE and variables | [<i class="bi bi-book" aria-label="Reading"></i> Ch 1](#week-1 "Read Chapter 1, Modeling and Simulation") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-1 "Slides and lessons") |  |
-|  | Wed 30 Sep | Scripts and live scripts | [<i class="bi bi-book" aria-label="Reading"></i> Ch 2](#week-1 "Read Chapter 2, Scripts") |  |  |
+|  | Tue 29 Sep | MATLAB IDE and variables | [<i class="bi bi-book" aria-label="Reading"></i> Ch 1](resources/textbook.qmd "Read Chapter 1, Modeling and Simulation") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-1 "Slides and lessons") |  |
+|  | Wed 30 Sep | Scripts and live scripts | [<i class="bi bi-book" aria-label="Reading"></i> Ch 2](resources/textbook.qmd "Read Chapter 2, Scripts") |  |  |
 |  | Thu 1 Oct | Work on Assignment 1 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w01_modeling_scripts/assignment.qmd "Assignment 1: Models and Scripts") A1 (Fri 2 Oct) |
-| [2](#week-2) | Mon 5 Oct | Loops | [<i class="bi bi-book" aria-label="Reading"></i> Ch 3](#week-2 "Read Chapter 3, Loops") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Slides and lesson") |  |
-|  | Tue 6 Oct | Vectors | [<i class="bi bi-book" aria-label="Reading"></i> Ch 4](#week-2 "Read Chapter 4, Vectors") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Lesson and exercises") |  |
+| [2](#week-2) | Mon 5 Oct | Loops | [<i class="bi bi-book" aria-label="Reading"></i> Ch 3](resources/textbook.qmd "Read Chapter 3, Loops") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Slides and lesson") |  |
+|  | Tue 6 Oct | Vectors | [<i class="bi bi-book" aria-label="Reading"></i> Ch 4](resources/textbook.qmd "Read Chapter 4, Vectors") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Lesson and exercises") |  |
 |  | Wed 7 Oct | Vectors, continued |  |  |  |
 |  | Thu 8 Oct | Work on Assignment 2 |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A2 (Fri 9 Oct) |
 | [3](#week-3) | 12–15 Oct | *No class* ^†^ |  |  |  |
