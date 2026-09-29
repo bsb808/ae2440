@@ -137,7 +137,7 @@
     "href": "index.html#week-1",
     "title": "Schedule",
     "section": "Week 1 — 28 Sep: Modeling and Simulation; Scripts",
-    "text": "Week 1 — 28 Sep: Modeling and Simulation; Scripts\nMonday: Course introduction and MATLAB overview\n\nSlides: ae2440_introduction.pdf (NPS login)\n\nTuesday: MATLAB IDE and variables\n\nBefore class:\n\nInstall MATLAB: Installing MATLAB\nComplete the Initial Class Survey (5 min)\nRead Chapter 1, Modeling and Simulation: Textbook\n\nSlides: ae2440_modeling_and_sim_scripts.pdf\nLessons: lesson_intro_ide.m, lesson_intro_workspace_path.m\n\nWednesday: Scripts and live scripts\n\nBefore class: Read Chapter 2, Scripts: Textbook\nPreview: Assignment 1\n\nThursday: Work on Assignment 1\n\nDue Friday 2 Oct, 1700: Assignment 1: Models and Scripts, submit via Sakai"
+    "text": "Week 1 — 28 Sep: Modeling and Simulation; Scripts\nMonday: Course introduction and MATLAB overview\n\nSlides: ae2440_introduction.pdf (NPS login)\n\nTuesday: MATLAB IDE and variables\n\nBefore class:\n\nInstall MATLAB: Installing MATLAB\nComplete the Initial Class Survey (5 min)\nRead Chapter 1, Modeling and Simulation: Textbook\n\nSlides: ae2440_modeling_and_sim_scripts.pdf\nLessons:\n\nlesson_intro_ide.m\nlesson_intro_livescript.m\nlesson_intro_workspace_path.m\n\n\nWednesday: Scripts and live scripts\n\nBefore class: Read Chapter 2, Scripts: Textbook\nPreview: Assignment 1\n\nThursday: Work on Assignment 1\n\nDue Friday 2 Oct, 1700: Assignment 1: Models and Scripts, submit via Sakai"
   },
   {
     "objectID": "index.html#week-2",
