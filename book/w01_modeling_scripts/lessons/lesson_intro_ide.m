@@ -1,6 +1,6 @@
 %% MATLAB IDE Tour
 % =========================================================================
-%  KEYBOARD SHORTCUTS  (show these on screen before running anything)
+%  KEYBOARD SHORTCUTS  
 % =========================================================================
 %
 %   Action                  Windows/Linux       macOS

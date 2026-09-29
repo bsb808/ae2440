@@ -52,7 +52,10 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
   - Complete the [Initial Class Survey](https://forms.office.com/r/gABvMAbWsv) (5 min)
   - Read Chapter 1, Modeling and Simulation: [Textbook](resources/textbook.qmd)
 - Slides: [ae2440_modeling_and_sim_scripts.pdf](weeks/w01_modeling_scripts/files/ae2440_modeling_and_sim_scripts.pdf)
-- Lessons: [lesson_intro_ide.m]({{< var repo_blob >}}/book/w01_modeling_scripts/lessons/lesson_intro_ide.m), [lesson_intro_workspace_path.m]({{< var repo_blob >}}/book/w01_modeling_scripts/lessons/lesson_intro_workspace_path.m)
+- Lessons: 
+  - [lesson_intro_ide.m]({{< var repo_blob >}}/book/w01_modeling_scripts/lessons/lesson_intro_ide.m)
+  - [lesson_intro_livescript.m]({{< var repo_blob >}}/book/w01_modeling_scripts/lessons/lesson_intro_livescript.m)
+  - [lesson_intro_workspace_path.m]({{< var repo_blob >}}/book/w01_modeling_scripts/lessons/lesson_intro_workspace_path.m)
 
 **Wednesday:** Scripts and live scripts
 
