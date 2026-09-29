@@ -12,7 +12,17 @@ To preview locally, run from this repo's root:
 quarto preview site
 ```
 
-Quarto renders the site, prints a `http://localhost:NNNN/` URL, opens it in your browser, and live-reloads on file changes. `Ctrl+C` to stop. Do not run `quarto render` while a preview is running; the two collide on the Sass cache.
+Quarto renders the site, prints a `http://localhost:NNNN/` URL, opens it in your browser, and live-reloads on file changes. `Ctrl+C` to stop.
+
+### Checks before pushing
+
+A pre-push hook renders the site and runs two checks (`utils/check_site_links.py` for broken relative links in the rendered HTML, `utils/check_schedule_dates.py` for schedule dates) whenever the commits being pushed touch `site/` or `utils/`. Enable it once per clone:
+
+```bash
+git config core.hooksPath utils/hooks
+```
+
+To push anyway when there is no time to fix a failure: `git push --no-verify`. To run the same checks by hand: `quarto render site && python3 utils/check_site_links.py && python3 utils/check_schedule_dates.py`.
 
 Site layout: `site/weeks/wNN_topic/` mirrors the `book/wNN_topic/` week names and holds each week's `assignment.qmd` plus a `files/` folder for released static files (slides, chapter PDFs, screenshots). Files that already live in `book/` are linked on GitHub, not copied. Per-quarter values live in `site/_variables.yml`; the quarter startup runbook is `specs/spec_startup_new_quarter.md` and the one-time wiki migration is `specs/spec_wiki_transition.md`.
 
@@ -86,7 +96,7 @@ The solutions repo mirrors the per-week layout: `wNN_topic/<assignment>_soln.<ex
 | `grading/` | Sakai grading workflow; per-assignment downloads + comments. See `CLAUDE.md` for the workflow |
 | `site/` | Quarto course website (see above) |
 | `specs/` | Working specs: quarter startup runbook, wiki migration |
-| `utils/` | Small tools: wiki extractor, schedule date check |
+| `utils/` | Small tools: wiki extractor, site link check, schedule date check, git hooks |
 | `images/` | Course-level images (separate from `book/images/`) |
 | `mlx_parse/` | Python tooling for generating student assignment files from solution `.mlx` |
 | `dev/`, `misc/` | Development scratch |

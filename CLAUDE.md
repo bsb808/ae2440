@@ -38,6 +38,7 @@ Conventions:
 - The site is a GitHub Pages project site served under `/ae2440/`, so links must be relative. Never write a root-absolute link (`/foo`).
 - Per-quarter values (`quarter`, `term_start`, `meeting`, ...) live in `site/_variables.yml` and are used as `{{< var name >}}`. Previous quarters are archived under `site/archive/<ayNNqN>/` with an "Archived" callout.
 - No solutions on the site. Solutions stay in the private `ae2440-solutions` repo and reach students via Sakai.
+- Before pushing site changes, the pre-push hook in `utils/hooks/` renders and runs `utils/check_site_links.py` and `utils/check_schedule_dates.py` (enable per clone with `git config core.hooksPath utils/hooks`; bypass with `git push --no-verify`).
 - When reporting a created or edited `.qmd`, list both the live URL (`https://bsb808.github.io/ae2440/<path>.html`) and the source path (`site/<path>.qmd`).
 - The MOSS similarity-check tooling is kept outside this repo (it carries a personal user ID).
 

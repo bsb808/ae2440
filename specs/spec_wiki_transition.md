@@ -56,7 +56,7 @@ Context-window management: never read raw wiki HTML or list `attachments/` unbou
 - Notes:
   - Groups (a), (b), (c): drafted 26 Sep 2026, awaiting author review.
   - Groups (d) and (e) are deferred until after week 1 and Assignment 1 are live. The per-page notes are in the inventory.
-  - Don't run `quarto render` while `quarto preview` is running; the two collide on the Sass cache.
+  - `quarto render` and `quarto preview` coexist on Quarto 1.9 (tested); no need to stop the preview before rendering.
 
 ## 4. Author follow-ups (human tasks)
 
