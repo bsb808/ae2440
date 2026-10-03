@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignments – AE 2440 — Introduction to Scientific Programming</title>
+<title>Assignment 2: Loops and Vectors – AE 2440 — Introduction to Scientific Programming</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,22 +26,57 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<link href="./favicon.png" rel="icon" type="image/png">
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5ea73e4b3f7bd5fa36f395da17fbdf98.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<link href="../../favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5ea73e4b3f7bd5fa36f395da17fbdf98.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -58,8 +93,37 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
-<link rel="stylesheet" href="styles.css">
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -69,11 +133,11 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
-    <img src="./favicon.png" alt="AE 2440" class="navbar-logo light-content">
-    <img src="./favicon.png" alt="AE 2440" class="navbar-logo dark-content">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
+    <img src="../../favicon.png" alt="AE 2440" class="navbar-logo light-content">
+    <img src="../../favicon.png" alt="AE 2440" class="navbar-logo dark-content">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">AE 2440 — Introduction to Scientific Programming</span>
     </a>
   </div>
@@ -83,19 +147,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+    <a class="nav-link" href="../../index.html"> 
 <span class="menu-text">Schedule</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./syllabus.html"> 
+    <a class="nav-link" href="../../syllabus.html"> 
 <span class="menu-text">Syllabus</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./assignments.html" aria-current="page"> 
+    <a class="nav-link" href="../../assignments.html"> 
 <span class="menu-text">Assignments</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./resources/textbook.html"> 
+    <a class="nav-link" href="../../resources/textbook.html"> 
 <span class="menu-text">Textbook</span></a>
   </li>  
   <li class="nav-item dropdown ">
@@ -104,11 +168,11 @@ ul.task-list li input[type="checkbox"] {
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-resources">    
         <li>
-    <a class="dropdown-item" href="./resources/installing_matlab.html">
+    <a class="dropdown-item" href="../../resources/installing_matlab.html">
  <span class="dropdown-text">Installing MATLAB</span></a>
   </li>  
         <li>
-    <a class="dropdown-item" href="./resources/matlab.html">
+    <a class="dropdown-item" href="../../resources/matlab.html">
  <span class="dropdown-text">MATLAB Resources</span></a>
   </li>  
     </ul>
@@ -136,12 +200,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#assignment-evaluation-framework" id="toc-assignment-evaluation-framework" class="nav-link active" data-scroll-target="#assignment-evaluation-framework">Assignment Evaluation Framework</a>
+  <li><a href="#introductory-notes" id="toc-introductory-notes" class="nav-link active" data-scroll-target="#introductory-notes">Introductory Notes</a>
   <ul class="collapse">
-  <li><a href="#intent" id="toc-intent" class="nav-link" data-scroll-target="#intent">Intent</a></li>
-  <li><a href="#grading-rubric-for-the-selected-exercise" id="toc-grading-rubric-for-the-selected-exercise" class="nav-link" data-scroll-target="#grading-rubric-for-the-selected-exercise">Grading rubric for the selected exercise</a></li>
-  <li><a href="#grade-scale-mastery-focused" id="toc-grade-scale-mastery-focused" class="nav-link" data-scroll-target="#grade-scale-mastery-focused">Grade scale (mastery-focused)</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary">Summary</a></li>
+  <li><a href="#matlab-operations" id="toc-matlab-operations" class="nav-link" data-scroll-target="#matlab-operations">MATLAB Operations</a></li>
+  </ul></li>
+  <li><a href="#problem-1-bouncing-ball" id="toc-problem-1-bouncing-ball" class="nav-link" data-scroll-target="#problem-1-bouncing-ball">Problem 1: Bouncing Ball</a></li>
+  <li><a href="#problem-2-simple-statistics" id="toc-problem-2-simple-statistics" class="nav-link" data-scroll-target="#problem-2-simple-statistics">Problem 2: Simple Statistics</a></li>
+  <li><a href="#problem-3-lcs-nozzle-flow" id="toc-problem-3-lcs-nozzle-flow" class="nav-link" data-scroll-target="#problem-3-lcs-nozzle-flow">Problem 3: LCS Nozzle Flow</a>
+  <ul class="collapse">
+  <li><a href="#submit-and-verify" id="toc-submit-and-verify" class="nav-link" data-scroll-target="#submit-and-verify">Submit and Verify</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -151,7 +218,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignments</h1>
+<h1 class="title">Assignment 2: Loops and Vectors</h1>
 </div>
 
 
@@ -168,160 +235,89 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><em>Quarter:</em> Fall 2026 · Previous quarters: <a href="./archive/index.html">Archive</a></p>
-<p>Assignments are due Fridays at 1700 and are submitted through <a href="https://cle.nps.edu/portal/directtool/5a3445ee-66c9-47da-902f-d382eea628ab/">Sakai</a>. Each assignment page lists the exercises, the required file names, and any files you need. See the <a href="./index.html">Schedule</a> for how each assignment fits the week.</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Assignment</th>
-<th>Topic</th>
-<th>Due</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><a href="./weeks/w01_modeling_scripts/assignment.html">Assignment 1</a></td>
-<td>Models and Scripts</td>
-<td>Fri 2 Oct</td>
-</tr>
-<tr class="even">
-<td><a href="./weeks/w02_loops_vectors/assignment.html">Assignment 2</a></td>
-<td>Loops and Vectors</td>
-<td>Fri 9 Oct</td>
-</tr>
-<tr class="odd">
-<td>Assignment 3 (posted by Mon 5 Oct)</td>
-<td>Functions and Conditionals</td>
-<td>Fri 23 Oct</td>
-</tr>
-<tr class="even">
-<td>Assignment 4 (posted by Mon 12 Oct)</td>
-<td>Data Types, Function Handles and Zero-Finding</td>
-<td>Fri 30 Oct</td>
-</tr>
-<tr class="odd">
-<td>Assignment 5 (posted by Mon 19 Oct)</td>
-<td>Solving First-Order Ordinary Differential Equations</td>
-<td>Fri 6 Nov</td>
-</tr>
-<tr class="even">
-<td>Assignment 6 (posted by Mon 26 Oct)</td>
-<td>Matrices and Systems of ODEs</td>
-<td>Fri 13 Nov</td>
-</tr>
-<tr class="odd">
-<td>Assignment 7 (posted by Mon 2 Nov)</td>
-<td>Two Dimensions and Optimization</td>
-<td>Fri 20 Nov</td>
-</tr>
-<tr class="even">
-<td>Assignment 8 (posted by Mon 9 Nov)</td>
-<td>Interpolation, Curve Fitting and Regression</td>
-<td>Fri 4 Dec</td>
-</tr>
-<tr class="odd">
-<td>Assignment 9 (posted by Mon 23 Nov)</td>
-<td>Q-Learning and Blackjack</td>
-<td>Fri 11 Dec</td>
-</tr>
-</tbody>
-</table>
-<section id="assignment-evaluation-framework" class="level2">
-<h2 class="anchored" data-anchor-id="assignment-evaluation-framework">Assignment Evaluation Framework</h2>
-<section id="intent" class="level3">
-<h3 class="anchored" data-anchor-id="intent">Intent</h3>
-<p>Assignments in this course are designed to build confidence and competence in applying programming to engineering problem solving. Each assignment includes several exercises, but only one representative exercise is graded for evaluation.</p>
-<p>The primary goal is to encourage consistent engagement and improvement, not to penalize small mistakes. Grading emphasizes understanding, effort, and clarity of communication. Students who complete the work thoughtfully and demonstrate learning will typically earn A or B grades.</p>
-</section>
-<section id="grading-rubric-for-the-selected-exercise" class="level3">
-<h3 class="anchored" data-anchor-id="grading-rubric-for-the-selected-exercise">Grading rubric for the selected exercise</h3>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>Criterion</th>
-<th>Weight</th>
-<th>A (Excellent)</th>
-<th>B (Satisfactory)</th>
-<th>Incomplete</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Problem understanding and approach</td>
-<td>25%</td>
-<td>Shows a clear understanding of the problem and applies an appropriate, well-reasoned method.</td>
-<td>Demonstrates general understanding; approach is reasonable but may not be the most efficient or fully explained.</td>
-<td>Misinterprets or only partially addresses the problem.</td>
-</tr>
-<tr class="even">
-<td>Implementation and code quality</td>
-<td>35%</td>
-<td>Code runs correctly or nearly correctly; organized, readable, and follows MATLAB conventions.</td>
-<td>Code mostly works; minor syntax or logic errors but demonstrates solid effort and structure.</td>
-<td>Code incomplete or largely incorrect; intent unclear.</td>
-</tr>
-<tr class="odd">
-<td>Testing and debugging effort</td>
-<td>20%</td>
-<td>Demonstrates testing or checking of results; identifies or discusses potential issues.</td>
-<td>Some checking or validation attempted, though not systematic.</td>
-<td>No evidence of checking, testing, or debugging.</td>
-</tr>
-<tr class="even">
-<td>Presentation and communication</td>
-<td>20%</td>
-<td>Output and plots are clear, labeled, and briefly explained following engineering conventions.</td>
-<td>Output mostly clear; minor labeling or explanation issues.</td>
-<td>Output unclear or missing explanation.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="grade-scale-mastery-focused" class="level3">
-<h3 class="anchored" data-anchor-id="grade-scale-mastery-focused">Grade scale (mastery-focused)</h3>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Score</th>
-<th>Grade</th>
-<th>Meaning</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>90–100</td>
-<td>A</td>
-<td>Excellent mastery and presentation</td>
-</tr>
-<tr class="even">
-<td>80–89</td>
-<td>B</td>
-<td>Proficient understanding with minor issues</td>
-</tr>
-<tr class="odd">
-<td>below 80</td>
-<td>Feedback only</td>
-<td>Encouraged to discuss or revise</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="summary" class="level3">
-<h3 class="anchored" data-anchor-id="summary">Summary</h3>
-<p>This grading approach:</p>
+<p>Due Friday 9 Oct, 1700, via <a href="https://cle.nps.edu/portal/directtool/5a3445ee-66c9-47da-902f-d382eea628ab/">Sakai</a>. Textbook: Chapters 3 and 4 (<a href="../../resources/textbook.html">Textbook</a>).</p>
+<section id="introductory-notes" class="level2">
+<h2 class="anchored" data-anchor-id="introductory-notes">Introductory Notes</h2>
+<p>Completing assignments typically consists of writing programs (scripts, live scripts, function files, and so on). These files are submitted by uploading them to the AE2440 Sakai site under the appropriate assignment. I will then attempt to execute your programs. A few things will make this process run smoothly.</p>
 <ul>
-<li>Rewards consistent effort and steady improvement.</li>
-<li>Encourages sound engineering habits: testing, verification, and clear communication.</li>
-<li>Keeps grading meaningful while reducing performance pressure.</li>
-<li>Ensures every assignment contributes to the development of practical programming competence.</li>
+<li>To ensure that your program runs in a clean workspace, before submitting your final solution execute the <code>clear</code> command and then run your program from an empty workspace. This helps avoid errors from undefined variables.</li>
+<li>Pay particular attention to the specified file names, including letter case. The file names must be exactly as requested so that any automation on the evaluation end runs without a file-not-found error.</li>
+<li>When submitting live scripts, first run your live script to generate all specified numeric data, figures, and so on as inline output within your text and code. <strong>Then</strong> save the file. This lets the instructor review your solutions quickly, but also debug and re-run your code if necessary.</li>
 </ul>
+<p>See <a href="../../weeks/w01_modeling_scripts/assignment.html">Assignment 1</a> for the live-code <code>.m</code> format and the steps to verify a Sakai upload.</p>
+<section id="matlab-operations" class="level3">
+<h3 class="anchored" data-anchor-id="matlab-operations">MATLAB Operations</h3>
+<p>In these exercises we often use arithmetic operations directly with vectors, performing calculations on each element in the array. MATLAB distinguishes between array (element-wise) operations and matrix operations: see <a href="https://www.mathworks.com/help/matlab/matlab_prog/array-vs-matrix-operations.html">Array vs.&nbsp;Matrix Operations</a>. Later in the course we’ll use MATLAB’s matrix operations for linear algebra problems, but for these exercises it is important to understand the syntax of <strong>array</strong> operations.</p>
+</section>
+</section>
+<section id="problem-1-bouncing-ball" class="level2">
+<h2 class="anchored" data-anchor-id="problem-1-bouncing-ball">Problem 1: Bouncing Ball</h2>
+<p>Create a live script named <code>bounce.m</code> to solve the following problem.</p>
+<p>A tennis ball dropped from a height <span class="math inline">\(h_0 = 2\)</span> m onto a hard floor. On each bounce it rebounds to a 60% (<span class="math inline">\(r=0.6\)</span>)of the height it fell from, so after the first bounce it rises to <span class="math inline">\(0.6 h_0\)</span>, after the second to <span class="math inline">\(0.6^2 h_0\)</span>, and so on.</p>
+<p>Use a loop to answer the following questions:</p>
+<ol type="1">
+<li><strong>How high does the ball go on bounce <span class="math inline">\(N\)</span>?</strong> The rebound heights <span class="math inline">\(h_0,\ r h_0,\ r^2 h_0,\ \ldots\)</span> are a <em>sequence</em>. To simulate this use a <code>for</code> loop: start with <code>h = h0</code> and update <code>h = r * h</code> each time through.</li>
+<li><strong>How far does the ball travel in total?</strong> The ball falls <span class="math inline">\(h_0\)</span>, then rises and falls <span class="math inline">\(r h_0\)</span>, then rises and falls <span class="math inline">\(r^2 h_0\)</span>, and so on. The total distance is the <em>series</em> <span class="math display">\[d = h_0 + 2 r h_0 + 2 r^2 h_0 + 2 r^3 h_0 + \cdots\]</span> Accumulate it inside the same loop: add the up-and-down distance of each bounce to a cummulative sum.</li>
+</ol>
+<p>Write your script to:</p>
+<ul>
+<li>Define the parameters <code>h0</code>, <code>r</code>, and the number of bounces <code>N = 20</code> at the top, with units in comments.</li>
+<li>Loop over the bounces, 1–N. On each iteration compute the new rebound height, add that bounce’s contribution to the running total distance, and <strong>plot the rebound height as one data point</strong> (bounce number on the x-axis, height on the y-axis), adding one point to the figure each time through the loop. You will need <code>hold on</code> so each new point is added to the same axes rather than replacing the previous one.</li>
+<li>After the loop, display the total distance travelled using <code>disp</code>.</li>
+</ul>
+<p>In a text block in your live script, answer the following questions:</p>
+<ul>
+<li>What is the first bounce for which the rebound height is less than 0.2 m?</li>
+<li>Does the total distance keep growing without limit as you increase <code>N</code>, or does it approach a value? Compare your loop’s total for a large <code>N</code> to the closed-form result <span class="math inline">\(d = h_0 \,\dfrac{1 + r}{1 - r}\)</span> and comment on the agreement.</li>
+</ul>
+<p>This is the same arithmetic as the “series” example in Chapter 3 of the textbook, with the ratio <span class="math inline">\(1/2\)</span> replaced by the variable <code>r</code>. Use plain scalar variables and a loop for this problem; we have not covered vectors yet, and the point is to see how a sequence and its running sum are built up one term at a time.</p>
+</section>
+<section id="problem-2-simple-statistics" class="level2">
+<h2 class="anchored" data-anchor-id="problem-2-simple-statistics">Problem 2: Simple Statistics</h2>
+<p>Create a live script named <code>span_statistics.m</code> to report some summary statistics for data from the <a href="https://www.openlab.psu.edu/ansur2/">Anthropometric Survey of US Army Personnel</a> (ANSUR) dataset. This exercise is an example of the common <strong>reduce</strong> pattern for vector operations discussed in <a href="../../resources/textbook.html">Chapter 4</a>.</p>
+<p>The dataset comes from the Natick Soldier Research, Development and Engineering Center. The goal of the survey was to “acquire a large body of data from comparably measured males and females to serve the Army’s current design and engineering needs, as well as those anticipated well into the future.” We will use one of the 94 measurements they conducted on each soldier.</p>
+<p>The data is a MAT-file: <a href="https://github.com/bsb808/ae2440/blob/main/book/w02_loops_vectors/assign/ansur_span.mat">ansur_span.mat</a> (use the download button on GitHub). To load the data into your MATLAB workspace, make sure the file is in the current working directory of MATLAB, then use the command</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">load</span>(<span class="st">"ansur_span.mat"</span>)<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Verify that you now have a variable named <code>span</code> in your workspace. This variable is a vector where each element is a measurement of the arm span of an individual male in meters. What is the size and shape of the vector?</p>
+<p><img src="files/ansur_span.png" class="img-fluid" width="300"></p>
+<p>Use a <code>for</code> loop (or multiple <code>for</code> loops) to calculate the following:</p>
+<ul>
+<li>mean: <span class="math display">\[\mu = \frac{\sum_{i=1}^{n} x_i}{n}\]</span></li>
+<li>standard deviation: <span class="math display">\[\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}}\]</span></li>
+</ul>
+<p>There are standard MATLAB functions (<code>mean</code>, <code>sum</code> and <code>std</code>) for these vector operations, but for this exercise perform the calculation by iterating through the elements in the vector.</p>
+<p>Note: <code>sum</code>, <code>mean</code> and <code>std</code> are all names of existing MATLAB functions, so use variable names that avoid naming collisions.</p>
+<p>Verify that your answers are consistent with this table from the Army’s report.</p>
+<p><img src="files/ansur_table.png" class="img-fluid" width="450"></p>
+</section>
+<section id="problem-3-lcs-nozzle-flow" class="level2">
+<h2 class="anchored" data-anchor-id="problem-3-lcs-nozzle-flow">Problem 3: LCS Nozzle Flow</h2>
+<p>(Adapted from ME2201, courtesy of Professor Alley.)</p>
+<p>Create a script named <code>lcs_flow.m</code> that creates two figures to plot the solution to the following fluid dynamics problem.</p>
+<p>The LCS (both the -1 and -2 classes) are propelled by water-jet propulsion systems which extend out from the stern of the vessel. The nozzle contracts aft from the transom to the outlet, causing the fluid to accelerate.</p>
+<p><img src="files/lcs_nozzle.png" class="img-fluid" width="700"></p>
+<p>We can derive the following expressions for the velocity (<span class="math inline">\(v\)</span> in m/s) and acceleration (<span class="math inline">\(a\)</span> in m/s<sup>2</sup>) of the fluid as a function of <span class="math inline">\(x\)</span>, the distance along the nozzle from 0 to 4 m, and <span class="math inline">\(t\)</span>, time as the throttle is increased from 50% at <span class="math inline">\(t = 0\)</span> to full ahead at <span class="math inline">\(t = 30\)</span> s.</p>
+<p><span class="math display">\[v(x,t) = \frac{(10 + 0.2t)\,\pi}{\frac{\pi}{4}\,(4 - 0.25x)^2}\]</span></p>
+<p><span class="math display">\[a(x,t) = \frac{0.5}{(4 - 0.25x)^2} + \frac{0.5\,(24 + 0.5t)^2}{(2 - 0.125x)^5}\]</span></p>
+<p>Running your script should result in two figure windows:</p>
+<ol type="1">
+<li>The first figure contains plots of the fluid velocity (y-axis) as a function of the distance <span class="math inline">\(x\)</span>, where <span class="math inline">\(x\)</span> varies from 0 to 4 m. Each curve is a visualization of the function at a specific point in time. Plot four separate curves on the same axes: a curve for <span class="math inline">\(t = 0\)</span>, <span class="math inline">\(10\)</span>, <span class="math inline">\(20\)</span> and <span class="math inline">\(30\)</span> s.</li>
+<li>The second figure contains plots of the fluid acceleration as a function of distance. Just as before, plot four separate curves for the acceleration at <span class="math inline">\(t = 0\)</span>, <span class="math inline">\(10\)</span>, <span class="math inline">\(20\)</span> and <span class="math inline">\(30\)</span> s.</li>
+</ol>
+<p>Hints:</p>
+<ul>
+<li>You should only need to implement the mathematical models once for velocity and once for acceleration. If you find yourself doing it multiple times (using copy-paste), consider using a loop.</li>
+<li>You do not need to loop through the <code>x</code> values. MATLAB arithmetic can handle vectors directly; see <a href="https://www.mathworks.com/help/matlab/matlab_prog/array-vs-matrix-operations.html">Array vs.&nbsp;Matrix Operations</a>.</li>
+</ul>
+<!-- ## Problem 4: Approximating a Continuous Model and Simulating a Discrete Model
+
+In this exercise you will model first-order decay, a pattern that describes many physical systems such as a cooling object, using two approaches in MATLAB. First you will plot an analytical solution by evaluating a formula over a vector of time points. Then you will approximate the same result step by step using a `for` loop.
+
+The live script with instructions and starter code is provided: [decay_twoways.m](https://github.com/bsb808/ae2440/blob/main/book/w02_loops_vectors/assign/decay_twoways.m). Fill in the code blocks following the embedded instructions and submit your revised `decay_twoways.m` file. -->
+<section id="submit-and-verify" class="level3">
+<h3 class="anchored" data-anchor-id="submit-and-verify">Submit and Verify</h3>
+<p>Submit your live-code files with the <code>.m</code> extension: <code>bounce.m</code>, <code>span_statistics.m</code>, <code>lcs_flow.m</code>.</p>
+<p>Double-check all case-sensitive file names. See the submission process above.</p>
 
 
 </section>
