@@ -4,19 +4,15 @@ title: "Assignments"
 
 *Quarter:* {{< var quarter >}} · Previous quarters: [Archive](archive/index.qmd)
 
-Assignments are due Fridays at 1700 and are submitted through [Sakai]({{< var sakai_url >}}). Each assignment page lists the exercises, the required file names, and any files you need. See the [Schedule](index.qmd) for how each assignment fits the week.
+Assignments are typically due Fridays at 1700 and are submitted through [Sakai]({{< var sakai_url >}}). See the [Schedule](index.qmd) for due dates.
 
-| Assignment | Topic | Due |
+| Assignment | Topic |
 |---|---|---|
-| [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | Fri 2 Oct |
-| [Assignment 2](weeks/w02_loops_vectors/assignment.qmd) | Loops and Vectors | Fri 9 Oct |
-| Assignment 3 (posted by Mon 5 Oct) | Functions and Conditionals | Fri 23 Oct |
-| Assignment 4 (posted by Mon 12 Oct) | Data Types, Function Handles and Zero-Finding | Fri 30 Oct |
-| Assignment 5 (posted by Mon 19 Oct) | Solving First-Order Ordinary Differential Equations | Fri 6 Nov |
-| Assignment 6 (posted by Mon 26 Oct) | Matrices and Systems of ODEs | Fri 13 Nov |
-| Assignment 7 (posted by Mon 2 Nov) | Two Dimensions and Optimization | Fri 20 Nov |
-| Assignment 8 (posted by Mon 9 Nov) | Interpolation, Curve Fitting and Regression | Fri 4 Dec |
-| Assignment 9 (posted by Mon 23 Nov) | Q-Learning and Blackjack | Fri 11 Dec |
+| [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | 
+| [Assignment 2](weeks/w02_loops_vectors/assignment.qmd) | Loops and Vectors | 
+| Assignment 3 | Functions and Conditionals |
+
+
 
 ## Assignment Evaluation Framework
 
