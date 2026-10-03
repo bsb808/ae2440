@@ -19,7 +19,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 | [2](#week-2) | Mon 5 Oct | Loops | [<i class="bi bi-book" aria-label="Reading"></i> Ch 3](resources/textbook.qmd "Read Chapter 3, Loops") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Slides and lesson") |  |
 |  | Tue 6 Oct | Vectors | [<i class="bi bi-book" aria-label="Reading"></i> Ch 4](resources/textbook.qmd "Read Chapter 4, Vectors") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Lesson and exercises") |  |
 |  | Wed 7 Oct | Vectors, continued |  |  |  |
-|  | Thu 8 Oct | Work on Assignment 2 |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A2 (Fri 9 Oct) |
+|  | Thu 8 Oct | Work on Assignment |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>]( ./assignments.qmd "Assignments") A2 (Fri 9 Oct) |
 | [3](#week-3) | 12–15 Oct | *No class* ^†^ |  |  |  |
 | [4](#week-4) | 19–22 Oct | Functions; Conditionals ^‡^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A3 (Fri 23 Oct) |
 | [5](#week-5) | 26–29 Oct | Data Types; Function Handles and Zero-Finding |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A4 (Fri 30 Oct) |
@@ -84,7 +84,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 
 **Thursday:** Work on Assignment 2
 
-- Due Friday 9 Oct, 1700: Assignment 2: Loops and Vectors (posted by Mon 28 Sep)
+- Due Friday 9 Oct, 1700: [Assignment 2: Loops and Vectors](weeks/w02_loops_vectors/assignment.qmd), submit via [Sakai]({{< var sakai_url >}})
 
 ## Week 3 — 12 Oct: No class {#week-3}
 

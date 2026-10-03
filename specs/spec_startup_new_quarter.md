@@ -69,7 +69,7 @@ Background:
 - Steps for "post assignment N": migrate or update `site/weeks/wNN_topic/assignment.qmd`; link student files in `book/wNN_topic/assign/` on GitHub (move any student file that only exists in `ae2440-solutions` into `book/` first, verifying it contains no solution code); turn the index row into a link; link the Do icon in the schedule's overview table to the new page.
 - Owner: AI, author review
 - Verification: grep for links to the archived page from current pages returns nothing; PMR.
-- Status: index done, Assignment 1 posted (AY27Q1); Assignments 2–9 to post.
+- Status: index done, Assignments 1–2 posted (AY27Q1); Assignments 3–9 to post.
 
 ## 4. Class info (human tasks)
 

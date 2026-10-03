@@ -16,7 +16,8 @@ Usage:
   ./extract.py index                     # one line per page: id, title, size
   ./extract.py extract PAGE [PAGE ...]   # PAGE = numeric page id (e.g. 1321402476)
   ./extract.py extract --all
-  ./extract.py copy MANIFEST.tsv         # copy approved attachments into the repo
+  ./extract.py copy MANIFEST.tsv         # copy approved attachments into the repo (skips existing files)
+  ./extract.py copy --force MANIFEST.tsv # overwrite files that already exist in the repo
 
 MANIFEST.tsv columns (header required): local_path, dest
   local_path  path from the links TSV (relative to the umbrella directory)
@@ -294,6 +295,10 @@ def cmd_copy(args):
         if not src.exists():
             print(f'MISSING\t{row["local_path"]}')
             continue
+        if dest.exists() and not args.force:
+            # Files already in the repo may have been updated there since the export; never clobber them.
+            print(f'exists \t{row["dest"]}')
+            continue
         dest.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(src, dest)
         print(f'copied\t{row["dest"]}')
@@ -309,6 +314,7 @@ def main():
     e.set_defaults(func=cmd_extract)
     c = sub.add_parser('copy')
     c.add_argument('manifest')
+    c.add_argument('--force', action='store_true', help='overwrite existing destination files')
     c.set_defaults(func=cmd_copy)
     args = ap.parse_args()
     args.func(args)

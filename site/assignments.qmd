@@ -9,7 +9,7 @@ Assignments are due Fridays at 1700 and are submitted through [Sakai]({{< var sa
 | Assignment | Topic | Due |
 |---|---|---|
 | [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | Fri 2 Oct |
-| Assignment 2 (posted by Mon 28 Sep) | Loops and Vectors | Fri 9 Oct |
+| [Assignment 2](weeks/w02_loops_vectors/assignment.qmd) | Loops and Vectors | Fri 9 Oct |
 | Assignment 3 (posted by Mon 5 Oct) | Functions and Conditionals | Fri 23 Oct |
 | Assignment 4 (posted by Mon 12 Oct) | Data Types, Function Handles and Zero-Finding | Fri 30 Oct |
 | Assignment 5 (posted by Mon 19 Oct) | Solving First-Order Ordinary Differential Equations | Fri 6 Nov |
