@@ -101,6 +101,20 @@ class Code(unittest.TestCase):
         self.assertIn("\nx = 6 * 7\n", out)
         self.assertNotIn("x = 42", out)
 
+    def test_session_block_keeps_body_until_end(self):
+        out, _ = convert("""
+            \\begin{code}
+            >> for i=1:2
+                i
+            end
+
+            i = 1
+            i = 2
+            \\end{code}
+            """)
+        self.assertIn("\nfor i=1:2\n    i\nend\n", out)
+        self.assertNotIn("i = 1", out)
+
     def test_prompt_only_block_is_an_example(self):
         out, _ = convert("""
             \\begin{code}
@@ -185,6 +199,31 @@ class Prose(unittest.TestCase):
         self.assertIn('%[text]{"align":"center"} $h = a t^2 / 2$', out)
         self.assertIn("$x\\_0$", out)
 
+    def test_multirow_display_is_one_line_per_row(self):
+        out, _ = convert("""
+            \\begin{eqnarray*}
+            x &=& 1 \\\\
+            y &=& 2
+            \\end{eqnarray*}
+            """)
+        self.assertIn('%[text]{"align":"center"} $x = 1$', out)
+        self.assertIn('%[text]{"align":"center"} $y = 2$', out)
+        self.assertNotIn("begin{array}", out)
+
+    def test_tie_in_math_is_a_thick_space(self):
+        out, _ = convert("$\\mathrm{for}~i$")
+        self.assertIn("$\\\\mathrm{for}\\\\;i$", out)
+
+    def test_literal_dollar_uses_matlab_form(self):
+        # MATLAB re-saves a literal dollar sign as `\\$`; it renders as `$`.
+        out, _ = convert("It costs \\$3,000 a year.")
+        self.assertIn("It costs \\\\$3,000 a year.", out)
+
+    def test_url_is_an_explicit_link(self):
+        # MATLAB rewrites `<url>` autolinks into this form on re-save.
+        out, _ = convert("(see \\url{https://x.y/lorenz}):")
+        self.assertIn("(see [https://x.y/lorenz](https://x.y/lorenz)):", out)
+
     def test_uvec_becomes_hat(self):
         out, _ = convert("$\\uvec{V}$")
         self.assertIn("$\\\\hat{V}$", out)
@@ -261,8 +300,22 @@ class Lists(unittest.TestCase):
             After.
             """)
         lines = body_lines(out)
-        self.assertEqual(lines[1:6], ["%[text] 1. Outer one", "%[text]   - inner a", "%[text]   - inner b \\",
+        # Four-space indent and one end mark for the whole list: MATLAB rewrites
+        # a two-space indent, and ` \` on the inner list would end both.
+        self.assertEqual(lines[1:6], ["%[text] 1. Outer one", "%[text]     - inner a", "%[text]     - inner b",
                                       "%[text] 2. Outer two \\", "%[text] After."])
+
+    def test_nested_list_ending_both_lists(self):
+        out, _ = convert("""
+            \\begin{itemize}
+            \\item Outer
+            \\begin{itemize}
+            \\item inner
+            \\end{itemize}
+            \\end{itemize}
+            """)
+        lines = body_lines(out)
+        self.assertEqual(lines[1:3], ["%[text] - Outer", "%[text]     - inner \\"])
 
     def test_description_list(self):
         out, _ = convert("""
@@ -323,7 +376,7 @@ class Figures(unittest.TestCase):
             self.assertIn('%[text]{"align":"center"} *Figure 3.1: The $x$ process*', lines)
             img_id = ref.split("text:image:")[1].rstrip(")")
             i = lines.index(f"%[text:image:{img_id}]")
-            self.assertTrue(lines[i + 1].startswith('%   data: {"align":"baseline","height":3,"src":"data:image\/png;base64,'))
+            self.assertTrue(lines[i + 1].startswith('%   data: {"align":"baseline","height":3,"src":"data:image\\/png;base64,'))
             self.assertTrue(lines[i + 1].endswith('"width":2}'))
             self.assertEqual(lines[i + 2], "%---")
 

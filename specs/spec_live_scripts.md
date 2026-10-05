@@ -2,10 +2,10 @@
 
 - Objective: release each textbook chapter as a plain-text MATLAB live script (`.m`) next to the chapter PDF, as an optional beta reading format, one chapter at a time, and fold every lesson into the converter and the `mlx` skill so later chapters need less work.
 - Inputs: `book/wNN_topic/chapter/<name>.tex` (single source), `book/book.aux` (cross-reference numbers), `book/images/*.png` (from `make images-png`), the mlx skill in `~/WorkingCopies/claude-global/skills/mlx/` (`mlx_lint.py`, `mlx_verify.m`, `reference.md`).
-- Outputs: `book/wNN_topic/chapter/<name>.m` (generated, output-free, committed); `site/weeks/wNN_topic/files/<name>.m` (a copy of it, also output-free); a `[Live script]` link on the chapter's reading line in `site/index.qmd` (the schedule) and in the Formats column of `site/resources/textbook.qmd`.
+- Outputs: `book/wNN_topic/chapter/<name>.m` (generated, output-free, committed); `site/weeks/wNN_topic/files/<name>.m` (a copy of it, also output-free); a `[Live script]` link in the Formats column of `site/resources/textbook.qmd` (the schedule's reading cells link to that page).
 - Owner: AI converts and verifies, author reads end to end in MATLAB.
 - Verification: tier A (no MATLAB) `mlx_lint.py --strict` clean and `tex2mlive.py --check` passing; tier B `mlx_verify.m` (checkcode, export with Run, executeAndSave copy with body identical to the source); the author's read; `quarto render site` clean.
-- Status: chapter 1 converted and verified through tier B (2026-09-26); author read pending.
+- Status: chapters 1–2 released (2026-09-26); chapters 3–4 converted, verified through tier B and released (2026-10-05), author read pending.
 
 ## Decisions (2026-09-26)
 
@@ -23,7 +23,7 @@
 4. Tier B: `matlab -batch "addpath('~/.claude/skills/mlx'); mlx_verify('<abs .m>', '<outdir>')"`. Look at the exported PDF or HTML page by page. Fix the converter or the `.tex` for anything found, then reconvert.
 5. Author read (MATLAB): open the `.m` as a live script, Run All (then "Run to End" after any deliberate-error section), and read start to finish against the chapter PDF. Edits made in MATLAB during the read go into the `.tex`, then the chapter is reconverted; the `.m` must not be saved with outputs (`git checkout -- book/.../<name>.m` if it was). Check: headings and numbers match the PDF; every equation renders; figures visible and sized sensibly; each cell's output matches what the PDF shows; example blocks render as code; lists and nesting; quotes and the epigraph; exercises numbered; nothing missing (in particular `stdout` blocks that follow a runnable cell now duplicate the live output and may deserve a `% mlive: skip`).
 6. Release copy: `cp book/wNN_topic/chapter/<name>.m site/weeks/wNN_topic/files/<name>.m`. `mlx_lint.py --strict` on the copy; `mlx_dump.py --outputs` must list only the metadata and image entries.
-7. Site: append ` · [Live script](weeks/wNN_topic/files/<name>.m){download="<name>.m"} (beta)` to the chapter's reading line in `site/index.qmd`; add the same link to the Formats cell in `site/resources/textbook.qmd`; `quarto render site` clean; `python3 utils/check_schedule_dates.py` passes.
+7. Site: add ` · [Live script](../weeks/wNN_topic/files/<name>.m){download="<name>.m"}` to the chapter's Formats cell in `site/resources/textbook.qmd` (the schedule in `site/index.qmd` links readings to that page, so it needs no edit). If source fixes changed the printed chapter, `make wNN` in `book/` and copy the chapter PDF to `files/` too; `quarto render site` clean; `python3 utils/check_schedule_dates.py` passes.
 8. Record the chapter's row below and commit `.tex`, `.m`, PNGs, release copy, site edits and this file together.
 
 Defects from the author's read: one bullet per defect under the chapter's row, `location (section or line) — what it shows — what it should show`. Each is triaged as a converter fix (patch plus a unit test), a format fact (recorded in the skill's `reference.md`), or a source fix (edit the `.tex`), then the chapter is reconverted.
@@ -38,8 +38,8 @@ LaTeX comments on their own line, invisible in the PDF, immediately before the e
 |---|---|---|---|---|---|---|---|---|
 | 1 | 1 Modeling and Simulation | 2026-09-26 (3 noexec) | 2026-09-26 | clean | 2026-09-26 | 2026-09-26 | 2026-09-26 | author read: cut the dated `sin pi` / `abs pi` passage from the `.tex`; release without outputs |
 | 1 | 2 Scripts and Live Scripts | 2026-09-26 (13 noexec) | 2026-09-26 | clean | 2026-09-26 | 2026-09-26 | 2026-09-26 | sessions that need `myscript`, `fibonacci1`, `swap`, `bike_update` or show errors are examples; the two `\includepdf` pages are embedded as page images |
-| 2 | 3 Loops | | | | | | | nested lists |
-| 2 | 4 Vectors | | | | | | | |
+| 2 | 3 Loops | 2026-10-05 (6 noexec) | 2026-10-05 | clean | 2026-10-05 | pending | 2026-10-05 | bike-share updates, `bike_update` and `series` sessions are examples; converter learned prompt sessions with `for`…`end` blocks, MATLAB's nested-list form (four-space indent, one ` \` for the whole list), literal `\\$`, and math ties |
+| 2 | 4 Vectors | 2026-10-05 (8 noexec) | 2026-10-05 | clean | 2026-10-05 | pending | 2026-10-05 | error demos, the Fibonacci listing (needs `n`) and its plot, and the unprompted initialization block are examples; source fixes also correct the PDF (`xx`/`X` mix-up, `\lstinline(size())`, empty `\nameref` to Exercise 3.6, `Y(end)` output); `eqnarray` now one centered line per row; `\url` emitted as `[url](url)` |
 | 3 | 5 Functions | | | | | | | |
 | 3 | 6 Conditionals | | | | | | | |
 | 4 | 7 Data Types | | | | | | | |

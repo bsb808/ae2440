@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Convert an AE2440 chapter .tex file to a MATLAB plain-text live script .m file.
+r"""Convert an AE2440 chapter .tex file to a MATLAB plain-text live script .m file.
 
 Usage:
   tex2mlive.py CHAPTER.tex [...]           write CHAPTER.m beside the source (refuses to overwrite)
@@ -253,6 +253,9 @@ def _convert_math_body(body: str) -> str:
     # unit-vector macro from book.tex); `\hat` renders.
     body = re.sub(r"\\uvec\b", r"\\hat", body)
     body = re.sub(r"\\-", "", body)
+    # A tie (`~`) is a space in TeX, but MATLAB escapes it as a Markdown
+    # character on re-save; a thick space renders alike and round-trips.
+    body = re.sub(r"(?<!\\)~", r"\\;", body)
     body = body.replace("\\", "\\\\")
     # MATLAB escapes these inside `$...$` on re-save; emitting them keeps the
     # round trip clean.
@@ -301,19 +304,36 @@ def convert_display_math(text: str, math: Stash) -> str:
     def display(body: str) -> str:
         return '\n\n%[text]{"align":"center"} ' + math.add("$" + _convert_math_body(body) + "$") + "\n\n"
 
+    def rows(body: str) -> str:
+        # Live-script math has no \begin{...} environments, so a multi-row
+        # display becomes one centered line per row, alignment marks dropped.
+        body = re.sub(r"\\(?:nonumber|notag)\b", "", body)
+        parts = [p.replace("&", " ").strip() for p in re.split(r"\\\\(?:\[[^\]]*\])?", body)]
+        return "".join(display(p) for p in parts if p)
+
     text = re.sub(r"\\\[(.+?)\\\]", lambda m: display(m.group(1)), text, flags=re.S)
-    for env in ("equation", "equation*", "align", "align*"):
+    for env in ("equation", "equation*"):
         pat = re.compile(rf"\\begin\{{{re.escape(env)}\}}(.*?)\\end\{{{re.escape(env)}\}}", re.S)
         text = pat.sub(lambda m: display(m.group(1)), text)
-    for env in ("eqnarray", "eqnarray*"):
+    for env in ("align", "align*", "eqnarray", "eqnarray*"):
         pat = re.compile(rf"\\begin\{{{re.escape(env)}\}}(.*?)\\end\{{{re.escape(env)}\}}", re.S)
-        text = pat.sub(lambda m: display(r"\begin{array}{rcl}" + m.group(1) + r"\end{array}"), text)
+        text = pat.sub(lambda m: rows(m.group(1)), text)
     return text
 
 
 # ---------------------------------------------------------------------------
 # Code emission
 # ---------------------------------------------------------------------------
+
+_BLOCK_OPEN_RE = re.compile(r"(?:for|parfor|while|if|switch|try|function)\b")
+_BLOCK_END_RE = re.compile(r"(?:^|[,;])\s*end\b\s*[;,]?\s*(?:%.*)?$")
+
+
+def _block_delta(stripped: str) -> int:
+    """Change in block depth from one line of MATLAB: +1 for a line that opens
+    a block, -1 for one that ends with `end` (both for a one-line block)."""
+    return int(bool(_BLOCK_OPEN_RE.match(stripped))) - int(bool(_BLOCK_END_RE.search(stripped)))
+
 
 def _emit_runnable_code(body: str) -> str:
     """`>> …` interactive session to runnable MATLAB. The `>>` and the echoed
@@ -328,6 +348,13 @@ def _emit_runnable_code(body: str) -> str:
             if cmd:
                 out.append(cmd)
             i += 1
+            # A block typed at the prompt (`>> for i=1:5`) continues without
+            # prompts until its `end`; those lines are code, not output.
+            depth = _block_delta(cmd)
+            while depth > 0 and i < len(lines):
+                out.append(lines[i].rstrip())
+                depth += _block_delta(lines[i].strip())
+                i += 1
             while out and out[-1].rstrip().endswith("...") and i < len(lines):
                 cont = lines[i]
                 out.append(cont.rstrip())
@@ -582,10 +609,10 @@ class Converter:
         s = re.sub(r"\\LaTeX\b", "LaTeX", s)
         s = sub_balanced(s, re.compile(r"\\href\s*\{"),
                          lambda m, url: self._href(m.string, m, url))
-        s = re.sub(r"\\url\{([^}]*)\}", lambda m: f"<{m.group(1)}>", s)
+        s = re.sub(r"\\url\{([^}]*)\}", lambda m: f"[{m.group(1)}]({m.group(1)})", s)
         s = re.sub(r"\\linebreak\b", " ", s)
         s = re.sub(r"\\ ", " ", s)
-        s = s.replace("\\$", "$").replace("\\%", "%").replace("\\&", "&").replace("\\#", "#")
+        s = s.replace("\\$", "\\\\$").replace("\\%", "%").replace("\\&", "&").replace("\\#", "#")
         s = re.sub(r"\\_", "_", s)
         s = s.replace("\\-", "")
         s = re.sub(r"\\[,;:!]", " ", s)
@@ -835,7 +862,14 @@ class Converter:
                         head = f"**{label}** {rest_text}" if label.endswith(":") else f"**{label}** — {rest_text}"
             out.append(marker + head)
             for ln in rest:
-                out.append(ln if ln.startswith("%[") or ln.startswith("\x02") else "  " + ln)
+                if ln.startswith("%[") or ln.startswith("\x02"):
+                    out.append(ln)
+                    continue
+                # A nested list is indented four spaces (MATLAB's own form) and
+                # loses its end mark: ` \` ends the whole list, not one level.
+                if _LIST_ITEM_RE.match(ln) and ln.endswith(" \\"):
+                    ln = ln[:-2]
+                out.append("    " + ln)
         # MATLAB marks the end of a list with ` \` on its last item and adds it
         # on re-save; emitting it keeps the round trip clean.
         out[-1] = out[-1] + " \\"

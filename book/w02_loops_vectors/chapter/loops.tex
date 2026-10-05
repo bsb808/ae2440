@@ -22,6 +22,7 @@ like
 
 \index{bike share system}
 
+% mlive: noexec
 \begin{code}
 m = m - 0.05*m + 0.03*pg
 pg = pg + 0.05*m - 0.03*pg
@@ -36,6 +37,7 @@ of Bikes!
 
 One solution is to use temporary variables like \lstinline{m_new} and \lstinline{pg_new}:
 
+% mlive: noexec
 \begin{code}
 m_new = m - 0.05*m + 0.03*pg
 pg_new = pg + 0.05*m - 0.03*pg
@@ -51,6 +53,7 @@ is, it reads both old values before writing either new value.
 The following is an alternative solution that
 has the added advantage of simplifying the computation:
 
+% mlive: noexec
 \begin{code}
 m_to_pg = 0.05*m - 0.03*pg
 m = m - m_to_pg
@@ -144,6 +147,7 @@ month, we'd have to run the script 30 times. We could enter the same command 30 
 
 To create a loop, we can use the \lstinline{for} statement, like this:
 
+% mlive: noexec
 \begin{code}
 for i=1:30
     bike_update
@@ -406,6 +410,7 @@ as the number of terms goes to infinity, the sum approaches~2 asymptotically.
 To see if that's true for our program, we can replace the
 constant \lstinline{10} in Listing~\ref{lst:series_10} with a variable named \lstinline{n}:
 
+% mlive: noexec
 \begin{lstlisting}[caption={Updating our code from Listing~\ref{lst:series_10} to have a variable number of terms}, label={lst:series_n}]
 A1 = 1;
 total = 0;
@@ -422,6 +427,7 @@ the code.
 I put this code in a file named \emph{series.m}, then
 ran it with different values of \lstinline{n}:
 
+% mlive: noexec
 \begin{code}
 >> n=10; series
 total = 1.99804687500000
