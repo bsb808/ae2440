@@ -18,6 +18,8 @@ Each week's reading is also released chapter by chapter from the [Schedule](../i
 | 1 | 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) · [Live script](../weeks/w01_modeling_scripts/files/scripts.m){download="scripts.m"} |
 | 2 | 3. Loops | [PDF](../weeks/w02_loops_vectors/files/loops.pdf) · [Live script](../weeks/w02_loops_vectors/files/loops.m){download="loops.m"} |
 | 2 | 4. Vectors | [PDF](../weeks/w02_loops_vectors/files/vectors.pdf) · [Live script](../weeks/w02_loops_vectors/files/vectors.m){download="vectors.m"} |
+| 4 | 5. Functions | [PDF](../weeks/w03_functions_conditionals/files/functions.pdf) · [Live script](../weeks/w03_functions_conditionals/files/functions_chapter.m){download="functions_chapter.m"} |
+| 4 | 6. Conditionals | [PDF](../weeks/w03_functions_conditionals/files/conditionals.pdf) · [Live script](../weeks/w03_functions_conditionals/files/conditionals.m){download="conditionals.m"} |
 
 Later weeks are added as they are posted.
 

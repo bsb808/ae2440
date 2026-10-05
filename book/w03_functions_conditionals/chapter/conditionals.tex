@@ -48,6 +48,7 @@ ans = logical 0
 
 It's a common error to use the assignment operator (\lstinline{=}) instead of the equality operator (\lstinline{==}).  If you do, you get an error:
 
+% mlive: noexec
 \begin{code}
 >> a^2 + b^2 = c^2
  a^2 + b^2 = c^2
@@ -167,6 +168,7 @@ ans = 1
 
 But we can write the same function more concisely, like this:
 
+% mlive: noexec
 \begin{code}
 function res = is_pythagorean(a, b, c)
     res = a^2 + b^2 == c^2;
@@ -199,6 +201,7 @@ It might seem silly to start with such a simple program, but this is an essentia
 
 The output is as expected.
 
+% mlive: noexec
 \begin{code}
 1
 2
@@ -230,6 +233,7 @@ end
 
 Now one loop is inside the other.  The inner loop gets executed three times, once for each value of \lstinline{a}, so here's what the output looks like (I've adjusted the spacing to make the structure clear):
 
+% mlive: noexec
 \begin{code}
 >> find_triples
      1     1
@@ -281,6 +285,7 @@ end
 
 The result is just one triple:
 
+% mlive: noexec
 \begin{code}
 >> find_triples
      3     4     5
@@ -291,12 +296,14 @@ After checking the case when \lstinline{a} is~1 and \lstinline{b} is~2, there's 
 the case when \lstinline{a} is~2 and \lstinline{b} is~1.  We can save the extra work by adjusting the
 range of \lstinline{b}:
 
+% mlive: noexec
 \begin{code}
 for b=a:4
 \end{code}
 
 We can save even more work by adjusting the range of \lstinline{c}:
 
+% mlive: noexec
 \begin{code}
 for c=b:a+b
 \end{code}
@@ -326,6 +333,7 @@ By wrapping the code in a function, we can avoid name collisions; this process i
 
 The first draft of the function takes no input variables:
 
+% mlive: noexec
 \begin{code}
 function res = find_triples()
     for a=1:3
@@ -345,6 +353,7 @@ they make it apparent that there are no input variables.  Similarly,
 it's a good  idea when calling the new function to use parentheses as a reminder
 that it's a function, not a script:
 
+% mlive: noexec
 \begin{code}
 >> find_triples()
 \end{code}
@@ -361,6 +370,7 @@ variables.  The natural generalization is to replace the constant
 values~\lstinline{3} and~\lstinline{4} with a variable, so we can search an arbitrarily large
 range of values.
 
+% mlive: noexec
 \begin{code}
 function res = find_triples(n)
     for a=1:n
@@ -377,6 +387,7 @@ end
 
 Here are the results for the range from 1 to 15:
 
+% mlive: noexec
 \begin{code}
 >> find_triples(15)
      3     4     5

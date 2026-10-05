@@ -244,7 +244,7 @@ Y = X .^ 2
 %[text] where $X\_i$ is a number between 0 and 1, and $r$ is a positive number.
 %[text] 1. Write a script named *logmap.m* that computes the first 50 elements of $X$ with `r` = 3.9 and `X1` = 0.5, where `r` is the parameter of the logistic map and `X1` is the initial value.
 %[text] 2. Plot the results for a range of values of $r$ from 2.4 to 4.0. How does the behavior of the system change as you vary $r$? \
-%[text] **Exercise 4.7.** For this exercise write a live script named *firstorder.mlx* to examine the connection between a geometric series (progression) and the time response of a first-order system.
+%[text] **Exercise 4.7.** For this exercise write a live script named *firstorder.m* to examine the connection between a geometric series (progression) and the time response of a first-order system.
 %[text] A first-order, linear ordinary differential equation (ODE) is a common mathematical model useful to predict the behavior of many engineering systems. A typical form for a system undergoing decay is
 %[text]{"align":"center"} $\\frac{dy}{dt} = -k \\, y(t)$
 %[text] where $y(t)$ is the quantity that decays over time, $k$ is the constant decay rate and $t$ is time. The solution to this ODE is

@@ -98,7 +98,7 @@ hold off
 %[text] If you run the code above, you should see a figure with three circles and text labels on the axes similar to Figure 3.1. MATLAB scales the plot automatically so that the axes run from the lowest values in the plot to the highest.
 %[text]{"align":"center"} ![Simple figure with three markers and axes labels.](text:image:e8b9)
 %[text]{"align":"center"} *Figure 3.1: Simple figure with three markers and axes labels.*
-%[text] **Exercise 3.2.** Using *bike\_loop.mlx* as a starting point, develop a live script *bike\_loop\_plot.mlx* so that it clears the figure before running the loop. Then, each time through the loop, it should plot the value of `m` versus the value of `ii` with a red circle.
+%[text] **Exercise 3.2.** Using *bike\_loop.m* as a starting point, develop a live script *bike\_loop\_plot.m* so that it clears the figure before running the loop. Then, each time through the loop, it should plot the value of `m` versus the value of `ii` with a red circle.
 %[text] Once you get that working, modify it so it plots the values of `pg` with blue diamonds.
 %%
 %[text] ## 3.6 Sequences
