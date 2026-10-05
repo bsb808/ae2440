@@ -37,7 +37,7 @@ Conventions:
 - Readings on the schedule use one fixed line per chapter: `Before class: Read Chapter N, Title` followed by format links (`[PDF](weeks/.../files/name.pdf)` and, once the chapter's live script is released, ` · [Live script](weeks/.../files/name.m){download="name.m"} (beta)`). Chapter PDFs are gitignored in `book/`; releasing a chapter means `make wNN` in `book/` and copying the PDF into the week's `files/`. The live-script release follows `specs/spec_live_scripts.md` (convert with `mlx_parse/tex2mlive.py`, verify, author read, copy the `.m` into `files/` without cached outputs).
 - The site is a GitHub Pages project site served under `/ae2440/`, so links must be relative. Never write a root-absolute link (`/foo`).
 - Per-quarter values (`quarter`, `term_start`, `meeting`, ...) live in `site/_variables.yml` and are used as `{{< var name >}}`. Previous quarters are archived under `site/archive/<ayNNqN>/` with an "Archived" callout.
-- No solutions on the site. Solutions stay in the private `ae2440-solutions` repo and reach students via Sakai.
+- Solutions are released on the site after an assignment is due: copy the `_soln.m` files from the private `ae2440-solutions` repo (the source of truth) into the week's `files/` and list them as download links in the Solutions column of `site/assignments.qmd`. Do not post a solution before its due date.
 - Before pushing site changes, the pre-push hook in `utils/hooks/` renders and runs `utils/check_site_links.py` and `utils/check_schedule_dates.py` (enable per clone with `git config core.hooksPath utils/hooks`; bypass with `git push --no-verify`).
 - When reporting a created or edited `.qmd`, list both the live URL (`https://bsb808.github.io/ae2440/<path>.html`) and the source path (`site/<path>.qmd`).
 - The MOSS similarity-check tooling is kept outside this repo (it carries a personal user ID).
@@ -96,7 +96,7 @@ LaTeX inside math markers requires special handling in the plain-text `.m` forma
 
 Local functions may be placed **inline** in the script at the point where they are introduced — they do not need to go at the bottom of the file. Place the `function...end` block immediately before the code that tests it, within the same section.
 
-**Required footer:** Every plain-text live script `.m` file must end with the following block or MATLAB will open it as a plain script instead of a live script. If MATLAB still opens it as a plain script, right-click the file and choose **Open as Live Script**.
+**Required footer:** Every plain-text live script `.m` file must end with the following block or MATLAB will open it as a plain script instead of a live script (still true in R2026b, tested Oct 2026). If MATLAB still opens it as a plain script, right-click the file and choose **Open as Live Script**.
 
 ```matlab
 %[appendix]{"version":"1.0"}

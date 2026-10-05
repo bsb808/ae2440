@@ -6,11 +6,11 @@ title: "Assignments"
 
 Assignments are typically due Fridays at 1700 and are submitted through [Sakai]({{< var sakai_url >}}). See the [Schedule](index.qmd) for due dates.
 
-| Assignment | Topic |
+| Assignment | Topic | Solutions |
 |---|---|---|
-| [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | 
-| [Assignment 2](weeks/w02_loops_vectors/assignment.qmd) | Loops and Vectors | 
-| Assignment 3 | Functions and Conditionals |
+| [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | [penny_soln.m](weeks/w01_modeling_scripts/files/penny_soln.m){download="penny_soln.m"} · [pennywithair_soln.m](weeks/w01_modeling_scripts/files/pennywithair_soln.m){download="pennywithair_soln.m"} · [bike_update_soln.m](weeks/w01_modeling_scripts/files/bike_update_soln.m){download="bike_update_soln.m"} · [aquarium_soln.m](weeks/w01_modeling_scripts/files/aquarium_soln.m){download="aquarium_soln.m"} |
+| [Assignment 2](weeks/w02_loops_vectors/assignment.qmd) | Loops and Vectors |  |
+| Assignment 3 | Functions and Conditionals |  |
 
 
 
