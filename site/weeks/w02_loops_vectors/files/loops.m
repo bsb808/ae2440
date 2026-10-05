@@ -68,7 +68,7 @@ for i=1:5
     i
 end
 %[text] As this example shows, you *can* run a `for` loop from the command line, but it's more common to put it in a script.
-%[text] **Exercise 3.1.** Create a live script named *bike\_loop.mlx* that does the following:
+%[text] **Exercise 3.1.** Create a live script named *bike\_loop.m* that does the following:
 %[text] 1. Assign the initial values (precondition) of **`m = 100`** and **`pg = 100`**.
 %[text] 2. Run the `for` loop from 1 to 30.
 %[text]     1. Inside the loop, call the program *bike\_update.m* to update the values of `m` and `pg`. The program should echo the values of `m` and `pg` after each update. \
