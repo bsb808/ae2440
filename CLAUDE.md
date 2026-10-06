@@ -13,9 +13,8 @@ Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_condit
 | `book/` | Week-by-week book (chapters, lessons, assignments, refs). Built with `make book` from inside `book/`. |
 | `archive/` | Off-schedule scratch material |
 | `examples/` | Standalone demos and worked examples |
-| `grading/` | Sakai grading workflow (per-assignment downloads + comments) |
 | `site/` | Quarto course website, published to https://bsb808.github.io/ae2440/ (see Course Website below) |
-| `specs/` | Spec-anchored runbooks: `spec_startup_new_quarter.md` (recurring), `spec_live_scripts.md` (chapter live-script rollout), `spec_wiki_transition.md` (one-time) |
+| `specs/` | Spec-anchored runbooks: `spec_startup_new_quarter.md` (recurring), `spec_live_scripts.md` (chapter live-script rollout), `spec_wiki_transition.md` (one-time). The grading SOP lives in the private repo (see below) |
 | `utils/` | `wiki_migrate/extract.py` (Confluence export → Markdown extracts), `check_schedule_dates.py` |
 | `mlx_parse/` | Python tooling: `tex2mlive.py` (chapter `.tex` to live script), `mlx_soln2assign.py` (student assignment files) |
 | `images/` | Course-level images (separate from `book/images/`) |
@@ -23,7 +22,7 @@ Active weeks: `w01_modeling_scripts`, `w02_loops_vectors`, `w03_functions_condit
 
 ### Companion private repo: `bsb808/ae2440-solutions`
 
-Instructor `_soln.mlx` / `_soln.m` files for **graded assignments** live in the private companion repo at `~/WorkingCopies/ae2440/ae2440-solutions/` (sibling to this repo under the umbrella `~/WorkingCopies/ae2440/`), organized by week (`wNN_topic/<assignment>_soln.<ext>`). Lesson `_soln` files (used for in-class demos) **stay public** in `book/wNN_topic/lessons/`.
+The private companion repo at `~/WorkingCopies/ae2440/ae2440-solutions/` (sibling to this repo under the umbrella `~/WorkingCopies/ae2440/`) has two top-level folders: `solutions/wNN_topic/<assignment>_soln.m` (instructor solutions for graded assignments) and `grading/` (the spec-driven Sakai grading workflow: `grade.py`, `run_checks.m`, `aNN/spec.md` + `checks.yaml` per assignment, and the SOP `grading/spec_grading.md`). Everything that touches student submissions lives there or in the gitignored student-work folder `~/WorkingCopies/ae2440/StudentWork/`, never in this public repo. Lesson `_soln` files (used for in-class demos) **stay public** in `book/wNN_topic/lessons/`.
 
 ## Course Website
 
@@ -37,7 +36,7 @@ Conventions:
 - Readings on the schedule use one fixed line per chapter: `Before class: Read Chapter N, Title` followed by format links (`[PDF](weeks/.../files/name.pdf)` and, once the chapter's live script is released, ` · [Live script](weeks/.../files/name.m){download="name.m"} (beta)`). Chapter PDFs are gitignored in `book/`; releasing a chapter means `make wNN` in `book/` and copying the PDF into the week's `files/`. The live-script release follows `specs/spec_live_scripts.md` (convert with `mlx_parse/tex2mlive.py`, verify, author read, copy the `.m` into `files/` without cached outputs).
 - The site is a GitHub Pages project site served under `/ae2440/`, so links must be relative. Never write a root-absolute link (`/foo`).
 - Per-quarter values (`quarter`, `term_start`, `meeting`, ...) live in `site/_variables.yml` and are used as `{{< var name >}}`. Previous quarters are archived under `site/archive/<ayNNqN>/` with an "Archived" callout.
-- Solutions are released on the site after an assignment is due: copy the `_soln.m` files from the private `ae2440-solutions` repo (the source of truth) into the week's `files/` and list them as download links in the Solutions column of `site/assignments.qmd`. Do not post a solution before its due date.
+- Solutions are released on the site after an assignment is due: copy the `_soln.m` files from the private repo's `solutions/wNN_topic/` (the source of truth) into the week's `files/` and list them as download links in the Solutions column of `site/assignments.qmd`. Do not post a solution before its due date.
 - Before pushing site changes, the pre-push hook in `utils/hooks/` renders and runs `utils/check_site_links.py` and `utils/check_schedule_dates.py` (enable per clone with `git config core.hooksPath utils/hooks`; bypass with `git push --no-verify`).
 - When reporting a created or edited `.qmd`, list both the live URL (`https://bsb808.github.io/ae2440/<path>.html`) and the source path (`site/<path>.qmd`).
 - The MOSS similarity-check tooling is kept outside this repo (it carries a personal user ID).
@@ -126,7 +125,7 @@ The instructor solution lives in the private companion repo `~/WorkingCopies/ae2
 
 ```bash
 # Auto-names output: removes _soln or appends _nocode
-python mlx_parse/mlx_soln2assign.py ../ae2440-solutions/w01_modeling_scripts/aquarium_soln.mlx \
+python mlx_parse/mlx_soln2assign.py ../ae2440-solutions/solutions/w01_modeling_scripts/aquarium_soln.mlx \
     -o book/w01_modeling_scripts/assign/aquarium.mlx
 ```
 
@@ -176,97 +175,7 @@ This rule supersedes any apparent convenience of naming individuals in grading s
 
 ## Grading Workflow
 
-### Sakai Download Format
-Assignments are downloaded from Sakai as a zip file and stored in `grading/`. The zip filename encodes the assignment name and download timestamp, e.g.:
-
-```
-grading/Assignment2_LoopsVectors_20260410224035.zip
-```
-
-The zip contains one subdirectory per student plus a `grades.csv`:
-
-```
-Assignment2_LoopsVectors/
-  grades.csv                              # import back to Sakai after grading
-  StudentName, First(username)/
-    timestamp.txt
-    comments.txt                          # append feedback here; imported by Sakai
-    Submission attachment(s)/             # student-submitted files
-    Feedback Attachment(s)/               # (empty; for instructor file returns)
-```
-
-### Grading Process
-1. Extract the zip to a working directory (e.g., `/tmp/`):
-   ```bash
-   unzip grading/AssignmentN_*.zip -d /tmp/submissions/
-   ```
-2. Inspect `Submission attachment(s)/` for each student. Required filenames are specified per assignment — **filenames are case-sensitive**.
-3. Edit `grades.csv` to fill in the `grade` column and append feedback text to each student's `comments.txt`.
-4. Repack the modified directory for Sakai upload:
-   ```bash
-   cd /tmp/submissions
-   zip -r AssignmentN_graded.zip AssignmentN_*/
-   ```
-
-### Reading Plain-Text MLX Submissions
-Student `.m` files submitted as live scripts contain large binary-encoded `%[output:...]` blocks. When reading them programmatically, skip those blocks to extract only the executable code and prose:
-
-```python
-import re
-
-def extract_code_text(path):
-    with open(path, 'r', encoding='utf-8', errors='replace') as f:
-        lines = f.readlines()
-    result = []
-    skip = False
-    for line in lines:
-        stripped = line.rstrip()
-        if re.match(r'%\[(output|appendix|metadata|text:image)', stripped):
-            skip = True; continue
-        if skip:
-            if re.match(r'%\[', stripped) and not re.match(r'%\[(output|metadata|text:image)', stripped):
-                skip = False
-            elif not stripped.startswith('%') or stripped.startswith('%[text'):
-                skip = False
-            else:
-                continue
-        if not skip:
-            result.append(stripped)
-    return '\n'.join(result)
-```
-
-### Assignment Reference Files
-Student-facing assignment files live under `book/wNN_topic/assign/`; matching instructor solutions live in the private companion repo at `~/WorkingCopies/ae2440/ae2440-solutions/wNN_topic/`. Solution `.mlx` files can be read as zip archives (`matlab/document.xml` contains the content as XML with CDATA code blocks).
-
-## Assignment Grading Setups
-
-Per-assignment required files and grading narrative. Used by `grading/grading_utils.py`.
-
-### Assignment 2 — Loops and Vectors
-**Zip:** `grading/Assignment2_LoopsVectors_20260410224035.zip`
-
-**Required files:**
-- `fudge.m`, `span_statistics.m`, `lcs_flow.m`, `decay_twoways.m`
-
-**Grading narrative:** File presence only (100 if all present, 90 if any missing). No content deductions — formative feedback only.
-
----
-
-### Assignment 3 — Functions and Conditionals
-**Zip:** `grading/Assignment 3_ Functions and Conditionals_20260419200756.zip`
-
-**Required files:**
-- `beaufort_main.m`, `beaufort_classify.m`, `functions_scope.m`
-- `triangle_classifier.m`, `is_valid_triangle.m`, `classify_triangle.m`
-
-**Grading narrative:** File presence only (100 if all present, 90 if any missing). No content deductions — formative feedback only.
-
-**Code review:** Read each student's `beaufort_classify.m` against the instructions in `book/w03_functions_conditionals/assign/beaufort_main.m`. This is students' first function; give constructive suggestions. Look for:
-- Unnecessarily complex conditional logic (redundant conditions, nested ifs that could be flat elseif chains)
-- Output printed inside the function (`disp`/`fprintf`) instead of returned — misunderstanding that return values and printed output are different things
-- Other first-function stumbles (e.g. modifying input variables expecting the caller to see the change)
-
----
+Grading lives in the private companion repo, `ae2440-solutions/grading/`: the SOP `spec_grading.md` (check kinds, per-assignment checklist, status table), `grade.py`, `run_checks.m`, and `aNN/spec.md` + `checks.yaml` per assignment. Run it from that repo's root, e.g. `python3 grading/grade.py a01`. Sakai downloads and all working files (extractions, reports, graded zips) go to `~/WorkingCopies/ae2440/StudentWork/<quarter>/`, outside every repo. Nothing about student submissions belongs in this public repo.
 
 ## Key MATLAB Conventions Used in This Course
 

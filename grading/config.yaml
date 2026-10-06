@@ -1,6 +1,0 @@
-# Where Sakai downloads and all grading working files live: outside every git repo.
-# Resolved relative to the repo root; override per run with --studentwork and --quarter.
-# Layout: <studentwork>/<quarter>/Assignment N_ Title_<timestamp>.zip  (as downloaded from Sakai)
-#         <studentwork>/<quarter>/aNN/                                  (extraction, reports, graded zip)
-studentwork: ../StudentWork
-quarter: AY27Q1

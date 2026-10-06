@@ -82,10 +82,10 @@ sudo apt install -y \
 | Repo | Purpose | Visibility |
 |------|---------|------------|
 | `bsb808/ae2440` (this) | Public course materials | Public |
-| `bsb808/ae2440-solutions` | Instructor solution `.mlx`/`.m` files | Private |
+| `bsb808/ae2440-solutions` | Instructor solutions (`solutions/`) and the Sakai grading workflow (`grading/`) | Private |
 | `bsb808/PhysicalModelingInMatlab` (`ae2440-dev`) | Source textbook fork | Public |
 
-The solutions repo mirrors the per-week layout: `wNN_topic/<assignment>_soln.<ext>`. Lesson `_soln` files (used for in-class demos) remain in this public repo's `book/wNN_topic/lessons/`.
+The solutions repo mirrors the per-week layout under `solutions/`: `solutions/wNN_topic/<assignment>_soln.m`. Its `grading/` folder holds the grading tooling and per-assignment specs, so nothing that touches student submissions is in this public repo. Lesson `_soln` files (used for in-class demos) remain in this public repo's `book/wNN_topic/lessons/`.
 
 ## Other top-level directories
 
@@ -93,7 +93,6 @@ The solutions repo mirrors the per-week layout: `wNN_topic/<assignment>_soln.<ex
 |-----|---------|
 | `archive/` | Off-schedule scratch material |
 | `examples/` | Standalone MATLAB demos referenced from chapters |
-| `grading/` | Sakai grading workflow; per-assignment downloads + comments. See `CLAUDE.md` for the workflow |
 | `site/` | Quarto course website (see above) |
 | `specs/` | Working specs: quarter startup runbook, wiki migration |
 | `utils/` | Small tools: wiki extractor, site link check, schedule date check, git hooks |

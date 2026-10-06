@@ -1,13 +1,6 @@
 # List of untracked files to ignore
 *.asv
 
-# Sakai grading downloads and working files (contain student names; never tracked)
-grading/*.zip
-grading/**/*.zip
-grading/*/work/
-grading/*/Assignment*/
-grading/__pycache__/
-
 # Claude Code — machine-specific settings (do not commit)
 .claude/settings.local.json
 
