@@ -7,7 +7,7 @@
 - Tooling: `grading/grade.py` (runner), `grading/run_checks.m` (MATLAB harness), `grading/grading_utils.py` (Sakai and live-script helpers).
 - Owner: author approves the spec and the feedback wording, reviews the report before upload; AI drafts specs, runs the tooling, drafts the class summary.
 - Verification: dry run on the reference solution (all pass) and seeded bad fixtures (each trips exactly its check) before touching real submissions.
-- Status: A1 spec drafted (2026-10-05); tooling not yet implemented.
+- Status: tooling implemented except the `call` kind; A1 dry run done, not yet written or uploaded (2026-10-05). Handoff: `grading/HANDOFF.md`.
 
 ## Decisions (2026-10-05)
 
@@ -78,7 +78,7 @@ Student names appear only in the Sakai zip and in `grading/aNN/work/`, both giti
 
 | Assignment | Spec | Dry run | Graded | Uploaded | Class summary | Notes |
 |---|---|---|---|---|---|---|
-| A1 Models and Scripts | 2026-10-05 draft | | | | | first use of this workflow |
+| A1 Models and Scripts | 2026-10-05 | 2026-10-05 | | | 2026-10-05 | first use of this workflow |
 | A2 Loops and Vectors | | | | | | |
 | A3 Functions and Conditionals | | | | | | |
 | A4 Data Types and Zero-Finding | | | | | | |
