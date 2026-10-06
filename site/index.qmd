@@ -64,7 +64,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 
 **Thursday:** Work on Assignment 1
 
-- Due Friday 2 Oct, 1700: [Assignment 1: Models and Scripts](weeks/w01_modeling_scripts/assignment.qmd), submit via [Sakai]({{< var sakai_url >}})
+- Due Friday 2 Oct, 1700: [Assignment 1: Models and Scripts](weeks/w01_modeling_scripts/assignment.qmd)
 
 ## Week 2 — 5 Oct: Loops; Vectors {#week-2}
 
@@ -80,11 +80,11 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 - Lesson: [lesson_vectors.m]({{< var repo_blob >}}/book/w02_loops_vectors/lessons/lesson_vectors.m)
 - Exercises: [lesson_cooling.m]({{< var repo_blob >}}/book/w02_loops_vectors/lessons/lesson_cooling.m)
 
-**Wednesday:** Vectors, continued
+**Wednesday:** Vectors, continued and Assignment 2
 
 **Thursday:** Work on Assignment 2
 
-- Due Friday 9 Oct, 1700: [Assignment 2: Loops and Vectors](weeks/w02_loops_vectors/assignment.qmd), submit via [Sakai]({{< var sakai_url >}})
+- Due Friday 9 Oct, 1700: [Assignment 2: Loops and Vectors](./assignments.qmd)
 
 ## Week 3 — 12 Oct: No class {#week-3}
 

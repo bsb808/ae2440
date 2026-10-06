@@ -35,8 +35,6 @@ dd = [5 3.1 9.8 -2]'
 %[text] Linear spacing from A to B with N elements
 ll = linspace(0, 1, 101)
 mm = 0:0.5:1
-%%
-
 %[text] Logrithmic spacing from 10^A to 10^B with N elements
 pp = logspace(-2, 2, 5)
 %%
@@ -77,13 +75,13 @@ aa([1 5]) = -1
 aa([2 4]) = [-2 -3]
 %%
 %[text] ### Exercises
-%[text] Given `bb`, extact all the elements in odd-numberd positions.
+%[text] Given `bb`, extract all the elements in odd-numbered positions.
 bb = 1:9
 b_slice = bb([1,3,5,7])
 bb
 
 bb([1,3,5,7]) = -1
-%[text] Given `cc` , using indexing create a new vector that reverses the order of the elements
+%[text] Given `cc` , using indexes, create a new vector that reverses the order of the elements
 cc = [5 10 15 20]
 size(cc,2)
 c_rev = [];
@@ -93,11 +91,6 @@ end
 
 c_rev = [cc(end) cc(end-1) cc(end-2)]
 c_ref = cc(end:-1:1)
-%[text] Given `dd`, **find** the index of the elements with value equal to -1.0
-dd = sin((0:7) * pi / 2)
-
-%[text] **find** the indices for all the elements of `dd` wtih value equal to 1.0
-
 %%
 %[text] ## Array vs Matrix Operations
 %[text] ![](text:image:5479)
@@ -117,7 +110,7 @@ dd
 aa
 aa
 dd
-ee = dd.*aa
+ee = dd*aa
 %[text] but this throws an errror!
 %[text] ![](text:image:35cb)
 dd = ee./aa
@@ -129,7 +122,7 @@ gg = ff.^2
 %[text] Element-wise exponent
 gg = [-1 1 -1];
 hh = ff.^gg
-%[text] but this throws an errror!
+%[text] but this throws an error!
 %[text] ![](text:image:63e4)
 %%
 %[text] ### Idiom: Plotting a 2D Function with Vectors
