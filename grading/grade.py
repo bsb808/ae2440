@@ -4,10 +4,13 @@ grade.py — run an assignment's grading checks (grading/aNN/checks.yaml) on a
 Sakai download. Workflow and check kinds: specs/spec_grading.md.
 
     python3 grading/grade.py a01 --reference     # reference solution + fixtures
-    python3 grading/grade.py a01 --dry-run       # newest zip in grading/a01/ -> work/report.md
-    python3 grading/grade.py a01 --write --pack  # also comments.txt, grades.csv, work/a01_graded.zip
+    python3 grading/grade.py a01 --dry-run       # newest "Assignment 1_*.zip" -> report.md
+    python3 grading/grade.py a01 --write --pack  # also comments.txt, grades.csv, a01_graded.zip
 
-Every run re-extracts the zip into grading/aNN/work/, so --write never appends twice.
+Student files never live in the repo. The Sakai zip is read from, and every working
+file is written to, <studentwork>/<quarter>/ (grading/config.yaml; override with
+--studentwork, --quarter, or --zip PATH). Every run re-extracts the zip into
+<studentwork>/<quarter>/aNN/submissions/, so --write never appends twice.
 """
 
 import argparse
@@ -299,9 +302,9 @@ def report_md(cfg, results, title):
 # Modes
 # ---------------------------------------------------------------------------
 
-def run_reference(adir, cfg):
+def run_reference(adir, cfg, work):
     """Reference solution must pass everything; each fixture fails only its named check."""
-    work = adir / "work" / "reference"
+    work = work / "reference"
     shutil.rmtree(work, ignore_errors=True)
     work.mkdir(parents=True)
     ref = (HERE.parent / cfg["reference_dir"]).resolve()  # relative to the repo root
@@ -331,16 +334,21 @@ def run_reference(adir, cfg):
         ok &= good
         print(f"{'OK ' if good else 'BAD'} {r['key']:<24} grade {r['grade']}  failed {failed or '-'}  expected {want or '-'}")
     (work / "report.md").write_text(report_md(cfg, results, "reference and fixtures"))
+    print(f"Scratch and report in {work}")
     print("\nComment for the reference:\n" + comment_text(cfg, results[0]))
     return ok
 
 
-def run_sakai(adir, cfg, write, pack):
-    zips = sorted(adir.glob("*.zip"), key=lambda p: p.stat().st_mtime)
+def find_zip(adir, qdir):
+    """Newest Sakai download for this assignment in the quarter folder, e.g. 'Assignment 1_ Models and Scripts _2026.zip'."""
+    n = int(adir.name.lstrip("a"))
+    zips = sorted(qdir.glob(f"Assignment {n}_*.zip"), key=lambda p: p.stat().st_mtime)
     if not zips:
-        sys.exit(f"No Sakai zip in {adir}")
-    z = zips[-1]
-    work = adir / "work"
+        sys.exit(f"No 'Assignment {n}_*.zip' in {qdir} (download it from Sakai, or pass --zip PATH)")
+    return zips[-1]
+
+
+def run_sakai(adir, cfg, work, z, write, pack):
     sub = work / "submissions"
     shutil.rmtree(sub, ignore_errors=True)
     sub.mkdir(parents=True)
@@ -363,7 +371,7 @@ def run_sakai(adir, cfg, write, pack):
         r["comment"] = comment_text(cfg, r)
     (work / "comments_preview.md").write_text("\n".join(
         f"## {r['key']}\n\n```\n{'(no submission)' if r['empty'] else r['comment']}```\n" for r in results))
-    print(f"Wrote {work / 'report.md'} and comments_preview.md")
+    print(f"Wrote report.md, report.json and comments_preview.md in {work}")
     if write:
         by_key = {r["key"]: r for r in results}
         for s in sdirs:
@@ -376,7 +384,7 @@ def run_sakai(adir, cfg, write, pack):
             if r and not r["empty"]:
                 row["grade"] = str(r["grade"])
         gu.write_grades_csv(str(adir_s), pre, rows)
-        print("Wrote comments.txt and grades.csv in work/submissions/")
+        print(f"Wrote comments.txt and grades.csv in {sub}")
     if pack:
         out = work / f"{adir.name}_graded.zip"
         with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as zf:
@@ -392,12 +400,25 @@ def main():
     ap.add_argument("--dry-run", action="store_true", help="report only (default)")
     ap.add_argument("--write", action="store_true", help="append comments.txt and fill grades.csv")
     ap.add_argument("--pack", action="store_true", help="zip the graded folder for Sakai")
+    ap.add_argument("--studentwork", help="student-work root (default: grading/config.yaml, relative to the repo root)")
+    ap.add_argument("--quarter", help="quarter folder under the student-work root (default: grading/config.yaml)")
+    ap.add_argument("--zip", help="a specific Sakai zip instead of the newest one in the quarter folder")
     a = ap.parse_args()
     adir = HERE / a.assignment
     cfg = yaml.safe_load((adir / "checks.yaml").read_text())
+    conf = yaml.safe_load((HERE / "config.yaml").read_text())
+    root = Path(a.studentwork or conf["studentwork"])
+    if not root.is_absolute():
+        root = (HERE.parent / root).resolve()  # relative to the repo root
+    qdir = root / (a.quarter or conf["quarter"])
+    if not qdir.is_dir():
+        sys.exit(f"Student-work folder not found: {qdir}")
+    work = qdir / adir.name
+    work.mkdir(exist_ok=True)
     if a.reference:
-        sys.exit(0 if run_reference(adir, cfg) else 1)
-    run_sakai(adir, cfg, a.write, a.pack)
+        sys.exit(0 if run_reference(adir, cfg, work) else 1)
+    z = Path(a.zip).resolve() if a.zip else find_zip(adir, qdir)
+    run_sakai(adir, cfg, work, z, a.write, a.pack)
 
 
 if __name__ == "__main__":
