@@ -1,38 +1,269 @@
 [
   {
-    "objectID": "weeks/w02_loops_vectors/assignment.html",
-    "href": "weeks/w02_loops_vectors/assignment.html",
-    "title": "Assignment 2: Loops and Vectors",
+    "objectID": "weeks/w03_functions_conditionals/assignment.html",
+    "href": "weeks/w03_functions_conditionals/assignment.html",
+    "title": "Assignment 3: Functions and Conditionals",
     "section": "",
-    "text": "Due Friday 9 Oct, 1700, via Sakai. Textbook: Chapters 3 and 4 (Textbook)."
+    "text": "Textbook: Chapters 5 and 6 (Textbook)."
   },
   {
-    "objectID": "weeks/w02_loops_vectors/assignment.html#introductory-notes",
-    "href": "weeks/w02_loops_vectors/assignment.html#introductory-notes",
-    "title": "Assignment 2: Loops and Vectors",
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#introductory-notes",
+    "href": "weeks/w03_functions_conditionals/assignment.html#introductory-notes",
+    "title": "Assignment 3: Functions and Conditionals",
     "section": "Introductory Notes",
-    "text": "Introductory Notes\nCompleting assignments typically consists of writing programs (scripts, live scripts, function files, and so on). These files are submitted by uploading them to the AE2440 Sakai site under the appropriate assignment. I will then attempt to execute your programs. A few things will make this process run smoothly.\n\nTo ensure that your program runs in a clean workspace, before submitting your final solution execute the clear command and then run your program from an empty workspace. This helps avoid errors from undefined variables.\nPay particular attention to the specified file names, including letter case. The file names must be exactly as requested so that any automation on the evaluation end runs without a file-not-found error.\nWhen submitting live scripts, first run your live script to generate all specified numeric data, figures, and so on as inline output within your text and code. Then save the file. This lets the instructor review your solutions quickly, but also debug and re-run your code if necessary.\n\nSee Assignment 1 for the live-code .m format and the steps to verify a Sakai upload.\n\nMATLAB Operations\nIn these exercises we often use arithmetic operations directly with vectors, performing calculations on each element in the array. MATLAB distinguishes between array (element-wise) operations and matrix operations: see Array vs. Matrix Operations. Later in the course we’ll use MATLAB’s matrix operations for linear algebra problems, but for these exercises it is important to understand the syntax of array operations."
+    "text": "Introductory Notes\nThe submission mechanics are the same as for Assignment 1 and Assignment 2:\n\nrun each live script from a clean workspace - use clear appropriately to ensure no leftover variables\nsave live code files with embedded outputs\nuse the exact case-sensitive file names below, and\nverify your Sakai upload.\n\nThis week you also write function files. Each function lives in its own .m file, and the function name on the first line must match the file name exactly:\n\nbeaufort_classify.m must begin with function ... = beaufort_classify(...).\nA function file is plain code, not a live script, and it sits in the same folder as the live script that calls it."
   },
   {
-    "objectID": "weeks/w02_loops_vectors/assignment.html#problem-1-bouncing-ball",
-    "href": "weeks/w02_loops_vectors/assignment.html#problem-1-bouncing-ball",
-    "title": "Assignment 2: Loops and Vectors",
-    "section": "Problem 1: Bouncing Ball",
-    "text": "Problem 1: Bouncing Ball\nCreate a live script named bounce.m to solve the following problem.\nA tennis ball dropped from a height \\(h_0 = 2\\) m onto a hard floor. On each bounce it rebounds to a 60% (\\(r=0.6\\))of the height it fell from, so after the first bounce it rises to \\(0.6 h_0\\), after the second to \\(0.6^2 h_0\\), and so on.\nUse a loop to answer the following questions:\n\nHow high does the ball go on bounce \\(N\\)? The rebound heights \\(h_0,\\ r h_0,\\ r^2 h_0,\\ \\ldots\\) are a sequence. To simulate this use a for loop: start with h = h0 and update h = r * h each time through.\nHow far does the ball travel in total? The ball falls \\(h_0\\), then rises and falls \\(r h_0\\), then rises and falls \\(r^2 h_0\\), and so on. The total distance is the series \\[d = h_0 + 2 r h_0 + 2 r^2 h_0 + 2 r^3 h_0 + \\cdots\\] Accumulate it inside the same loop: add the up-and-down distance of each bounce to a cummulative sum.\n\nWrite your script to:\n\nDefine the parameters h0, r, and the number of bounces N = 20 at the top, with units in comments.\nLoop over the bounces, 1–N. On each iteration compute the new rebound height, add that bounce’s contribution to the running total distance, and plot the rebound height as one data point (bounce number on the x-axis, height on the y-axis), adding one point to the figure each time through the loop. You will need hold on so each new point is added to the same axes rather than replacing the previous one.\nAfter the loop, display the total distance travelled using disp.\n\nIn a text block in your live script, answer the following questions:\n\nWhat is the first bounce for which the rebound height is less than 0.2 m?\nDoes the total distance keep growing without limit as you increase N, or does it approach a value? Compare your loop’s total for a large N to the closed-form result \\(d = h_0 \\,\\dfrac{1 + r}{1 - r}\\) and comment on the agreement.\n\nThis is the same arithmetic as the “series” example in Chapter 3 of the textbook, with the ratio \\(1/2\\) replaced by the variable r. Use plain scalar variables and a loop for this problem; we have not covered vectors yet, and the point is to see how a sequence and its running sum are built up one term at a time."
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#problem-1-beaufort-scale-function",
+    "href": "weeks/w03_functions_conditionals/assignment.html#problem-1-beaufort-scale-function",
+    "title": "Assignment 3: Functions and Conditionals",
+    "section": "Problem 1: Beaufort Scale Function",
+    "text": "Problem 1: Beaufort Scale Function\nSea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, beaufort_classify, that performs this classification, and call it from a live script.\nThe instructions are in the prototype live script beaufort_main.m. Write the new function in its own file, beaufort_classify.m, with the signature\nfunction [bf_number, sea_state] = beaufort_classify(wind_speed_kts)\nWhen you write the if/elseif ladder, keep in mind that each elseif is only reached when every earlier condition was false, so each branch needs only one comparison. Check the boundaries between categories too: every wind speed, including values that fall exactly on a boundary such as 40 kts, must land in exactly one branch. Your tests in the last section of the live script are the place to check this.\nSubmit beaufort_main.m (live script) and beaufort_classify.m (plain code function)."
   },
   {
-    "objectID": "weeks/w02_loops_vectors/assignment.html#problem-2-simple-statistics",
-    "href": "weeks/w02_loops_vectors/assignment.html#problem-2-simple-statistics",
-    "title": "Assignment 2: Loops and Vectors",
-    "section": "Problem 2: Simple Statistics",
-    "text": "Problem 2: Simple Statistics\nCreate a live script named span_statistics.m to report some summary statistics for data from the Anthropometric Survey of US Army Personnel (ANSUR) dataset. This exercise is an example of the common reduce pattern for vector operations discussed in Chapter 4.\nThe dataset comes from the Natick Soldier Research, Development and Engineering Center. The goal of the survey was to “acquire a large body of data from comparably measured males and females to serve the Army’s current design and engineering needs, as well as those anticipated well into the future.” We will use one of the 94 measurements they conducted on each soldier.\nThe data is a MAT-file: ansur_span.mat (use the download button on GitHub). To load the data into your MATLAB workspace, make sure the file is in the current working directory of MATLAB, then use the command\nload(\"ansur_span.mat\");\nVerify that you now have a variable named span in your workspace. This variable is a vector where each element is a measurement of the arm span of an individual male in meters. What is the size and shape of the vector?\n\nUse a for loop (or multiple for loops) to calculate the following:\n\nmean: \\[\\mu = \\frac{\\sum_{i=1}^{n} x_i}{n}\\]\nstandard deviation: \\[\\sigma = \\sqrt{\\frac{\\sum_{i=1}^{n} (x_i - \\bar{x})^2}{n - 1}}\\]\n\nThere are standard MATLAB functions (mean, sum and std) for these vector operations, but for this exercise perform the calculation by iterating through the elements in the vector.\nNote: sum, mean and std are all names of existing MATLAB functions, so use variable names that avoid naming collisions.\nVerify that your answers are consistent with this table from the Army’s report."
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#problem-2-variable-scope",
+    "href": "weeks/w03_functions_conditionals/assignment.html#problem-2-variable-scope",
+    "title": "Assignment 3: Functions and Conditionals",
+    "section": "Problem 2: Variable Scope",
+    "text": "Problem 2: Variable Scope\nEach function runs in its own private workspace, isolated from the script that calls it. In this problem you diagnose and fix three common variable scope errors, two that produce error messages and one that silently gives the wrong answer.\nThe prototype live script is functions_scope.m. Section 1 stops with an error when you first run it; that is intended. Work through the three sections in order, fixing the code in each, and submit the completed functions_scope.m."
   },
   {
-    "objectID": "weeks/w02_loops_vectors/assignment.html#problem-3-lcs-nozzle-flow",
-    "href": "weeks/w02_loops_vectors/assignment.html#problem-3-lcs-nozzle-flow",
-    "title": "Assignment 2: Loops and Vectors",
-    "section": "Problem 3: LCS Nozzle Flow",
-    "text": "Problem 3: LCS Nozzle Flow\n(Adapted from ME2201, courtesy of Professor Alley.)\nCreate a script named lcs_flow.m that creates two figures to plot the solution to the following fluid dynamics problem.\nThe LCS (both the -1 and -2 classes) are propelled by water-jet propulsion systems which extend out from the stern of the vessel. The nozzle contracts aft from the transom to the outlet, causing the fluid to accelerate.\n\nWe can derive the following expressions for the velocity (\\(v\\) in m/s) and acceleration (\\(a\\) in m/s2) of the fluid as a function of \\(x\\), the distance along the nozzle from 0 to 4 m, and \\(t\\), time as the throttle is increased from 50% at \\(t = 0\\) to full ahead at \\(t = 30\\) s.\n\\[v(x,t) = \\frac{(10 + 0.2t)\\,\\pi}{\\frac{\\pi}{4}\\,(4 - 0.25x)^2}\\]\n\\[a(x,t) = \\frac{0.5}{(4 - 0.25x)^2} + \\frac{0.5\\,(24 + 0.5t)^2}{(2 - 0.125x)^5}\\]\nRunning your script should result in two figure windows:\n\nThe first figure contains plots of the fluid velocity (y-axis) as a function of the distance \\(x\\), where \\(x\\) varies from 0 to 4 m. Each curve is a visualization of the function at a specific point in time. Plot four separate curves on the same axes: a curve for \\(t = 0\\), \\(10\\), \\(20\\) and \\(30\\) s.\nThe second figure contains plots of the fluid acceleration as a function of distance. Just as before, plot four separate curves for the acceleration at \\(t = 0\\), \\(10\\), \\(20\\) and \\(30\\) s.\n\nHints:\n\nYou should only need to implement the mathematical models once for velocity and once for acceleration. If you find yourself doing it multiple times (using copy-paste), consider using a loop.\nYou do not need to loop through the x values. MATLAB arithmetic can handle vectors directly; see Array vs. Matrix Operations.\n\n\n\nSubmit and Verify\nSubmit your live-code files with the .m extension: bounce.m, span_statistics.m, lcs_flow.m.\nDouble-check all case-sensitive file names. See the submission process above."
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#problem-3-triangle-classifier",
+    "href": "weeks/w03_functions_conditionals/assignment.html#problem-3-triangle-classifier",
+    "title": "Assignment 3: Functions and Conditionals",
+    "section": "Problem 3: Triangle Classifier",
+    "text": "Problem 3: Triangle Classifier\nDeciding whether three lengths can form a triangle, and what kind of triangle they form, is a classic exercise in compound boolean expressions and if/elseif ladders where the order of the tests matters.\nStart from the prototype live script triangle_classifier.m, which specifies two functions for you to write, each in its own file: is_valid_triangle.m and classify_triangle.m. The live script will not run until both function files exist.\nSubmit triangle_classifier.m, is_valid_triangle.m and classify_triangle.m.\n\nSubmit and Verify\nSubmit six .m files:\n\nProblem 1: beaufort_main.m, beaufort_classify.m\nProblem 2: functions_scope.m\nProblem 3: triangle_classifier.m, is_valid_triangle.m, classify_triangle.m\n\nDouble-check all case-sensitive file names, and that each function name matches its file name. See the submission process in Assignment 1."
+  },
+  {
+    "objectID": "weeks/w01_modeling_scripts/assignment.html",
+    "href": "weeks/w01_modeling_scripts/assignment.html",
+    "title": "Assignment 1: Models and Scripts",
+    "section": "",
+    "text": "Due Friday 2 Oct, 1700, via Sakai. Textbook: Chapters 1 and 2 (Textbook)."
+  },
+  {
+    "objectID": "weeks/w01_modeling_scripts/assignment.html#introductory-notes",
+    "href": "weeks/w01_modeling_scripts/assignment.html#introductory-notes",
+    "title": "Assignment 1: Models and Scripts",
+    "section": "Introductory Notes",
+    "text": "Introductory Notes\n\nSave Programs as Live Code .m Files\nAs of MATLAB R2025a, both traditional scripts (plain-text programs) and live scripts (plain-text files that include formatted text, images, output, and so on) share the .m file extension, so the extension alone does not tell you what kind of file you have.\nFor this course, all homework submissions must be live scripts saved using the plain-text live code format (.m). If you are unsure, use Save As in the Live Editor and confirm the file type is set to MATLAB Live Code File (UTF-8) (*.m).\n\n\nSubmitting Your Work\nCompleting assignments typically consists of writing programs (scripts, live scripts, function files, and so on). These files are submitted by uploading them to the AE2440 Sakai site under the appropriate assignment. A few things will make the submission process run smoothly.\n\nCheck your work. To ensure that your program runs in a clean workspace, before submitting your final solution execute the clear command and then run your program from an empty workspace. This helps avoid errors from undefined variables.\nExact file names. Pay particular attention to the specified file names, including letter case (programming is case-sensitive!). The file names must be exactly as requested so that any automation on the evaluation end runs without a file-not-found error.\nLive scripts, include output. When submitting live scripts, first run your live script to generate all specified numeric data, figures, and so on as inline output within your text and code. Then save the file (which will include the output). This lets the instructor review your solution quickly, but also debug and re-run your code if necessary.\n\n\nVerify Sakai Uploads\nWhen you upload your files to Sakai, take an extra step to make sure the files you attach to your Sakai assignment are the files you intend. Use the steps below to verify your assignment before submission.\n\nAttach the files:\n\nSave Draft. You can use “Save Draft” if you have more work to do.\nPreview. When you have attached all the files, select “Proceed”, which takes you to a preview of the submission:\n\nVerify. From this page you can download each attachment. Open each file locally to verify that the file attached to Sakai is the file you intend to submit.\n\n\n\n\nSimple Output\nFor the first few exercises, your program does not need to format its output. Instead, rely on MATLAB’s default behavior: when a statement does not end with a semicolon (;), MATLAB displays the result in the Command Window. When a semicolon is present, the result is computed but not shown. For example, if you run penny.m from the command window, you should see something like this:\n&gt;&gt; penny\n\nt =\n\n    8.8134\n\nv =\n\n   86.4594\n\n&gt;&gt;"
+  },
+  {
+    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-1-penny",
+    "href": "weeks/w01_modeling_scripts/assignment.html#problem-1-penny",
+    "title": "Assignment 1: Models and Scripts",
+    "section": "Problem 1: Penny",
+    "text": "Problem 1: Penny\nWrite a script named penny.m to solve Textbook Exercise 1.1.\nNotes:\n\nUse Save As in the Live Editor and confirm the file type is set to MATLAB Live Code File (UTF-8) (*.m).\nIt is good engineering practice to include comments with a description and units. I typically do this by including the units in square brackets, for example:\n% Time [s]\nt = ..."
+  },
+  {
+    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-2-penny-revisited",
+    "href": "weeks/w01_modeling_scripts/assignment.html#problem-2-penny-revisited",
+    "title": "Assignment 1: Models and Scripts",
+    "section": "Problem 2: Penny Revisited",
+    "text": "Problem 2: Penny Revisited\nWrite a script named pennywithair.m to solve Textbook Exercise 1.2.\nTo explore the functionality of MATLAB’s live code format, include at least the following elements:\n\nTwo text blocks and two code blocks\nText formats: Title and Normal\nText items: at least one Equation\n\nSee MATLAB’s Format Text in Live Editor.\nHint: you may want to work out the mechanics of this problem first (define the model with pencil and paper) before implementing it in MATLAB. Here is an outline of the calculation.\n\nWrite an expression for how long it takes an object under constant acceleration, with no air resistance, to reach a speed of \\(v_\\text{term} = 18\\) m/s.\nIn that amount of time, how far does the object fall?\nHow much distance is left to fall before it hits the sidewalk?\nHow long does it take to travel that distance at a constant speed of \\(v_\\text{term}\\)?\n\nTip: the keyboard shortcut (Ctrl+Enter or Alt+Enter) for toggling between text and code blocks is convenient."
+  },
+  {
+    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-3-bike-share",
+    "href": "weeks/w01_modeling_scripts/assignment.html#problem-3-bike-share",
+    "title": "Assignment 1: Models and Scripts",
+    "section": "Problem 3: Bike Share",
+    "text": "Problem 3: Bike Share\nWrite a script named bike_update.m to solve Textbook Exercise 2.2.\nAgain, it is often worthwhile to write out the model (what you are trying to do) before starting the computational implementation (how you are going to solve it)."
+  },
+  {
+    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-4-fluid-statics",
+    "href": "weeks/w01_modeling_scripts/assignment.html#problem-4-fluid-statics",
+    "title": "Assignment 1: Models and Scripts",
+    "section": "Problem 4: Fluid Statics",
+    "text": "Problem 4: Fluid Statics\nWrite a script named aquarium.m to demonstrate a parameterized solution to the following statics problem from Engineering Statics. The goal of this exercise is to use MATLAB to implement the calculations associated with this statics problem. The problem and the solution are given, so you do not need to solve (or even understand) the statics problem; just use MATLAB as a calculator to implement the given solution.\nAn aquarium tank has a window AB for viewing the inhabitants. The width of the window is fixed at \\(w = 1.5\\) m. The top of the window is shown as 2 m below the surface, but should be parameterized as the variable a. The height of the window is shown as 3 m, but should be considered variable b. The tank contains water with a density of \\(\\rho = 1000\\) kg/m3.\n\nHere is the solution:\n\n(Problem and solution from Engineering Statics: Open and Interactive, Baker and Haynes, CC BY-NC-SA 4.0.)\nImplement this demonstration as a live script, using alternating text and code blocks to illustrate the steps as shown in the solution above. Test your implementation by defining the input variables as\n% Depth of the top of the window: distance from water surface to A in the diagram\na = 2.0;\n\n% Height of the window: distance from A to B in the diagram.\nb = 3.0;\nVerify that you get the same solution as provided in the example.\n\nSubmit and Verify\nSubmit your programs as separate files with the .m extension. Double-check all case-sensitive file names to make sure they are identical to the file names given in the exercises. See the submission process above."
+  },
+  {
+    "objectID": "resources/textbook.html",
+    "href": "resources/textbook.html",
+    "title": "Textbook",
+    "section": "",
+    "text": "We use an adaptation of Physical Modeling in MATLAB by Allen Downey (Green Tea Press), revised for AE2440 by Brian Bingham. The whole book is available as a PDF:\n\nPhysicalModelingInMatlabAE2440.pdf (release 25-3)"
+  },
+  {
+    "objectID": "resources/textbook.html#physical-modeling-in-matlab",
+    "href": "resources/textbook.html#physical-modeling-in-matlab",
+    "title": "Textbook",
+    "section": "",
+    "text": "We use an adaptation of Physical Modeling in MATLAB by Allen Downey (Green Tea Press), revised for AE2440 by Brian Bingham. The whole book is available as a PDF:\n\nPhysicalModelingInMatlabAE2440.pdf (release 25-3)"
+  },
+  {
+    "objectID": "resources/textbook.html#chapters-by-week",
+    "href": "resources/textbook.html#chapters-by-week",
+    "title": "Textbook",
+    "section": "Chapters by week",
+    "text": "Chapters by week\nEach week’s reading is also released chapter by chapter from the Schedule, so you can read just what is assigned. The chapters are the same text as the whole-book PDF.\n\n\n\nWeek\nChapter\nFormats\n\n\n\n\n1\n1. Modeling and Simulation\nPDF · Live script\n\n\n1\n2. Scripts\nPDF · Live script\n\n\n2\n3. Loops\nPDF · Live script\n\n\n2\n4. Vectors\nPDF · Live script\n\n\n4\n5. Functions\nPDF · Live script\n\n\n4\n6. Conditionals\nPDF · Live script\n\n\n\nLater weeks are added as they are posted.\n\nLive script format (beta)\nSome chapters are also offered as a MATLAB live script: the same text, with the chapter’s examples as code you can run and change in place. The file is a plain-text .m live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose “Open as Live Script”. The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor."
+  },
+  {
+    "objectID": "resources/textbook.html#code",
+    "href": "resources/textbook.html#code",
+    "title": "Textbook",
+    "section": "Code",
+    "text": "Code\nThe source code for the book (.m and .mlx files) is on GitHub: bsb808/PhysicalModelingInMatlab, branch ae2440-dev, code/.\n\nTo download one file, open it on GitHub and use the “Download raw file” button (the down-arrow icon at the top right of the file view).\nTo download all the code, go to the repository main page, select the green “Code” button, then “Download ZIP”."
+  },
+  {
+    "objectID": "resources/installing_matlab.html",
+    "href": "resources/installing_matlab.html",
+    "title": "Installing MATLAB",
+    "section": "",
+    "text": "NPS maintains a site license for MATLAB and Simulink. Follow the instructions on the MathWorks NPS portal to install the software: mathworks.com/academia/tah-portal/naval-postgraduate-school."
+  },
+  {
+    "objectID": "resources/installing_matlab.html#release",
+    "href": "resources/installing_matlab.html#release",
+    "title": "Installing MATLAB",
+    "section": "Release",
+    "text": "Release\nIt is highly recommended that you install Release 2026b of MATLAB and Simulink. Release 2025b or higher is required.\nIt helps with debugging if everyone in the class is using the latest release.\n\nThe online documentation from MathWorks is for the latest release, so older releases can behave differently from the documentation you find online.\nThere are subtle gotchas that make code that works in one release problematic in another. For example, prior to R2024a, local functions had to be at the bottom of the file; see the release notes. Release-dependent bugs like this can be infuriating and can be avoided by using the latest release."
+  },
+  {
+    "objectID": "resources/installing_matlab.html#toolboxes",
+    "href": "resources/installing_matlab.html#toolboxes",
+    "title": "Installing MATLAB",
+    "section": "Toolboxes",
+    "text": "Toolboxes\nMATLAB and Simulink products (toolboxes) are offered à la carte. The NPS license gives you access to all the toolboxes, but installing them all is overkill. Here are the requirements and recommendations. You can re-run the installer to add tools to your install if you find you are missing capabilities.\nRequired:\n\nControl System Toolbox\nOptimization Toolbox\nSignal Processing Toolbox\nSymbolic Math Toolbox\n\nFor reference, here is the release and toolbox listing from the instructor’s install:\n&gt;&gt; ver\n-----------------------------------------------------------------------------------------------------------------\nMATLAB Version: 26.2.0.3386108 (R2026b)\nOperating System: Linux 6.8.0-138-generic #138~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  7 13:43:15 UTC  x86_64\nJava Version: Java is not loaded\n-----------------------------------------------------------------------------------------------------------------\nMATLAB                                                Version 26.2        (R2026b)\nSimulink                                              Version 26.2        (R2026b)\nAerospace Blockset                                    Version 26.2        (R2026b)\nAerospace Toolbox                                     Version 26.2        (R2026b)\nControl System Toolbox                                Version 26.2        (R2026b)\nCurve Fitting Toolbox                                 Version 26.2        (R2026b)\nDeep Learning Toolbox                                 Version 26.2        (R2026b)\nMATLAB Copilot                                        Version 26.2        (R2026b)\nNavigation Toolbox                                    Version 26.2        (R2026b)\nOptimization Toolbox                                  Version 26.2        (R2026b)\nStatistics and Machine Learning Toolbox               Version 26.2        (R2026b)"
+  },
+  {
+    "objectID": "assignments.html",
+    "href": "assignments.html",
+    "title": "Assignments",
+    "section": "",
+    "text": "Quarter: Fall 2026 · Previous quarters: Archive\nAssignments are typically due Fridays at 1700 and are submitted through Sakai. See the Schedule for due dates."
+  },
+  {
+    "objectID": "assignments.html#assignment-evaluation-framework",
+    "href": "assignments.html#assignment-evaluation-framework",
+    "title": "Assignments",
+    "section": "Assignment Evaluation Framework",
+    "text": "Assignment Evaluation Framework\n\nIntent\nAssignments in this course are designed to build confidence and competence in applying programming to engineering problem solving. Each assignment includes several exercises, but only one representative exercise is graded for evaluation.\nThe primary goal is to encourage consistent engagement and improvement, not to penalize small mistakes. Grading emphasizes understanding, effort, and clarity of communication. Students who complete the work thoughtfully and demonstrate learning will typically earn A or B grades.\n\n\nGrading rubric for the selected exercise\n\n\n\n\n\n\n\n\n\n\nCriterion\nWeight\nA (Excellent)\nB (Satisfactory)\nIncomplete\n\n\n\n\nProblem understanding and approach\n25%\nShows a clear understanding of the problem and applies an appropriate, well-reasoned method.\nDemonstrates general understanding; approach is reasonable but may not be the most efficient or fully explained.\nMisinterprets or only partially addresses the problem.\n\n\nImplementation and code quality\n35%\nCode runs correctly or nearly correctly; organized, readable, and follows MATLAB conventions.\nCode mostly works; minor syntax or logic errors but demonstrates solid effort and structure.\nCode incomplete or largely incorrect; intent unclear.\n\n\nTesting and debugging effort\n20%\nDemonstrates testing or checking of results; identifies or discusses potential issues.\nSome checking or validation attempted, though not systematic.\nNo evidence of checking, testing, or debugging.\n\n\nPresentation and communication\n20%\nOutput and plots are clear, labeled, and briefly explained following engineering conventions.\nOutput mostly clear; minor labeling or explanation issues.\nOutput unclear or missing explanation.\n\n\n\n\n\nGrade scale (mastery-focused)\n\n\n\nScore\nGrade\nMeaning\n\n\n\n\n90–100\nA\nExcellent mastery and presentation\n\n\n80–89\nB\nProficient understanding with minor issues\n\n\nbelow 80\nFeedback only\nEncouraged to discuss or revise\n\n\n\n\n\nSummary\nThis grading approach:\n\nRewards consistent effort and steady improvement.\nEncourages sound engineering habits: testing, verification, and clear communication.\nKeeps grading meaningful while reducing performance pressure.\nEnsures every assignment contributes to the development of practical programming competence."
+  },
+  {
+    "objectID": "archive/ay26q3/schedule.html",
+    "href": "archive/ay26q3/schedule.html",
+    "title": "Schedule — Spring 2026 (AY26Q3)",
+    "section": "",
+    "text": "WarningArchived\n\n\n\nThis is the Spring 2026 schedule, kept for reference only. See the current schedule.\n\n\nThe Spring 2026 schedule is being migrated from the course wiki and will appear here."
+  },
+  {
+    "objectID": "archive/ay26q3/assignments.html",
+    "href": "archive/ay26q3/assignments.html",
+    "title": "Assignments — Spring 2026 (AY26Q3)",
+    "section": "",
+    "text": "WarningArchived\n\n\n\nThese are the Spring 2026 assignments, kept for reference only. See the current assignments.\n\n\nThe Spring 2026 assignment list is being migrated from the course wiki and will appear here."
+  },
+  {
+    "objectID": "archive/index.html",
+    "href": "archive/index.html",
+    "title": "Archive",
+    "section": "",
+    "text": "Schedules and assignments from previous quarters, kept for reference only.\n\n\n\nQuarter\nSchedule\nAssignments\n\n\n\n\nSpring 2026 (AY26Q3)\nSchedule\nAssignments"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Schedule",
+    "section": "",
+    "text": "Class meets M–R, 1400–1450, WA-147. Assignments are due Fridays at 1700 via Sakai."
+  },
+  {
+    "objectID": "index.html#week-1",
+    "href": "index.html#week-1",
+    "title": "Schedule",
+    "section": "Week 1 — 28 Sep: Modeling and Simulation; Scripts",
+    "text": "Week 1 — 28 Sep: Modeling and Simulation; Scripts\nMonday: Course introduction and MATLAB overview\n\nSlides: ae2440_introduction.pdf (NPS login)\n\nTuesday: MATLAB IDE and variables\n\nBefore class:\n\nInstall MATLAB: Installing MATLAB\nComplete the Initial Class Survey (5 min)\nRead Chapter 1, Modeling and Simulation: Textbook\n\nSlides: ae2440_modeling_and_sim_scripts.pdf\nLessons:\n\nlesson_intro_ide.m\nlesson_intro_livescript.m\nlesson_intro_workspace_path.m\n\n\nWednesday: Scripts and live scripts\n\nBefore class: Read Chapter 2, Scripts: Textbook\nPreview: Assignment 1\n\nThursday: Work on Assignment 1\n\nDue Friday 2 Oct, 1700: Assignment 1: Models and Scripts"
+  },
+  {
+    "objectID": "index.html#week-2",
+    "href": "index.html#week-2",
+    "title": "Schedule",
+    "section": "Week 2 — 5 Oct: Loops; Vectors",
+    "text": "Week 2 — 5 Oct: Loops; Vectors\nMonday: Loops\n\nBefore class: Read Chapter 3, Loops: Textbook\nSlides: ae2440_assignment1_and_loops.pdf\nExample: lesson_loops.m\n\nTuesday: Vectors\n\nBefore class: Read Chapter 4, Vectors: Textbook\nLesson: lesson_vectors.m\nExercises: lesson_cooling.m\n\nWednesday: Vectors, continued and Assignment 2\nThursday: Work on Assignment 2\n\nDue Friday 9 Oct, 1700: Assignment 2: Loops and Vectors"
+  },
+  {
+    "objectID": "index.html#week-3",
+    "href": "index.html#week-3",
+    "title": "Schedule",
+    "section": "Week 3 — 12 Oct: No class",
+    "text": "Week 3 — 12 Oct: No class\nNo class this week: Columbus Day on Monday 12 Oct and instructor travel for the rest of the week. Use the time to finish Assignment 2 and get ahead on the Chapter 5 and 6 reading."
+  },
+  {
+    "objectID": "index.html#week-4",
+    "href": "index.html#week-4",
+    "title": "Schedule",
+    "section": "Week 4 — 19 Oct: Functions; Conditionals",
+    "text": "Week 4 — 19 Oct: Functions; Conditionals\n\nBefore class: Read Chapter 5, Functions, and Chapter 6, Conditionals: Textbook\nShift day: Tue 20 Oct follows the Friday schedule, so there is no class Tuesday.\nDue Friday 23 Oct, 1700: Assignment 3: Functions and Conditionals"
+  },
+  {
+    "objectID": "index.html#week-5",
+    "href": "index.html#week-5",
+    "title": "Schedule",
+    "section": "Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding",
+    "text": "Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding\nDetails will be posted by Mon 12 Oct.\n\nDue Friday 30 Oct, 1700: Assignment 4: Data Types, Function Handles and Zero-Finding"
+  },
+  {
+    "objectID": "index.html#week-6",
+    "href": "index.html#week-6",
+    "title": "Schedule",
+    "section": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations",
+    "text": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations\nDetails will be posted by Mon 19 Oct.\n\nDue Friday 6 Nov, 1700: Assignment 5: Solving First-Order ODEs"
+  },
+  {
+    "objectID": "index.html#week-7",
+    "href": "index.html#week-7",
+    "title": "Schedule",
+    "section": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems",
+    "text": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems\nDetails will be posted by Mon 26 Oct.\n\nVeterans Day: no class Wed 11 Nov.\nDue Friday 13 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
+  },
+  {
+    "objectID": "index.html#week-8",
+    "href": "index.html#week-8",
+    "title": "Schedule",
+    "section": "Week 8 — 16 Nov: Two Dimensions; Optimization",
+    "text": "Week 8 — 16 Nov: Two Dimensions; Optimization\nDetails will be posted by Mon 2 Nov.\n\nDue Friday 20 Nov, 1700: Assignment 7: Two Dimensions and Optimization"
+  },
+  {
+    "objectID": "index.html#week-9",
+    "href": "index.html#week-9",
+    "title": "Schedule",
+    "section": "Week 9 — 23 Nov: Interpolation, Curve Fitting and Regression",
+    "text": "Week 9 — 23 Nov: Interpolation, Curve Fitting and Regression\nDetails will be posted by Mon 9 Nov.\n\nThanksgiving: no class Thu 26 Nov.\nNothing due this week. Assignment 8 is due the following Friday."
+  },
+  {
+    "objectID": "index.html#week-10",
+    "href": "index.html#week-10",
+    "title": "Schedule",
+    "section": "Week 10 — 30 Nov: Introduction to Reinforcement Learning",
+    "text": "Week 10 — 30 Nov: Introduction to Reinforcement Learning\nDetails will be posted by Mon 16 Nov.\n\nDue Friday 4 Dec, 1700: Assignment 8: Interpolation, Curve Fitting and Regression"
+  },
+  {
+    "objectID": "index.html#week-11",
+    "href": "index.html#week-11",
+    "title": "Schedule",
+    "section": "Week 11 — 7 Dec: Q-Learning and Blackjack",
+    "text": "Week 11 — 7 Dec: Q-Learning and Blackjack\nDetails will be posted by Mon 23 Nov.\n\nPre-graduation awards ceremony Tue 8 Dec.\nLast day of classes Fri 11 Dec.\nDue Friday 11 Dec, 1700: Assignment 9: Q-Learning and Blackjack"
+  },
+  {
+    "objectID": "resources/matlab.html",
+    "href": "resources/matlab.html",
+    "title": "MATLAB Resources",
+    "section": "",
+    "text": "A short list of references beyond the textbook. More to come."
+  },
+  {
+    "objectID": "resources/matlab.html#matlab",
+    "href": "resources/matlab.html#matlab",
+    "title": "MATLAB Resources",
+    "section": "MATLAB",
+    "text": "MATLAB\n\nInstalling MATLAB for this course.\nMATLAB Onramp: MathWorks’ free two-hour interactive introduction.\nPlain-text live code format: the .m live-script format used for all assignments in this course.\nFormat text in the Live Editor."
+  },
+  {
+    "objectID": "resources/matlab.html#other-introductory-programming-courses",
+    "href": "resources/matlab.html#other-introductory-programming-courses",
+    "title": "MATLAB Resources",
+    "section": "Other introductory programming courses",
+    "text": "Other introductory programming courses\nThe collaboration policy in the syllabus borrows from these courses, which are also good models of how to learn programming.\n\nHarvard CS50’s Introduction to Programming with Python\nUSNA IC210"
   },
   {
     "objectID": "syllabus.html",
@@ -98,234 +329,38 @@
     "text": "Generative AI and Academic Integrity\nNPS policy encourages you to explore generative AI tools, and you must use them ethically and responsibly. Your coursework must accurately represent your underlying work, knowledge, and ideas, not the capabilities of an AI tool. If you use generative AI tools, state how you did so and describe how you remained in control of decisions and verification of information. Carefully read the NPS Interim Guiding Principles for Use of Generative Artificial Intelligence (AI) Tools. Never input classified or controlled unclassified information into a generative AI tool unless the platform has been explicitly approved by DoD or DON CIO for such use."
   },
   {
-    "objectID": "resources/matlab.html",
-    "href": "resources/matlab.html",
-    "title": "MATLAB Resources",
+    "objectID": "weeks/w02_loops_vectors/assignment.html",
+    "href": "weeks/w02_loops_vectors/assignment.html",
+    "title": "Assignment 2: Loops and Vectors",
     "section": "",
-    "text": "A short list of references beyond the textbook. More to come."
+    "text": "Due Friday 9 Oct, 1700, via Sakai. Textbook: Chapters 3 and 4 (Textbook)."
   },
   {
-    "objectID": "resources/matlab.html#matlab",
-    "href": "resources/matlab.html#matlab",
-    "title": "MATLAB Resources",
-    "section": "MATLAB",
-    "text": "MATLAB\n\nInstalling MATLAB for this course.\nMATLAB Onramp: MathWorks’ free two-hour interactive introduction.\nPlain-text live code format: the .m live-script format used for all assignments in this course.\nFormat text in the Live Editor."
-  },
-  {
-    "objectID": "resources/matlab.html#other-introductory-programming-courses",
-    "href": "resources/matlab.html#other-introductory-programming-courses",
-    "title": "MATLAB Resources",
-    "section": "Other introductory programming courses",
-    "text": "Other introductory programming courses\nThe collaboration policy in the syllabus borrows from these courses, which are also good models of how to learn programming.\n\nHarvard CS50’s Introduction to Programming with Python\nUSNA IC210"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Schedule",
-    "section": "",
-    "text": "Class meets M–R, 1400–1450, WA-147. Assignments are due Fridays at 1700 via Sakai."
-  },
-  {
-    "objectID": "index.html#week-1",
-    "href": "index.html#week-1",
-    "title": "Schedule",
-    "section": "Week 1 — 28 Sep: Modeling and Simulation; Scripts",
-    "text": "Week 1 — 28 Sep: Modeling and Simulation; Scripts\nMonday: Course introduction and MATLAB overview\n\nSlides: ae2440_introduction.pdf (NPS login)\n\nTuesday: MATLAB IDE and variables\n\nBefore class:\n\nInstall MATLAB: Installing MATLAB\nComplete the Initial Class Survey (5 min)\nRead Chapter 1, Modeling and Simulation: Textbook\n\nSlides: ae2440_modeling_and_sim_scripts.pdf\nLessons:\n\nlesson_intro_ide.m\nlesson_intro_livescript.m\nlesson_intro_workspace_path.m\n\n\nWednesday: Scripts and live scripts\n\nBefore class: Read Chapter 2, Scripts: Textbook\nPreview: Assignment 1\n\nThursday: Work on Assignment 1\n\nDue Friday 2 Oct, 1700: Assignment 1: Models and Scripts"
-  },
-  {
-    "objectID": "index.html#week-2",
-    "href": "index.html#week-2",
-    "title": "Schedule",
-    "section": "Week 2 — 5 Oct: Loops; Vectors",
-    "text": "Week 2 — 5 Oct: Loops; Vectors\nMonday: Loops\n\nBefore class: Read Chapter 3, Loops: Textbook\nSlides: ae2440_assignment1_and_loops.pdf\nExample: lesson_loops.m\n\nTuesday: Vectors\n\nBefore class: Read Chapter 4, Vectors: Textbook\nLesson: lesson_vectors.m\nExercises: lesson_cooling.m\n\nWednesday: Vectors, continued and Assignment 2\nThursday: Work on Assignment 2\n\nDue Friday 9 Oct, 1700: Assignment 2: Loops and Vectors"
-  },
-  {
-    "objectID": "index.html#week-3",
-    "href": "index.html#week-3",
-    "title": "Schedule",
-    "section": "Week 3 — 12 Oct: No class",
-    "text": "Week 3 — 12 Oct: No class\nNo class this week: Columbus Day on Monday 12 Oct and instructor travel for the rest of the week. Use the time to finish Assignment 2 and get ahead on the Chapter 5 and 6 reading."
-  },
-  {
-    "objectID": "index.html#week-4",
-    "href": "index.html#week-4",
-    "title": "Schedule",
-    "section": "Week 4 — 19 Oct: Functions; Conditionals",
-    "text": "Week 4 — 19 Oct: Functions; Conditionals\nDetails will be posted by Mon 5 Oct.\n\nShift day: Tue 20 Oct follows the Friday schedule, so there is no class Tuesday.\nDue Friday 23 Oct, 1700: Assignment 3: Functions and Conditionals"
-  },
-  {
-    "objectID": "index.html#week-5",
-    "href": "index.html#week-5",
-    "title": "Schedule",
-    "section": "Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding",
-    "text": "Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding\nDetails will be posted by Mon 12 Oct.\n\nDue Friday 30 Oct, 1700: Assignment 4: Data Types, Function Handles and Zero-Finding"
-  },
-  {
-    "objectID": "index.html#week-6",
-    "href": "index.html#week-6",
-    "title": "Schedule",
-    "section": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations",
-    "text": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations\nDetails will be posted by Mon 19 Oct.\n\nDue Friday 6 Nov, 1700: Assignment 5: Solving First-Order ODEs"
-  },
-  {
-    "objectID": "index.html#week-7",
-    "href": "index.html#week-7",
-    "title": "Schedule",
-    "section": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems",
-    "text": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems\nDetails will be posted by Mon 26 Oct.\n\nVeterans Day: no class Wed 11 Nov.\nDue Friday 13 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
-  },
-  {
-    "objectID": "index.html#week-8",
-    "href": "index.html#week-8",
-    "title": "Schedule",
-    "section": "Week 8 — 16 Nov: Two Dimensions; Optimization",
-    "text": "Week 8 — 16 Nov: Two Dimensions; Optimization\nDetails will be posted by Mon 2 Nov.\n\nDue Friday 20 Nov, 1700: Assignment 7: Two Dimensions and Optimization"
-  },
-  {
-    "objectID": "index.html#week-9",
-    "href": "index.html#week-9",
-    "title": "Schedule",
-    "section": "Week 9 — 23 Nov: Interpolation, Curve Fitting and Regression",
-    "text": "Week 9 — 23 Nov: Interpolation, Curve Fitting and Regression\nDetails will be posted by Mon 9 Nov.\n\nThanksgiving: no class Thu 26 Nov.\nNothing due this week. Assignment 8 is due the following Friday."
-  },
-  {
-    "objectID": "index.html#week-10",
-    "href": "index.html#week-10",
-    "title": "Schedule",
-    "section": "Week 10 — 30 Nov: Introduction to Reinforcement Learning",
-    "text": "Week 10 — 30 Nov: Introduction to Reinforcement Learning\nDetails will be posted by Mon 16 Nov.\n\nDue Friday 4 Dec, 1700: Assignment 8: Interpolation, Curve Fitting and Regression"
-  },
-  {
-    "objectID": "index.html#week-11",
-    "href": "index.html#week-11",
-    "title": "Schedule",
-    "section": "Week 11 — 7 Dec: Q-Learning and Blackjack",
-    "text": "Week 11 — 7 Dec: Q-Learning and Blackjack\nDetails will be posted by Mon 23 Nov.\n\nPre-graduation awards ceremony Tue 8 Dec.\nLast day of classes Fri 11 Dec.\nDue Friday 11 Dec, 1700: Assignment 9: Q-Learning and Blackjack"
-  },
-  {
-    "objectID": "archive/index.html",
-    "href": "archive/index.html",
-    "title": "Archive",
-    "section": "",
-    "text": "Schedules and assignments from previous quarters, kept for reference only.\n\n\n\nQuarter\nSchedule\nAssignments\n\n\n\n\nSpring 2026 (AY26Q3)\nSchedule\nAssignments"
-  },
-  {
-    "objectID": "archive/ay26q3/assignments.html",
-    "href": "archive/ay26q3/assignments.html",
-    "title": "Assignments — Spring 2026 (AY26Q3)",
-    "section": "",
-    "text": "WarningArchived\n\n\n\nThese are the Spring 2026 assignments, kept for reference only. See the current assignments.\n\n\nThe Spring 2026 assignment list is being migrated from the course wiki and will appear here."
-  },
-  {
-    "objectID": "archive/ay26q3/schedule.html",
-    "href": "archive/ay26q3/schedule.html",
-    "title": "Schedule — Spring 2026 (AY26Q3)",
-    "section": "",
-    "text": "WarningArchived\n\n\n\nThis is the Spring 2026 schedule, kept for reference only. See the current schedule.\n\n\nThe Spring 2026 schedule is being migrated from the course wiki and will appear here."
-  },
-  {
-    "objectID": "assignments.html",
-    "href": "assignments.html",
-    "title": "Assignments",
-    "section": "",
-    "text": "Quarter: Fall 2026 · Previous quarters: Archive\nAssignments are typically due Fridays at 1700 and are submitted through Sakai. See the Schedule for due dates."
-  },
-  {
-    "objectID": "assignments.html#assignment-evaluation-framework",
-    "href": "assignments.html#assignment-evaluation-framework",
-    "title": "Assignments",
-    "section": "Assignment Evaluation Framework",
-    "text": "Assignment Evaluation Framework\n\nIntent\nAssignments in this course are designed to build confidence and competence in applying programming to engineering problem solving. Each assignment includes several exercises, but only one representative exercise is graded for evaluation.\nThe primary goal is to encourage consistent engagement and improvement, not to penalize small mistakes. Grading emphasizes understanding, effort, and clarity of communication. Students who complete the work thoughtfully and demonstrate learning will typically earn A or B grades.\n\n\nGrading rubric for the selected exercise\n\n\n\n\n\n\n\n\n\n\nCriterion\nWeight\nA (Excellent)\nB (Satisfactory)\nIncomplete\n\n\n\n\nProblem understanding and approach\n25%\nShows a clear understanding of the problem and applies an appropriate, well-reasoned method.\nDemonstrates general understanding; approach is reasonable but may not be the most efficient or fully explained.\nMisinterprets or only partially addresses the problem.\n\n\nImplementation and code quality\n35%\nCode runs correctly or nearly correctly; organized, readable, and follows MATLAB conventions.\nCode mostly works; minor syntax or logic errors but demonstrates solid effort and structure.\nCode incomplete or largely incorrect; intent unclear.\n\n\nTesting and debugging effort\n20%\nDemonstrates testing or checking of results; identifies or discusses potential issues.\nSome checking or validation attempted, though not systematic.\nNo evidence of checking, testing, or debugging.\n\n\nPresentation and communication\n20%\nOutput and plots are clear, labeled, and briefly explained following engineering conventions.\nOutput mostly clear; minor labeling or explanation issues.\nOutput unclear or missing explanation.\n\n\n\n\n\nGrade scale (mastery-focused)\n\n\n\nScore\nGrade\nMeaning\n\n\n\n\n90–100\nA\nExcellent mastery and presentation\n\n\n80–89\nB\nProficient understanding with minor issues\n\n\nbelow 80\nFeedback only\nEncouraged to discuss or revise\n\n\n\n\n\nSummary\nThis grading approach:\n\nRewards consistent effort and steady improvement.\nEncourages sound engineering habits: testing, verification, and clear communication.\nKeeps grading meaningful while reducing performance pressure.\nEnsures every assignment contributes to the development of practical programming competence."
-  },
-  {
-    "objectID": "resources/installing_matlab.html",
-    "href": "resources/installing_matlab.html",
-    "title": "Installing MATLAB",
-    "section": "",
-    "text": "NPS maintains a site license for MATLAB and Simulink. Follow the instructions on the MathWorks NPS portal to install the software: mathworks.com/academia/tah-portal/naval-postgraduate-school."
-  },
-  {
-    "objectID": "resources/installing_matlab.html#release",
-    "href": "resources/installing_matlab.html#release",
-    "title": "Installing MATLAB",
-    "section": "Release",
-    "text": "Release\nIt is highly recommended that you install Release 2026b of MATLAB and Simulink. Release 2025b or higher is required.\nIt helps with debugging if everyone in the class is using the latest release.\n\nThe online documentation from MathWorks is for the latest release, so older releases can behave differently from the documentation you find online.\nThere are subtle gotchas that make code that works in one release problematic in another. For example, prior to R2024a, local functions had to be at the bottom of the file; see the release notes. Release-dependent bugs like this can be infuriating and can be avoided by using the latest release."
-  },
-  {
-    "objectID": "resources/installing_matlab.html#toolboxes",
-    "href": "resources/installing_matlab.html#toolboxes",
-    "title": "Installing MATLAB",
-    "section": "Toolboxes",
-    "text": "Toolboxes\nMATLAB and Simulink products (toolboxes) are offered à la carte. The NPS license gives you access to all the toolboxes, but installing them all is overkill. Here are the requirements and recommendations. You can re-run the installer to add tools to your install if you find you are missing capabilities.\nRequired:\n\nControl System Toolbox\nOptimization Toolbox\nSignal Processing Toolbox\nSymbolic Math Toolbox\n\nFor reference, here is the release and toolbox listing from the instructor’s install:\n&gt;&gt; ver\n-----------------------------------------------------------------------------------------------------------------\nMATLAB Version: 26.2.0.3386108 (R2026b)\nOperating System: Linux 6.8.0-138-generic #138~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Aug  7 13:43:15 UTC  x86_64\nJava Version: Java is not loaded\n-----------------------------------------------------------------------------------------------------------------\nMATLAB                                                Version 26.2        (R2026b)\nSimulink                                              Version 26.2        (R2026b)\nAerospace Blockset                                    Version 26.2        (R2026b)\nAerospace Toolbox                                     Version 26.2        (R2026b)\nControl System Toolbox                                Version 26.2        (R2026b)\nCurve Fitting Toolbox                                 Version 26.2        (R2026b)\nDeep Learning Toolbox                                 Version 26.2        (R2026b)\nMATLAB Copilot                                        Version 26.2        (R2026b)\nNavigation Toolbox                                    Version 26.2        (R2026b)\nOptimization Toolbox                                  Version 26.2        (R2026b)\nStatistics and Machine Learning Toolbox               Version 26.2        (R2026b)"
-  },
-  {
-    "objectID": "resources/textbook.html",
-    "href": "resources/textbook.html",
-    "title": "Textbook",
-    "section": "",
-    "text": "We use an adaptation of Physical Modeling in MATLAB by Allen Downey (Green Tea Press), revised for AE2440 by Brian Bingham. The whole book is available as a PDF:\n\nPhysicalModelingInMatlabAE2440.pdf (release 25-3)"
-  },
-  {
-    "objectID": "resources/textbook.html#physical-modeling-in-matlab",
-    "href": "resources/textbook.html#physical-modeling-in-matlab",
-    "title": "Textbook",
-    "section": "",
-    "text": "We use an adaptation of Physical Modeling in MATLAB by Allen Downey (Green Tea Press), revised for AE2440 by Brian Bingham. The whole book is available as a PDF:\n\nPhysicalModelingInMatlabAE2440.pdf (release 25-3)"
-  },
-  {
-    "objectID": "resources/textbook.html#chapters-by-week",
-    "href": "resources/textbook.html#chapters-by-week",
-    "title": "Textbook",
-    "section": "Chapters by week",
-    "text": "Chapters by week\nEach week’s reading is also released chapter by chapter from the Schedule, so you can read just what is assigned. The chapters are the same text as the whole-book PDF.\n\n\n\nWeek\nChapter\nFormats\n\n\n\n\n1\n1. Modeling and Simulation\nPDF · Live script\n\n\n1\n2. Scripts\nPDF · Live script\n\n\n2\n3. Loops\nPDF · Live script\n\n\n2\n4. Vectors\nPDF · Live script\n\n\n4\n5. Functions\nPDF · Live script\n\n\n4\n6. Conditionals\nPDF · Live script\n\n\n\nLater weeks are added as they are posted.\n\nLive script format (beta)\nSome chapters are also offered as a MATLAB live script: the same text, with the chapter’s examples as code you can run and change in place. The file is a plain-text .m live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose “Open as Live Script”. The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor."
-  },
-  {
-    "objectID": "resources/textbook.html#code",
-    "href": "resources/textbook.html#code",
-    "title": "Textbook",
-    "section": "Code",
-    "text": "Code\nThe source code for the book (.m and .mlx files) is on GitHub: bsb808/PhysicalModelingInMatlab, branch ae2440-dev, code/.\n\nTo download one file, open it on GitHub and use the “Download raw file” button (the down-arrow icon at the top right of the file view).\nTo download all the code, go to the repository main page, select the green “Code” button, then “Download ZIP”."
-  },
-  {
-    "objectID": "weeks/w01_modeling_scripts/assignment.html",
-    "href": "weeks/w01_modeling_scripts/assignment.html",
-    "title": "Assignment 1: Models and Scripts",
-    "section": "",
-    "text": "Due Friday 2 Oct, 1700, via Sakai. Textbook: Chapters 1 and 2 (Textbook)."
-  },
-  {
-    "objectID": "weeks/w01_modeling_scripts/assignment.html#introductory-notes",
-    "href": "weeks/w01_modeling_scripts/assignment.html#introductory-notes",
-    "title": "Assignment 1: Models and Scripts",
+    "objectID": "weeks/w02_loops_vectors/assignment.html#introductory-notes",
+    "href": "weeks/w02_loops_vectors/assignment.html#introductory-notes",
+    "title": "Assignment 2: Loops and Vectors",
     "section": "Introductory Notes",
-    "text": "Introductory Notes\n\nSave Programs as Live Code .m Files\nAs of MATLAB R2025a, both traditional scripts (plain-text programs) and live scripts (plain-text files that include formatted text, images, output, and so on) share the .m file extension, so the extension alone does not tell you what kind of file you have.\nFor this course, all homework submissions must be live scripts saved using the plain-text live code format (.m). If you are unsure, use Save As in the Live Editor and confirm the file type is set to MATLAB Live Code File (UTF-8) (*.m).\n\n\nSubmitting Your Work\nCompleting assignments typically consists of writing programs (scripts, live scripts, function files, and so on). These files are submitted by uploading them to the AE2440 Sakai site under the appropriate assignment. A few things will make the submission process run smoothly.\n\nCheck your work. To ensure that your program runs in a clean workspace, before submitting your final solution execute the clear command and then run your program from an empty workspace. This helps avoid errors from undefined variables.\nExact file names. Pay particular attention to the specified file names, including letter case (programming is case-sensitive!). The file names must be exactly as requested so that any automation on the evaluation end runs without a file-not-found error.\nLive scripts, include output. When submitting live scripts, first run your live script to generate all specified numeric data, figures, and so on as inline output within your text and code. Then save the file (which will include the output). This lets the instructor review your solution quickly, but also debug and re-run your code if necessary.\n\n\nVerify Sakai Uploads\nWhen you upload your files to Sakai, take an extra step to make sure the files you attach to your Sakai assignment are the files you intend. Use the steps below to verify your assignment before submission.\n\nAttach the files:\n\nSave Draft. You can use “Save Draft” if you have more work to do.\nPreview. When you have attached all the files, select “Proceed”, which takes you to a preview of the submission:\n\nVerify. From this page you can download each attachment. Open each file locally to verify that the file attached to Sakai is the file you intend to submit.\n\n\n\n\nSimple Output\nFor the first few exercises, your program does not need to format its output. Instead, rely on MATLAB’s default behavior: when a statement does not end with a semicolon (;), MATLAB displays the result in the Command Window. When a semicolon is present, the result is computed but not shown. For example, if you run penny.m from the command window, you should see something like this:\n&gt;&gt; penny\n\nt =\n\n    8.8134\n\nv =\n\n   86.4594\n\n&gt;&gt;"
+    "text": "Introductory Notes\nCompleting assignments typically consists of writing programs (scripts, live scripts, function files, and so on). These files are submitted by uploading them to the AE2440 Sakai site under the appropriate assignment. I will then attempt to execute your programs. A few things will make this process run smoothly.\n\nTo ensure that your program runs in a clean workspace, before submitting your final solution execute the clear command and then run your program from an empty workspace. This helps avoid errors from undefined variables.\nPay particular attention to the specified file names, including letter case. The file names must be exactly as requested so that any automation on the evaluation end runs without a file-not-found error.\nWhen submitting live scripts, first run your live script to generate all specified numeric data, figures, and so on as inline output within your text and code. Then save the file. This lets the instructor review your solutions quickly, but also debug and re-run your code if necessary.\n\nSee Assignment 1 for the live-code .m format and the steps to verify a Sakai upload.\n\nMATLAB Operations\nIn these exercises we often use arithmetic operations directly with vectors, performing calculations on each element in the array. MATLAB distinguishes between array (element-wise) operations and matrix operations: see Array vs. Matrix Operations. Later in the course we’ll use MATLAB’s matrix operations for linear algebra problems, but for these exercises it is important to understand the syntax of array operations."
   },
   {
-    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-1-penny",
-    "href": "weeks/w01_modeling_scripts/assignment.html#problem-1-penny",
-    "title": "Assignment 1: Models and Scripts",
-    "section": "Problem 1: Penny",
-    "text": "Problem 1: Penny\nWrite a script named penny.m to solve Textbook Exercise 1.1.\nNotes:\n\nUse Save As in the Live Editor and confirm the file type is set to MATLAB Live Code File (UTF-8) (*.m).\nIt is good engineering practice to include comments with a description and units. I typically do this by including the units in square brackets, for example:\n% Time [s]\nt = ..."
+    "objectID": "weeks/w02_loops_vectors/assignment.html#problem-1-bouncing-ball",
+    "href": "weeks/w02_loops_vectors/assignment.html#problem-1-bouncing-ball",
+    "title": "Assignment 2: Loops and Vectors",
+    "section": "Problem 1: Bouncing Ball",
+    "text": "Problem 1: Bouncing Ball\nCreate a live script named bounce.m to solve the following problem.\nA tennis ball dropped from a height \\(h_0 = 2\\) m onto a hard floor. On each bounce it rebounds to a 60% (\\(r=0.6\\))of the height it fell from, so after the first bounce it rises to \\(0.6 h_0\\), after the second to \\(0.6^2 h_0\\), and so on.\nUse a loop to answer the following questions:\n\nHow high does the ball go on bounce \\(N\\)? The rebound heights \\(h_0,\\ r h_0,\\ r^2 h_0,\\ \\ldots\\) are a sequence. To simulate this use a for loop: start with h = h0 and update h = r * h each time through.\nHow far does the ball travel in total? The ball falls \\(h_0\\), then rises and falls \\(r h_0\\), then rises and falls \\(r^2 h_0\\), and so on. The total distance is the series \\[d = h_0 + 2 r h_0 + 2 r^2 h_0 + 2 r^3 h_0 + \\cdots\\] Accumulate it inside the same loop: add the up-and-down distance of each bounce to a cummulative sum.\n\nWrite your script to:\n\nDefine the parameters h0, r, and the number of bounces N = 20 at the top, with units in comments.\nLoop over the bounces, 1–N. On each iteration compute the new rebound height, add that bounce’s contribution to the running total distance, and plot the rebound height as one data point (bounce number on the x-axis, height on the y-axis), adding one point to the figure each time through the loop. You will need hold on so each new point is added to the same axes rather than replacing the previous one.\nAfter the loop, display the total distance travelled using disp.\n\nIn a text block in your live script, answer the following questions:\n\nWhat is the first bounce for which the rebound height is less than 0.2 m?\nDoes the total distance keep growing without limit as you increase N, or does it approach a value? Compare your loop’s total for a large N to the closed-form result \\(d = h_0 \\,\\dfrac{1 + r}{1 - r}\\) and comment on the agreement.\n\nThis is the same arithmetic as the “series” example in Chapter 3 of the textbook, with the ratio \\(1/2\\) replaced by the variable r. Use plain scalar variables and a loop for this problem; we have not covered vectors yet, and the point is to see how a sequence and its running sum are built up one term at a time."
   },
   {
-    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-2-penny-revisited",
-    "href": "weeks/w01_modeling_scripts/assignment.html#problem-2-penny-revisited",
-    "title": "Assignment 1: Models and Scripts",
-    "section": "Problem 2: Penny Revisited",
-    "text": "Problem 2: Penny Revisited\nWrite a script named pennywithair.m to solve Textbook Exercise 1.2.\nTo explore the functionality of MATLAB’s live code format, include at least the following elements:\n\nTwo text blocks and two code blocks\nText formats: Title and Normal\nText items: at least one Equation\n\nSee MATLAB’s Format Text in Live Editor.\nHint: you may want to work out the mechanics of this problem first (define the model with pencil and paper) before implementing it in MATLAB. Here is an outline of the calculation.\n\nWrite an expression for how long it takes an object under constant acceleration, with no air resistance, to reach a speed of \\(v_\\text{term} = 18\\) m/s.\nIn that amount of time, how far does the object fall?\nHow much distance is left to fall before it hits the sidewalk?\nHow long does it take to travel that distance at a constant speed of \\(v_\\text{term}\\)?\n\nTip: the keyboard shortcut (Ctrl+Enter or Alt+Enter) for toggling between text and code blocks is convenient."
+    "objectID": "weeks/w02_loops_vectors/assignment.html#problem-2-simple-statistics",
+    "href": "weeks/w02_loops_vectors/assignment.html#problem-2-simple-statistics",
+    "title": "Assignment 2: Loops and Vectors",
+    "section": "Problem 2: Simple Statistics",
+    "text": "Problem 2: Simple Statistics\nCreate a live script named span_statistics.m to report some summary statistics for data from the Anthropometric Survey of US Army Personnel (ANSUR) dataset. This exercise is an example of the common reduce pattern for vector operations discussed in Chapter 4.\nThe dataset comes from the Natick Soldier Research, Development and Engineering Center. The goal of the survey was to “acquire a large body of data from comparably measured males and females to serve the Army’s current design and engineering needs, as well as those anticipated well into the future.” We will use one of the 94 measurements they conducted on each soldier.\nThe data is a MAT-file: ansur_span.mat (use the download button on GitHub). To load the data into your MATLAB workspace, make sure the file is in the current working directory of MATLAB, then use the command\nload(\"ansur_span.mat\");\nVerify that you now have a variable named span in your workspace. This variable is a vector where each element is a measurement of the arm span of an individual male in meters. What is the size and shape of the vector?\n\nUse a for loop (or multiple for loops) to calculate the following:\n\nmean: \\[\\mu = \\bar{x} = \\frac{\\sum_{i=1}^{n} x_i}{n}\\]\nstandard deviation: \\[\\sigma = \\sqrt{\\frac{\\sum_{i=1}^{n} (x_i - \\mu)^2}{n - 1}}\\]\n\nThere are standard MATLAB functions (mean, sum and std) for these vector operations, but for this exercise perform the calculation by iterating through the elements in the vector.\nNote: sum, mean and std are all names of existing MATLAB functions, so use variable names that avoid naming collisions.\nVerify that your answers are consistent with this table from the Army’s report."
   },
   {
-    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-3-bike-share",
-    "href": "weeks/w01_modeling_scripts/assignment.html#problem-3-bike-share",
-    "title": "Assignment 1: Models and Scripts",
-    "section": "Problem 3: Bike Share",
-    "text": "Problem 3: Bike Share\nWrite a script named bike_update.m to solve Textbook Exercise 2.2.\nAgain, it is often worthwhile to write out the model (what you are trying to do) before starting the computational implementation (how you are going to solve it)."
-  },
-  {
-    "objectID": "weeks/w01_modeling_scripts/assignment.html#problem-4-fluid-statics",
-    "href": "weeks/w01_modeling_scripts/assignment.html#problem-4-fluid-statics",
-    "title": "Assignment 1: Models and Scripts",
-    "section": "Problem 4: Fluid Statics",
-    "text": "Problem 4: Fluid Statics\nWrite a script named aquarium.m to demonstrate a parameterized solution to the following statics problem from Engineering Statics. The goal of this exercise is to use MATLAB to implement the calculations associated with this statics problem. The problem and the solution are given, so you do not need to solve (or even understand) the statics problem; just use MATLAB as a calculator to implement the given solution.\nAn aquarium tank has a window AB for viewing the inhabitants. The width of the window is fixed at \\(w = 1.5\\) m. The top of the window is shown as 2 m below the surface, but should be parameterized as the variable a. The height of the window is shown as 3 m, but should be considered variable b. The tank contains water with a density of \\(\\rho = 1000\\) kg/m3.\n\nHere is the solution:\n\n(Problem and solution from Engineering Statics: Open and Interactive, Baker and Haynes, CC BY-NC-SA 4.0.)\nImplement this demonstration as a live script, using alternating text and code blocks to illustrate the steps as shown in the solution above. Test your implementation by defining the input variables as\n% Depth of the top of the window: distance from water surface to A in the diagram\na = 2.0;\n\n% Height of the window: distance from A to B in the diagram.\nb = 3.0;\nVerify that you get the same solution as provided in the example.\n\nSubmit and Verify\nSubmit your programs as separate files with the .m extension. Double-check all case-sensitive file names to make sure they are identical to the file names given in the exercises. See the submission process above."
+    "objectID": "weeks/w02_loops_vectors/assignment.html#problem-3-lcs-nozzle-flow",
+    "href": "weeks/w02_loops_vectors/assignment.html#problem-3-lcs-nozzle-flow",
+    "title": "Assignment 2: Loops and Vectors",
+    "section": "Problem 3: LCS Nozzle Flow",
+    "text": "Problem 3: LCS Nozzle Flow\n(Adapted from ME2201, courtesy of Professor Alley.)\nCreate a script named lcs_flow.m that creates two figures to plot the solution to the following fluid dynamics problem.\nThe LCS (both the -1 and -2 classes) are propelled by water-jet propulsion systems which extend out from the stern of the vessel. The nozzle contracts aft from the transom to the outlet, causing the fluid to accelerate.\n\nWe can derive the following expressions for the velocity (\\(v\\) in m/s) and acceleration (\\(a\\) in m/s2) of the fluid as a function of \\(x\\), the distance along the nozzle from 0 to 4 m, and \\(t\\), time as the throttle is increased from 50% at \\(t = 0\\) to full ahead at \\(t = 30\\) s.\n\\[v(x,t) = \\frac{(10 + 0.2t)\\,\\pi}{\\frac{\\pi}{4}\\,(4 - 0.25x)^2}\\]\n\\[a(x,t) = \\frac{0.5}{(4 - 0.25x)^2} + \\frac{0.5\\,(24 + 0.5t)^2}{(2 - 0.125x)^5}\\]\nRunning your script should result in two figure windows:\n\nThe first figure contains plots of the fluid velocity (y-axis) as a function of the distance \\(x\\), where \\(x\\) varies from 0 to 4 m. Each curve is a visualization of the function at a specific point in time. Plot four separate curves on the same axes: a curve for \\(t = 0\\), \\(10\\), \\(20\\) and \\(30\\) s.\nThe second figure contains plots of the fluid acceleration as a function of distance. Just as before, plot four separate curves for the acceleration at \\(t = 0\\), \\(10\\), \\(20\\) and \\(30\\) s.\n\nHints:\n\nYou should only need to implement the mathematical models once for velocity and once for acceleration. If you find yourself doing it multiple times (using copy-paste), consider using a loop.\nYou do not need to loop through the x values. MATLAB arithmetic can handle vectors directly; see Array vs. Matrix Operations.\n\n\n\nSubmit and Verify\nSubmit your live-code files with the .m extension: bounce.m, span_statistics.m, lcs_flow.m.\nDouble-check all case-sensitive file names. See the submission process above."
   }
 ]
