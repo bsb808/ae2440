@@ -12,20 +12,20 @@ c = 5;
 %[text] ## **Input validation and Single Test**
 %[text] Before calling either function we check that all three sides are positive numbers. If any side is zero or negative the script displays a message and does not proceed. 
 %[text] Note - you will need to write the two function files before the next code block will run.
-if a <= 0 || b <= 0 || c <= 0   %[output:group:5950d2e4]
+if a <= 0 || b <= 0 || c <= 0
     disp("Invalid input. All side lengths must be positive.")    
 else  
     valid = is_valid_triangle(a, b, c);   
     if valid       
         triangle_type = classify_triangle(a, b, c);  
-        disp("Side lengths   : " + a + ", " + b + ", " + c)    %[output:8fd07339]
-        disp("Valid triangle : Yes") %[output:9f78f125]
-        disp("Type           : " + triangle_type)  %[output:92c6570b]
+        disp("Side lengths   : " + a + ", " + b + ", " + c)
+        disp("Valid triangle : Yes")
+        disp("Type           : " + triangle_type)
     else   
         disp("Side lengths   : " + a + ", " + b + ", " + c) 
         disp("Valid triangle : No")   
     end
-end %[output:group:5950d2e4]
+end
 %[text] ## **Your task: write** **`is_valid_triangle.m`**
 %[text] Create a new file named `is_valid_triangle.m` in the same folder as this live script. The file must contain a function satisfying the following specification.
 %[text] **Name:** `is_valid_triangle`
@@ -50,13 +50,4 @@ end %[output:group:5950d2e4]
 %---
 %[metadata:view]
 %   data: {"layout":"inline"}
-%---
-%[output:8fd07339]
-%   data: {"dataType":"text","outputData":{"text":"Side lengths   : 3, 4, 5\n","truncated":false}}
-%---
-%[output:9f78f125]
-%   data: {"dataType":"text","outputData":{"text":"Valid triangle : Yes\n","truncated":false}}
-%---
-%[output:92c6570b]
-%   data: {"dataType":"text","outputData":{"text":"Type           : Scalene\n","truncated":false}}
 %---

@@ -24,7 +24,7 @@ end
 %[text] The variable `perimeter` was created inside `compute_perimeter` and exists only there. Once the function returns, that workspace is discarded. The script has no idea `perimeter` ever existed.
 %[text] **Your task:** Modify `compute_perimeter` to return `perimeter` as an output argument. Update the call in the script to capture the returned value. Re-run and confirm the output is 34.
 %%
-%[text] ## **Section 3 — Functions do not modify the caller's variables**
+%[text] ## Section 3 — Functions do not modify the caller's variables
 %[text] The code below passes a temperature value to a local function that is supposed to convert it from Celsius to Fahrenheit in place. The function runs without error, but the result in the script is not what you expect. Run it and inspect the output.
 temp = 100;
 convert_to_fahrenheit(temp);

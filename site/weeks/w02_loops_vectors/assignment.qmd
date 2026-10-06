@@ -63,9 +63,9 @@ Verify that you now have a variable named `span` in your workspace. This variabl
 Use a `for` loop (or multiple `for` loops) to calculate the following:
 
 - mean:
-  $$\mu = \frac{\sum_{i=1}^{n} x_i}{n}$$
+  $$\mu = \bar{x} = \frac{\sum_{i=1}^{n} x_i}{n}$$
 - standard deviation:
-  $$\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \bar{x})^2}{n - 1}}$$
+  $$\sigma = \sqrt{\frac{\sum_{i=1}^{n} (x_i - \mu)^2}{n - 1}}$$
 
 There are standard MATLAB functions (`mean`, `sum` and `std`) for these vector operations, but for this exercise perform the calculation by iterating through the elements in the vector.
 

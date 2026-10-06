@@ -13,15 +13,15 @@
 wind_speed_kts = 25;   % knots 
 %%
 %[text] ## Incremental Development: Make it Work
-%[text] *Make it work; Make it right; Make it fast*
+%[text] *Make it work; Make it right*
 %[text] *- Kent Beck*
-%[text] To start incrementally, write a standard MATLAB function with the function name `beaufort_classify` in a new file named `beaufort_classify.m`.  To "make it work" we want the function to return two static (for now) values just to test the function setup.  Your prototype function should return a number and a string.  For now, simply return a constant number (42) and a constant string ("Hello World").
+%[text] To start incrementally, write a standard MATLAB function with the function name `beaufort_classify` in a new file named `beaufort_classify.m`.  To "make it work" we want the function to return two static (for now) values just to test the function setup.  Your prototype function should return a number and a string.  For now, simply return a constant number (42) and a constant string ("Hello World"), whatever the input. The first line of your function file should be the function signature `function [bf_number, sea_state] = beaufort_classify(wind_speed_kts)`.
 %[text] Call the function to verify:
 [bf_number, sea_state] = beaufort_classify(wind_speed_kts);
 %%
 %[text] ## Function Call and Output
 %[text] Make it right:
-%[text] Now that the basic structure of the function file is there, add the flow control logic so that the function returns the correct number and string based on the provided wind speed cooresponding to this table:
+%[text] Now that the basic structure of the function file is there, add the flow control logic so that the function returns the correct number and string based on the provided wind speed, corresponding to this table:
 %[text] ![](text:image:6d39)
 %[text] Before calling any function it is good practice to check that inputs are sensible. The code below performs a simple range check and displays a message if the value is out of bounds. Notice that the entire classification and display logic sits inside the `else` block — if the input is invalid, nothing further executes.
 if wind_speed_kts < 0 || wind_speed_kts > 200
@@ -34,7 +34,7 @@ else
 end
 %%
 %[text] ## Test
-%[text] Now that we have the function working for a single nominal value, we want to test the function for a variety of input argument.   Write your test(s) below to verify that the output is consistent with the table above.
+%[text] Now that we have the function working for a single nominal value, we want to test the function for a variety of input arguments.   Write your test(s) below to verify that the output is consistent with the table above.
 % Your code goes here.
 
 %[appendix]{"version":"1.0"}

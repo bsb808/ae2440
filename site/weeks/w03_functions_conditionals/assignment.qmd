@@ -1,0 +1,58 @@
+---
+title: "Assignment 3: Functions and Conditionals"
+---
+
+Textbook: Chapters 5 and 6 ([Textbook](../../resources/textbook.qmd)).
+
+## Introductory Notes
+
+The submission mechanics are the same as for [Assignment 1](../w01_modeling_scripts/assignment.qmd) and [Assignment 2](../w02_loops_vectors/assignment.qmd): 
+
+* run each live script from a clean workspace - use `clear` appropriately to ensure no leftover variables
+* save live code files with embedded outputs
+* use the exact case-sensitive file names below, and 
+* verify your Sakai upload.
+
+This week you also write function files. Each function lives in its own `.m` file, and the function name on the first line must match the file name exactly: 
+
+* `beaufort_classify.m` must begin with `function ... = beaufort_classify(...)`. 
+* A function file is **plain code**, not a live script, and it sits in the same folder as the live script that calls it.
+
+
+## Problem 1: Beaufort Scale Function
+
+Sea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, `beaufort_classify`, that performs this classification, and call it from a live script.
+
+The instructions are in the prototype live script [beaufort_main.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/beaufort_main.m).  Write the new function in its own file, `beaufort_classify.m`, with the signature
+
+```matlab
+function [bf_number, sea_state] = beaufort_classify(wind_speed_kts)
+```
+
+When you write the `if`/`elseif` ladder, keep in mind that each `elseif` is only reached when every earlier condition was false, so each branch needs only one comparison. Check the boundaries between categories too: every wind speed, including values that fall exactly on a boundary such as 40 kts, must land in exactly one branch. Your tests in the last section of the live script are the place to check this.
+
+Submit `beaufort_main.m` (live script) and `beaufort_classify.m` (plain code function).
+
+## Problem 2: Variable Scope
+
+Each function runs in its own private workspace, isolated from the script that calls it. In this problem you diagnose and fix three common variable scope errors, two that produce error messages and one that silently gives the wrong answer.
+
+The prototype live script is [functions_scope.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/functions_scope.m). Section 1 stops with an error when you first run it; that is intended. Work through the three sections in order, fixing the code in each, and submit the completed `functions_scope.m`.
+
+## Problem 3: Triangle Classifier
+
+Deciding whether three lengths can form a triangle, and what kind of triangle they form, is a classic exercise in compound boolean expressions and `if`/`elseif` ladders where the order of the tests matters.
+
+Start from the prototype live script [triangle_classifier.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/triangle_classifier.m), which specifies two functions for you to write, each in its own file: `is_valid_triangle.m` and `classify_triangle.m`. The live script will not run until both function files exist.
+
+Submit `triangle_classifier.m`, `is_valid_triangle.m` and `classify_triangle.m`.
+
+### Submit and Verify
+
+Submit six `.m` files:
+
+- Problem 1: `beaufort_main.m`, `beaufort_classify.m`
+- Problem 2: `functions_scope.m`
+- Problem 3: `triangle_classifier.m`, `is_valid_triangle.m`, `classify_triangle.m`
+
+Double-check all case-sensitive file names, and that each function name matches its file name. See the submission process in [Assignment 1](../w01_modeling_scripts/assignment.qmd).

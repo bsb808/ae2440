@@ -21,7 +21,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 |  | Wed 7 Oct | Vectors, continued |  |  |  |
 |  | Thu 8 Oct | Work on Assignment |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>]( ./assignments.qmd "Assignments") A2 (Fri 9 Oct) |
 | [3](#week-3) | 12–15 Oct | *No class* ^†^ |  |  |  |
-| [4](#week-4) | 19–22 Oct | Functions; Conditionals ^‡^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A3 (Fri 23 Oct) |
+| [4](#week-4) | 19–22 Oct | Functions; Conditionals ^‡^ | [<i class="bi bi-book" aria-label="Reading"></i> Ch 5, 6](resources/textbook.qmd "Read Chapters 5 and 6, Functions and Conditionals") |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w03_functions_conditionals/assignment.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
 | [5](#week-5) | 26–29 Oct | Data Types; Function Handles and Zero-Finding |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A4 (Fri 30 Oct) |
 | [6](#week-6) | 2–5 Nov | Functions of Vectors; Ordinary Differential Equations |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A5 (Fri 6 Nov) |
 | [7](#week-7) | 9–12 Nov | Matrices and Systems of ODEs; Second-Order Systems ^§^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 13 Nov) |
@@ -92,10 +92,9 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 ## Week 4 — 19 Oct: Functions; Conditionals {#week-4}
 
-Details will be posted by Mon 5 Oct.
-
+- Before class: Read Chapter 5, Functions, and Chapter 6, Conditionals: [Textbook](resources/textbook.qmd)
 - Shift day: Tue 20 Oct follows the Friday schedule, so there is no class Tuesday.
-- Due Friday 23 Oct, 1700: Assignment 3: Functions and Conditionals
+- Due Friday 23 Oct, 1700: [Assignment 3: Functions and Conditionals](weeks/w03_functions_conditionals/assignment.qmd)
 
 ## Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding {#week-5}
 
