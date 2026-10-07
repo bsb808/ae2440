@@ -11,28 +11,28 @@
     "href": "weeks/w03_functions_conditionals/assignment.html#introductory-notes",
     "title": "Assignment 3: Functions and Conditionals",
     "section": "Introductory Notes",
-    "text": "Introductory Notes\nThe submission mechanics are the same as for Assignment 1 and Assignment 2:\n\nrun each live script from a clean workspace - use clear appropriately to ensure no leftover variables\nsave live code files with embedded outputs\nuse the exact case-sensitive file names below, and\nverify your Sakai upload.\n\nThis week you also write function files. Each function lives in its own .m file, and the function name on the first line must match the file name exactly:\n\nbeaufort_classify.m must begin with function ... = beaufort_classify(...).\nA function file is plain code, not a live script, and it sits in the same folder as the live script that calls it."
+    "text": "Introductory Notes\nThe submission mechanics are the same as for Assignment 1 and Assignment 2:\n\nrun each live script from a clean workspace - use clear appropriately to ensure no leftover variables\nsave live code files with embedded outputs\nuse the exact case-sensitive file names below, and\nverify your Sakai upload.\n\nThis week you also write function files. A standard function lives in its own .m file, and the function name on the first line must match the file name exactly:\n\nbeaufort_classify.m must begin with function ... = beaufort_classify(...).\nA function file is plain code, not a live script, and it sits in the same folder as the live script that calls it."
   },
   {
-    "objectID": "weeks/w03_functions_conditionals/assignment.html#problem-1-beaufort-scale-function",
-    "href": "weeks/w03_functions_conditionals/assignment.html#problem-1-beaufort-scale-function",
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#exercise-1-beaufort-scale-function",
+    "href": "weeks/w03_functions_conditionals/assignment.html#exercise-1-beaufort-scale-function",
     "title": "Assignment 3: Functions and Conditionals",
-    "section": "Problem 1: Beaufort Scale Function",
-    "text": "Problem 1: Beaufort Scale Function\nSea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, beaufort_classify, that performs this classification, and call it from a live script.\nThe instructions are in the prototype live script beaufort_main.m. Write the new function in its own file, beaufort_classify.m, with the signature\nfunction [bf_number, sea_state] = beaufort_classify(wind_speed_kts)\nWhen you write the if/elseif ladder, keep in mind that each elseif is only reached when every earlier condition was false, so each branch needs only one comparison. Check the boundaries between categories too: every wind speed, including values that fall exactly on a boundary such as 40 kts, must land in exactly one branch. Your tests in the last section of the live script are the place to check this.\nSubmit beaufort_main.m (live script) and beaufort_classify.m (plain code function)."
+    "section": "Exercise 1: Beaufort Scale Function",
+    "text": "Exercise 1: Beaufort Scale Function\nSea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, beaufort_classify, that performs this classification, and call it from a live script.\nThe prototype live script beaufort_main.m is intended to guide you through making a minimum first example, incrementally building the logic, and then writing a few tests. You will create a new file named, beaufort_classify.m, that will include the function signature\nfunction [bf_number, sea_state] = beaufort_classify(wind_speed_kts)\nInput arguments:\n\nwind_speed_kts — Wind speed in knots (numeric scalar)\n\nOutput arguments:\n\nbf_number — Beaufort force number (numeric scalar)\nsea_state — Descriptive sea state (string)\n\nFor non-integer wind speeds, to keep it simple, round the value to the nearest whole knot before classification.\nSubmit beaufort_main.m (live script) and beaufort_classify.m (plain code function)."
   },
   {
-    "objectID": "weeks/w03_functions_conditionals/assignment.html#problem-2-variable-scope",
-    "href": "weeks/w03_functions_conditionals/assignment.html#problem-2-variable-scope",
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#exercise-2-variable-scope",
+    "href": "weeks/w03_functions_conditionals/assignment.html#exercise-2-variable-scope",
     "title": "Assignment 3: Functions and Conditionals",
-    "section": "Problem 2: Variable Scope",
-    "text": "Problem 2: Variable Scope\nEach function runs in its own private workspace, isolated from the script that calls it. In this problem you diagnose and fix three common variable scope errors, two that produce error messages and one that silently gives the wrong answer.\nThe prototype live script is functions_scope.m. Section 1 stops with an error when you first run it; that is intended. Work through the three sections in order, fixing the code in each, and submit the completed functions_scope.m."
+    "section": "Exercise 2: Variable Scope",
+    "text": "Exercise 2: Variable Scope\nThe prototype live script functions_scope.m is a series of small exercises to demonstrate variable scope for local functions within live scropts. Work through each and submit the completed functions_scope.m."
   },
   {
-    "objectID": "weeks/w03_functions_conditionals/assignment.html#problem-3-triangle-classifier",
-    "href": "weeks/w03_functions_conditionals/assignment.html#problem-3-triangle-classifier",
+    "objectID": "weeks/w03_functions_conditionals/assignment.html#exercise-3-triangle-classifier",
+    "href": "weeks/w03_functions_conditionals/assignment.html#exercise-3-triangle-classifier",
     "title": "Assignment 3: Functions and Conditionals",
-    "section": "Problem 3: Triangle Classifier",
-    "text": "Problem 3: Triangle Classifier\nDeciding whether three lengths can form a triangle, and what kind of triangle they form, is a classic exercise in compound boolean expressions and if/elseif ladders where the order of the tests matters.\nStart from the prototype live script triangle_classifier.m, which specifies two functions for you to write, each in its own file: is_valid_triangle.m and classify_triangle.m. The live script will not run until both function files exist.\nSubmit triangle_classifier.m, is_valid_triangle.m and classify_triangle.m.\n\nSubmit and Verify\nSubmit six .m files:\n\nProblem 1: beaufort_main.m, beaufort_classify.m\nProblem 2: functions_scope.m\nProblem 3: triangle_classifier.m, is_valid_triangle.m, classify_triangle.m\n\nDouble-check all case-sensitive file names, and that each function name matches its file name. See the submission process in Assignment 1."
+    "section": "Exercise 3: Triangle Classifier",
+    "text": "Exercise 3: Triangle Classifier\nStart from the prototype live script triangle_main.m, which specifies two ordinary functions for you to write, each in its own file: is_valid_triangle.m and classify_triangle.m. Use the live script to verify your function implementations.\nSubmit triangle_main.m, is_valid_triangle.m and classify_triangle.m.\n\nSubmit and Verify\nSubmit six .m files:\n\nProblem 1: beaufort_main.m, beaufort_classify.m\nProblem 2: functions_scope.m\nProblem 3: triangle_main.m, is_valid_triangle.m, classify_triangle.m"
   },
   {
     "objectID": "weeks/w01_modeling_scripts/assignment.html",

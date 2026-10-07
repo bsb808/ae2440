@@ -172,9 +172,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#introductory-notes" id="toc-introductory-notes" class="nav-link active" data-scroll-target="#introductory-notes">Introductory Notes</a></li>
-  <li><a href="#problem-1-beaufort-scale-function" id="toc-problem-1-beaufort-scale-function" class="nav-link" data-scroll-target="#problem-1-beaufort-scale-function">Problem 1: Beaufort Scale Function</a></li>
-  <li><a href="#problem-2-variable-scope" id="toc-problem-2-variable-scope" class="nav-link" data-scroll-target="#problem-2-variable-scope">Problem 2: Variable Scope</a></li>
-  <li><a href="#problem-3-triangle-classifier" id="toc-problem-3-triangle-classifier" class="nav-link" data-scroll-target="#problem-3-triangle-classifier">Problem 3: Triangle Classifier</a>
+  <li><a href="#exercise-1-beaufort-scale-function" id="toc-exercise-1-beaufort-scale-function" class="nav-link" data-scroll-target="#exercise-1-beaufort-scale-function">Exercise 1: Beaufort Scale Function</a></li>
+  <li><a href="#exercise-2-variable-scope" id="toc-exercise-2-variable-scope" class="nav-link" data-scroll-target="#exercise-2-variable-scope">Exercise 2: Variable Scope</a></li>
+  <li><a href="#exercise-3-triangle-classifier" id="toc-exercise-3-triangle-classifier" class="nav-link" data-scroll-target="#exercise-3-triangle-classifier">Exercise 3: Triangle Classifier</a>
   <ul class="collapse">
   <li><a href="#submit-and-verify" id="toc-submit-and-verify" class="nav-link" data-scroll-target="#submit-and-verify">Submit and Verify</a></li>
   </ul></li>
@@ -213,39 +213,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>use the exact case-sensitive file names below, and</li>
 <li>verify your Sakai upload.</li>
 </ul>
-<p>This week you also write function files. Each function lives in its own <code>.m</code> file, and the function name on the first line must match the file name exactly:</p>
+<p>This week you also write function files. A standard function lives in its own <code>.m</code> file, and the function name on the first line must match the file name exactly:</p>
 <ul>
 <li><code>beaufort_classify.m</code> must begin with <code>function ... = beaufort_classify(...)</code>.</li>
 <li>A function file is <strong>plain code</strong>, not a live script, and it sits in the same folder as the live script that calls it.</li>
 </ul>
 </section>
-<section id="problem-1-beaufort-scale-function" class="level2">
-<h2 class="anchored" data-anchor-id="problem-1-beaufort-scale-function">Problem 1: Beaufort Scale Function</h2>
+<section id="exercise-1-beaufort-scale-function" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-1-beaufort-scale-function">Exercise 1: Beaufort Scale Function</h2>
 <p>Sea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, <code>beaufort_classify</code>, that performs this classification, and call it from a live script.</p>
-<p>The instructions are in the prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/beaufort_main.m">beaufort_main.m</a>. Write the new function in its own file, <code>beaufort_classify.m</code>, with the signature</p>
+<p>The prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/beaufort_main.m">beaufort_main.m</a> is intended to guide you through making a minimum first example, incrementally building the logic, and then writing a few tests. You will create a new file named, <code>beaufort_classify.m</code>, that will include the function signature</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> [<span class="va">bf_number</span><span class="op">,</span> <span class="va">sea_state</span>] <span class="op">=</span> <span class="va">beaufort_classify</span>(<span class="va">wind_speed_kts</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>When you write the <code>if</code>/<code>elseif</code> ladder, keep in mind that each <code>elseif</code> is only reached when every earlier condition was false, so each branch needs only one comparison. Check the boundaries between categories too: every wind speed, including values that fall exactly on a boundary such as 40 kts, must land in exactly one branch. Your tests in the last section of the live script are the place to check this.</p>
+<p>Input arguments:</p>
+<ul>
+<li><code>wind_speed_kts</code> — Wind speed in knots (numeric scalar)</li>
+</ul>
+<p>Output arguments:</p>
+<ul>
+<li><code>bf_number</code> — Beaufort force number (numeric scalar)</li>
+<li><code>sea_state</code> — Descriptive sea state (string)</li>
+</ul>
+<p>For non-integer wind speeds, to keep it simple, round the value to the nearest whole knot before classification.</p>
 <p>Submit <code>beaufort_main.m</code> (live script) and <code>beaufort_classify.m</code> (plain code function).</p>
 </section>
-<section id="problem-2-variable-scope" class="level2">
-<h2 class="anchored" data-anchor-id="problem-2-variable-scope">Problem 2: Variable Scope</h2>
-<p>Each function runs in its own private workspace, isolated from the script that calls it. In this problem you diagnose and fix three common variable scope errors, two that produce error messages and one that silently gives the wrong answer.</p>
-<p>The prototype live script is <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/functions_scope.m">functions_scope.m</a>. Section 1 stops with an error when you first run it; that is intended. Work through the three sections in order, fixing the code in each, and submit the completed <code>functions_scope.m</code>.</p>
+<section id="exercise-2-variable-scope" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-variable-scope">Exercise 2: Variable Scope</h2>
+<p>The prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/functions_scope.m">functions_scope.m</a> is a series of small exercises to demonstrate variable scope for local functions within live scropts. Work through each and submit the completed <code>functions_scope.m</code>.</p>
 </section>
-<section id="problem-3-triangle-classifier" class="level2">
-<h2 class="anchored" data-anchor-id="problem-3-triangle-classifier">Problem 3: Triangle Classifier</h2>
-<p>Deciding whether three lengths can form a triangle, and what kind of triangle they form, is a classic exercise in compound boolean expressions and <code>if</code>/<code>elseif</code> ladders where the order of the tests matters.</p>
-<p>Start from the prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/triangle_classifier.m">triangle_classifier.m</a>, which specifies two functions for you to write, each in its own file: <code>is_valid_triangle.m</code> and <code>classify_triangle.m</code>. The live script will not run until both function files exist.</p>
-<p>Submit <code>triangle_classifier.m</code>, <code>is_valid_triangle.m</code> and <code>classify_triangle.m</code>.</p>
+<section id="exercise-3-triangle-classifier" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-3-triangle-classifier">Exercise 3: Triangle Classifier</h2>
+<p>Start from the prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/triangle_main.m">triangle_main.m</a>, which specifies two ordinary functions for you to write, each in its own file: <code>is_valid_triangle.m</code> and <code>classify_triangle.m</code>. Use the live script to verify your function implementations.</p>
+<p>Submit <code>triangle_main.m</code>, <code>is_valid_triangle.m</code> and <code>classify_triangle.m</code>.</p>
 <section id="submit-and-verify" class="level3">
 <h3 class="anchored" data-anchor-id="submit-and-verify">Submit and Verify</h3>
 <p>Submit six <code>.m</code> files:</p>
 <ul>
 <li>Problem 1: <code>beaufort_main.m</code>, <code>beaufort_classify.m</code></li>
 <li>Problem 2: <code>functions_scope.m</code></li>
-<li>Problem 3: <code>triangle_classifier.m</code>, <code>is_valid_triangle.m</code>, <code>classify_triangle.m</code></li>
+<li>Problem 3: <code>triangle_main.m</code>, <code>is_valid_triangle.m</code>, <code>classify_triangle.m</code></li>
 </ul>
-<p>Double-check all case-sensitive file names, and that each function name matches its file name. See the submission process in <a href="../../weeks/w01_modeling_scripts/assignment.html">Assignment 1</a>.</p>
 
 
 </section>
