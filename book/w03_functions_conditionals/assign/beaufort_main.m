@@ -23,18 +23,22 @@ wind_speed_kts = 25;   % knots
 %[text] Make it right:
 %[text] Now that the basic structure of the function file is there, add the flow control logic so that the function returns the correct number and string based on the provided wind speed, corresponding to this table:
 %[text] ![](text:image:6d39)
-%[text] Before calling any function it is good practice to check that inputs are sensible. The code below performs a simple range check and displays a message if the value is out of bounds. Notice that the entire classification and display logic sits inside the `else` block — if the input is invalid, nothing further executes.
-if wind_speed_kts < 0 || wind_speed_kts > 200
-    disp("Invalid wind speed. Please enter a value between 0 and 200 knots.")
-else
-    [bf_number, sea_state] = beaufort_classify(wind_speed_kts);
-    disp("Wind speed : " + wind_speed_kts + " knots")
-    disp("Beaufort   : Force " + bf_number)
-    disp("Sea state  : " + sea_state)
-end
+%[text] The function will use a series of `if/elseif` blocks to classify the values and report the correct Beaufort Force number and Sea State message.   There are a number of ways to arrange the `if/elseif` steps - some are simpler than others, so consider how to approach the comparisons before writing the code.  
+%[text] 
+%[text] The snippet below is a single call to the classifier function to manually test values in the range above.  **Verify** that your program provides the expected outputs
+wind_speed_kts = 25;   % knots 
+
+[bf_number, sea_state] = beaufort_classify(wind_speed_kts);
 %%
 %[text] ## Test
-%[text] Now that we have the function working for a single nominal value, we want to test the function for a variety of input arguments.   Write your test(s) below to verify that the output is consistent with the table above.
+%[text] Now that we have the function working for a single nominal value, we want to test the function for a variety of input arguments.   For the purposes of this exercise, a test is simply giving a known input and comparing the provided bf\_number output to the expected results.
+wind_in = 25;
+bf_expected = 6;
+[bf_number, sea_state] = beaufort_classify(wind_in);
+if (~(bf_expected==bf_number))
+    disp("Error")
+end
+%[text] Write at least three of your own tests that examine normal and edge case inputs, e.g., non-integer input, negative input, etc. 
 % Your code goes here.
 
 %[appendix]{"version":"1.0"}
