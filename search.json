@@ -4,7 +4,7 @@
     "href": "weeks/w03_functions_conditionals/assignment.html",
     "title": "Assignment 3: Functions and Conditionals",
     "section": "",
-    "text": "Textbook: Chapters 5 and 6 (Textbook)."
+    "text": "Due Friday 23 Oct, 1700, via Sakai. Textbook: Chapters 5 and 6 (Textbook)."
   },
   {
     "objectID": "weeks/w03_functions_conditionals/assignment.html#introductory-notes",
@@ -25,7 +25,7 @@
     "href": "weeks/w03_functions_conditionals/assignment.html#exercise-2-variable-scope",
     "title": "Assignment 3: Functions and Conditionals",
     "section": "Exercise 2: Variable Scope",
-    "text": "Exercise 2: Variable Scope\nThe prototype live script functions_scope.m is a series of small exercises to demonstrate variable scope for local functions within live scropts. Work through each and submit the completed functions_scope.m."
+    "text": "Exercise 2: Variable Scope\nThe prototype live script functions_scope.m is a series of small exercises to demonstrate variable scope for local functions within live scripts. Work through each and submit the completed functions_scope.m."
   },
   {
     "objectID": "weeks/w03_functions_conditionals/assignment.html#exercise-3-triangle-classifier",
