@@ -15,7 +15,7 @@ wind_speed_kts = 25;   % knots
 %[text] ## Incremental Development: Make it Work
 %[text] *Make it work; Make it right*
 %[text] *- Kent Beck*
-%[text] To start incrementally, write a standard MATLAB function with the function name `beaufort_classify` in a new file named `beaufort_classify.m`.  To "make it work" we want the function to return two static (for now) values just to test the function setup.  Your prototype function should return a number and a string.  For now, simply return a constant number (42) and a constant string ("Hello World"), whatever the input. The first line of your function file should be the function signature `function [bf_number, sea_state] = beaufort_classify(wind_speed_kts)`.
+%[text] To start incrementally, write a standard MATLAB function with the function name `beaufort_classify` in a new file named `beaufort_classify.m`.  To "make it work" we want the function to return two static (for now) values just to test the function setup.  Your prototype function should return a number and a string.  For now, simply return a constant number (0) and a constant string ("Calm"), whatever the input. The first line of your function file should be the function signature `function [bf_number, sea_state] = beaufort_classify(wind_speed_kts)`.
 %[text] Call the function to verify:
 [bf_number, sea_state] = beaufort_classify(wind_speed_kts);
 %%

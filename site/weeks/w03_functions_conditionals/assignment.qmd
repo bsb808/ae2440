@@ -29,7 +29,7 @@ The instructions are in the prototype live script [beaufort_main.m]({{< var repo
 function [bf_number, sea_state] = beaufort_classify(wind_speed_kts)
 ```
 
-When you write the `if`/`elseif` ladder, keep in mind that each `elseif` is only reached when every earlier condition was false, so each branch needs only one comparison. Check the boundaries between categories too: every wind speed, including values that fall exactly on a boundary such as 40 kts, must land in exactly one branch. Your tests in the last section of the live script are the place to check this.
+When you write the `if`/`elseif` ladder, keep in mind that each `elseif` is only reached when every earlier condition was false, so each branch needs only one comparison. The table in the live script stops at Force 9, so Force 9 (Severe Gale) covers every speed above 40 kts. The table lists whole knots, but a wind speed can be any value, so use this rule: each band runs up to, but not including, the first knot of the next band (3.5 kts is Force 1, 4 kts is Force 2), except that exactly 40 kts is Force 8 (Gale) and anything above 40 kts is Force 9. Every wind speed, including values that fall exactly on a boundary, must land in exactly one branch. Your tests in the last section of the live script are the place to check this.
 
 Submit `beaufort_main.m` (live script) and `beaufort_classify.m` (plain code function).
 
