@@ -3,8 +3,7 @@
 %[text] This exercise walks you through three common scoping mistakes. For each...
 %[text] 1. run the broken code
 %[text] 2. read the error message
-%[text] 3. fix the code, and 
-%[text] 4. answer a short question. \
+%[text] 3. fix the code. \
 %[text] ## Section 1 — Script variables are not visible to a local function
 %[text] The code below defines a radius in the script and then calls a local function to compute the area of a circle. 
 radius = 7;

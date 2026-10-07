@@ -2,7 +2,7 @@
 title: "Assignment 3: Functions and Conditionals"
 ---
 
-Textbook: Chapters 5 and 6 ([Textbook](../../resources/textbook.qmd)).
+Due Friday 23 Oct, 1700, via [Sakai]({{< var sakai_url >}}). Textbook: Chapters 5 and 6 ([Textbook](../../resources/textbook.qmd)).
 
 ## Introductory Notes
 
@@ -44,7 +44,7 @@ Submit `beaufort_main.m` (live script) and `beaufort_classify.m` (plain code fun
 
 ## Exercise 2: Variable Scope
 
-The prototype live script [functions_scope.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/functions_scope.m) is a series of small exercises to demonstrate variable scope for local functions within live scropts.  Work through each and submit the completed `functions_scope.m`.
+The prototype live script [functions_scope.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/functions_scope.m) is a series of small exercises to demonstrate variable scope for local functions within live scripts.  Work through each and submit the completed `functions_scope.m`.
 
 ## Exercise 3: Triangle Classifier
 
