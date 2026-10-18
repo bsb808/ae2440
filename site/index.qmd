@@ -21,7 +21,10 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 |  | Wed 7 Oct | Vectors, continued |  |  |  |
 |  | Thu 8 Oct | Work on Assignment |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>]( ./assignments.qmd "Assignments") A2 (Fri 9 Oct) |
 | [3](#week-3) | 12–15 Oct | *No class* ^†^ |  |  |  |
-| [4](#week-4) | 19–22 Oct | Functions; Conditionals ^‡^ | [<i class="bi bi-book" aria-label="Reading"></i> Ch 5, 6](resources/textbook.qmd "Read Chapters 5 and 6, Functions and Conditionals") |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w03_functions_conditionals/assignment.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
+| [4](#week-4) | Mon 19 Oct | Assignment 2 review; Functions | [<i class="bi bi-book" aria-label="Reading"></i> Ch 5](resources/textbook.qmd "Read Chapter 5, Functions") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-4 "Lessons") |  |
+|  | Tue 20 Oct | *No class* ^‡^ |  |  |  |
+|  | Wed 21 Oct | Conditionals | [<i class="bi bi-book" aria-label="Reading"></i> Ch 6](resources/textbook.qmd "Read Chapter 6, Conditionals") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-4 "Lesson") |  |
+|  | Thu 22 Oct | Work on Assignment 3 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w03_functions_conditionals/assignment.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
 | [5](#week-5) | 26–29 Oct | Data Types; Function Handles and Zero-Finding |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A4 (Fri 30 Oct) |
 | [6](#week-6) | 2–5 Nov | Functions of Vectors; Ordinary Differential Equations |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A5 (Fri 6 Nov) |
 | [7](#week-7) | 9–12 Nov | Matrices and Systems of ODEs; Second-Order Systems ^§^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 13 Nov) |
@@ -92,8 +95,21 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 ## Week 4 — 19 Oct: Functions; Conditionals {#week-4}
 
-- Before class: Read Chapter 5, Functions, and Chapter 6, Conditionals: [Textbook](resources/textbook.qmd)
-- Shift day: Tue 20 Oct follows the Friday schedule, so there is no class Tuesday.
+**Monday:** Assignment 2 review; introduction to functions
+
+- Before class: Read Chapter 5, Functions: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_functions.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/lesson_functions.m)
+  - Example function: [rr2dd.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/rr2dd.m)
+
+**Tuesday:** No class. Shift day: Tue 20 Oct follows the Friday schedule.
+
+**Wednesday:** Conditionals
+
+- Before class: Read Chapter 6, Conditionals: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_conditionals.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/lesson_conditionals.m)
+
+**Thursday:** Work on Assignment 3
+
 - Due Friday 23 Oct, 1700: [Assignment 3: Functions and Conditionals](weeks/w03_functions_conditionals/assignment.qmd)
 
 ## Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding {#week-5}
