@@ -98,6 +98,9 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 **Monday:** Assignment 2 review; introduction to functions
 
 - Before class: Read Chapter 5, Functions: [Textbook](resources/textbook.qmd)
+- Review: [Assignment 2](weeks/w02_loops_vectors/assignment.qmd)
+  - Report: [Assignment 2 Report](weeks/w02_loops_vectors/report.qmd)
+  - Review `bounce_soln.m` from [Assignment 2](weeks/w02_loops_vectors/assignment.qmd)
 - Lesson: [lesson_functions.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/lesson_functions.m)
   - Example function: [rr2dd.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/rr2dd.m)
 
