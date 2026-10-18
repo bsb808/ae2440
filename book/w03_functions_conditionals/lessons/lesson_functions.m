@@ -33,25 +33,25 @@
 %[text] - Output values
 %[text] - See also \
 edit mean
-help mean %[output:1755935d]
+help mean
 %%
 %[text] ### Path
 %[text] To use the function it needs to be in the MATLAB *path*.  The simplest way to do this is to have the the function in the *current working directory* - as displayed in the Command Window
 edit rr2dd
-help rr2dd %[output:53c8fdb0]
+help rr2dd
 %%
 clear;
-d = rr2dd(pi/2) %[output:4e968759]
+d = rr2dd(pi/2)
 %[text] ### Scope (AKA Workspaces)
 %[text] The variables within the function are in their own *workspace*.  They can't be accessed by other functions or by the Command Window's base workspace.
 %[text] From the base workspace we can't access the variables from our functions `bearing` and `rr2dd`.
-whos %[output:246a1fa4]
+whos
 %%
 %[text] ## Local Functions
 %[text] - Functions defined within a (live) script.
 %[text] - It’s only visible to the code in that same file—think of it as a helper function. \
 %[text] *Before R2024a: Local functions in scripts must be defined at the end of the file, after the last line of script code.*
-%[text] We can implement the same code from the primary function in `rr2dd.m` as a local function:
+%[text] We can implement the same code from the **primary function in** **`rr2dd.m`** as a local function:
 function d = radians2degrees(r)
     % d = radians2degrees(r)
     %
@@ -66,14 +66,14 @@ function d = radians2degrees(r)
     d = r*180.0/pi;
 end
 %[text] We can cal the local function like this...
-theta = radians2degrees(pi/2) %[output:353fc3de]
+theta = radians2degrees(pi/2)
 %[text] ## Variable Scope
 %[text] **Variable scope** defines where a variable exists and can be accessed in a program. In MATLAB, variables created inside a function are separate from those in the workspace, while variables in a script share the same workspace as the Command Window.
 %[text] For example, from the live script, we cannot set the value of `r` used within the function...
 r = 0;
-theta = radians2degrees(pi/2) %[output:27e9fd9a]
+theta = radians2degrees(pi/2)
 %[text] Similarly, the variable `d` from the function cannot be accessed from the live script
-d %[output:580c0913]
+d
 %%
 %[text] ### Debugging
 %[text] [MATLAB debugger](https://www.mathworks.com/help/matlab/matlab_prog/debugging-process-and-features.html)
@@ -93,62 +93,16 @@ end
 %[text] A **unit test** is a small, isolated test that verifies the functionality of a specific piece of code, typically a single function or method, to ensure it behaves as expected under various conditions.
 % Test 1: First quadrant
 q1 = bearing(1, 2);
-disp(['Test 1 - Expected: [0 90], Received: ', num2str(q1)]) %[output:3f7cfab2]
+disp(['Test 1 - Expected: [0 90], Received: ', num2str(q1)])
 
 % Test 2: Second quadrant
 q2 = bearing(-1, 1);
-disp(['Test 2 - Expected: [270 360], Received: ', num2str(q2)]) %[output:0fb2603b]
+disp(['Test 2 - Expected: [270 360], Received: ', num2str(q2)])
 
 % Test 3: Third
 q3 = bearing(-4, -2);
-disp(['Test 3 - Expected: [180 270], Received: ', num2str(q3)]) %[output:12cbaaba]
-%%
-%[text] ### Number of arguments and defaults
-%[text] The variable `nargin` contains the number of arguments, which we can use to set default values.
-function [new_m, new_pg] = update_bikes(m, pg, rate_m_to_pg, rate_pg_to_m)
-    % [new_m, new_pg] = update_bikes(m, pg, rate_m_to_pg, rate_pg_to_m)
-    % Input arguments
-    % - m: number of bikes in Monterey on day k
-    % - pg: number of bikes in Pacific Grove on day k
-    % - rate_m_to_pg: daily fraction of bikes in Monterey moved to PG.
-    % - rate_pg_to_m: daily fraction of bikes in PG moved to Monterey.
-    % Output variables
-    % - new_m: bikes in Monterey on day k+1
-    % - new_pg: bikes in PG on day k+1
-    
-    % Set defaults
-    if nargin < 4
-        rate_pg_to_m = 0.03;
-    end
-    if nargin < 3
-        rate_m_to_pg = 0.05;
-    end
-
-    m_to_pg = round(0.05*m) - round(0.03*pg);
-    new_m = m - m_to_pg;
-    new_pg = pg + m_to_pg;
-end
-
-% Script
-n = 20;
-mm = [100 zeros(1,n-1)];
-ppg = [100 zeros(1,n-1)];
-for ii = 2:n
-    % Move bikes
-    [m, pg] = update_bikes(mm(ii-1), ppg(ii-1));
-    mm(ii) = m;
-    ppg(ii) = pg;
-end
-figure
-clf()
-plot(mm, 'rs', 'DisplayName', "Monterey");
-hold on
-plot(ppg, 'bo', 'DisplayName', "Pacific Grove")
-xlabel('Time steps [days]')
-ylabel('Inventory in town [bikes]')
-grid('on')
-legend('Location','NorthWest')
-%[text] 
+disp(['Test 3 - Expected: [180 270], Received: ', num2str(q3)])
+%[text] ### 
 %[text] 
 %[text] 
 %[text] 
@@ -169,34 +123,4 @@ legend('Location','NorthWest')
 %---
 %[text:image:6876]
 %   data: {"align":"baseline","height":91,"src":"data:image\/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPIAAABbCAYAAABJe9iCAAAWR0lEQVR4Ae1daVgUV7r2103myZ3rvU8myXMnM8mdJJNdkxljokYTtzgxRoMaFVQU0bhHXCIiIrjgho1iFBUxghIVUBR3CO6K4I5LIrILgvuuMdvkveertrpPVVfT3dVNQzfnRz1VfU6dc77tPe93TlV3N6iqqoI4hA1EDHh2DDQQDvRsBwr\/1W\/\/HTt2TCJiAWSRkYiMzINjQADZg50nWLh+szDvfwFkAWTBxF4QAwLIXuBEfmYW1\/WTpQWQBZAFI3tBDAgge4ETBQvXTxbm\/S6ALIAsGNkLYkAA2UVO3Ju3C+Gpwfgspr3Vg59BxbX3sOjFoiLkjBiBXW3bOnVQH9SXntgQQHYBkOdtmQP\/JZ8j4\/RmXL17EXceXsNPv93Cw19v4Mdfr+HBr5fRydBGl4P0OFW0ce8kQQAsmDQZD3MO46eTpyyPE3l4cPgI7h3Mxp3de3AzIxPXt2zBlbQ0XFqbjMpVq1AcbUB2l87ShKDHf24D8vCEARiwzBdp2SmaAW2rXo9y7mhj2DQTgct648rdCtz9uQKXHhzFhbu7ce7mGpy5\/g1OXF2EI5ej8K85rTT1doeMYoyaBXZW69YSiB9m5+DBju9wf+Nmi+NeWjpufbsG15Z9g0sLFqJ81hyUhEeg4KvxKAgNRYnBgKKoKFBfevzlNiB\/YmiN337\/CdlFOxG+bjz2nNypEFiu31+QoVmvR7mabrPreBZ6LuiCy3fKUHn\/EApurUf+zRT8cONbCcQnr8bi6JVo5FyKRLsZLRT61rRsov+aBS9v3x2tWoFArAVgvuxuahpuJCbhypI4VEbPx4XpM1AUOgn5o8fg7JAhKJ4zB9QX37e9124DcodZLfH777\/hl3\/fx\/UH5ViQOQ3T1oWhqMy4JlDXz90epqi3VyF33jc2cSQ2H1uHsjtZOHs9kR0JmJo+DB9OfVfzkGUrKivU5Sy5vTi7D6T22HpL8+ZWmZgHspGV1+JavJGVK2Y\/YuXx4\/EDS8\/PjRmDHe3a6YoNtwG5zfRm+Pfvv+L+L5dx5+cy3PulEsfLMzFkRR8s2jYffP3dn8ul+iNlWxEY112qt8eg7r7n\/clNkFe+C8evxLAUeiEmrx+IDtNbIT5jCfLOn7TqkN4xn+PQmWyr9e7WQ4zn3MSwsWlTm2wsA\/r2mhRc\/yYBlxfF4mKUAWVTp6EwJATnRo3CmS8GgfrS4w+3AbllxDv4+be7DMQXcOXBCVy8dwBXfmTBfu8E1h4xgOp3f7\/dVF95PxvXfjwt1cftm4iuhk+w6dAGXUrqMYw9bd4LfQu7CpdKqXPupZmgz3E7FtuUke5rO7UFNh5Ms3mvPXKIe5wDorP2W\/ePfzgG5BWJuBy7BBcN0SibHomiiaGm9Jr60iOP24D8XujbbDOoHNcffs\/Wk9kovr0FZ2+sxHm2rqT1ZV7VegQl+WFQnB8OFqeY6gtvp7MNpCM4dnENBsZ3QmCsP7JPH9SlrB4DVdemSfCbEhvvrwzBgcpJoM\/Zpw7YlI3uyyncjY8j22Dq2sk2769OBlFXuyAm+69t3NguIFNqfXt1spGRJSDPY+vkSBSzdfL5MWPx\/dChUl96fOo2IFPwXv3xlATa0jsZbFMoGXnXliD30gwQEE5fX47SO7uxKjeSsdV7GJ3UG4cuxkj12VWT2S5wMopuZeCb7HC0CHsLwYljUVhau2vNt8a+irhDfthVMQp7KsZgIJtkFm9ZaBOY1O7MtTQUXz0D33nd0Xd+rxrTZcG2KIxZNRQjlg\/CF0v7I2BhHwyODcT2nK025dQTUPWxTdLrr9sF5LvrNuBWEtu5Xr7CmFrPNTKyBOSxDMjDhoH60mNDtwG58ZhXUM4eyxTf2Sbt7J6+Fo+jl+dKTJZVPgxbSvpjR+lXLMDTkXdpG0LXf4H3Qhph0b4BkOv3VszCues7kFuRjCEJn6F5SBOs35eqS3E9xlK3eSPo74jc7oPvLgxmMg7F0ZK9aDP5fSzavAAnzp2wKhe1W3nWD5klc1B5pxBhayagbXgrHMjbb7WNemx7P3+1eiSq7uey5cxxds7B1tOLMX3jCLw99g3Eb41z+Xj2yuVN9yW8\/LJNIBMb31mbKu1aX42Lx6WvF6Iiai7Kpk2XUuvzbKOLgEx96bGN24D82pcvsjR6Hb6\/kYRT15ayxzIGHKwKl9hse2kANhT6Y80PfbDitC+2Fc3GqSvfoW9sZ5ZudwBfv+psf+wrX47cyjS0nt4Ys1Nn6FJcj7HUbQIX9EMX9nx4R1kAMsoCkX8rBUeL98A\/xg+tQpvhlRF\/s3osP+WLxcd7IvHUSJTdPIN1Oavxz7FvYsWOeJfqQ0AuubMdZXezWMazgz0i2yAtaTacDsPrI17C5gObXDqe2kb14XP8Cy\/g3oZNVsEsgTh5HWPj1bi+PAFXFi9F1fwY6Vly6ZSpKAqZyNbIo3GWpdbUlx6buQ3ILw17XkqlaYf38OVZOFgZht0VQQwEA5Be1A8p+X2w8owf4k72wtyDXdErtg1eG\/kCAma\/i2V7u1nUd13QAm+PeQMpe5J1Ka7HWOo22w5txYtDnkNYeidsKe6PbaX92TPkZNz+udR4\/FSKW4+Omw9LcIMd138sYZt4JVjCQLzgyOeIOtQNc7L9cLQyA\/vPZaFd+IcYuWSYy3RSp9bvTGiEKRsGs5dU5uKr1d3hO6uHA2PlwuDTBE2ayIcPDLnyGjUVQU2CkMrWjGo7ue6zO8ZwXP4lzz0nrX3pOfG9DekmQBOAKZ0mJpZAzDa5ri5dxth4ES6ytPpC5AyUTA5HYXCwtGt9dvBgUF967OU2IP\/foGel3d2DbL277+J47CwfITEZgTg1vy+SzvZGfF4vBCa0xCvDn8NHExshZGlrTFzaBvO3d7GoHx47BAUlBbqU1mMoa22Cl4\/D80y3CWkdse58X6QV+JsO+pzCdFt7rg+Svu+NBDZRkY7ExATiuTndMOOAD8L3dkHIzk+xKT+ebYLtl\/obxvSzNqYz5Uk7E9GILXMOXZqGuIMB6BTxsZ3jGEHsY8jl7qcyGbzuAJk7xnAcyAuffVbawLq56lsJ0LfXpuA2A+\/tNcnS21w3VyZJ9QTiywtjpZdB6M2uUvboiV4IOT9unPQc+cygQaC+9PjXbUB+NuAZxsCjGYCHI+PCQGxla+KNLJ2mQCcQR7JAbjHpFTQd\/RKCFrXClBXtEBbfFuErP8Ky3B6m+s5TP8He43t0KavHQPa0GbdsDEi\/tuwR2tiUDpiW0RHfMuASeGktnMCWC5RKLz3RE4uO9UCMDOKDPojY+xkm7uqMcZmd2GuczaV+hnw9qEb16x3dg20wTsS2wpEOALk6EFGdzNJ0lsFtBEVqEFfnY0CuibWNfRoMPmaWV9SrQcXLoNG2CZ8hqNvW3Of5zzwjPU6itS89I76xYiVuJLCDMTCl0teWLZfSaWLiynnzUTE7SnrsVDJ5MmPjCcgPGi3tWJ8aMADUlz0xp77HbUB+us+TUupJm1obGQsTWxFTxR3vAb\/FTfGU35MYYGiKaQy4EYntEbGyPWIyPzPVvzWyEVZnfatLSbXSNfGZ1pq9ZvbAM33\/ZNcRyZg4gjFxKAPxqK0f493gxlK7pZuX1LiOfeb1NE2qzjEyDw4eZObyXAJpkHlDUvmZ2jCQc\/UEeiXrm\/uqquLHsGxblRqEJtVOBHxfrrue++STqDTMk96hvrxosQRaeg2T1sL0vPgSY+GqmAXSPfQ2Fz07pvesaW18nu1W\/zByJHsZ5Avk9fMH9aUnPt0G5P\/p1RDrC4yp5hpKNRkLj13fBo1GvYSwhEn4rw7\/iSmrPpIYeO7WT9kmkJ+iXo9ydbXNk77\/jfA9XTCRZSGBya3x8uC\/odGw17Hn2G5dTnRUTwIy7bJnXhjkACNT4KvWyArQ8CCTQUL3q1mSv4+uVfW5Bvgo+pX7orO6rZL5lfV8u5q9ntWwobTeJaallzyIdavmxUgHvVNN6+GKOVEonzlL2qWmdbEEYpZSn\/vyS+k9a2LjE717g\/py1J90v9uA\/MfuT2AVSzMT2Tpx7n726Cj0RfSL8sf54vOS4E+0\/wNmbOyIJTls7ahRr0e5utqmYY8\/YkLWp\/CJbQa6bj+xnckONSXzlpx003PkZuyxHe2y027739kk8lFoe7Qe\/yEStiU4FEQSu5pAx4NMBg6VcWm16VoGoLU2cr3cj3zm7+evterlspo\/T3\/iCRSHhYF2oIltL8yYKYG2fOZs6UybWvSYqTRiCoonhaFwQoi0LqbXMuklkNMDA3HSvy+O9+wB6ktPDLgNyI93eUzakfZb\/A4L3A+xYa\/ydcvHOlZfr0e5utrmia5\/YBPZm6Dz8K9dt0NtS196ISR0fXfpcZ68xEllS5ye89+XgGyrvWU9Dyb+WgYPvxkml\/FnauP5jBzx+OMMmF9JAKWXO2jtS6mz6QibLL29VcTeqS5gX5DIZ8+MiYmNIB4opdTHfXvhaLeukPo6csRhMLsNyG8OfhPP+z+PmHUs5TBtdpidaqteq42nlj3W+T\/wVM8\/IXF7oqYtakov+tbVB+HvYdZ3XU17FKHpHfGX\/n+2IyNgoDOxr9Fvthm5Cso1sbFdapDMuARkZ9bIcj9yHGlNJnJdzZ0Xt2yJlGbN2KZVkLTmpe8Y0yMl2siiM4GXdqYlADMW\/mH4cNCjptOBgcjz98cJX18c7d4Nq157FdSXHv+7Dch6hPPWNjRp7Tycpcthztok88gOvDvhLXzNHn3NZ8\/rXxz0V6TvT7dPFlq\/mtJjSpmVQJJAK9VbKzem2UGpMqiMwFPsWnMbX5a68kDlr5X91eyzbHks87k0Px8L2VcZJzRo4NRBfVBflnqbx7JWJ4CskR1YM5aryvOL9DnLVeNHrZ+FNuHv4v2QtxGxqja\/tKEFRttB6yo7eFM\/Asi1AOS6EEA953SDT2RnXbO\/6+QXQHaVLQWQ6ymQC0oL6sCbcQLIAsj1FIDOOP7P\/Z9GdYczfYu2tbskEIwsJoRaTq9rFwDeMgEJIAsgCyB7QQwIIHuBE72FVYQe+rMTAWQBZMHIXhADAshe4ETBZPqZzFtsJ4AsgCwY2QtiQADZC5zoLawi9NCfWQggCyALRvaCGBBA9gInOspkDf7VANUdjvYn7tfPpK6ynWNAVn37xfwtFmcV0XpVT6vM2XFc2V71axmK79XWddldaYf62lfd8r\/9QJZArPx6mvl7pc4609MC3+hE5W9L8V+i9wx9moY0RsvwJmgb2Rwdoz4QKbbd2Vnd87\/dQKYfRbPFwIpfS1R8r9QY2IrvnZoYjOr4n4ORJwseDNW1p0mEv1eeVCzLFPKpviTvWIpj2be5PdVp6WOUy7oMxj4VNnJKRtkOyvO+E3tNgCUgx7IfP1x4tIedQK4jLEQ\/ssfZ2FZcmn1DtqjOd0pbKdvxddX14YD\/bWHEAf\/bCeTqBDcqqP4lCApYM2M9Uo4XXPGLh1r982XOtrf8pQq1vNadxjtQvtaakeU6OvOym8vVYyo\/W+qotKG5H8dkNbejnxFuPOo1BZDpp3q\/YT\/Va5uRtXSmMq2J1zymXlmttpMyQ\/7ngchu\/GdbY2v7xup4miytZQt+XO0xlP6ugtK\/zvnfRUAmxVTGJIObZhQtxfgy\/lo2CF\/GX+up15DPCtjsd6jRmSZmMOlK8mnJa0sGalOdDWW99Z3pFzpfGfoSXhj8VwWQ6R8+6K96bANZSydZFqpzTxZCwW\/BwEQKJpLQklMuq15O+31PervA\/xYY0e9\/FwFZNpTsWDrzZfy1fA9fxl\/XVD0faPK1zCbymPrP0mxrArM1feRx+bMsg7U2cr1+2XYf3YUXBj4Pv\/ntLYC8ubif9Jc9toFsDFxzlqWWR0t+W5kQtWG2MIFQzVL2jeF8rKnHcfyzff5X+5K3GX8tj69VJtcpz3YC2Whgi5nQlHZosI3FbOOMEloK8WX8tawgX0byqceX73PVmR+Pv5b7tyUDtdE\/I1tjk11HduJZ\/\/9FD0MbCbAyI49bEQRaI9PP4i473MsORiY9jGCuvSxEy64kF1\/OX8u258v4a7neFWe+X\/5a7tsejOj3v91ArrJYmxC4zeCwnf+b7zUGHa8sfy0rzpfx11r1xgDjJxpKwfgfh1PLRzLw8lsDgnY5k8fEvkZ5bM\/IluyklIF0dISdZDtYP2exH\/h7utdT6Dq7FTYx5qXfsSYgvzryRdB\/NIel9ZL+wmfqVl90j7H3P6DM49nW+ZFOirSb94stv5rHMvpB6366hy\/nr+X2fBl\/Ldc7emZ9uMD\/tbBGfqSoBGZyhPHggWMMSnMdny4pDS0bTWlQKSikfmXA8\/X8tXZ740RjHt\/HYGDAkPsytjGPoS2\/Nmjl8VRnlS34SYP6MY9lrwxGHRW71lzK6ZBsbPys3Cw07NYQnSNbSExMIKZ\/lqD\/mqZ\/wdxzcZz0Z3rJp4bhk6g2WJrxNQOESkebn3m\/8NdyP67PQpxbI5NcWnLK8jpw1ul\/I8E8ilOFf53zv\/2MbNOpDhhB9KUBGhcF2CPbykDuwoBMf5hHf5yXxf5Ab0\/FGGQUj0PC4aGYkt4PHSJbImCxr4Y8an8y+VzAQjRZmDMh0pkFNRfQSpZSy8A+W2SG1AefktrKzlxrZ8cnPw2dJJ85J5cAcp2ZVJxzpFZAyan153M+wHcXBktMzKfWrSOaY8HmaDtA\/Cj4dLKQOTtRZ0JGnR3OQmw9R1bJqc7OzPIosyUtG7qvzDn\/CyB7MZApCOXNrt7z2mMv+19qebPLfQFqjYGo3LngrRs6VKefI3XO2UIAuc4A2RGnO3av\/Pip\/8JOAshe6m8BZC91rJqttF4IUd\/j\/s\/OsZD75XVsAnWnfALI9QTIFFTqVzTdGWhirJqdBASQ6xGQBZhqFky1aV8BZAFk+3etha3qrK0EkEVw1tngrE2G87SxBZAFkAWQvSAGBJC9wImexh5CXtev1QWQBZAFI3tBDAgge4ETBcO5nuE8zaYCyALIgpG9IAYEkL3AiZ7GHkJe12cQAsgCyIKRvSAGBJC9wImC4VzPcJ5mUwFkAWTByF4QAwLIXuBET2MPIa\/rMwgBZAFkwcheEAMCyF7gRMFwrmc4T7OpALIAsmBkL4gBAWQvcKKnsYeQ1\/UZhACyALJgZC+IAQFkL3CiYDjXM5yn2VQAWQBZMLIXxIAAshc40dPYQ8jr+gxCANnjgJyJ6IAABJiOYCTlyYFBddHIVOjElz1qG53JsTBfL\/cjzp422QggK4LeEwJYBbzMaAQEJyFP0kNVZ1FG9cEIDrYFfk+wg5CRn2wEkD0dyFU8ePlrOdD5skfXNsEvtxVnHix1+VoA2dOBbBOUGkCuykNScACiMwmofL0Abl0Ga3WyCSB7JJC5NbLN9S4PVO7aNAFwZR5nCzHxyOAWQPa44FUCLzNaZlZr7Mrfz1\/LrMyXCWDIwPC0swCyhwNZnRoTsIOT8ky70nlJwQgwsbYKtHlJ0sZXsMVOtwC0ALLHAcPTglYFRmZvCaymnWsj05oeT5nKtRmbgB8ggGya+DwNwLK8gpHFxOPxQSwHc30+CyALIAsge0EMCCB7gRPrMxMJ3ZVLwwbCIEqDCHsIe3hiDDSIioqCOIQNRAx4dgz8P6+\/jU9FSriQAAAAAElFTkSuQmCC","width":242}
-%---
-%[output:1755935d]
-%   data: {"dataType":"text","outputData":{"text":" <strong>mean<\/strong> - Average or mean value of array\n    This MATLAB function returns the mean of the elements of A along the\n    first array dimension whose size does not equal 1.\n\n    Syntax\n      M = <strong>mean<\/strong>(A)\n      M = <strong>mean<\/strong>(A,\"all\")\n      M = <strong>mean<\/strong>(A,dim)\n      M = <strong>mean<\/strong>(A,vecdim)\n      M = <strong>mean<\/strong>(___,outtype)\n      M = <strong>mean<\/strong>(___,missingflag)\n      M = <strong>mean<\/strong>(___,Weights=W)\n\n    Input Arguments\n      <a href=\"matlab:web \/Applications\/MATLAB_R2025b.app\/help\/matlab\/ref\/double.mean.html#bt5b82t-1-A\">A<\/a> - Input data\n        vector | matrix | multidimensional array | table | timetable\n      <a href=\"matlab:web \/Applications\/MATLAB_R2025b.app\/help\/matlab\/ref\/double.mean.html#bt5b82t-1-dim\">dim<\/a> - Dimension to operate along\n        positive integer scalar\n      <a href=\"matlab:web \/Applications\/MATLAB_R2025b.app\/help\/matlab\/ref\/double.mean.html#mw_7e557632-72ff-44be-b891-c8646646387d\">vecdim<\/a> - Vector of dimensions\n        vector of positive integers\n      <a href=\"matlab:web \/Applications\/MATLAB_R2025b.app\/help\/matlab\/ref\/double.mean.html#bt5b82t-1-outtype\">outtype<\/a> - Output data type\n        \"default\" (default) | \"double\" | \"native\"\n      <a href=\"matlab:web \/Applications\/MATLAB_R2025b.app\/help\/matlab\/ref\/double.mean.html#mw_44035159-4a67-4049-b7c3-b6903c5de7a7\">missingflag<\/a> - Missing value condition\n        \"includemissing\" (default) | \"includenan\" | \"includenat\" |\n        \"omitmissing\" | \"omitnan\" | \"omitnat\"\n      <a href=\"matlab:web \/Applications\/MATLAB_R2025b.app\/help\/matlab\/ref\/double.mean.html#mw_2ccfc7be-2982-4dd2-88f6-5bd187b4fc88\">W<\/a> - Weighting scheme\n        vector | matrix | multidimensional array\n\n    Examples\n      <a href=\"matlab:openExample('matlab\/MeanOfMatrixColumnsExample')\">Mean of Matrix Columns<\/a>\n      <a href=\"matlab:openExample('matlab\/MeanOfMatrixRowsExample')\">Mean of Matrix Rows<\/a>\n      <a href=\"matlab:openExample('matlab\/MeanOf3DArrayExample')\">Mean of 3-D Array<\/a>\n      <a href=\"matlab:openExample('matlab\/MeanOfArrayPageExample')\">Mean of Array Page<\/a>\n      <a href=\"matlab:openExample('matlab\/MeanOf8BitIntegerArrayExample')\">Mean of Single-Precision Array<\/a>\n      <a href=\"matlab:openExample('matlab\/MeanExcludingNaNExample')\">Mean Excluding Missing Values<\/a>\n      <a href=\"matlab:openExample('matlab\/WeightedMeanExample')\">Weighted Mean<\/a>\n\n    See also <a href=\"matlab:help double.median -displayBanner\">median<\/a>, <a href=\"matlab:help mode -displayBanner\">mode<\/a>, <a href=\"matlab:help std -displayBanner\">std<\/a>, <a href=\"matlab:help var -displayBanner\">var<\/a>, <a href=\"matlab:help double.sum -displayBanner\">sum<\/a>\n\n    Introduced in MATLAB before R2006a\n    <a href=\"matlab:doc mean\">Documentation for mean<\/a>\n    <a href=\"matlab:matlab.lang.internal.introspective.overloads.displayOverloads('mean')\">Other uses of mean<\/a>\n\n","truncated":false}}
-%---
-%[output:53c8fdb0]
-%   data: {"dataType":"text","outputData":{"text":"  d = <strong>rr2dd<\/strong>(r)\n \n  Convert angle from radians to degrees.\n \n  Input arguments:\n  * r: angle in radians\n \n  Output arguments:\n  * d: angle in degrees\n\n","truncated":false}}
-%---
-%[output:4e968759]
-%   data: {"dataType":"textualVariable","outputData":{"name":"d","value":"90"}}
-%---
-%[output:246a1fa4]
-%   data: {"dataType":"text","outputData":{"text":"  Name      Size            Bytes  Class     Attributes\n\n  d         1x1                 8  double              \n\n","truncated":false}}
-%---
-%[output:353fc3de]
-%   data: {"dataType":"textualVariable","outputData":{"name":"theta","value":"90"}}
-%---
-%[output:27e9fd9a]
-%   data: {"dataType":"textualVariable","outputData":{"name":"theta","value":"90"}}
-%---
-%[output:580c0913]
-%   data: {"dataType":"textualVariable","outputData":{"name":"d","value":"90"}}
-%---
-%[output:3f7cfab2]
-%   data: {"dataType":"text","outputData":{"text":"Test 1 - Expected: [0 90], Received: 26.5651\n","truncated":false}}
-%---
-%[output:0fb2603b]
-%   data: {"dataType":"text","outputData":{"text":"Test 2 - Expected: [270 360], Received: 315\n","truncated":false}}
-%---
-%[output:12cbaaba]
-%   data: {"dataType":"text","outputData":{"text":"Test 3 - Expected: [180 270], Received: 243.4349\n","truncated":false}}
 %---
