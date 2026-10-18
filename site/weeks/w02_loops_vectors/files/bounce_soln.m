@@ -31,6 +31,21 @@ hold off %[output:7d511d7e]
 disp(d)                % Total distance after N bounces (m) %[output:9b3814dc]
 %[text] The plot shows geometric decay: each point is 60% of the one before it, so the heights drop steeply at first and then crowd toward zero.
 %%
+%[text] ## Two ways to compute the heights: update rule versus formula
+%[text] The loop above uses an *update rule*: each pass computes the new height from the previous one, `h = r * h`. The variable `h` carries the state of the ball from one bounce to the next.
+%[text] Because this rule is so simple, we also know a *formula* for the height after bounce $n$ directly, $h\_n = r^n h\_0$. A loop can evaluate that formula on every pass instead, with no memory of the previous height:
+d2 = h0;     % Cumulative total distance, formula version (m)
+for n = 1:N
+    h_n = h0 * r^n;        % Height after bounce n, from the formula (m)
+    d2 = d2 + 2 * h_n;     % Up to h_n and back down (m)
+end
+d2                     % Formula total (m)
+d                      % Update-rule total from Part 1 (m)
+%[text] Both give the same total, so both are correct. The difference is what each one needs to know:
+%[text] - The update rule needs only the current height and how one bounce changes it. That is how the physics is stated ("each rebound is 60% of the last fall"), and it is how nearly every simulation in this course works: Euler's method for ODEs later in the quarter is the same pattern, `new = old + change`.
+%[text] - The formula needs the solution of the update rule worked out ahead of time. Here that is easy, but for most engineering models no such formula exists, and the update rule is all we have. When a formula does exist, it makes a good independent check, as $d\_\\infty$ does in Part 3.
+%[text] One trap with the formula: the height after bounce $n$ is $r^n h\_0$, not $r^{n-1} h\_0$. The exponent $n - 1$ gives the height *before* bounce $n$, shifts every point one bounce to the right, and gives bounce 6 as the answer to Part 2. The update rule avoids the question, because the loop counter is not used to compute the height at all.
+%%
 %[text] ## Part 2 — When is the rebound below 0.2 m?
 %[text] Reading the plot, the rebound height first drops below 0.2 m on **bounce 5**: after bounce 4 the ball still rises to about 0.26 m, and after bounce 5 only to about 0.16 m. 
 %%
