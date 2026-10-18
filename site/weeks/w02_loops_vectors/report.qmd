@@ -1,0 +1,45 @@
+---
+title: "Assignment 2 Report: Loops and Vectors"
+---
+
+Assignment evaluation. Two tests:
+
+- F1: all three files present with exact names.
+- R1: each script runs from a clean workspace.
+- Grade: 100, minus 5 per failed check (100, 95 or 90).
+
+And spot checks of the code.
+
+## Results
+
+| | Count |
+|---|---|
+| Grade 100 | 24 |
+| Grade 95 | 2 |
+| All three files with exact names (graded) | 26 of 26 |
+| Scripts run from a clean workspace (graded) | all but 2 `span_statistics.m` |
+
+## To Discuss
+
+- Clean workspace, again. The two R1 failures were both in `span_statistics.m`: one loaded the data from an absolute path on the student's own machine (`C:\Users\...\ansur_span.mat`), the other never called `load` and relied on `span` already being in the workspace (its `total_sum` is also never initialized, so it would have failed anyway). Relative file names and `clear` + Run before saving catch both.
+- Building a sequence versus evaluating a formula. About 9 of 26 `bounce.m` compute `h0*r^i` inside the loop instead of the recursion `h = r*h`. The numbers come out right, but the point of the exercise (each step built from the previous one) is lost.
+- `fprintf` and using other AI suggestions:
+
+```matlab
+%% Display the final results
+fprintf('--- Calculated Statistics ---\n');
+fprintf('Total Observations (n): %d\n', n_elements);
+fprintf('Calculated Mean (μ):    %.4f meters\n', calculated_mean);
+fprintf('Standard Deviation (σ):  %.4f meters\n', calculated_std);
+```
+
+## Good patterns to show
+
+- Vector arithmetic in `lcs_flow.m`: all 26 evaluated x as a vector with array arithmetic `./` and `.^`; nobody looped over x or pasted the formula once per time.
+- Checking a loop against the built-ins (`span_statistics.m`), as six students did.
+- A legend that stays in step with the loop (`lcs_flow.m`): `plot(x, v, 'DisplayName', sprintf('t = %d s', t))`, then `legend`. Class demo of both legend methods, and how the classic one mislabels silently: [lesson_legends.m]({{< var repo_blob >}}/book/w02_loops_vectors/lessons/lesson_legends.m).
+
+## Correctness at a glance (not graded)
+
+- `span_statistics.m`: all 26 used loops for the main result; mean right in all 26; standard deviation right in 23.
+- `lcs_flow.m`: 19 of 26 leave two populated figures when run; about 15 are fully correct with two figures. Five have no legend.
