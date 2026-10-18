@@ -13,14 +13,14 @@ N  = 20;     % Number of bounces to simulate
 %%
 %[text] ## Part 1 — Rebound heights and total distance
 %[text] Before the loop, the ball has fallen once from $h\_0$, so the running total starts at `h0` and the current height starts at `h0`. Each time through the loop the height is multiplied by `r` (the new rebound height), the ball travels up to that height and back down (`2 * h`), and one point is added to the plot. `hold on` keeps the earlier points on the axes instead of replacing them.
-h = h0;      % Current rebound height (m)
-d = h0;      % Cumulative (summed) total distance (m)
+h = h0;      
+d = h0;      
 figure(1) %[output:7d511d7e]
 clf() %[output:7d511d7e]
 hold on %[output:7d511d7e]
 for n = 1:N
-    h = r * h;             % Height after bounce n (m)
-    d = d + 2 * h;         % Up to h and back down (m)
+    h = r * h;             
+    d = d + 2 * h;         
     plot(n, h, 'bo') %[output:7d511d7e]
 end
 xlabel('Bounce number') %[output:7d511d7e]
@@ -31,20 +31,22 @@ hold off %[output:7d511d7e]
 disp(d)                % Total distance after N bounces (m) %[output:9b3814dc]
 %[text] The plot shows geometric decay: each point is 60% of the one before it, so the heights drop steeply at first and then crowd toward zero.
 %%
-%[text] ## Two ways to compute the heights: update rule versus formula
+%[text] ## Two ways to compute the heights: Incremental update (above) versus formula
 %[text] The loop above uses an *update rule*: each pass computes the new height from the previous one, `h = r * h`. The variable `h` carries the state of the ball from one bounce to the next.
 %[text] Because this rule is so simple, we also know a *formula* for the height after bounce $n$ directly, $h\_n = r^n h\_0$. A loop can evaluate that formula on every pass instead, with no memory of the previous height:
-d2 = h0;     % Cumulative total distance, formula version (m)
+d2 = h0;     
 for n = 1:N
-    h_n = h0 * r^n;        % Height after bounce n, from the formula (m)
-    d2 = d2 + 2 * h_n;     % Up to h_n and back down (m)
+    h_n = h0 * r^n;        
+    d2 = d2 + 2 * h_n;     
 end
-d2                     % Formula total (m)
-d                      % Update-rule total from Part 1 (m)
-%[text] Both give the same total, so both are correct. The difference is what each one needs to know:
-%[text] - The update rule needs only the current height and how one bounce changes it. That is how the physics is stated ("each rebound is 60% of the last fall"), and it is how nearly every simulation in this course works: Euler's method for ODEs later in the quarter is the same pattern, `new = old + change`.
-%[text] - The formula needs the solution of the update rule worked out ahead of time. Here that is easy, but for most engineering models no such formula exists, and the update rule is all we have. When a formula does exist, it makes a good independent check, as $d\_\\infty$ does in Part 3.
-%[text] One trap with the formula: the height after bounce $n$ is $r^n h\_0$, not $r^{n-1} h\_0$. The exponent $n - 1$ gives the height *before* bounce $n$, shifts every point one bounce to the right, and gives bounce 6 as the answer to Part 2. The update rule avoids the question, because the loop counter is not used to compute the height at all.
+%[text] Formula distance:
+d2                      %[output:976f7d51]
+%[text] Incremental update distance
+d                    %[output:63c10f0d]
+%[text] Both give the same total, so both are correct. The key is to understand the two methods
+%[text] - **Numerical:** The update rule needs only the current height and how one bounce changes it.  This it is how most simulation works: 
+%[text]     - Euler's method for ODEs later in the quarter is the same pattern, `new = old + change`.
+%[text] - **Analytical:** The formula is closed form.  Here that is easy, but for most engineering models no such formula exists, and the update rule is all we have.  \
 %%
 %[text] ## Part 2 — When is the rebound below 0.2 m?
 %[text] Reading the plot, the rebound height first drops below 0.2 m on **bounce 5**: after bounce 4 the ball still rises to about 0.26 m, and after bounce 5 only to about 0.16 m. 
@@ -53,12 +55,13 @@ d                      % Update-rule total from Part 1 (m)
 %[text] The series is geometric with ratio $r \< 1$, so it converges. Summing it in closed form gives
 %[text] $d\_\\infty = h\_0 + \\frac{2 r h\_0}{1 - r} = h\_0 \\, \\frac{1 + r}{1 - r}$
 %[text] which for these parameters is $2 \\times 1.6 / 0.4 = 8$ m. Compare the loop's running total with the closed form:
-d_inf = h0 * (1 + r) / (1 - r);     % Closed-form total distance (m)
-d                      % Loop total (m) %[output:976f7d51]
-d_inf                  % Closed-form total (m) %[output:63c10f0d]
-delta = d_inf - d        % Difference (m) %[output:785424d1]
-%[text] **Reflect:** with $N = 20$ the loop total is within a quarter of a millimetre of 8 m, and increasing $N$ only shrinks that gap; the total does not grow without limit. The missing piece is the tail of the series, $2 h\_0 r^{N+1}/(1 - r)$, which is already tiny by bounce 20. Physically, the ball keeps bouncing forever in this model, but the bounces become so small that the total distance has a hard ceiling of 8 m.
-%[text] Once everything works and all cells show successful output, save the live script and submit **bounce.m** via Sakai.
+%[text] Analytical, Closed Form: 
+d_inf = h0 * (1 + r) / (1 - r) %[output:785424d1]
+%[text] Numerical (from above):
+d                      %[output:4f74864d]
+%[text] Difference: 
+delta = d_inf - d     %[output:78be8e4d]
+%[text] 
 
 %[appendix]{"version":"1.0"}
 %---
@@ -72,11 +75,17 @@ delta = d_inf - d        % Difference (m) %[output:785424d1]
 %   data: {"dataType":"text","outputData":{"text":"    7.9998\n\n","truncated":false}}
 %---
 %[output:976f7d51]
-%   data: {"dataType":"textualVariable","outputData":{"name":"d","value":"7.9998"}}
+%   data: {"dataType":"textualVariable","outputData":{"name":"d2","value":"7.9998"}}
 %---
 %[output:63c10f0d]
-%   data: {"dataType":"textualVariable","outputData":{"name":"d_inf","value":"8"}}
+%   data: {"dataType":"textualVariable","outputData":{"name":"d","value":"7.9998"}}
 %---
 %[output:785424d1]
+%   data: {"dataType":"textualVariable","outputData":{"name":"d_inf","value":"8"}}
+%---
+%[output:4f74864d]
+%   data: {"dataType":"textualVariable","outputData":{"name":"d","value":"7.9998"}}
+%---
+%[output:78be8e4d]
 %   data: {"dataType":"textualVariable","outputData":{"name":"delta","value":"2.1937e-04"}}
 %---
