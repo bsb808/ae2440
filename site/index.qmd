@@ -25,19 +25,23 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 |  | Tue 20 Oct | *No class* ^‡^ |  |  |  |
 |  | Wed 21 Oct | Conditionals | [<i class="bi bi-book" aria-label="Reading"></i> Ch 6](resources/textbook.qmd "Read Chapter 6, Conditionals") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-4 "Lesson") |  |
 |  | Thu 22 Oct | Work on Assignment 3 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w03_functions_conditionals/assignment.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
-| [5](#week-5) | 26–29 Oct | Data Types; Function Handles and Zero-Finding |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A4 (Fri 30 Oct) |
+| [5](#week-5) | Mon 26 Oct | *No class* ^§^ |  |  |  |
+|  | Tue 27 Oct | Data types | [<i class="bi bi-book" aria-label="Reading"></i> Ch 7](resources/textbook.qmd "Read Chapter 7, Data Types") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
+|  | Wed 28 Oct | Function handles and zero-finding | [<i class="bi bi-book" aria-label="Reading"></i> Ch 8](resources/textbook.qmd "Read Chapter 8, Function Handles and Zero-Finding") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
+|  | Thu 29 Oct | Work on Assignment 4 |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A4 (Fri 30 Oct) |
 | [6](#week-6) | 2–5 Nov | Functions of Vectors; Ordinary Differential Equations |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A5 (Fri 6 Nov) |
-| [7](#week-7) | 9–12 Nov | Matrices and Systems of ODEs; Second-Order Systems ^§^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 13 Nov) |
+| [7](#week-7) | 9–12 Nov | Matrices and Systems of ODEs; Second-Order Systems ^‖^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 13 Nov) |
 | [8](#week-8) | 16–19 Nov | Two Dimensions; Optimization |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A7 (Fri 20 Nov) |
 | [9](#week-9) | 23–26 Nov | Interpolation, Curve Fitting and Regression ^¶^ |  |  |  |
-| [10](#week-10) | 30 Nov–3 Dec | Introduction to Reinforcement Learning |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A8 (Fri 4 Dec) |
-| [11](#week-11) | 7–10 Dec | Q-Learning and Blackjack ^#^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A9 (Fri 11 Dec) |
+| [10](#week-10) | 30 Nov–3 Dec | TBD |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A8 (Fri 4 Dec) |
+| [11](#week-11) | 7–10 Dec | TBD ^#^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A9 (Fri 11 Dec) |
 :::
 
 ::: {.small}
 ^†^ Columbus Day (Mon 12 Oct) and instructor travel: no class all week.<br>
 ^‡^ Shift day (Tue 20 Oct follows the Friday schedule): no class Tue.<br>
-^§^ Veterans Day (Wed 11 Nov): no class Wed.<br>
+^§^ Instructor jury duty (Mon 26 Oct): no class Mon.<br>
+^‖^ Veterans Day (Wed 11 Nov): no class Wed.<br>
 ^¶^ Thanksgiving (Thu 26 Nov): no class Thu.<br>
 ^#^ Pre-graduation awards ceremony (Tue 8 Dec). Last day of classes Fri 11 Dec.
 :::
@@ -118,45 +122,59 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 ## Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding {#week-5}
 
-Details will be posted by Mon 12 Oct.
+**Monday:** No class. Instructor jury duty. Use the time to get started on the Chapter 7 reading.
+
+- Reading: [Using AI at Mind Robotics: Our First Principles](weeks/w04_datatypes_fzero/files/Using_AI_at_Mind_Robotics_Our_First_Principles_Open_Source_Aug_2026.pdf)
+
+**Tuesday:** Data types
+
+- Before class: Read Chapter 7, Data Types: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_datatype.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_datatype.m)
+
+**Wednesday:** Function handles and zero-finding
+
+- Before class: Read Chapter 8, Function Handles and Zero-Finding: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_fhandles_fzero.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_fhandles_fzero.m)
+
+**Thursday:** Work on Assignment 4
 
 - Due Friday 30 Oct, 1700: Assignment 4: Data Types, Function Handles and Zero-Finding
 
 ## Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations {#week-6}
 
-Details will be posted by Mon 19 Oct.
+Details will be posted.
 
 - Due Friday 6 Nov, 1700: Assignment 5: Solving First-Order ODEs
 
 ## Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems {#week-7}
 
-Details will be posted by Mon 26 Oct.
+Details will be posted.
 
 - Veterans Day: no class Wed 11 Nov.
 - Due Friday 13 Nov, 1700: Assignment 6: Matrices and Systems of ODEs
 
 ## Week 8 — 16 Nov: Two Dimensions; Optimization {#week-8}
 
-Details will be posted by Mon 2 Nov.
+Details will be posted.
 
 - Due Friday 20 Nov, 1700: Assignment 7: Two Dimensions and Optimization
 
 ## Week 9 — 23 Nov: Interpolation, Curve Fitting and Regression {#week-9}
 
-Details will be posted by Mon 9 Nov.
+Details will be posted.
 
 - Thanksgiving: no class Thu 26 Nov.
 - Nothing due this week. Assignment 8 is due the following Friday.
 
 ## Week 10 — 30 Nov: Introduction to Reinforcement Learning {#week-10}
 
-Details will be posted by Mon 16 Nov.
+Details will be posted.
 
 - Due Friday 4 Dec, 1700: Assignment 8: Interpolation, Curve Fitting and Regression
 
 ## Week 11 — 7 Dec: Q-Learning and Blackjack {#week-11}
 
-Details will be posted by Mon 23 Nov.
+Details will be posted.
 
 - Pre-graduation awards ceremony Tue 8 Dec.
 - Last day of classes Fri 11 Dec.
