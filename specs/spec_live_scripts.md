@@ -5,7 +5,7 @@
 - Outputs: `book/wNN_topic/chapter/<name>.m` (generated, output-free, committed); `site/weeks/wNN_topic/files/<name>.m` (a copy of it, also output-free); a `[Live script]` link in the Formats column of `site/resources/textbook.qmd` (the schedule's reading cells link to that page).
 - Owner: AI converts and verifies, author reads end to end in MATLAB.
 - Verification: tier A (no MATLAB) `livescript_lint.py --strict` clean and `tex2mlive.py --check` passing; tier B `livescript_verify.m` (checkcode, export with Run, executeAndSave copy with body identical to the source); the author's read; `quarto render site` clean.
-- Status: chapters 1–2 released (2026-09-26); chapters 3–6 converted, verified through tier B and released (2026-10-05), author read pending.
+- Status: chapters 1–2 released (2026-09-26); chapters 3–6 converted, verified through tier B and released (2026-10-05), author read pending; chapters 7–8 the same (2026-10-24).
 
 ## Decisions (2026-09-26)
 
@@ -42,8 +42,8 @@ LaTeX comments on their own line, invisible in the PDF, immediately before the e
 | 2 | 4 Vectors | 2026-10-05 (8 noexec) | 2026-10-05 | clean | 2026-10-05 | pending | 2026-10-05 | error demos, the Fibonacci listing (needs `n`) and its plot, and the unprompted initialization block are examples; source fixes also correct the PDF (`xx`/`X` mix-up, `\lstinline(size())`, empty `\nameref` to Exercise 3.6, `Y(end)` output); `eqnarray` now one centered line per row; `\url` emitted as `[url](url)` |
 | 3 | 5 Functions | 2026-10-05 (12 noexec) | 2026-10-05 | clean | 2026-10-05 | pending | 2026-10-05 | functions become local functions of the live script, so each name is defined once: the first `myfunc` runs, the documented redefinition is an example, as are `something_else`, the `sum` that shadows the built-in, error sessions, `edit mean` and `local_function_demo`; released as `functions_chapter.m` because `functions.m` shadows a MATLAB built-in (warning on every run); source fixes: `sum_and_product` gains its `end`, `\Verb` becomes `\emph`, the `s` error split from the `clear`/`who` session |
 | 3 | 6 Conditionals | 2026-10-05 (11 noexec) | 2026-10-05 | clean | 2026-10-05 | pending | 2026-10-05 | first `is_pythagorean` and the final `find_triples` (Listing 6.1) run; the earlier `find_triples` versions, their sessions, the `for` fragments, the `=` syntax error and the bare output block are examples |
-| 4 | 7 Data Types | | | | | | | |
-| 4 | 8 Function Handles and Zero-Finding | | | | | | | `\lstinputlisting` with `mcode_numbers` style |
+| 4 | 7 Data Types | 2026-10-24 (1 error) | 2026-10-24 | clean | 2026-10-24 | pending | 2026-10-24 | released in Week 5 of the schedule; the `"hello" - " world!"` session is a deliberate error (R2026b's message now reads "Invalid data type", not the book's "Operator '-' is not supported"); source fixes also correct the PDF: `>>` prompts added to seven sessions that mixed commands and output (the output had become code, a parse error) and to the `rectangle` session (only its first line ran) |
+| 4 | 8 Function Handles and Zero-Finding | 2026-10-24 (6 noexec, 4 error) | 2026-10-24 | clean | 2026-10-24 | pending | 2026-10-24 | released in Week 5 of the schedule; the first `error_func` runs, the broken and vectorized redefinitions and the sessions that need them are examples; `fzero(error_func, ...)`, the same-sign bracket, `plot_error.m` (fails on the scalar `error_func`, as the text says) and `sin(5)` are deliberate errors; converter learned `error` on listings, unwrapping `{\binoppenalty=\maxdimen ...}` groups, and "on page~\pageref" as "in Section N"; source fixes: Exercise 8.1's polynomial moved inline (a display equation inside the list restarted MATLAB's numbering), "see Chapter~\ref{howfzero}" to "Section" |
 | 5 | 9 Functions of Vectors | | | | | | | |
 | 5 | 10 Ordinary Differential Equations | | | | | | | one `\includepdf` |
 | 6 | 11 Matrices and Systems of ODEs | | | | | | | |

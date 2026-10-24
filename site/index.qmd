@@ -128,12 +128,12 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 **Tuesday:** Data types
 
-- Before class: Read Chapter 7, Data Types: [Textbook](resources/textbook.qmd)
+- Before class: Read Chapter 7, Data Types: [PDF](weeks/w04_datatypes_fzero/files/datatypes.pdf) · [Live script](weeks/w04_datatypes_fzero/files/datatypes.m){download="datatypes.m"} (beta)
 - Lesson: [lesson_datatype.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_datatype.m)
 
 **Wednesday:** Function handles and zero-finding
 
-- Before class: Read Chapter 8, Function Handles and Zero-Finding: [Textbook](resources/textbook.qmd)
+- Before class: Read Chapter 8, Function Handles and Zero-Finding: [PDF](weeks/w04_datatypes_fzero/files/zerofinding.pdf) · [Live script](weeks/w04_datatypes_fzero/files/zerofinding.m){download="zerofinding.m"} (beta)
 - Lesson: [lesson_fhandles_fzero.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_fhandles_fzero.m)
 
 **Thursday:** Work on Assignment 4

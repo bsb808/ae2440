@@ -148,6 +148,22 @@ class Code(unittest.TestCase):
         self.assertEqual(lines[i + 1], "%%")
         self.assertEqual(lines[i + 2], "%[text] After.")
 
+    def test_error_directive_isolates_listing(self):
+        out, _ = convert("""
+            Before.
+            % mlive: error
+            \\begin{lstlisting}[style=mcode]
+            y = undefined_func(1);
+            \\end{lstlisting}
+            After.
+            """)
+        lines = body_lines(out)
+        i = lines.index("y = undefined_func(1);")
+        self.assertEqual(lines[i - 1], t.ERROR_NOTE)
+        self.assertEqual(lines[i - 2], "%%")
+        self.assertEqual(lines[i + 1], "%%")
+        self.assertEqual(lines[i + 2], "%[text] After.")
+
     def test_skip_directive(self):
         out, _ = convert("""
             % mlive: skip
@@ -236,6 +252,24 @@ class Prose(unittest.TestCase):
         out, conv = convert("See Figure~\\ref{fig:a}, Chapter~\\ref{other}, Exercise~\\ref{ex:p} and page~\\pageref{sec:one}.")
         self.assertIn("See Figure 3.1, Chapter 8, Function Handles and Zero-Finding, Exercise 3.1 and Section 3.1.", out)
         self.assertEqual(conv.warnings, [])
+
+    def test_on_page_ref_reads_in_section(self):
+        out, conv = convert("See ``\\nameref{sec:one}'' on page~\\pageref{sec:one}.")
+        self.assertIn("in Section 3.1.", out)
+        self.assertNotIn("on Section", out)
+        self.assertEqual(conv.warnings, [])
+
+    def test_penalty_group_is_unwrapped(self):
+        out, _ = convert("""
+            {\\binoppenalty=\\maxdimen%
+            \\relpenalty=\\maxdimen% keep the equation on one line
+            Consider $x = 3$.}
+
+            Next paragraph.
+            """)
+        lines = body_lines(out)
+        self.assertIn("%[text] Consider $x = 3$.", lines)
+        self.assertFalse(any("{" in l or "}" in l or "penalty" in l for l in lines if "Consider" in l))
 
     def test_unresolved_ref_warns(self):
         out, conv = convert("See Figure~\\ref{nope}.")

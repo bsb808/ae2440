@@ -545,6 +545,8 @@ class Converter:
         return f"{word} {lb.number}" if with_word else lb.number
 
     def render_refs(self, text: str) -> str:
+        # A live script has no pages: "on page~\pageref{x}" becomes "in Section N".
+        text = re.sub(r"\bon page[~ ]\\pageref\{([^}]*)\}", lambda m: "in " + self._ref(m.group(1), True), text)
         text = re.sub(r"(?:page[~ ])?\\pageref\{([^}]*)\}", lambda m: self._ref(m.group(1), True), text)
         text = re.sub(r"\\nameref\{([^}]*)\}",
                       lambda m: f"*{self.labels[m.group(1)].title}*" if m.group(1) in self.labels
@@ -775,6 +777,8 @@ class Converter:
             prefix = f"%[text] {label}{self._caption_text(cap_raw)}\n"
         if directive == "noexec" or lang != "matlab":
             return f"\n\n{prefix}{_emit_example(body)}\n\n"
+        if directive == "error":
+            return f"\n\n{_SECTION}\n{prefix}{ERROR_NOTE}\n{_CODE}\n{body.strip(chr(10))}\n{_ENDCODE}\n{_SECTION}\n\n"
         return f"\n\n{prefix}{_CODE}\n{body.strip(chr(10))}\n{_ENDCODE}\n\n"
 
     def render_verbatim(self, m: re.Match) -> str:
@@ -943,13 +947,17 @@ class Converter:
 
         # 4. `\index{}` and layout-only tokens.
         s = strip_command_balanced(s, "index")
+        # A `{\binoppenalty=\maxdimen ...}` group only keeps an equation on one
+        # line in the PDF: unwrap it and drop the assignments (before `\maxdimen`
+        # itself is stripped, so the value goes with its assignment).
+        s = sub_balanced(s, re.compile(r"\{(?=\\(?:binop|rel)penalty)"), lambda m, a: a)
+        s = re.sub(r"\\(?:binop|rel)penalty\s*=\s*(?:\\maxdimen\b|-?\d+)", "", s)
         for tok in ("noindent", "clearpage", "pagebreak", "newpage", "bigskip", "medskip", "smallskip",
                     "centering", "protect", "linewidth", "textwidth", "maxdimen"):
             s = re.sub(r"\\" + tok + r"\b", "", s)
         s = sub_balanced(s, re.compile(r"\\centerline\s*\{"), lambda m, a: a)
         s = re.sub(r"\\hspace\*?\{[^}]*\}", " ", s)
         s = re.sub(r"\\vspace\*?\{[^}]*\}", "", s)
-        s = re.sub(r"\\(?:binop|rel)penalty\s*=\s*\S+", "", s)
 
         # 5. Inline prose pass.
         s = self.inline(s)

@@ -194,6 +194,7 @@ function, and where.  If you modify \lstinline{error_func} so that it displays
 the value of \lstinline{x} when it is called and then run \lstinline{fzero}
 again, you get
 
+% mlive: noexec
 \begin{code}
 >> fzero(@error_func, [2,4])
 x = 2
@@ -213,7 +214,7 @@ Not surprisingly, it starts by computing $f(2)$ and $f(4)$.  Then it computes a 
 The \lstinline{fzero} function stops when the interval is so small that the estimated
 zero is correct to about 15~digits.
 
-If you'd like to know more about how \lstinline{fzero} works, see Chapter~\ref{howfzero}.
+If you'd like to know more about how \lstinline{fzero} works, see Section~\ref{howfzero}.
 
 
 \subsection{What Could Go Wrong?}
@@ -221,6 +222,7 @@ If you'd like to know more about how \lstinline{fzero} works, see Chapter~\ref{h
 The most common problem people have with \lstinline{fzero} is leaving
 out the \lstinline{@}.  In that case, you get something like so:
 
+% mlive: error
 \begin{code}
 >> fzero(error_func, [2,4])
 Not enough input arguments.
@@ -242,12 +244,14 @@ enforce this rule, so it's easy to forget.
 For example, if you
 write
 
+% mlive: noexec
 \begin{code}
 function res = error_func(x)
     y = x^2 - 2*x -3
 end
 \end{code}
 and then call it from the Command Window,
+% mlive: noexec
 \begin{code}
 >> error_func(4)
 y = 5
@@ -257,6 +261,7 @@ a value to \lstinline{y}, and it displays the result, but when the function
 ends, \lstinline{y} disappears along with the function's workspace.
 If you try to use it with \lstinline{fzero}, you get
 
+% mlive: noexec
 \begin{code}
 >> fzero(@error_func, [2,4])
 y = -3
@@ -277,6 +282,7 @@ provided you understand that ``output argument'' and ``output variable'' are the
 
 You would have seen the same error message when calling \lstinline{error_func} from the interpreter, if you had assigned the result to a variable:
 
+% mlive: noexec
 \begin{code}
 >> x = error_func(4)
 y = 5
@@ -288,6 +294,7 @@ call to "error_func".
 Another thing can go wrong: if you provide an interval for the
 initial guess and it doesn't actually contain a root, you get
 
+% mlive: error
 \begin{code}
 >> fzero(@error_func, [0,1])
 Error using fzero (line 272)
@@ -316,6 +323,7 @@ to provide  a good initial guess.
 If not, another way to choose an initial guess is to plot the error function and
 approximate the zeros visually.  Here is a short script to do just that:
 
+% mlive: error
 \lstinputlisting[style=mcode]{w04_datatypes_fzero/lessons/plot_error.m}
 
 We've used the \lstinline{linspace} command to create a vector starting at -2, ending with 5, with 100 elements. The \lstinline{grid on} command displays the gray grid lines, which help identify the zero crossings.  You may also notice that if you use by hovering the cursor over the graph, MATLAB will display the nearest data point values using the \emph{data tips} interactive tool, illustrated in Figure~\ref{f:error_data}
@@ -354,6 +362,7 @@ The problem is that it uses the \lstinline{*} and \lstinline{^} operators which 
 
 If you rewrite \lstinline{error_func} like this:
 
+% mlive: noexec
 \begin{code}
 function res = error_func(x)
     res = x.^2 - 2.*x -3;
@@ -450,6 +459,7 @@ For example, if you assign
 a value to \lstinline{sin} and then try to use the \lstinline{sin} function, you
 might get an error:
 
+% mlive: error
 \begin{code}
 >> sin = 3;
 >> sin(5)
@@ -556,11 +566,7 @@ Before you go on, you might want to work on the following exercises.
 
 \item Write a function called \lstinline{cheby6} that evaluates the
 sixth Chebyshev polynomial.  It should take an input variable,
-$x$, and return
-
-\begin{equation*}
-32 x^6 - 48 x^4 + 18 x^2 - 1
-\end{equation*}
+$x$, and return $32 x^6 - 48 x^4 + 18 x^2 - 1$.
 
 \item Use \lstinline{plot} to display a graph of this function in the
 interval from $-1$ to $1$.  Estimate the location of any zeros in this
