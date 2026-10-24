@@ -11,6 +11,7 @@ Assignments are typically due Fridays at 1700 and are submitted through [Sakai](
 | [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd) | Models and Scripts | [penny_soln.m](weeks/w01_modeling_scripts/files/penny_soln.m){download="penny_soln.m"} · [pennywithair_soln.m](weeks/w01_modeling_scripts/files/pennywithair_soln.m){download="pennywithair_soln.m"} · [bike_update_soln.m](weeks/w01_modeling_scripts/files/bike_update_soln.m){download="bike_update_soln.m"} · [aquarium_soln.m](weeks/w01_modeling_scripts/files/aquarium_soln.m){download="aquarium_soln.m"} |  |
 | [Assignment 2](weeks/w02_loops_vectors/assignment.qmd) | Loops and Vectors | [bounce_soln.m](weeks/w02_loops_vectors/files/bounce_soln.m){download="bounce_soln.m"} · [span_statistics_soln.m](weeks/w02_loops_vectors/files/span_statistics_soln.m){download="span_statistics_soln.m"} · [lcs_flow_soln.m](weeks/w02_loops_vectors/files/lcs_flow_soln.m){download="lcs_flow_soln.m"} | [Report](weeks/w02_loops_vectors/report.qmd) |
 | [Assignment 3](weeks/w03_functions_conditionals/assignment.qmd) | Functions and Conditionals |  |  |
+| [Assignment 4](weeks/w04_datatypes_fzero/assignment.qmd) | Data Types, Function Handles and Zero-Finding |  |  |
 
 
 

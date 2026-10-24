@@ -25,10 +25,10 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 |  | Tue 20 Oct | *No class* ^‡^ |  |  |  |
 |  | Wed 21 Oct | Conditionals | [<i class="bi bi-book" aria-label="Reading"></i> Ch 6](resources/textbook.qmd "Read Chapter 6, Conditionals") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-4 "Lesson") |  |
 |  | Thu 22 Oct | Work on Assignment 3 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w03_functions_conditionals/assignment.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
-| [5](#week-5) | Mon 26 Oct | *No class* ^§^ |  |  |  |
+| [5](#week-5) | Mon 26 Oct | *No class* - optional reading ^§^ |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson")  |  |
 |  | Tue 27 Oct | Data types | [<i class="bi bi-book" aria-label="Reading"></i> Ch 7](resources/textbook.qmd "Read Chapter 7, Data Types") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
 |  | Wed 28 Oct | Function handles and zero-finding | [<i class="bi bi-book" aria-label="Reading"></i> Ch 8](resources/textbook.qmd "Read Chapter 8, Function Handles and Zero-Finding") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
-|  | Thu 29 Oct | Work on Assignment 4 |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A4 (Fri 30 Oct) |
+|  | Thu 29 Oct | Work on Assignment 4 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w04_datatypes_fzero/assignment.qmd "Assignment 4: Data Types, Function Handles and Zero-Finding") A4 (Fri 30 Oct) |
 | [6](#week-6) | 2–5 Nov | Functions of Vectors; Ordinary Differential Equations |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A5 (Fri 6 Nov) |
 | [7](#week-7) | 9–12 Nov | Matrices and Systems of ODEs; Second-Order Systems ^‖^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 13 Nov) |
 | [8](#week-8) | 16–19 Nov | Two Dimensions; Optimization |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A7 (Fri 20 Nov) |
@@ -138,7 +138,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 **Thursday:** Work on Assignment 4
 
-- Due Friday 30 Oct, 1700: Assignment 4: Data Types, Function Handles and Zero-Finding
+- Due Friday 30 Oct, 1700: [Assignment 4: Data Types, Function Handles and Zero-Finding](weeks/w04_datatypes_fzero/assignment.qmd)
 
 ## Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations {#week-6}
 
