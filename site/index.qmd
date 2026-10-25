@@ -122,19 +122,26 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 ## Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding {#week-5}
 
-**Monday:** No class. Instructor jury duty. Use the time to get started on the Chapter 7 reading.
+**Monday:** No class. 
 
 - Reading: [Using AI at Mind Robotics: Our First Principles](weeks/w04_datatypes_fzero/files/Using_AI_at_Mind_Robotics_Our_First_Principles_Open_Source_Aug_2026.pdf)
 
 **Tuesday:** Data types
 
 - Before class: Read Chapter 7, Data Types: [PDF](weeks/w04_datatypes_fzero/files/datatypes.pdf) · [Live script](weeks/w04_datatypes_fzero/files/datatypes.m){download="datatypes.m"} (beta)
-- Lesson: [lesson_datatype.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_datatype.m)
+
+- Topics:
+  - Mind Robotics AI article
+  - Review Assignment 3: testing functions.
+    - Report: [Assignment 3 Report](weeks/w03_functions_conditionals/report.qmd)
+    - Solution: [beaufort_classify.m](weeks/w03_functions_conditionals/files/beaufort_classify.m){download="beaufort_classify.m"} and [beaufort_main_soln.m](weeks/w03_functions_conditionals/files/beaufort_main_soln.m){download="beaufort_main_soln.m"}; all six on [Assignments](assignments.qmd)
+  - Data types overview: [lesson_datatype.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_datatype.m)
 
 **Wednesday:** Function handles and zero-finding
 
 - Before class: Read Chapter 8, Function Handles and Zero-Finding: [PDF](weeks/w04_datatypes_fzero/files/zerofinding.pdf) · [Live script](weeks/w04_datatypes_fzero/files/zerofinding.m){download="zerofinding.m"} (beta)
-- Lesson: [lesson_fhandles_fzero.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_fhandles_fzero.m)
+
+- Function handles and `fzero` example: [lesson_fhandles_fzero.m]({{< var repo_blob >}}/book/w04_datatypes_fzero/lessons/lesson_fhandles_fzero.m)
 
 **Thursday:** Work on Assignment 4
 
