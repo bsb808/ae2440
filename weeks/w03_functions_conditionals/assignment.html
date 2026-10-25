@@ -221,19 +221,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="exercise-1-beaufort-scale-function" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-beaufort-scale-function">Exercise 1: Beaufort Scale Function</h2>
-<p>Sea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, <code>beaufort_classify</code>, that performs this classification, and call it from a live script.</p>
-<p>The prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/beaufort_main.m">beaufort_main.m</a> is intended to guide you through making a minimum first example, incrementally building the logic, and then writing a few tests. You will create a new file named, <code>beaufort_classify.m</code>, that will include the function signature</p>
+<p>Sea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a <em>primary function</em>, <code>beaufort_classify</code>, that performs this classification, and call it from a live script.</p>
+<p>The prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/beaufort_main.m">beaufort_main.m</a> is intended to guide you through making a minimum first example, incrementally building the logic, and then writing a few tests.</p>
+<p>You will create a new primary function file named, <code>beaufort_classify.m</code>, that will include the function signature</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> [<span class="va">bf_number</span><span class="op">,</span> <span class="va">sea_state</span>] <span class="op">=</span> <span class="va">beaufort_classify</span>(<span class="va">wind_speed_kts</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Input arguments:</p>
-<ul>
-<li><code>wind_speed_kts</code> — Wind speed in knots (numeric scalar)</li>
-</ul>
-<p>Output arguments:</p>
-<ul>
-<li><code>bf_number</code> — Beaufort force number (numeric scalar)</li>
-<li><code>sea_state</code> — Descriptive sea state (string)</li>
-</ul>
-<p>For non-integer wind speeds, to keep it simple, round the value to the nearest whole knot before classification.</p>
+<p>The function is specified in the prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w03_functions_conditionals/assign/beaufort_main.m">beaufort_main.m</a>.</p>
 <p>Submit <code>beaufort_main.m</code> (live script) and <code>beaufort_classify.m</code> (plain code function).</p>
 </section>
 <section id="exercise-2-variable-scope" class="level2">
