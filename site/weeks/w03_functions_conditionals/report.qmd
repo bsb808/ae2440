@@ -1,0 +1,33 @@
+---
+title: "Assignment 3 Report: Functions and Conditionals"
+---
+
+Assignment evaluation. Two graded tests and one for feedback:
+
+- F1: all six files present with exact names.
+- U1: `beaufort_classify` returns the right force number for 0, 1, 16, 17, 20, 21, 22 and 41 kts.
+- U2 (feedback only): edge cases, -10, 16.4, 16.6, 21.5 and 1000 kts, and the sea-state wording.
+- Grade: 100, minus 5 per failed graded test (100, 95 or 90).
+
+And spot checks of the code.
+
+## Results
+
+| | Count |
+|---|---|
+| Grade 100 | 16 |
+| Grade 95 | 8 |
+| Grade 90 | 1 |
+| All six files with exact names (graded) | 23 of 25 |
+| Force number right at every integer speed (graded) | 17 of 25 |
+| Edge cases and sea-state wording right (feedback) | 7 of 25 |
+
+## To Discuss
+
+- Reading the table's limits. The most common U1 error, 7 of 25: 1 kt classified as Force 0. The table says Force 0 is `< 1` and Force 1 is `1 - 3`, so the first test is `wind < 1`, not `wind <= 1`. 
+- Testing both limits. 12 of 25 write each band as `wind >= 17 && wind <= 21`. Once the `elseif` chain is ordered by upper limit, reaching a branch means every earlier test was false, so the lower limit already holds. One-sided tests are shorter, leave no gaps and are not prone to copy-paste mistakes.  Each method has pros/cons - just make sure you understand them both. 
+- What should a negative speed return? The specification asks only for defined behavior for any real number, so any answer passed U2. You chose -1 with "Invalid", "NaN", "Calm", an `error(...)` and more; 3 of 25 take `abs()` first, which turns -10 kts into 10 kts, Gentle Breeze. Worth a vote: which of these does the caller want?
+- Fruitful functions return; they do not typically print (context dependent). 9 of 25 print inside the function. 
+- Sea-state wording. Four functions return names that differ from the table: three only in capitalization ("Moderate breeze", "calm"), one with different names. The background picture at the top of `beaufort_main.m` uses sentence case and runs to Force 12; the specification table below it is the one to match. Single (char array) and double quotes (strings) both pass - we'll talk about the different data types this week!
+- Use indention to make your  code readable. 
+
