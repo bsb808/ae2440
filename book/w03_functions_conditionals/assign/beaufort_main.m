@@ -12,6 +12,18 @@
 %[text] To start, set a nominal value for the wind speed to test your function.  Change this single value of `wind_speed_kts` below and re-run the script to test different conditions.
 wind_speed_kts = 25;   % knots 
 %%
+%[text] ## Function Specification
+%[text] - Function name `beafort_classify` 
+%[text] - Function type: Primary function (main or top-level function). The primary function name must match the name of the MATLAB `.m` file in which it is saved.
+%[text] - Inputs
+%[text]     - `wind_speed_knots` - Wind speed in knots as a numeric scalar.   (The function can assume that the input is a numeric scalar, but the function should have defined behavior for any real number.)
+%[text] - Ouputs
+%[text]     - `bf_number` - Beaufort force number (numeric scalar)
+%[text]     - `sea_state` - Descriptive sea state (string)
+%[text] - Behavior
+%[text]     - The function shall return the outputs corresponding to the wind speed values in the table below.
+%[text]     - For non-integer inputs, the input is rounded (MATLAB `round` function) to the nearest integer before apply the classification
+%[text]     - The function should produce not output to the command window, e.g.,  no print, `fprintf, disp,` or unsurpressed output.  The function should *silently* produce the output. (Printing intermediate values during debugging is typically, but clean up the function before submission.)  \
 %[text] ## Incremental Development: Make it Work
 %[text] *Make it work; Make it right*
 %[text] *- Kent Beck*

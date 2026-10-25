@@ -17,21 +17,21 @@ load sensordata.mat
 % Your plotting script
 %%
 %[text] ## Part 2 — Spot the Bad Readings
-%[text] `isnan()` and `isinf()` each return a **logical array** — one `true` or `false` per element.
+%[text] `isnan()` and `isinf()` each return a **logical array,** one `true` or `false` per element.
 %[text] This logical array is sometimes called a **mask** because it marks specific elements of interest, like a stencil over the data.
-%[text] Inspect `nan_mask` and `inf_mask` in the Workspace to see this data type.
-%[text] Then use `sum()` to count the bad readings of each type. This works because MATLAB treats `true` as 1 and `false` as 0.
+%[text] We can use this number to count how elements have the value `NaN`
 nan_mask = isnan(temp_raw);
-inf_mask = %??
-n_nan = sum(nan_mask)
-n_inf = %??
+n_nan = sum(nan_mask)     % Total number of `true` values in the "mask"
+%[text] How many elements in the array have the value `Inf`?
+% Your code here.
 %%
 %[text] ## Part 3 — Find Where They Are
-%[text] `find()` converts a mask into the **indices** where it is `true` — giving you the position of each bad reading in the vector.
-nan_idx = find(nan_mask)
-inf_idx = %??
+%[text] `find()` converts a mask into the **indices** where it is `true` — giving you the position of each bad reading in the vector, so the command `find(nan_mask)` returns  vector of the index values of the `nan_mask` for which those indices are the values 
 %[text] Add markers to the plot from Part 1 to distinguish the two types of bad readings.  Your plot should loop something like this...
 %[text] ![](text:image:56d5)
+%[text] To get you started, here is the skeleton of a code block that could work (there are other ways to do the same).
+nan_idx = find(nan_mask)
+inf_idx = %??
 hold on;
 plot(tt(nan_idx), 24*ones(length(nan_idx),1), 'rv', 'MarkerSize', 10, 'DisplayName', 'NaN — dropout');
 plot(%??)
@@ -39,7 +39,7 @@ legend(%??)
 hold off;
 %%
 %[text] ## Part 4 — Remove Bad Readings
-%[text] A mask can do more than just count or locate elements — it can also **select** elements directly.
+%[text] We can use to  **select** elements directly.
 %[text] When you use a logical array as an index, MATLAB keeps only the elements where the mask is `true`.
 %[text] Here is a small example to illustrate:
 x_demo = [10 20 30 40 50];
@@ -62,9 +62,19 @@ n  = length(temp_clean);
 fprintf('Valid readings : %d of %d\n', n, length(temp_raw));
 fprintf('Mean temp      : %.2f deg C\n', mu);
 fprintf(%??)
-%[text] Plot the cleaned data alongside the original to confirm the bad readings have been removed.  Your plot should look something like this...
+%[text] Plot the cleaned data alongside the original to confirm the bad readings have been removed (no visual gaps).  Your plot should look something like this...
 %[text] ![](text:image:3a81)
 % Your plotting commands
+%[text] ## Verify
+%[text] At this point, the `temp_clean` vector of temperature readings should contain no instance of `NaN` and no instances of `Inf`.   Write a single test, as a **local function** with the following specifications:
+%[text] - Function name: \`clean\_data\_check\`
+%[text] - Inputs
+%[text]     - A single 1D vector of numbers.  (The function can assume that the input is a 1D vector of real numbers)
+%[text] - Outputs
+%[text]     - A single scalar logical value: `true` of `false` 
+%[text] - Behavior
+%[text]     - Returns `true` if and only if there are no instances of `NaN` and no instances of `Inf` in the input vector, otherwise return `false` \
+%[text] Verify that your function gives expected results for the `temp_raw` vector and for the `temp_clean` vector
 
 %[appendix]{"version":"1.0"}
 %---

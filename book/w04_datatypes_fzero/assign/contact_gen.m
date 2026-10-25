@@ -5,7 +5,7 @@
 %%
 %[text] ## Creating the Contacts
 %[text] Each contact is one element of a **struct array**.
-%[text] Fields are assigned one at a time using dot notation — MATLAB builds the struct as you go.
+%[text] Fields are assigned one at a time using dot notation.  MATLAB builds the struct as you go.
 contact(1).id      = 'C-01';
 contact(1).bearing = 45;
 contact(1).range = 12.5;

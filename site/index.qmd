@@ -132,6 +132,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 - Topics:
   - Mind Robotics AI article
+  - MATALB Copilot settings
   - Review Assignment 3: testing functions.
     - Report: [Assignment 3 Report](weeks/w03_functions_conditionals/report.qmd)
     - Solution: [beaufort_classify.m](weeks/w03_functions_conditionals/files/beaufort_classify.m){download="beaufort_classify.m"} and [beaufort_main_soln.m](weeks/w03_functions_conditionals/files/beaufort_main_soln.m){download="beaufort_main_soln.m"}; all six on [Assignments](assignments.qmd)

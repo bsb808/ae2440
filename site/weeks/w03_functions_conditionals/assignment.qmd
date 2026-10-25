@@ -21,24 +21,16 @@ This week you also write function files. A standard function lives in its own `.
 
 ## Exercise 1: Beaufort Scale Function
 
-Sea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a function, `beaufort_classify`, that performs this classification, and call it from a live script.
+Sea conditions are often described on the Beaufort scale, which maps wind speed to a force number and a sea state, and equipment operating limits in Navy specifications are frequently written in Beaufort terms. In this problem you write a *primary function*, `beaufort_classify`, that performs this classification, and call it from a live script.
 
-The prototype live script [beaufort_main.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/beaufort_main.m) is intended to guide you through making a minimum first example, incrementally building the logic, and then writing a few tests.  You will create a new file named, `beaufort_classify.m`, that will include the function signature
+The prototype live script [beaufort_main.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/beaufort_main.m) is intended to guide you through making a minimum first example, incrementally building the logic, and then writing a few tests.  
+
+You will create a new primary function file named, `beaufort_classify.m`, that will include the function signature
 
 ```matlab
 function [bf_number, sea_state] = beaufort_classify(wind_speed_kts)
 ```
-
-Input arguments:
-
-* `wind_speed_kts` — Wind speed in knots (numeric scalar)
-
-Output arguments:
-
-* `bf_number` — Beaufort force number (numeric scalar)
-* `sea_state` — Descriptive sea state (string)
-
-For non-integer wind speeds, to keep it simple, round the value to the nearest whole knot before classification.
+The function is specified in the prototype live script [beaufort_main.m]({{< var repo_blob >}}/book/w03_functions_conditionals/assign/beaufort_main.m).
 
 Submit `beaufort_main.m` (live script) and `beaufort_classify.m` (plain code function).
 

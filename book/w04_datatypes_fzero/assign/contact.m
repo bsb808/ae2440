@@ -3,8 +3,8 @@
 %[text] Work through each part to inspect, report on, and update the contact picture.
 %%
 %[text] ## Part 1 — Load and Inspect
-%[text] Load the contact data and inspect the `contact` variable in the **Workspace** panel.
-%[text] Notice it is a **1×3 struct array** — three contacts, each with the same fields.
+%[text] Load the contact data and inspect the `contact` variable in the Workspace panel.
+%[text] It is a 1×3 struct array where each element is  contacts, each with the same three *fields*
 clear;
 load contactdata.mat
 %[text] Access individual fields from a single contact using dot notation.
@@ -19,7 +19,7 @@ contact(1).range
 % Your code here
 %%
 %[text] ## Part 3 — Update a Contact
-%[text] A new radar sweep shows Contact C-02 has maneuvered — bearing and range have changed.
+%[text] A new radar sweep shows Contact C-02 has maneuvered and therefore bearing and range have changed.
 %[text] Update only the fields that changed. The rest of the record stays intact.
 %[text] - Change the `bearing` of `C-02` to a value of `120`.
 %[text] - Change the `range` of `C-02` to a value of `6.8`.  \

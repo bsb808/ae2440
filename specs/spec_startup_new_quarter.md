@@ -42,7 +42,7 @@ Background:
 - Status: review (AY27Q1)
 - Notes:
   - Page layout (since AY27Q1, modeled on the ME2801 site): a one-line meeting note, then the overview table with columns Week, Date, Topic, Prep, Content, Do (Due). Posted weeks have one row per class day (`Mon 28 Sep`, ...), with the `[N](#week-N)` link only in the first row's Week cell; unposted weeks are one collapsed row with a date range (`19–22 Oct`). Cells hold Bootstrap icons linking to the week section: Prep `bi-book` for a reading, Content `bi-card-list` for slides and lessons, Do `bi-pencil-square` for the assignment due (linked to the assignment page once posted). A symbol per holiday or shift day and a note under the table say which class days are affected; then one section per week with bold day labels and bullet lists. `styles.css` draws the week-grouping rules from the empty Week cells.
-  - Placeholder week sections carry a "Details will be posted by <Monday two weeks before>" note, the holiday and shift-day impacts, and the week's due items.
+  - Placeholder week sections carry a "Details will be posted." note (no date, so as not to promise one), the holiday and shift-day impacts, and the week's due items.
   - Reading pair: each chapter reading is one line, `Before class: Read Chapter N, Title: [PDF](weeks/wNN_topic/files/<name>.pdf)`. When the chapter's live script is released (see `spec_live_scripts.md`), add ` · [Live script](weeks/wNN_topic/files/<name>.m){download="<name>.m"} (beta)` to the same line. Nothing else changes.
 
 ## 2a. Post week details (rolling, during the quarter)
