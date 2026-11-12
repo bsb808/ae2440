@@ -6,12 +6,23 @@ set -u
 repo="$(cd "$(dirname "$0")/.." && pwd)"
 pidfile="${TMPDIR:-/tmp}/ae2440-preview.pid"
 
-# Match the quarto wrapper and its deno child by their command line: "preview site".
-pids="$(pgrep -f "quarto.*preview site|deno.*preview site" || true)"
+# Match only the quarto wrapper ("[bash ]/path/quarto preview site ...") and its deno child
+# ("/path/deno run ... preview site ..."), anchored at the program name so a shell whose
+# command line merely mentions "quarto preview site" is not matched.
+pids="$(pgrep -f '^(bash )?[^ ]*quarto preview site|^[^ ]*deno run .*preview site' || true)"
+
+# Never kill this script's own ancestors.
+ancestors=" "
+p=$$
+while [ "$p" -gt 1 ] 2>/dev/null; do
+  ancestors="$ancestors$p "
+  p="$(awk '{print $4}' "/proc/$p/stat" 2>/dev/null || echo 1)"
+done
 
 # Keep only processes started from this repo, so previews of other projects survive.
 mine=""
 for pid in $pids; do
+  case "$ancestors" in *" $pid "*) continue ;; esac
   cwd="$(readlink "/proc/$pid/cwd" 2>/dev/null || true)"
   [ "$cwd" = "$repo" ] && mine="$mine $pid"
 done

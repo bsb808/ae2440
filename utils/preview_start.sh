@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Start a fresh Quarto preview of the course site in the background and open it in the browser.
-# Stops any running preview of this repo first.
+# Stops any running preview of this repo first. setsid detaches it from the calling shell so it outlives that shell.
 # Usage: utils/preview_start.sh [port]     (default port 4321)
 # Log: ${TMPDIR:-/tmp}/ae2440-preview.log
 # Note: do not run "quarto render site" while the preview is up; both write site/_site/ and the preview breaks.
@@ -14,7 +14,7 @@ pidfile="${TMPDIR:-/tmp}/ae2440-preview.pid"
 "$repo/utils/preview_stop.sh"
 
 cd "$repo"
-nohup quarto preview site --port "$port" --no-browser >"$log" 2>&1 &
+setsid nohup quarto preview site --port "$port" --no-browser >"$log" 2>&1 &
 echo $! >"$pidfile"
 
 # Wait up to 60 s for the server to come up.
