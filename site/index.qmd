@@ -29,12 +29,15 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 |  | Tue 27 Oct | Data types | [<i class="bi bi-book" aria-label="Reading"></i> Ch 7](resources/textbook.qmd "Read Chapter 7, Data Types") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
 |  | Wed 28 Oct | Function handles and zero-finding | [<i class="bi bi-book" aria-label="Reading"></i> Ch 8](resources/textbook.qmd "Read Chapter 8, Function Handles and Zero-Finding") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
 |  | Thu 29 Oct | Work on Assignment 4 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w04_datatypes_fzero/assignment.qmd "Assignment 4: Data Types, Function Handles and Zero-Finding") A4 (Fri 30 Oct) |
-| [6](#week-6) | 2–5 Nov | Functions of Vectors; Ordinary Differential Equations |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A5 (Fri 6 Nov) |
-| [7](#week-7) | 9–12 Nov | Matrices and Systems of ODEs; Second-Order Systems ^‖^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 13 Nov) |
-| [8](#week-8) | 16–19 Nov | Two Dimensions; Optimization |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A7 (Fri 20 Nov) |
-| [9](#week-9) | 23–26 Nov | Interpolation, Curve Fitting and Regression ^¶^ |  |  |  |
-| [10](#week-10) | 30 Nov–3 Dec | TBD |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A8 (Fri 4 Dec) |
-| [11](#week-11) | 7–10 Dec | TBD ^#^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A9 (Fri 11 Dec) |
+| [6](#week-6) | 2–5 Nov | --- |  |  |  |
+| [7](#week-7) | 9–12 Nov | --- |  |  |   |
+| [8](#week-8)  | Mon 16 Nov | History of Computing and Differential Equations |  |  |  |
+|  | Tue 17 Nov | Introduction to numerical ODE solvers % CLAUDE: add link to lesson_ode_intro.m|  |  |  |
+|  | Wed 18 Nov | % CLAUDE: links to lesson_find_timeseries.m and lesson_prptotype_to_function.m |  |  |  |
+|  | Thu 19 Nov | Work on Assignment 5 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w08_functions_odes/assignment.qmd "Assignment 5: Functions of Vectors and Ordinary Differential Equations") A5 (Fri 20 Nov) |
+| [9](#week-9) | 23–26 Nov | Matrices and Systems of ODEs; Second-Order Systems ^¶^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 27 Nov)  |
+| [10](#week-10) | 30 Nov–3 Dec | Two Dimensions; Optimization ^#^  |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A7 (Fri 4 Dec) |
+| [11](#week-11) | 7–10 Dec | Interpolation, Curve Fitting and Regression ^¶^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A9 (Fri 11 Dec) |
 :::
 
 ::: {.small}
@@ -42,8 +45,8 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 ^‡^ Shift day (Tue 20 Oct follows the Friday schedule): no class Tue.<br>
 ^§^ Instructor jury duty (Mon 26 Oct): no class Mon.<br>
 ^‖^ Veterans Day (Wed 11 Nov): no class Wed.<br>
-^¶^ Thanksgiving (Thu 26 Nov): no class Thu.<br>
-^#^ Pre-graduation awards ceremony (Tue 8 Dec). Last day of classes Fri 11 Dec.
+^¶^ Thanksgiving (Thu 26 Nov): no class Wed-Thu.<br>
+^#^ Last day of classes Fri 11 Dec.
 :::
 
 ## Week 1 — 28 Sep: Modeling and Simulation; Scripts {#week-1}
@@ -150,16 +153,11 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 ## Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations {#week-6}
 
-Details will be posted.
-
-- Due Friday 6 Nov, 1700: Assignment 5: Solving First-Order ODEs
+ n/a
 
 ## Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems {#week-7}
 
-Details will be posted.
-
-- Veterans Day: no class Wed 11 Nov.
-- Due Friday 13 Nov, 1700: Assignment 6: Matrices and Systems of ODEs
+ n/a
 
 ## Week 8 — 16 Nov: Two Dimensions; Optimization {#week-8}
 
