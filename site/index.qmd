@@ -15,29 +15,31 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 | [1](#week-1) | Mon 28 Sep | Course introduction and MATLAB overview |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-1 "Slides") |  |
 |  | Tue 29 Sep | MATLAB IDE and variables | [<i class="bi bi-book" aria-label="Reading"></i> Ch 1](resources/textbook.qmd "Read Chapter 1, Modeling and Simulation") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-1 "Slides and lessons") |  |
 |  | Wed 30 Sep | Scripts and live scripts | [<i class="bi bi-book" aria-label="Reading"></i> Ch 2](resources/textbook.qmd "Read Chapter 2, Scripts") |  |  |
-|  | Thu 1 Oct | Work on Assignment 1 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w01_modeling_scripts/assignment.qmd "Assignment 1: Models and Scripts") A1 (Fri 2 Oct) |
+|  | Thu 1 Oct | Work on Assignment 1 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignment 1: Models and Scripts") A1 (Fri 2 Oct) |
 | [2](#week-2) | Mon 5 Oct | Loops | [<i class="bi bi-book" aria-label="Reading"></i> Ch 3](resources/textbook.qmd "Read Chapter 3, Loops") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Slides and lesson") |  |
 |  | Tue 6 Oct | Vectors | [<i class="bi bi-book" aria-label="Reading"></i> Ch 4](resources/textbook.qmd "Read Chapter 4, Vectors") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-2 "Lesson and exercises") |  |
 |  | Wed 7 Oct | Vectors, continued |  |  |  |
-|  | Thu 8 Oct | Work on Assignment |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>]( ./assignments.qmd "Assignments") A2 (Fri 9 Oct) |
+|  | Thu 8 Oct | Work on Assignment |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A2 (Fri 9 Oct) |
 | [3](#week-3) | 12–15 Oct | *No class* ^†^ |  |  |  |
 | [4](#week-4) | Mon 19 Oct | Assignment 2 review; Functions | [<i class="bi bi-book" aria-label="Reading"></i> Ch 5](resources/textbook.qmd "Read Chapter 5, Functions") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-4 "Lessons") |  |
 |  | Tue 20 Oct | *No class* ^‡^ |  |  |  |
 |  | Wed 21 Oct | Conditionals | [<i class="bi bi-book" aria-label="Reading"></i> Ch 6](resources/textbook.qmd "Read Chapter 6, Conditionals") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-4 "Lesson") |  |
-|  | Thu 22 Oct | Work on Assignment 3 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w03_functions_conditionals/assignment.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
+|  | Thu 22 Oct | Work on Assignment 3 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignment 3: Functions and Conditionals") A3 (Fri 23 Oct) |
 | [5](#week-5) | Mon 26 Oct | *No class* - optional reading ^§^ |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson")  |  |
 |  | Tue 27 Oct | Data types | [<i class="bi bi-book" aria-label="Reading"></i> Ch 7](resources/textbook.qmd "Read Chapter 7, Data Types") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
 |  | Wed 28 Oct | Function handles and zero-finding | [<i class="bi bi-book" aria-label="Reading"></i> Ch 8](resources/textbook.qmd "Read Chapter 8, Function Handles and Zero-Finding") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-5 "Lesson") |  |
-|  | Thu 29 Oct | Work on Assignment 4 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w04_datatypes_fzero/assignment.qmd "Assignment 4: Data Types, Function Handles and Zero-Finding") A4 (Fri 30 Oct) |
+|  | Thu 29 Oct | Work on Assignment 4 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignment 4: Data Types, Function Handles and Zero-Finding") A4 (Fri 30 Oct) |
 | [6](#week-6) | 2–5 Nov | --- |  |  |  |
 | [7](#week-7) | 9–12 Nov | --- |  |  |   |
-| [8](#week-8)  | Mon 16 Nov | History of Computing and Differential Equations |  |  |  |
-|  | Tue 17 Nov | Introduction to numerical ODE solvers % CLAUDE: add link to lesson_ode_intro.m|  |  |  |
-|  | Wed 18 Nov | % CLAUDE: links to lesson_find_timeseries.m and lesson_prptotype_to_function.m |  |  |  |
-|  | Thu 19 Nov | Work on Assignment 5 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](weeks/w08_functions_odes/assignment.qmd "Assignment 5: Functions of Vectors and Ordinary Differential Equations") A5 (Fri 20 Nov) |
-| [9](#week-9) | 23–26 Nov | Matrices and Systems of ODEs; Second-Order Systems ^¶^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A6 (Fri 27 Nov)  |
-| [10](#week-10) | 30 Nov–3 Dec | Two Dimensions; Optimization ^#^  |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A7 (Fri 4 Dec) |
-| [11](#week-11) | 7–10 Dec | Interpolation, Curve Fitting and Regression ^¶^ |  |  | <i class="bi bi-pencil-square" aria-label="Assignment"></i> A9 (Fri 11 Dec) |
+| [8](#week-8)  | Mon 16 Nov | History of Computing and Differential Equations | [<i class="bi bi-book" aria-label="Reading"></i> Ch 9](resources/textbook.qmd "Read Chapter 9, Functions of Vectors") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-8 "Slides") |  |
+|  | Tue 17 Nov | Introduction to numerical ODE solvers | [<i class="bi bi-book" aria-label="Reading"></i> Ch 10](resources/textbook.qmd "Read Chapter 10, Ordinary Differential Equations") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-8 "Lesson") |  |
+|  | Wed 18 Nov | Finding events in a time series; from prototype to function |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-8 "Lessons") |  |
+|  | Thu 19 Nov | Work on Assignment 5 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignment 5: Functions of Vectors and Ordinary Differential Equations") A5 (Fri 20 Nov) |
+| [9](#week-9) | Mon 23 Nov | Matrices and Systems of ODEs | [<i class="bi bi-book" aria-label="Reading"></i> Ch 11](resources/textbook.qmd "Read Chapter 11, Matrices and Systems of ODEs") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-9 "Reading and lessons") |  |
+|  | Tue 24 Nov | Second-Order Systems | [<i class="bi bi-book" aria-label="Reading"></i> Ch 12](resources/textbook.qmd "Read Chapter 12, Second-Order Systems") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-9 "Lesson") |  |
+|  | Wed 25–Thu 26 Nov | *No class* ^¶^ |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A6 (Fri 27 Nov) |
+| [10](#week-10) | 30 Nov–3 Dec | Two Dimensions; Optimization ^#^  | [<i class="bi bi-book" aria-label="Reading"></i> Ch 13](resources/textbook.qmd "Read Chapter 13, Two Dimensions"), [<i class="bi bi-book" aria-label="Reading"></i> Ch 14](resources/textbook.qmd "Read Chapter 14, Optimization") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-10 "Lessons") | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A7 (Fri 4 Dec) |
+| [11](#week-11) | 7–10 Dec | Interpolation, Curve Fitting and Regression ^¶^ | [<i class="bi bi-book" aria-label="Reading"></i> Ch 15](resources/textbook.qmd "Read Chapter 15, Interpolation, Curve Fitting, and Regression") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-11 "Lessons") | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A9 (Fri 11 Dec) |
 :::
 
 ::: {.small}
@@ -70,11 +72,11 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 **Wednesday:** Scripts and live scripts
 
 - Before class: Read Chapter 2, Scripts: [Textbook](resources/textbook.qmd)
-- Preview: [Assignment 1](weeks/w01_modeling_scripts/assignment.qmd)
+- Preview: [Assignment 1](assignments.qmd)
 
 **Thursday:** Work on Assignment 1
 
-- Due Friday 2 Oct, 1700: [Assignment 1: Models and Scripts](weeks/w01_modeling_scripts/assignment.qmd)
+- Due Friday 2 Oct, 1700: [Assignment 1: Models and Scripts](assignments.qmd)
 
 ## Week 2 — 5 Oct: Loops; Vectors {#week-2}
 
@@ -94,7 +96,7 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 
 **Thursday:** Work on Assignment 2
 
-- Due Friday 9 Oct, 1700: [Assignment 2: Loops and Vectors](./assignments.qmd)
+- Due Friday 9 Oct, 1700: [Assignment 2: Loops and Vectors](assignments.qmd)
 
 ## Week 3 — 12 Oct: No class {#week-3}
 
@@ -105,7 +107,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 **Monday:** Assignment 2 review; introduction to functions
 
 - Before class: Read Chapter 5, Functions: [Textbook](resources/textbook.qmd)
-- Review: [Assignment 2](weeks/w02_loops_vectors/assignment.qmd)
+- Review: [Assignment 2](assignments.qmd)
   - Report: [Assignment 2 Report](weeks/w02_loops_vectors/report.qmd)
   - Solution: [bounce_soln.m](weeks/w02_loops_vectors/files/bounce_soln.m){download="bounce_soln.m"}
   - Lesson: [lesson_legends.m]({{< var repo_blob >}}/book/w02_loops_vectors/lessons/lesson_legends.m)
@@ -121,7 +123,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 **Thursday:** Work on Assignment 3
 
-- Due Friday 23 Oct, 1700: [Assignment 3: Functions and Conditionals](weeks/w03_functions_conditionals/assignment.qmd)
+- Due Friday 23 Oct, 1700: [Assignment 3: Functions and Conditionals](assignments.qmd)
 
 ## Week 5 — 26 Oct: Data Types; Function Handles and Zero-Finding {#week-5}
 
@@ -149,7 +151,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 **Thursday:** Work on Assignment 4
 
-- Due Friday 30 Oct, 1700: [Assignment 4: Data Types, Function Handles and Zero-Finding](weeks/w04_datatypes_fzero/assignment.qmd)
+- Due Friday 30 Oct, 1700: [Assignment 4: Data Types, Function Handles and Zero-Finding](assignments.qmd)
 
 ## Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations {#week-6}
 
@@ -159,29 +161,84 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
  n/a
 
-## Week 8 — 16 Nov: Two Dimensions; Optimization {#week-8}
+## Week 8 — 16 Nov: Functions of Vectors; Ordinary Differential Equations {#week-8}
 
-Details will be posted.
+**Monday:** History of computing and differential equations
 
-- Due Friday 20 Nov, 1700: Assignment 7: Two Dimensions and Optimization
+- Before class: Read Chapter 9, Functions of Vectors: [Textbook](resources/textbook.qmd). We covered much of Chapter 9 earlier, with logical comparisons of vectors and `find`.
+- Slides: [ae2440_ode_history.pdf](weeks/w05_funcvectors_odes/files/ae2440_ode_history.pdf)
 
-## Week 9 — 23 Nov: Interpolation, Curve Fitting and Regression {#week-9}
+**Tuesday:** Introduction to numerical ODE solvers
 
-Details will be posted.
+- Before class: Read Chapter 10, Ordinary Differential Equations: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_ode_intro.m]({{< var repo_blob >}}/book/w05_funcvectors_odes/lessons/lesson_ode_intro.m)
 
-- Thanksgiving: no class Thu 26 Nov.
-- Nothing due this week. Assignment 8 is due the following Friday.
+**Wednesday:** Finding events in a time series; from prototype to function
 
-## Week 10 — 30 Nov: Introduction to Reinforcement Learning {#week-10}
+- Lessons:
+  - [lesson_find_timeseries.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/lesson_find_timeseries.m)
+  - [lesson_prototype_to_function.m]({{< var repo_blob >}}/book/w03_functions_conditionals/lessons/lesson_prototype_to_function.m)
 
-Details will be posted.
+**Thursday:** Work on Assignment 5
 
-- Due Friday 4 Dec, 1700: Assignment 8: Interpolation, Curve Fitting and Regression
+- Due Friday 20 Nov, 1700: [Assignment 5: Solving First-Order Ordinary Differential Equations](assignments.qmd)
 
-## Week 11 — 7 Dec: Q-Learning and Blackjack {#week-11}
+## Week 9 — 23 Nov: Matrices and Systems of ODEs; Second-Order Systems {#week-9}
 
-Details will be posted.
+If you are unfamiliar with matrix arithmetic (rows and columns, addition, multiplication, transpose), review Chapter 6 of [Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares](https://web.stanford.edu/~boyd/vmls/) before Monday.
 
-- Pre-graduation awards ceremony Tue 8 Dec.
+**Monday:** Matrices and systems of ODEs
+
+- Before class: Read Chapter 11, Matrices and Systems of ODEs: [Textbook](resources/textbook.qmd)
+- Lessons:
+  - [lesson_matrices.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_matrices.m)
+  - [lesson_system_of_odes.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_system_of_odes.m)
+  - [lesson_two_odes.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_two_odes.m)
+
+**Tuesday:** Second-order systems
+
+- Before class: Read Chapter 12, Second-Order Systems: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_secondorder.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_secondorder.m)
+
+**Wednesday and Thursday:** No class. Thanksgiving (Thu 26 Nov).
+
+- Due Friday 27 Nov, 1700: [Assignment 6: Matrices and Systems of ODEs](assignments.qmd)
+
+## Week 10 — 30 Nov: Two Dimensions; Optimization {#week-10}
+
+**Monday:** Two dimensions; anonymous functions
+
+- Before class: Read Chapter 13, Two Dimensions: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_anonymous.m]({{< var repo_blob >}}/book/w07_twodim_optimization/lessons/lesson_anonymous.m)
+
+**Tuesday:** Simulating a parameterized model: the pendulum
+
+- Lesson: [lesson_anonymous_pendulum.m]({{< var repo_blob >}}/book/w07_twodim_optimization/lessons/lesson_anonymous_pendulum.m)
+
+**Wednesday:** Optimization
+
+- Before class: Read Chapter 14, Optimization: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_optimization_intro.m]({{< var repo_blob >}}/book/w07_twodim_optimization/lessons/lesson_optimization_intro.m)
+
+**Thursday:** Work on Assignment 7
+
+- Worked example, getting started on the stress–strain exercise: [optimal_stressstrain_partialsoln.m]({{< var repo_blob >}}/book/w07_twodim_optimization/lessons/optimal_stressstrain_partialsoln.m)
+- Due Friday 4 Dec, 1700: [Assignment 7: Two Dimensions and Optimization](assignments.qmd)
+
+## Week 11 — 7 Dec: Interpolation, Curve Fitting and Regression {#week-11}
+
+**Monday:** Interpolation
+
+- Before class: Read Chapter 15, Interpolation, Curve Fitting, and Regression: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_interpolation.m]({{< var repo_blob >}}/book/w08_interpolation_curvefit/lessons/lesson_interpolation.m)
+
+**Tuesday:** Curve fitting and regression
+
+- Lesson: [lesson_curvefit_regression.m]({{< var repo_blob >}}/book/w08_interpolation_curvefit/lessons/lesson_curvefit_regression.m)
+
+**Wednesday:** Curve fitting and regression, continued
+
+**Thursday:** Last class; work on Assignment 8
+
 - Last day of classes Fri 11 Dec.
-- Due Friday 11 Dec, 1700: Assignment 9: Q-Learning and Blackjack
+- Due Friday 11 Dec, 1700: [Assignment 8: Interpolation, Curve Fitting and Regression](assignments.qmd)

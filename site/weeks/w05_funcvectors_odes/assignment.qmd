@@ -1,0 +1,35 @@
+---
+title: "Assignment 5: Solving First-Order Ordinary Differential Equations"
+---
+
+## Introductory Notes
+
+This assignment covers solving single, first-order ODEs with MATLAB, using function handles to set up the ODE solvers. In the following weeks we will generalize this technique to systems of ODEs (multiple, mutually dependent ODEs) and use systems of ODEs to solve higher-order models.
+
+The submission mechanics are the same as for the previous assignments ([Assignment 1](../w01_modeling_scripts/assignment.qmd) has the details):
+
+* run each live script from a clean workspace - use `clear` appropriately to ensure no leftover variables
+* save live code files with embedded outputs
+* use the exact case-sensitive file names below, and
+* verify your Sakai upload.
+
+## Exercise 1: Coffee
+
+Adapted from PMM Exercise 10.1.
+
+In this exercise you will apply `ode45` to a first-order ODE to the a heat tranfer model in which a cup of coffee cools over time. 
+
+The prototype live script [coffee.m]({{< var repo_blob >}}/book/w05_funcvectors_odes/assign/coffee.m) defines the exercise. Open it as a live script, fill in the missing code in each section, and run all sections to verify your results. Submit `coffee.m`.
+
+## Exercise 2: Ballistic Euler
+
+This exercise introduces numerical integration by having you implement an Euler solver. You will model a falling munition subject to gravity and air drag, solve the ODE two ways, with MATLAB's built-in `ode45` and with your own `euler.m`, and compare the results.
+
+The prototype live script [ballistic.m]({{< var repo_blob >}}/book/w05_funcvectors_odes/assign/ballistic.m) defines the exercise. Fill in the missing code sections and **write `euler.m` as a standalone function file** in the same folder as `ballistic.m`. When all sections run successfully, submit both files.
+
+### Submit and Verify
+
+Submit three `.m` files:
+
+- Exercise 1: `coffee.m`
+- Exercise 2: `ballistic.m` and `euler.m`

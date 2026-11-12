@@ -2,7 +2,7 @@
 title: "Assignment 1: Models and Scripts"
 ---
 
-Due Friday 2 Oct, 1700, via Sakai. Textbook: Chapters 1 and 2 ([Textbook](../../resources/textbook.qmd)).
+Submit via Sakai. Textbook: Chapters 1 and 2 ([Textbook](../../resources/textbook.qmd)).
 
 ## Introductory Notes
 

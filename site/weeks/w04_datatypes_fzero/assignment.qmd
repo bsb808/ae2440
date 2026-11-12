@@ -2,7 +2,7 @@
 title: "Assignment 4: Data Types, Function Handles and Zero-Finding"
 ---
 
-Due Friday 30 Oct, 1700, via [Sakai]({{< var sakai_url >}}). Textbook: Chapters 7 and 8 ([Textbook](../../resources/textbook.qmd)).
+Submit via [Sakai]({{< var sakai_url >}}). Textbook: Chapters 7 and 8 ([Textbook](../../resources/textbook.qmd)).
 
 ## Introductory Notes
 

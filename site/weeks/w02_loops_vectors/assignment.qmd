@@ -2,7 +2,7 @@
 title: "Assignment 2: Loops and Vectors"
 ---
 
-Due Friday 9 Oct, 1700, via [Sakai]({{< var sakai_url >}}). Textbook: Chapters 3 and 4 ([Textbook](../../resources/textbook.qmd)).
+Submit via [Sakai]({{< var sakai_url >}}). Textbook: Chapters 3 and 4 ([Textbook](../../resources/textbook.qmd)).
 
 ## Introductory Notes
 
