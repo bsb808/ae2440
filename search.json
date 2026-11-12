@@ -235,14 +235,14 @@
     "href": "index.html#week-6",
     "title": "Schedule",
     "section": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations",
-    "text": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations\nDetails will be posted.\n\nDue Friday 6 Nov, 1700: Assignment 5: Solving First-Order ODEs"
+    "text": "Week 6 — 2 Nov: Functions of Vectors; Ordinary Differential Equations\nn/a"
   },
   {
     "objectID": "index.html#week-7",
     "href": "index.html#week-7",
     "title": "Schedule",
     "section": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems",
-    "text": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems\nDetails will be posted.\n\nVeterans Day: no class Wed 11 Nov.\nDue Friday 13 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
+    "text": "Week 7 — 9 Nov: Matrices and Systems of ODEs; Second-Order Systems\nn/a"
   },
   {
     "objectID": "index.html#week-8",
@@ -343,11 +343,11 @@
     "text": "We use an adaptation of Physical Modeling in MATLAB by Allen Downey (Green Tea Press), revised for AE2440 by Brian Bingham. The whole book is available as a PDF:\n\nPhysicalModelingInMatlabAE2440.pdf (release 25-3)"
   },
   {
-    "objectID": "resources/textbook.html#chapters-by-week",
-    "href": "resources/textbook.html#chapters-by-week",
+    "objectID": "resources/textbook.html#chapters",
+    "href": "resources/textbook.html#chapters",
     "title": "Textbook",
-    "section": "Chapters by week",
-    "text": "Chapters by week\nEach week’s reading is also released chapter by chapter from the Schedule, so you can read just what is assigned. The chapters are the same text as the whole-book PDF.\n\n\n\nWeek\nChapter\nFormats\n\n\n\n\n1\n1. Modeling and Simulation\nPDF · Live script\n\n\n1\n2. Scripts\nPDF · Live script\n\n\n2\n3. Loops\nPDF · Live script\n\n\n2\n4. Vectors\nPDF · Live script\n\n\n4\n5. Functions\nPDF · Live script\n\n\n4\n6. Conditionals\nPDF · Live script\n\n\n5\n7. Data Types\nPDF · Live script\n\n\n5\n8. Function Handles and Zero-Finding\nPDF · Live script\n\n\n\nLater weeks are added as they are posted.\n\nLive script format (beta)\nSome chapters are also offered as a MATLAB live script: the same text, with the chapter’s examples as code you can run and change in place. The file is a plain-text .m live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose “Open as Live Script”. The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor."
+    "section": "Chapters",
+    "text": "Chapters\nEach week’s reading is also released chapter by chapter from the Schedule, so you can read just what is assigned. The chapters are the same text as the whole-book PDF.\n\n\n\nChapter\nFormats\n\n\n\n\n1. Modeling and Simulation\nPDF · Live script\n\n\n2. Scripts\nPDF · Live script\n\n\n3. Loops\nPDF · Live script\n\n\n4. Vectors\nPDF · Live script\n\n\n5. Functions\nPDF · Live script\n\n\n6. Conditionals\nPDF · Live script\n\n\n7. Data Types\nPDF · Live script\n\n\n8. Function Handles and Zero-Finding\nPDF · Live script\n\n\n9. Functions of Vectors\nPDF · Live script\n\n\n10. Ordinary Differential Equations\nPDF · Live script\n\n\n11. Matrices and Systems of ODEs\nPDF · Live script\n\n\n12. Second-Order Systems\nPDF · Live script\n\n\n13. Two Dimensions\nPDF · Live script\n\n\n14. Optimization\nPDF · Live script\n\n\n15. Interpolation, Curve Fitting, and Regression\nPDF · Live script\n\n\n16. Introduction to Reinforcement Learning\nPDF\n\n\n17. Q-Learning and Blackjack\nPDF · Live script\n\n\n\nChapter 16 has no code, so it is offered as a PDF only.\n\nLive script format (beta)\nSome chapters are also offered as a MATLAB live script: the same text, with the chapter’s examples as code you can run and change in place. The file is a plain-text .m live script, the same format you use for assignments, and it needs MATLAB R2025a or later. Download it, open it in MATLAB, and read it as you would the PDF, running each section as you reach it to see its output. If MATLAB opens the file as a plain script instead of a live script, right-click the file and choose “Open as Live Script”. The PDF remains the reference version. If something looks wrong in a live script, please tell the instructor."
   },
   {
     "objectID": "resources/textbook.html#code",
