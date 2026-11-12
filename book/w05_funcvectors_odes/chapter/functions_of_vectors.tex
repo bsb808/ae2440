@@ -158,6 +158,7 @@ square matrices.
 
 \index{matrix exponentiation}
 
+% mlive: error
 \begin{code}
 >> hypotenuse(1:3, 1:3)
 Error using  ^  (line 51)
@@ -170,7 +171,7 @@ But convert this to use the element-wise array operation by replacing \lstinline
 (\lstinline{.^}), it works!
 
 \index{element-wise operator}
-
+% mlive: noexec
 \begin{code}
 >> A = [3,5,8];
 >> B = [4,12,15];
@@ -427,6 +428,7 @@ the indices of elements of \lstinline{V} that are greater than~10.''
 
 We can also use \lstinline{find} to write \lstinline{exists} more concisely:
 
+% mlive: noexec
 \begin{code}
 function res = exists(X)
     L = find(X>0)

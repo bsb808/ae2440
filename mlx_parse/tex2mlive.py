@@ -215,7 +215,7 @@ class Label:
 
 
 _NEWLABEL_RE = re.compile(
-    r"\\newlabel\{([^}]+)\}\{\{([^}]*)\}\{[^}]*\}\{((?:[^{}]|\{[^{}]*\})*)\}\{([^}]*)\}"
+    r"\\newlabel\{([^}]+)\}\{\{([^}]*)\}\{[^}]*\}\{((?:[^{}]|\{(?:[^{}]|\{[^{}]*\})*\})*)\}\{([^}]*)\}"
 )
 
 
@@ -253,13 +253,22 @@ def _convert_math_body(body: str) -> str:
     # unit-vector macro from book.tex); `\hat` renders.
     body = re.sub(r"\\uvec\b", r"\\hat", body)
     body = re.sub(r"\\-", "", body)
+    # Live-script math has no \begin{...} environments; plain-TeX \matrix
+    # renders, so an `array` becomes `\matrix{a & b \cr c & d}` (column
+    # alignment is lost: \matrix centres every column).
+    body = re.sub(r"\\begin\{array\}\{(?:[^{}]|\{[^{}]*\})*\}(.*?)\\end\{array\}",
+                  lambda m: "\\matrix{" + re.sub(r"\\\\(?:\[[^\]]*\])?", r" \\cr ", m.group(1)).strip() + "}",
+                  body, flags=re.S)
+    body = re.sub(r"\\lbrace\b", r"\\{", body)
+    body = re.sub(r"\\rbrace\b", r"\\}", body)
     # A tie (`~`) is a space in TeX, but MATLAB escapes it as a Markdown
     # character on re-save; a thick space renders alike and round-trips.
     body = re.sub(r"(?<!\\)~", r"\\;", body)
     body = body.replace("\\", "\\\\")
     # MATLAB escapes these inside `$...$` on re-save; emitting them keeps the
     # round trip clean.
-    body = body.replace("_", "\\_").replace("[", "\\[").replace("]", "\\]").replace(">", "\\>")
+    body = (body.replace("_", "\\_").replace("[", "\\[").replace("]", "\\]").replace(">", "\\>")
+            .replace("<", "\\<").replace("*", "\\*"))
     return re.sub(r"\s+", " ", body)
 
 
@@ -549,7 +558,8 @@ class Converter:
         text = re.sub(r"\bon page[~ ]\\pageref\{([^}]*)\}", lambda m: "in " + self._ref(m.group(1), True), text)
         text = re.sub(r"(?:page[~ ])?\\pageref\{([^}]*)\}", lambda m: self._ref(m.group(1), True), text)
         text = re.sub(r"\\nameref\{([^}]*)\}",
-                      lambda m: f"*{self.labels[m.group(1)].title}*" if m.group(1) in self.labels
+                      lambda m: f"*{self.labels[m.group(1)].title}*"
+                      if m.group(1) in self.labels and self.labels[m.group(1)].title
                       else self._ref(m.group(1), True), text)
         text = re.sub(r"\\(?:autoref|Cref)\{([^}]*)\}", lambda m: self._ref(m.group(1), True), text)
         text = re.sub(r"\\ref\{([^}]*)\}", lambda m: self._ref(m.group(1), False), text)
@@ -632,7 +642,7 @@ class Converter:
 
     def _fix_hrefs(self, s: str) -> str:
         return sub_balanced(s, re.compile(r"\x04HREF([^\x04]*)\x04\s*\{"),
-                            lambda m, label: f"[{label}]({m.group(1)})")
+                            lambda m, label: f"[{_strip_italics(label)}]({m.group(1)})")
 
     @staticmethod
     def _split_italic_links(s: str) -> str:
@@ -667,13 +677,16 @@ class Converter:
     def _caption_text(self, raw: str) -> str:
         raw = strip_command_balanced(raw, "index")
         raw = re.sub(r"\\label\{[^}]*\}", "", raw)
-        raw = re.sub(r"\\lstinline\{([^}]*)\}", lambda m: f"`{m.group(1)}`", raw)
+        raw = sub_balanced(raw, re.compile(r"\\lstinline(?:\[[^\]]*\])?\s*\{"), lambda m, a: f"`{a}`")
+        # A caption's `\\` is a line break in the PDF; a live-script line has none.
+        raw = re.sub(r"\\\\(?:\[[^\]]*\])?", " ", raw)
         return re.sub(r"\s+", " ", self._split_italic_links(self._fix_hrefs(self.inline(raw)))).strip()
 
     @staticmethod
     def _alt_text(raw: str) -> str:
         s = strip_command_balanced(raw, "index")
         s = re.sub(r"\\label\{[^}]*\}", "", s)
+        s = re.sub(r"\\\\(?:\[[^\]]*\])?", " ", s)
         s = s.replace("$", "")
         s = re.sub(r"\\[A-Za-z]+\*?", "", s)
         s = s.replace("{", "").replace("}", "").replace("[", "(").replace("]", ")")
@@ -755,10 +768,10 @@ class Converter:
             alt = self._alt_text(cap_raw or outer_raw)
             lines.append(self._image_ref(path, alt))
             if cap_raw and len(subfigs) > 1:
-                lines.append(f'%[text]{{"align":"center"}} *({chr(97 + i)}) {self._caption_text(cap_raw)}*')
+                lines.append(f'%[text]{{"align":"center"}} {_italic_para(f"({chr(97 + i)}) " + self._caption_text(cap_raw))}')
         if outer_raw:
             label = f"Figure {num}: " if num else "Figure: "
-            lines.append(f'%[text]{{"align":"center"}} *{label}{self._caption_text(outer_raw)}*')
+            lines.append(f'%[text]{{"align":"center"}} {_italic_para(label + self._caption_text(outer_raw))}')
         if not lines:
             lines.append("%[text] *(figure)*")
         return "\n\n" + "\n".join(lines) + "\n\n"
@@ -842,6 +855,12 @@ class Converter:
     def _render_list(self, kind: str, body: str) -> str:
         items = re.split(r"\\item\b", body)[1:]
         out: list[str] = []
+        # A code block (any stashed verbatim block) between items ends a live-script list, and MATLAB numbers
+        # each later item 1 again (verified by re-save and export in R2026b).
+        # Such a list is written as paragraphs with an escaped number, `2\. `,
+        # which keeps its number and round-trips unchanged.
+        broken = kind == "enumerate" and any(
+            self.verb.marker_re.search(self.block.restore(it)) for it in items[:-1])
         for k, it in enumerate(items, 1):
             it = self.block.restore(it)
             head_lines: list[str] = []
@@ -855,7 +874,7 @@ class Converter:
                     head_lines.append(ln.strip())
             head = " ".join(" ".join(head_lines).split())
             if kind == "enumerate":
-                marker = f"{k}. "
+                marker = f"{k}\\. " if broken else f"{k}. "
             elif kind == "itemize":
                 marker = "- "
             else:
@@ -873,9 +892,13 @@ class Converter:
                 # loses its end mark: ` \` ends the whole list, not one level.
                 if _LIST_ITEM_RE.match(ln) and ln.endswith(" \\"):
                     ln = ln[:-2]
-                out.append("    " + ln)
+                out.append("    " + ln if not broken or _LIST_ITEM_RE.match(ln) else ln)
         # MATLAB marks the end of a list with ` \` on its last item and adds it
         # on re-save; emitting it keeps the round trip clean.
+        if broken:
+            # Not a list any more: each item and each prose run after a block
+            # is its own paragraph.
+            return "\n\n" + "\n\n".join(out) + "\n\n"
         out[-1] = out[-1] + " \\"
         return "\n\n" + "\n".join(out) + "\n\n"
 
@@ -967,10 +990,25 @@ class Converter:
         s = self.stash_lists(s)
 
         def render_tabbing(m: re.Match) -> str:
-            body = re.sub(r"\\hspace\{[^}]*\}", "", m.group(1))
-            body = re.sub(r"\\(?:kill|>|=)", "", body)
-            body = re.sub(r"\\\\", "  ", body)
-            return "\n\n" + body.strip() + "\n\n"
+            # Live-script text has no tab stops. Each row becomes a list item
+            # nested one level (four spaces, MATLAB's own form) per leading `\>`,
+            # so pseudocode keeps its structure; the `\kill` template row goes.
+            items = []
+            body = re.sub(r"^.*?\\kill", "", m.group(1), count=1, flags=re.S)
+            for row in re.split(r"\\\\", body):
+                if not row.strip():
+                    continue
+                row = re.sub(r"\\hspace\{[^}]*\}", "", row).strip()
+                level = 0
+                while row.startswith("\\>"):
+                    level += 1
+                    row = row[2:].lstrip()
+                row = " ".join(re.sub(r"\\[>=]", " ", row).split())
+                items.append("    " * level + "- " + row)
+            if not items:
+                return ""
+            items[-1] += " \\"
+            return "\n\n" + "\n".join(items) + "\n\n"
         s = re.sub(r"\\begin\{tabbing\}(.*?)\\end\{tabbing\}",
                    lambda m: self.block.add(render_tabbing(m)), s, flags=re.S)
 
@@ -978,8 +1016,12 @@ class Converter:
             # Blockquotes (`> `) are not live-script markdown: MATLAB shows the
             # line as code and mangles the marker on re-save. Centered italics
             # carry the same weight.
+            # A stashed block inside the quote (a tabbing, a list) passes
+            # through as is: italics cannot span its lines.
             paras = [" ".join(p.split()) for p in re.split(r"\n\s*\n", m.group(1).strip()) if p.strip()]
-            return "\n\n" + "\n".join(f'%[text]{{"align":"center"}} {_italic_para(p)}' for p in paras) + "\n\n"
+            return "\n\n" + "\n".join(p if self.block.marker_re.fullmatch(p)
+                                       else f'%[text]{{"align":"center"}} {_italic_para(p)}'
+                                       for p in paras) + "\n\n"
         s = re.sub(r"\\begin\{quote\}(.*?)\\end\{quote\}",
                    lambda m: self.block.add(render_quote(m)), s, flags=re.S)
         s = re.sub(r"\\begin\{ex\}(.*?)\\end\{ex\}",
@@ -1188,24 +1230,37 @@ def _italic_para(text: str) -> str:
     """Wrap a paragraph in italics the way MATLAB writes it back (verified by
     re-save in R2026b): the span is split around an inner `*x*`, which becomes
     bold-italic, and around a link, keeping the original spacing:
-    `*a* ***x*** *b*` and `*a,* [x](u)*, b*`."""
-    parts = re.split(r"(?<!\*)\*([^*]+)\*(?!\*)|(\[[^\]]*\]\([^)]*\))", text)
+    `*a* ***x*** *b*` and `*a,* [x](u)*, b*`. Code spans are italicized on
+    their own and math is left bare: `*a* *`c`* *b*` and `*a,* $m$*; b*`."""
+    parts = re.split(r"(`[^`]*`)|((?:\x00M\d+\x00|\$[^$]*\$))|(?<!\*)\*([^*]+)\*(?!\*)|(\[[^\]]*\]\([^)]*\))",
+                     text)
     out = []
     for i, part in enumerate(parts):
         if part is None:
             continue
-        if i % 3 == 0:
+        k = i % 5
+        if k == 1:
+            out.append(f"*{part}*")
+            continue
+        if k == 2 or k == 4:
+            out.append(part)
+            continue
+        if k == 3:
+            out.append(f"***{part}***")
+            continue
+        if k == 0:
             if part.strip():
                 lead = part[:len(part) - len(part.lstrip())]
                 trail = part[len(part.rstrip()):]
                 out.append(f"{lead}*{part.strip()}*{trail}")
             else:
                 out.append(part)
-        elif i % 3 == 1:
-            out.append(f"***{part}***")
-        else:
-            out.append(part)
     return "".join(out).strip()
+
+
+def _strip_italics(label: str) -> str:
+    """MATLAB drops italics inside link text on re-save (`[*x*](u)` → `[x](u)`)."""
+    return re.sub(r"(?<!\*)\*([^*]+)\*(?!\*)", r"\1", label)
 
 
 def _split_desc_label(it: str) -> tuple[str | None, str]:

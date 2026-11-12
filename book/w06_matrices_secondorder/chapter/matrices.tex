@@ -334,8 +334,9 @@ as input and expects to get a vector as output.
 
 Sharp-eyed readers will notice something different about this line:
 
+% mlive: noexec
 \begin{code}
-    res = [drdt; dfdt];
+    res = [dxdt; dydt];
 \end{code}
 
 The semicolon between the elements of the vector is not an error.  It
@@ -360,6 +361,7 @@ end
 \lstinline{V_init} is a vector that represents the initial condition, 80 rabbits and 20 foxes.
 The result from \lstinline{rate_func} is
 
+% mlive: noexec
 \begin{code}
 -8.0000
  1.2000
@@ -369,6 +371,7 @@ which means that with these initial conditions, we expect the rabbit population 
 Now we can run \lstinline{ode45} like this:
 
 \begin{code}
+V_init = [80, 20];
 tspan = [0, 200]
 [T, M] = ode45(@rate_func, tspan, V_init)
 \end{code}
@@ -502,6 +505,7 @@ but for four or more variables, you're on your own.
 
 The output vector from the rate function has to be a column vector, otherwise you get an error:
 
+% mlive: noexec
 \begin{code}
 Error using odearguments (line 93)
 RATE_FUNC must return a column vector.

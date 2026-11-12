@@ -117,7 +117,7 @@ To plot the fitted line, we use \lstinline{polyval}, which evaluates a polynomia
 >> plot(tt, vv, 'ko', t_fit, v_fit, 'r--')
 \end{code}
 
-The \lstinline{ko} markers show the data; the dashed red line is the linear fit.  The line clearly captures the overall downward trend, even though it doesn't pass through any individual data point.
+The \lstinline{ko} markers show the data; the dashed red line is the first-order polynomial (straight-line) fit.  The line clearly captures the overall downward trend, even though it doesn't pass through any individual data point.
 
 \subsection{How Good is the Fit?}
 
@@ -132,7 +132,7 @@ The \lstinline{ko} markers show the data; the dashed red line is the linear fit.
 R^2 = 0.82
 \end{code}
 
-\noindent $R^2$ ranges from $0$ to $1$.  A value of $1$ means the model passes through every data point.  A value of $0$ means the model does no better than just using the mean of the data --- i.e., a horizontal line through $\bar{v}$.  In between, $R^2$ tells you what fraction of the variability in the data is explained by the model.  An $R^2$ of $0.82$ says the linear model captures 82\% of the variance; the remaining 18\% is the part of the data the line doesn't account for.  As a rule of thumb, engineering applications often look for $R^2 > 0.9$ before considering a fit ``good enough,'' but the right threshold depends on the application.
+\noindent $R^2$ ranges from $0$ to $1$.  A value of $1$ means the model passes through every data point.  A value of $0$ means the model does no better than just using the mean of the data --- i.e., a horizontal line through $\bar{v}$.  In between, $R^2$ tells you what fraction of the variability in the data is explained by the model.  An $R^2$ of $0.82$ says the first-order polynomial captures 82\% of the variance; the remaining 18\% is the part of the data the line doesn't account for.  As a rule of thumb, engineering applications often look for $R^2 > 0.9$ before considering a fit ``good enough,'' but the right threshold depends on the application.
 
 \subsection{Higher-Order Polynomials}
 
@@ -163,7 +163,7 @@ A good piece of advice for picking the polynomial order:
 \index{regression!nonlinear}
 \index{nlinfit@\lstinline{nlinfit}}
 
-\lstinline{polyfit} is a special case of a more general idea: \emph{regression}, the statistical task of choosing model parameters to minimize the discrepancy between a model and a set of measurements.  Polynomial fits are linear in their parameters --- doubling a coefficient doubles the model's contribution from that term --- which makes them tractable using a single matrix equation.  But many physical models are not linear in their parameters.
+\lstinline{polyfit} is a special case of a more general idea: \emph{regression}, the statistical task of choosing model parameters to minimize the discrepancy between a model and a set of measurements.  Polynomial fits are \textbf{linear with respect to (wrt) their parameters} --- doubling a coefficient doubles the model's contribution from that term --- which makes them tractable using a single matrix equation.  But many physical models are not linear wrt their parameters.
 
 The battery discharge example again: from physical reasoning we expect the voltage to decay exponentially toward a cutoff voltage, not linearly.  A reasonable model is
 
@@ -175,12 +175,14 @@ The battery discharge example again: from physical reasoning we expect the volta
 
 MATLAB provides \lstinline{nlinfit} for this case.  The interface looks like
 
+% mlive: noexec
 \begin{code}
 >> params = nlinfit(x, y, @modelfun, params0)
 \end{code}
 
 \noindent where \lstinline{modelfun} is a function that takes a parameter vector and a vector of $x$ values and returns a vector of predicted $y$ values, and \lstinline{params0} is an initial guess for the parameters.  The signature of \lstinline{modelfun} is fixed:
 
+% mlive: noexec
 \begin{code}
 function yhat = modelfun(beta, x)
 \end{code}
@@ -207,7 +209,7 @@ params =
 
 \noindent We interpret the result as $V_0 = 13.2$\,V, $k = 0.40$\,1/hr, and $c = 1.05$\,V.  The time constant of the discharge is $1/k \approx 2.5$ hours.
 
-Why an initial guess?  Unlike the linear case, nonlinear regression is an iterative algorithm --- it starts from a guess and refines it.  If the initial guess is far from the true parameters, the algorithm can get stuck at a poor local minimum, or fail to converge.  A reasonable initial guess made from looking at the data goes a long way.
+Why an initial guess?  Unlike the linear-wrt-parameters case, nonlinear regression is an iterative algorithm --- it starts from a guess and refines it.  If the initial guess is far from the true parameters, the algorithm can get stuck at a poor local minimum, or fail to converge.  A reasonable initial guess made from looking at the data goes a long way.
 
 \subsection{Goodness of Fit for Nonlinear Models}
 
@@ -241,7 +243,7 @@ For everyday engineering work, the distinction often doesn't matter much --- you
 
 This chapter introduced two related families of techniques for working with measured data.  \emph{Interpolation} produces a function that passes exactly through your samples, useful when you need to estimate values between samples and you trust the data.  MATLAB provides \lstinline{interp1} for piecewise-linear (and other) interpolation, and \lstinline{spline} for smooth cubic-spline interpolation.
 
-\emph{Curve fitting} produces a function that approximates your data using a model with a small number of parameters.  When the model is a polynomial, \lstinline{polyfit} finds the best-fit coefficients in the least-squares sense; \lstinline{polyval} evaluates the polynomial at query points.  When the model is nonlinear in its parameters, \lstinline{nlinfit} finds the parameters by iterative optimization, starting from an initial guess.
+\emph{Curve fitting} produces a function that approximates your data using a model with a small number of parameters.  When the model is a polynomial, \lstinline{polyfit} finds the best-fit coefficients in the least-squares sense; \lstinline{polyval} evaluates the polynomial at query points.  When the model is nonlinear wrt its parameters, \lstinline{nlinfit} finds the parameters by iterative optimization, starting from an initial guess.
 
 The coefficient of determination $R^2$ summarizes how well a model captures the variability in the data.  An $R^2$ near $1$ is good; an $R^2$ near $0$ is poor.  But high $R^2$ alone does not guarantee a useful model: an over-flexible model can chase noise rather than describe trend, a problem called \emph{overfitting}.  The right model is the simplest one that captures the structure you believe is in the data.
 
@@ -267,7 +269,7 @@ vv = [13.55 8.50 6.80 4.31 3.35 3.86 2.94 1.14 1.79 0.65];
 \end{ex}
 
 \begin{ex}\label{ex:nlin_starting_point}
-The nonlinear regression in Section~3 worked well with the initial guess \lstinline{params0 = [13.5, 0.25, 0.5]}.  Try the same fit with progressively worse initial guesses --- e.g.\ \lstinline{[10, 1, 0]}, \lstinline{[1, 1, 1]}, \lstinline{[100, 0.01, 0]}.  At what point does \lstinline{nlinfit} fail to find the right parameters, or fail to converge at all?  This is the price of fitting models that are nonlinear in their parameters.
+The nonlinear regression in Section~3 worked well with the initial guess \lstinline{params0 = [13.5, 0.25, 0.5]}.  Try the same fit with progressively worse initial guesses --- e.g.\ \lstinline{[10, 1, 0]}, \lstinline{[1, 1, 1]}, \lstinline{[100, 0.01, 0]}.  At what point does \lstinline{nlinfit} fail to find the right parameters, or fail to converge at all?  This is the price of fitting models that are nonlinear wrt their parameters.
 \end{ex}
 
 \end{document}

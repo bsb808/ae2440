@@ -4,7 +4,7 @@
 \chapter{Optimization}
 
 
-In \nameref{cannon} in the previous chapter you were asked to find the best launch angle for a human cannonball, meaning the angle that maximizes the distance traveled before landing.  This kind of problem, finding minimums and maximums, is called \emph{optimization}.
+In Exercise~\ref{cannon} in the previous chapter you were asked to find the best launch angle for a human cannonball, meaning the angle that maximizes the distance traveled before landing.  This kind of problem, finding minimums and maximums, is called \emph{optimization}.
 
 In this chapter, we'll solve a similar problem, finding the best launch angle for a baseball.
 We'll solve the problem two ways, first running simulations with a range of values and plotting the results, then using a MATLAB function that automates the process, \lstinline{fminsearch}.
@@ -37,6 +37,7 @@ end
 This is similar to the event function we saw in Chapter~\ref{events}, except that it uses \lstinline{xx(3)} as the event value, which is the element of the state vector corresponding to the y-position.  This event function stops the simulation when the altitude of the ball is~0 and falling.
 
 Now we can call \lstinline{ode45} like this:
+% mlive: noexec
 \lstinputlisting[style=mcode, firstline=4, lastline=10]
 {w07_twodim_optimization/lessons/baseball_statespace3.m}
 
@@ -47,6 +48,7 @@ The initial position of the ball is \SI{1}{\meter} above home plate.  The ball's
 
 The maximum duration of the simulation is \SI{10}{\second}, but we expect an event to stop the simulation first.  We can get the final values of the simulation like~this:
 
+% mlive: noexec
 \begin{code}
 >> tout(end)
 ans =
@@ -106,6 +108,7 @@ After running the simulation we extract the final $x$-position and return it as 
 
 We can run this function for a range of angles like this:
 
+% mlive: noexec
 \begin{code}
     thetas = linspace(0, pi/2);
     for i = 1:length(thetas)
@@ -114,6 +117,7 @@ We can run this function for a range of angles like this:
 \end{code}
 And then plot \lstinline{ranges} as a function of \lstinline{thetas}:
 
+% mlive: noexec
 \begin{code}
     plot(thetas, ranges)
 \end{code}
@@ -148,6 +152,7 @@ end
 
 And then we call \lstinline{fminsearch} like this:
 
+% mlive: noexec
 \begin{code}
     % Inital estimate of solution
     theta0 = 0;
@@ -155,6 +160,7 @@ And then we call \lstinline{fminsearch} like this:
     [x, fval] = fminsearch(@negative_range, theta0)
 \end{code}
 which would return
+% mlive: noexec
 \begin{code}
     x =
     0.8403
@@ -170,6 +176,7 @@ If you're curious about how \lstinline{fminsearch} works, see ``\nameref{howfmin
 
 The \lstinline{fminsearch} algorithm often does a great job of finding a local minimum for a wide range of non-linear function, but there are lots of ways that things can go wrong.  This is a common issue with black-box solutions where the process of finding the solution is not clear.   The best way to avoid these logical bugs---where the program is doing exactly what we told it, but still doesn't give the result we intended---is to peer into the black-box. We can do this by setting some options available in the \lstinline{fminsearch} interface and looking at more of the outputs.  Here is an example:
 
+% mlive: noexec
 \begin{code}
     % Optimization options
     options = optimset('Display','iter', ...
@@ -223,6 +230,7 @@ Setting the \lstinline{PlotFcns} option to the three built-in plotting functions
     \end{figure}
 
 The two additional output variables also help us make sure the answer we received is what we intended.
+% mlive: noexec
 \begin{code}
 exitflag =
      1
@@ -296,8 +304,9 @@ Animation is a useful tool for checking the results of a physical model. If some
 \index{animation}
 \index{getframe@\lstinline{getframe}}
 
-The more informal way is to draw a series of plots.  You may have seen this when MATLAB incrementally generated the plots in Figure~\ref{f:opt_plot}  Listing~\ref{lst:animate} is a snippet that animates the results of a baseball simulation:
+The more informal way is to draw a series of plots.  You may have seen this when MATLAB incrementally generated the plots in Figure~\ref{f:opt_plot}.  Listing~\ref{lst:animate} is a snippet that animates the results of a baseball simulation:
 
+% mlive: noexec
 \begin{lstlisting}[caption={A snippet that animates the results of a baseball simulation}, label={lst:animate}]
     % Animate
     % Solve with ode45
@@ -377,6 +386,7 @@ real time.  After drawing each frame and calling
 \lstinline{drawnow}, you can compute the time
 until the next frame and use \lstinline{pause} to wait:
 
+% mlive: noexec
 \begin{code}
     dt = tout(ii+1) - tout(ii);
     pause(dt);

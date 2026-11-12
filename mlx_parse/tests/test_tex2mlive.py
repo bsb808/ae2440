@@ -226,6 +226,54 @@ class Prose(unittest.TestCase):
         self.assertIn('%[text]{"align":"center"} $y = 2$', out)
         self.assertNotIn("begin{array}", out)
 
+    def test_array_becomes_plain_tex_matrix(self):
+        out, _ = convert(r"""
+        Text.
+        \[ \left\lbrace \begin{array}{c} x \\ y \end{array} \right\rbrace
+           = \left[ \begin{array}{r@{}l} a &{}= 1 \\ b &{}= 2 \end{array} \right] \]
+        """)
+        line = next(ln for ln in body_lines(out) if '"align":"center"' in ln)
+        self.assertNotIn("begin{", line)
+        self.assertIn(r"\\left\\{ \\matrix{x \\cr y} \\right\\}", line)
+        self.assertIn(r"\\matrix{a &{}= 1 \\cr b &{}= 2}", line)
+
+    def test_nameref_to_untitled_label_uses_number(self):
+        # An exercise has no title, so \\nameref would print nothing.
+        out, _ = convert(r"In \nameref{ex:p} you were asked.")
+        self.assertIn("In Exercise 3.1 you were asked.", out)
+        self.assertNotIn("**", out)
+
+    def test_less_than_in_math_is_escaped(self):
+        out, _ = convert(r"Check that $d < 2 r$ holds.")
+        self.assertIn(r"$d \< 2 r$", out)
+
+    def test_star_in_math_is_escaped(self):
+        out, _ = convert(r"The optimum $Q^*$ is learned.")
+        self.assertIn(r"$Q^\*$", out)
+
+    def test_link_text_loses_italics(self):
+        out, _ = convert(r"Define an \href{https://example.com/a}{\emph{anonymous function}} here.")
+        self.assertIn("[anonymous function](https://example.com/a)", out)
+
+    def test_tabbing_becomes_nested_list(self):
+        out, _ = convert(r"""
+        \begin{quote}
+        \begin{tabbing}
+        \hspace{1em}\=\hspace{1em}\=\kill
+        Initialize $Q$ \\
+        \textbf{for} each episode: \\
+        \>Initialize $S$ \\
+        \>\>Step
+        \end{tabbing}
+        \end{quote}
+        """)
+        lines = body_lines(out)
+        self.assertIn("%[text] - Initialize $Q$", lines)
+        self.assertIn("%[text] - **for** each episode:", lines)
+        self.assertIn("%[text]     - Initialize $S$", lines)
+        self.assertIn("%[text]         - Step \\", lines)
+        self.assertFalse(any(ln.strip() in ('%[text] *', '%[text]{"align":"center"} *') for ln in lines))
+
     def test_tie_in_math_is_a_thick_space(self):
         out, _ = convert("$\\mathrm{for}~i$")
         self.assertIn("$\\\\mathrm{for}\\\\;i$", out)
@@ -407,7 +455,8 @@ class Figures(unittest.TestCase):
             lines = out.splitlines()
             ref = next(ln for ln in lines if "![" in ln)
             self.assertRegex(ref, r'^%\[text\]\{"align":"center"\} !\[The x process\]\(text:image:[0-9a-f]{4}\)$')
-            self.assertIn('%[text]{"align":"center"} *Figure 3.1: The $x$ process*', lines)
+            # MATLAB's re-save form: the italics split around math.
+            self.assertIn('%[text]{"align":"center"} *Figure 3.1: The* $x$ *process*', lines)
             img_id = ref.split("text:image:")[1].rstrip(")")
             i = lines.index(f"%[text:image:{img_id}]")
             self.assertTrue(lines[i + 1].startswith('%   data: {"align":"baseline","height":3,"src":"data:image\\/png;base64,'))
@@ -460,6 +509,54 @@ class Counts(unittest.TestCase):
         tc, mc = t.tex_counts(tex), t.m_counts(out)
         for k in ("sections", "subsections", "exercises", "figures"):
             self.assertEqual(tc[k], mc[k], k)
+
+
+class BrokenLists(unittest.TestCase):
+    def test_enumerate_broken_by_code_keeps_numbers(self):
+        out, _ = convert(r"""
+        \begin{enumerate}
+        \item First:
+        \begin{code}
+        x = 1;
+        \end{code}
+        Prose after the first block.
+        \item Second:
+        \begin{code}
+        y = 2;
+        \end{code}
+        \end{enumerate}
+        """)
+        lines = body_lines(out)
+        self.assertIn(r"%[text] 1\. First:", lines)
+        self.assertIn(r"%[text] 2\. Second:", lines)
+        self.assertNotIn("x = 1; 2", " ".join(lines))
+        self.assertIn("y = 2;", lines)
+        self.assertIn("%[text] Prose after the first block.", lines)
+
+
+class Captions(unittest.TestCase):
+    def test_caption_code_and_line_break(self):
+        conv = t.Converter(labels=LABELS)
+        cap = conv._caption_text(r"Setting \\ \lstinline{'P' = {@a, @b}}")
+        self.assertEqual(cap, "Setting `'P' = {@a, @b}`")
+        self.assertEqual(t._italic_para("Figure 1: " + cap), "*Figure 1: Setting* *`'P' = {@a, @b}`*")
+        self.assertEqual(t._italic_para("Where `ode45` runs"), "*Where* *`ode45`* *runs*")
+
+
+class Aux(unittest.TestCase):
+    def test_caption_with_nested_braces(self):
+        """A caption title nesting braces two deep (a cell array inside
+        \\lstinline) still yields its label."""
+        import tempfile
+        line = (r"\newlabel{f:opt_plot}{{14.3}{155}{Figure resulting from setting \\ "
+                r"\lstinline {'PlotFcns' = {@optimplotx, @optimplotfval}}\relax }{figure.caption.21}{}}")
+        with tempfile.TemporaryDirectory() as d:
+            aux = Path(d) / "book.aux"
+            aux.write_text(line + "\n", encoding="utf-8")
+            labels = t.load_labels(aux)
+        self.assertIn("f:opt_plot", labels)
+        self.assertEqual(labels["f:opt_plot"].number, "14.3")
+        self.assertEqual(labels["f:opt_plot"].kind, "figure")
 
 
 if __name__ == "__main__":

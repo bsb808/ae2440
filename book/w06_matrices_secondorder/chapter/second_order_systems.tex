@@ -142,6 +142,7 @@ The initial condition of \lstinline{xx} is the initial position, which is the he
 
 The result from \lstinline{rate_func} is
 
+% mlive: noexec
 \begin{code}
     0
    -9.8000
@@ -166,10 +167,11 @@ We can extract the first column and plot it, like this:
 
 \begin{code}
 Y = Xout(:, 1)
-plot(T, Y)
+plot(tout, Y)
 \end{code}
 
 Here is the full listing\dots
+% mlive: noexec
 \lstinputlisting[style=mcode]{w06_matrices_secondorder/lessons/penny1.m}
 
 \begin{figure}
@@ -329,12 +331,13 @@ That helps me avoid errors like adding forces to accelerations.
 
 To use this function, we make a small change in \lstinline{rate_func}:
 
+% mlive: noexec
 \begin{code}
 function xx_dot = rate_func(t, xx)
     % Rate function using state space format
     A = [0, 1; 0, 0];
     B = [0; 1];
-    % Intput is total acceleration - this line has changed!
+    % Input is total acceleration - this line has changed!
     uu = acceleration(t, xx);
     
     xx_dot = A*xx+B*uu;
@@ -360,6 +363,7 @@ With air resistance, the time until the penny hits the sidewalk is \SI{22.4}{\se
 And the final velocity is \SI{18.1}{\meter \per \second}, substantially slower than before (\SI{86}{\meter \per \second}).
 
 Here is the full script\dots
+% mlive: noexec
 \lstinputlisting[style=mcode]{w06_matrices_secondorder/lessons/penny_event_drag.m}
 
 \section{Chapter Review}

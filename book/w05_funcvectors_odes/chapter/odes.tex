@@ -190,6 +190,7 @@ yy_{i+1} &=& yy_i + r \Delta t
 where $r$ is the rate of growth computed by \lstinline{rate_func}.
 Listing~\ref{lst:euler_method} has the code we need:
 
+% mlive: noexec
 \lstinputlisting[style=mcode, caption={A function implementing Euler's method}, label={lst:euler_method}]{w05_funcvectors_odes/lessons/euler.m}
 
 Before the loop, we create two vectors, \lstinline{tt} and \lstinline{yy}, and set the first element of each with the initial conditions;  \lstinline{dt}, which is the size of the time steps, is \SI{0.1}{hours}.
@@ -225,6 +226,7 @@ MATLAB provides a function called \lstinline{ode45} that implements one of these
 
 In order to use \lstinline{ode45}, you have to write a function that evaluates $dy/dt$ as a function of $t$ and $y$.  Fortunately, we already have one, called \lstinline{rate_func}:
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(t, y)
    a = 0.2;
@@ -292,6 +294,7 @@ The growth rate is lowest at $t=0$, on January~1, and highest at $t=365/2$, on J
 
 Now we can write a function that evaluates the growth rate:
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(t, rats)
     %RATE_FUNC returns the growth rate at time (t) for population (rats)
@@ -304,6 +307,7 @@ end
 To test this function, I put it in a file called \emph{rats.m} with a main function called
 \lstinline{rats}:
 
+% mlive: noexec
 \begin{code}
 function res = rats_growth()
     t = 365/2;
@@ -317,6 +321,7 @@ there are 1000 rats at $t=365/2$ (June~30) and computes the growth rate under th
 
 We can run the main function like this:
 
+% mlive: noexec
 \begin{code}
 >> r = rat_growth()
 
@@ -328,8 +333,9 @@ Under these conditions, the growth rate is 4 new rats per day.
 Now that we've tested \lstinline{rate_func}, we can use \lstinline{ode45} to solve the differential equation.
 Here's how to call it from the main function in \emph{rats.m}:
 
+% mlive: noexec
 \begin{code}
-[tt, yy]] = ode45(@rate_func, [0, 365], 1000)
+[tt, yy] = ode45(@rate_func, [0, 365], 1000)
 plot(tt, yy)
 \end{code}
 
@@ -339,6 +345,7 @@ The third argument is the initial population, $y(0) = 1000$.
 \index{interval}
 
 We can put this all together in the following program:
+% mlive: noexec
 \lstinputlisting[style=mcode]{w05_funcvectors_odes/lessons/rat_growth.m}
 
 Figure~\ref{fig:rats} shows the results.
@@ -353,6 +360,7 @@ The population grows slowly during the winter, quickly during the summer, and th
 
 To see the population at the end of the year, you can display the last element of \lstinline{rats}:
 
+% mlive: noexec
 \begin{code}
 rats(end)
 2.0751e+03
@@ -372,6 +380,7 @@ The index here is \lstinline{end}, which is a special word in MATLAB that means 
 Don't forget the \lstinline{@} on the function handle.
 If you leave it out, like:
 
+% mlive: noexec
 \begin{code}
 [tt, yy] = ode45(rate_func, [0, 365], 1000)
 \end{code}
@@ -382,6 +391,7 @@ Then you get an error message:
 \index{rate function}
 \index{function handle}
 
+% mlive: noexec
 \begin{code}
 Not enough input arguments.
 
@@ -405,6 +415,7 @@ If you're working with a rate function like:
 \end{equation*}
 you might be tempted to write this:
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(y)        % WRONG
     a = 0.002;
@@ -420,6 +431,7 @@ variable, even if you don't use it:
 
 \index{input variable}
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(t, y)     % RIGHT
     a = 0.002;
@@ -431,6 +443,7 @@ Another common error is to write a function that doesn't make
 an assignment to the output variable.  If you write something
 like:
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(t, y)
     a = 0.002;
@@ -440,6 +453,7 @@ end
 \end{code}
  and then call it from \lstinline{ode45}, you get
 
+% mlive: noexec
 \begin{code}
 Output argument "res" (and maybe others) not assigned during call
 to "rate_func".
@@ -479,6 +493,7 @@ legend('euler', 'ode45', 'Location', 'northwest')
 
 Finally,  save the figures using \lstinline{saveas}:
 
+% mlive: noexec
 \begin{code}
 saveas(gcf,'runge.png','png')
 \end{code}
@@ -513,6 +528,7 @@ As an example, we'll solve the following differential equation:
 
 Given a differential equation, it's usually straightforward to write a rate function:
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(t, y)
     dydt = y * sin(t);
@@ -522,6 +538,7 @@ end
 
 And we can use it like this:
 
+% mlive: noexec
 \begin{code}
     y0 = 1;
     tspan=[0 4];
@@ -535,6 +552,7 @@ For this example we'll use \lstinline{odeset} to set the \lstinline{Refine} opti
 
 Now we can modify the rate function to plot the places where it gets evaluated:
 
+% mlive: noexec
 \begin{code}
 function res = rate_func(t, y)
     dydt = y * sin(t);

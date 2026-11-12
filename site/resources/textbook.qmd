@@ -8,22 +8,31 @@ We use an adaptation of *Physical Modeling in MATLAB* by Allen Downey ([Green Te
 
 - [PhysicalModelingInMatlabAE2440.pdf](files/PhysicalModelingInMatlabAE2440.pdf) (release 25-3)
 
-## Chapters by week
+## Chapters
 
 Each week's reading is also released chapter by chapter from the [Schedule](../index.qmd), so you can read just what is assigned. The chapters are the same text as the whole-book PDF.
 
-| Week | Chapter | Formats |
-|---|---|---|
-| 1 | 1. Modeling and Simulation | [PDF](../weeks/w01_modeling_scripts/files/modeling.pdf) · [Live script](../weeks/w01_modeling_scripts/files/modeling.m){download="modeling.m"} |
-| 1 | 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) · [Live script](../weeks/w01_modeling_scripts/files/scripts.m){download="scripts.m"} |
-| 2 | 3. Loops | [PDF](../weeks/w02_loops_vectors/files/loops.pdf) · [Live script](../weeks/w02_loops_vectors/files/loops.m){download="loops.m"} |
-| 2 | 4. Vectors | [PDF](../weeks/w02_loops_vectors/files/vectors.pdf) · [Live script](../weeks/w02_loops_vectors/files/vectors.m){download="vectors.m"} |
-| 4 | 5. Functions | [PDF](../weeks/w03_functions_conditionals/files/functions.pdf) · [Live script](../weeks/w03_functions_conditionals/files/functions_chapter.m){download="functions_chapter.m"} |
-| 4 | 6. Conditionals | [PDF](../weeks/w03_functions_conditionals/files/conditionals.pdf) · [Live script](../weeks/w03_functions_conditionals/files/conditionals.m){download="conditionals.m"} |
-| 5 | 7. Data Types | [PDF](../weeks/w04_datatypes_fzero/files/datatypes.pdf) · [Live script](../weeks/w04_datatypes_fzero/files/datatypes.m){download="datatypes.m"} |
-| 5 | 8. Function Handles and Zero-Finding | [PDF](../weeks/w04_datatypes_fzero/files/zerofinding.pdf) · [Live script](../weeks/w04_datatypes_fzero/files/zerofinding.m){download="zerofinding.m"} |
+| Chapter | Formats |
+|---|---|
+| 1. Modeling and Simulation | [PDF](../weeks/w01_modeling_scripts/files/modeling.pdf) · [Live script](../weeks/w01_modeling_scripts/files/modeling.m){download="modeling.m"} |
+| 2. Scripts | [PDF](../weeks/w01_modeling_scripts/files/scripts.pdf) · [Live script](../weeks/w01_modeling_scripts/files/scripts.m){download="scripts.m"} |
+| 3. Loops | [PDF](../weeks/w02_loops_vectors/files/loops.pdf) · [Live script](../weeks/w02_loops_vectors/files/loops.m){download="loops.m"} |
+| 4. Vectors | [PDF](../weeks/w02_loops_vectors/files/vectors.pdf) · [Live script](../weeks/w02_loops_vectors/files/vectors.m){download="vectors.m"} |
+| 5. Functions | [PDF](../weeks/w03_functions_conditionals/files/functions.pdf) · [Live script](../weeks/w03_functions_conditionals/files/functions_chapter.m){download="functions_chapter.m"} |
+| 6. Conditionals | [PDF](../weeks/w03_functions_conditionals/files/conditionals.pdf) · [Live script](../weeks/w03_functions_conditionals/files/conditionals.m){download="conditionals.m"} |
+| 7. Data Types | [PDF](../weeks/w04_datatypes_fzero/files/datatypes.pdf) · [Live script](../weeks/w04_datatypes_fzero/files/datatypes.m){download="datatypes.m"} |
+| 8. Function Handles and Zero-Finding | [PDF](../weeks/w04_datatypes_fzero/files/zerofinding.pdf) · [Live script](../weeks/w04_datatypes_fzero/files/zerofinding.m){download="zerofinding.m"} |
+| 9. Functions of Vectors | [PDF](../weeks/w05_funcvectors_odes/files/functions_of_vectors.pdf) · [Live script](../weeks/w05_funcvectors_odes/files/functions_of_vectors.m){download="functions_of_vectors.m"} |
+| 10. Ordinary Differential Equations | [PDF](../weeks/w05_funcvectors_odes/files/odes.pdf) · [Live script](../weeks/w05_funcvectors_odes/files/odes.m){download="odes.m"} |
+| 11. Matrices and Systems of ODEs | [PDF](../weeks/w06_matrices_secondorder/files/matrices.pdf) · [Live script](../weeks/w06_matrices_secondorder/files/matrices.m){download="matrices.m"} |
+| 12. Second-Order Systems | [PDF](../weeks/w06_matrices_secondorder/files/second_order_systems.pdf) · [Live script](../weeks/w06_matrices_secondorder/files/second_order_systems.m){download="second_order_systems.m"} |
+| 13. Two Dimensions | [PDF](../weeks/w07_twodim_optimization/files/two_dimensions.pdf) · [Live script](../weeks/w07_twodim_optimization/files/two_dimensions.m){download="two_dimensions.m"} |
+| 14. Optimization | [PDF](../weeks/w07_twodim_optimization/files/optimization.pdf) · [Live script](../weeks/w07_twodim_optimization/files/optimization.m){download="optimization.m"} |
+| 15. Interpolation, Curve Fitting, and Regression | [PDF](../weeks/w08_interpolation_curvefit/files/interpolation_curvefit.pdf) · [Live script](../weeks/w08_interpolation_curvefit/files/interpolation_curvefit.m){download="interpolation_curvefit.m"} |
+| 16. Introduction to Reinforcement Learning | [PDF](../weeks/w09_rl_intro/files/rl_intro.pdf) |
+| 17. Q-Learning and Blackjack | [PDF](../weeks/w10_rl_blackjack/files/rl_blackjack.pdf) · [Live script](../weeks/w10_rl_blackjack/files/rl_blackjack.m){download="rl_blackjack.m"} |
 
-Later weeks are added as they are posted.
+Chapter 16 has no code, so it is offered as a PDF only.
 
 ### Live script format (beta)
 

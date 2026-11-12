@@ -157,7 +157,7 @@ grid on;
 %[text] ```
 %[text] the warning message goes away.
 %[text] ### 8.1.5 Anonymous Functions
-%[text] One way to avoid a separate M-file, *error\_func.m*, for the function definition we provide to `fzero` is to define an [*anonymous function*](https://www.mathworks.com/help/matlab/matlab_prog/anonymous-functions.html). An anonymous function is a single statement function, not stored in a separate program file, associated with a function handle.
+%[text] One way to avoid a separate M-file, *error\_func.m*, for the function definition we provide to `fzero` is to define an [anonymous function](https://www.mathworks.com/help/matlab/matlab_prog/anonymous-functions.html). An anonymous function is a single statement function, not stored in a separate program file, associated with a function handle.
 % Anonymous error function handle
 error_afunc_handle = @(x) x.^2 - 2.*x -3;
 
@@ -179,7 +179,7 @@ fzero(@local_error_func, [2,4])
 %%
 %[text] ## 8.2 How fzero Works
 %[text] According to the MATLAB documentation, `fzero` uses “a combination of bisection, secant, and inverse quadratic interpolation methods.” (See [https://greenteapress.com/matlab/fzero](https://greenteapress.com/matlab/fzero))
-%[text] To understand what that means, suppose we're trying to find a root of a function of one variable, $f(x)$, and assume we have evaluated the function at two places, $x\_1$ and $x\_2$, and found that the results have opposite signs. Specifically, assume $f(x\_1) \> 0$ and $f(x\_2) < 0$, as shown in Figure 8.2.
+%[text] To understand what that means, suppose we're trying to find a root of a function of one variable, $f(x)$, and assume we have evaluated the function at two places, $x\_1$ and $x\_2$, and found that the results have opposite signs. Specifically, assume $f(x\_1) \> 0$ and $f(x\_2) \< 0$, as shown in Figure 8.2.
 %[text]{"align":"center"} ![Initial state of a root-finding search](text:image:9ed1)
 %[text]{"align":"center"} *Figure 8.2: Initial state of a root-finding search*
 %[text] As long as $f$ is continuous, there must be at least one root in this interval. In this case we would say that $x\_1$ and $x\_2$ *bracket* a zero.
@@ -235,7 +235,7 @@ asin(1)
 %[text] 3. Use `fzero` to find as many different roots as you can. Does `fzero` always find the root that is closest to the initial value? \
 %[text] **Exercise 8.2.** When a duck is floating on water, how much of its body is submerged? (note: This exercise is adapted from C. F. Gerald and P. O. Wheatley, *Applied Numerical Analysis*, 4th edition (Boston: Addison-Wesley, 1989).)
 %[text] To estimate a solution to this problem, we'll assume that the submerged part of a duck is well approximated by a section of a sphere. If a sphere with radius $r$ is submerged in water to a depth $d$, the volume of the sphere below the water line is
-%[text]{"align":"center"} $V = \\frac{\\pi}{3} (3r d^2 - d^3) \\quad \\mbox{as long as} \\quad d < 2 r$
+%[text]{"align":"center"} $V = \\frac{\\pi}{3} (3r d^2 - d^3) \\quad \\mbox{as long as} \\quad d \< 2 r$
 %[text] We'll also assume that the density of a duck is $\\rho = 0.3$ g/cm$^3$ (0.3 times the density of water) and that its mass is $\\frac{4}{3} \\pi r^3 \\rho$ g.
 %[text] Finally, according to the law of buoyancy, an object floats at the level where the weight of the displaced water equals the total weight of the object.
 %[text] Here are some suggestions for how to proceed:
@@ -244,7 +244,7 @@ asin(1)
 %[text] 3. Write a MATLAB function that evaluates this function. Test it, then make it a quiet function.
 %[text] 4. Make a guess about the value of $d\_0$ to use as an initial value.
 %[text] 5. Use `fzero` to find a root near $d\_0$.
-%[text] 6. Check to make sure the result makes sense. In particular, check that $d < 2 r$, because otherwise the volume equation doesn't work!
+%[text] 6. Check to make sure the result makes sense. In particular, check that $d \< 2 r$, because otherwise the volume equation doesn't work!
 %[text] 7. Try different values of $\\rho$ and $r$ and see if you get the effect you expect. What happens as $\\rho$ increases? Goes to infinity? Goes to zero? What happens as $r$ increases? Goes to infinity? Goes to zero? \
 
 %[appendix]{"version":"1.0"}
