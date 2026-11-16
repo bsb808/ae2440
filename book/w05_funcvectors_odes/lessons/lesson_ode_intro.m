@@ -23,48 +23,59 @@
 %[text] where $y(t)$ is temperature (°C), $\\theta\_e = 20$ °C is room temperature, and $k = 0.01$ min$^{-1}$.
 %[text] This ODE has a known exact solution, which makes it a good teaching example — we can check how well the numerical method performs.
 %[text] $y(t) = \\theta\_e + (y\_0 - \\theta\_e)\\,e^{-kt}$
-tt      = linspace(0, 200, 500);
+%[text] We can use our common idiom to visualize the solution time series
+%[text] Evaluate the time series at $N$ evenly spaced time samples
+N = 500;
+tt = linspace(0, 200, 500);
 y_exact = 20 + (90 - 20)*exp(-0.01*tt);
+%[text] Plot the $N$ points to approximate the continuous curve. 
 figure(1)
 clf()
 plot(tt, y_exact, 'k--', 'LineWidth', 2, 'DisplayName', 'Exact solution')
-hold on
-yline(20, 'Color', [0.6 0.6 0.6], 'LineStyle', ':', 'DisplayName', '\theta_e = 20 deg C')
 xlabel('Time (min)')
 ylabel('Temperature (deg C)')
 grid on
+%[text] Add a line to show room temperature
+hold on
+yline(20, 'Color', [0.6 0.6 0.6], 'LineStyle', ':', 'DisplayName', '\theta_e = 20 deg C')
 legend()
 %%
 %[text] ## Euler's Method
-%[text] Euler's method is the simplest numerical ODE solver. At each step it uses the current slope (the ODE) to estimate the next value:
+%[text] Euler's method is the simplest numerical ODE solver. At each step it uses ODE to evaluate the current slope (rate function) to then estimate the next sample after a fixed timestep of $\\Delta t$ :
 %[text] $y\_{k+1} = y\_k + \\Delta t \\cdot \\frac{dy}{dt}(t\_k,\\, y\_k)$
 %[text] It is worth understanding what is happening "under the hood" before using a black-box solver.
-%[text] **Step 0 — Initialize** at the initial condition:
+%[text] **Step 0 — Initialize** at the initial conditions for time and corresponding temperature:
 t_euler = [0];
 y_euler = [90];
-dt = 20;
 %[text] **Step 1 — Evaluate the rate of change** at the current state:
 t    = t_euler(end);
 y    = y_euler(end);
 dydt = -0.01 * (y - 20)
-%[text] **Step 2 — Step forward** using the slope:
+%[text] **Step 2 — Step forward** using the slope and fixed time step:
+dt = 20;   % Time step [min]
 t_euler(end+1) = t + dt;
 y_euler(end+1) = y + dydt * dt;
 plot(t_euler, y_euler, 'bo-', 'HandleVisibility', 'off')
 %%
 %[text] **Repeat** — same two steps from the new state:
+%[text] Current *state* of the model, time and temperature
 t    = t_euler(end);
 y    = y_euler(end);
+%[text] Rate function and increment
 dydt = -0.01 * (y - 20);
 t_euler(end+1) = t + dt;
 y_euler(end+1) = y + dydt * dt;
+%[text] Visualize
 plot(t_euler, y_euler, 'bo-', 'HandleVisibility', 'off')
 %%
 %[text] Repeating by hand quickly becomes tedious — this is exactly what a loop is for.
 while t_euler(end) < 200
+    % Current state
     t    = t_euler(end);
     y    = y_euler(end);
+    % Rate function
     dydt = -0.01 * (y - 20);
+    % Next state
     t_euler(end+1) = t + dt;
     y_euler(end+1) = y + dydt * dt;
 end
@@ -114,7 +125,7 @@ end
 %[text] ## ode45 — MATLAB's Built-In Solver
 %[text] `ode45` uses the same separation principle with a standard interface shared by all MATLAB ODE solvers:
 %[text] `[t, y] = ode45(odefun, tspan, y0)`
-%[text] - `odefun` — function handle; signature must be `dydt = f(t, y)`
+%[text] - `odefun` — function handle; **signature must be** **`dydt = f(t, y)`**
 %[text] - `tspan` — `[t_start, t_end]`
 %[text] - `y0` — initial condition \
 %[text] Unlike Euler, `ode45` automatically adjusts its step size to control error — taking small steps where the solution changes quickly and large steps where it is smooth.
@@ -128,7 +139,7 @@ hold on
 plot(te, ye, 'r-o', 'LineWidth', 1.5, 'DisplayName', sprintf('Euler  \\Deltat = %d min', dt))
 plot(t_ode, y_ode, 'b-', 'LineWidth', 1.5, 'DisplayName', 'ode45')
 xlabel('Time (min)'); ylabel('Temperature (deg C)')
-legend(); grid on
+legend(); grid on signature must be dydt = f(t, y)
 %[text] Notice that `ode45` closely tracks the exact solution while Euler accumulates error — especially early when the temperature is changing most rapidly.
 
 %[appendix]{"version":"1.0"}

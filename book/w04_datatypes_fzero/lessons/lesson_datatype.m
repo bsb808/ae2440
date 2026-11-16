@@ -10,38 +10,41 @@
 %[text] | `struct` | `s.field = val` | Grouping related variables (id, bearing, range) under one name |
 %[text:table]
 clear;
-a = 3.14;           class(a)   % double
-b = "hello";        class(b)   % string
-c = 'hello';        class(c)   % char
-d = true;           class(d)   % logical
+a = 3.14;           class(a)   % double %[output:0a31151b]
+b = "hello";        class(b)   % string %[output:868bc579]
+c = 'hello';        class(c)   % char %[output:9b035014]
+d = true;           class(d)   % logical %[output:8b093706]
 %%
 %[text] This lesson covers the three you will need most for Assignment 4: special numeric values, logical arrays, and structures.
 %%
 %[text] ## Arrays and Vectors
 %[text] In MATLAB every value is an array — even a single number is a 1×1 array. A **vector** is a 1-D array. Square brackets build a vector; elements are separated by spaces or commas.
 %[text] **Numeric vector** — all elements must be the same numeric type:
-speeds = [12.5  8.3  15.0  9.7]
-class(speeds)
+speeds = [12.5  8.3  15.0  9.7] %[output:26db3e43]
+class(speeds) %[output:69883b89]
 %[text] **String array** — a vector of strings, one per element:
-labels = ["Alpha"  "Bravo"  "Charlie"  "Delta"]
-class(labels)
+labels = ["Alpha"  "Bravo"  "Charlie"  "Delta"] %[output:48f7e2c9]
+labels(3) %[output:9e35b58b]
+class(labels) %[output:2aa0f0b3]
 %[text] **Logical vector** — a vector of `true`/`false` values, produced by comparisons:
-fast = speeds > 10
-class(fast)
+speeds %[output:9b1ae5f0]
+fast = speeds > 10 %[output:88721073]
+class(fast) %[output:2ee340bf]
 %[text] Logical indexing uses a logical vector to select elements from another vector of the same length:
-speeds(fast)
+speeds(fast) %[output:397d93bd]
+speeds(speeds>10) %[output:54121c4a]
 %%
 %[text] ### `char` vs `string`
 %[text] Single-quoted `'hello'` is a **`char`** **array** — a vector of characters. Double-quoted `"hello"` is a **`string`**. They print identically but behave differently in two common situations:
 %[text] **Comparison**: `==` on two `char` arrays compares character by character and returns a logical array, not a single `true`/`false`. Use `strcmp` to test whether two `char` values are equal. `string` values can use `==` directly.
 a_char = 'hello';
 a_str  = "hello";
-a_char == 'hello'        % [1 1 1 1 1] — element-wise, not a scalar
-strcmp(a_char, 'hello')  % true — correct way to compare char
-a_str  == "hello"        % true — string == works as expected
+a_char == 'hello'        % [1 1 1 1 1] — element-wise, not a scalar %[output:1744b9eb]
+strcmp(a_char, 'hello')  % true — correct way to compare char %[output:022ea67d]
+a_str  == "hello"        % true — string == works as expected %[output:03a7c2e2]
 %[text] **Indexing**: `(k)` on a `char` array gives the *k*-th character; `(k)` on a `string` gives the *k*-th element of the string array. For a scalar string, any index beyond 1 errors.
-a_char(2)   % 'e' — second character
-a_str(2)    % error — "hello" is a 1×1 string array; no element at index 2
+a_char(2)   % 'e' — second character %[output:4622212f]
+a_str(2)    % error — "hello" is a 1×1 string array; no element at index 2 %[output:8161fcb6]
 %%
 %[text] ### Arrays of strings vs arrays of characters
 %[text] Square brackets behave differently for `string` and `char`:
@@ -85,14 +88,14 @@ bad_idx = find(bad_mask)
 x_clean = x(~bad_mask)
 %%
 %[text] ## Formatted Output with fprintf
-%[text] `fprintf` prints a formatted string to the Command Window. The format string uses [**format specifiers** ](https://cplusplus.com/reference/cstdio/printf/)to insert values:
+%[text] `fprintf` prints a formatted string to the Command Window. The format string uses [format specifiers ](https://cplusplus.com/reference/cstdio/printf/)to insert values:
 %[text] - `%d` — integer
 %[text] - `%.2f` — floating-point, 2 decimal places
 %[text] - `%s` — string \
 id = "S-01";
 value = 23.456;
 count = 12;
-fprintf("Sensor %s  |  Value: %.2f C  |  Readings: %d", id, value, count)
+fprintf("Sensor %s  |  Value: %.2f C  |  Readings: %d", id, value, count) %[output:2d483b13]
 %[text] The `\n` moves the cursor to a new line. The separators and spacing are layout choices — use whatever format your report requires.
 %%
 %[text] ## Structures
@@ -109,8 +112,8 @@ sensor(2).id    = "S-02";
 sensor(2).type  = "Salinity";
 sensor(2).value = 35.1;
 %[text] Now `sensor` is a `1×2 struct array`. Access any element and field with index + dot notation:
-sensor(1).type
-sensor(2).value
+sensor(1).type %[output:19557191]
+sensor(2).value %[output:7b2c3e8b]
 %%
 %[text] Loop over a struct array to process all elements the same way:
 for k = 1:length(sensor)
@@ -145,4 +148,70 @@ sensor(1).id(2)              % '-' — char indexing gives the second character
 %---
 %[metadata:view]
 %   data: {"layout":"inline"}
+%---
+%[output:0a31151b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'double'"}}
+%---
+%[output:868bc579]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'string'"}}
+%---
+%[output:9b035014]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'char'"}}
+%---
+%[output:8b093706]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'logical'"}}
+%---
+%[output:26db3e43]
+%   data: {"dataType":"matrix","outputData":{"columns":4,"name":"speeds","rows":1,"type":"double","value":[["12.5000","8.3000","15.0000","9.7000"]]}}
+%---
+%[output:69883b89]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'double'"}}
+%---
+%[output:48f7e2c9]
+%   data: {"dataType":"matrix","outputData":{"columns":4,"header":"1×4 string array","name":"labels","rows":1,"type":"string","value":[["Alpha","Bravo","Charlie","Delta"]]}}
+%---
+%[output:9e35b58b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"\"Charlie\""}}
+%---
+%[output:2aa0f0b3]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'string'"}}
+%---
+%[output:9b1ae5f0]
+%   data: {"dataType":"matrix","outputData":{"columns":4,"name":"speeds","rows":1,"type":"double","value":[["12.5000","8.3000","15.0000","9.7000"]]}}
+%---
+%[output:88721073]
+%   data: {"dataType":"matrix","outputData":{"columns":4,"header":"1×4 logical array","name":"fast","rows":1,"type":"logical","value":[["1","0","1","0"]]}}
+%---
+%[output:2ee340bf]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'logical'"}}
+%---
+%[output:397d93bd]
+%   data: {"dataType":"matrix","outputData":{"columns":2,"name":"ans","rows":1,"type":"double","value":[["12.5000","15.0000"]]}}
+%---
+%[output:54121c4a]
+%   data: {"dataType":"matrix","outputData":{"columns":2,"name":"ans","rows":1,"type":"double","value":[["12.5000","15.0000"]]}}
+%---
+%[output:1744b9eb]
+%   data: {"dataType":"matrix","outputData":{"columns":5,"header":"1×5 logical array","name":"ans","rows":1,"type":"logical","value":[["1","1","1","1","1"]]}}
+%---
+%[output:022ea67d]
+%   data: {"dataType":"textualVariable","outputData":{"header":"logical","name":"ans","value":"   1\n"}}
+%---
+%[output:03a7c2e2]
+%   data: {"dataType":"textualVariable","outputData":{"header":"logical","name":"ans","value":"   1\n"}}
+%---
+%[output:4622212f]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"'e'"}}
+%---
+%[output:8161fcb6]
+%   data: {"dataType":"error","outputData":{"errorType":"runtime","text":"Index exceeds the number of array elements. Index must not exceed 1."}}
+%---
+%[output:2d483b13]
+%   data: {"dataType":"text","outputData":{"text":"Sensor S-01  |  Value: 23.46 C  |  Readings: 12","truncated":false}}
+%---
+%[output:19557191]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"\"Temperature\""}}
+%---
+%[output:7b2c3e8b]
+%   data: {"dataType":"textualVariable","outputData":{"name":"ans","value":"35.1000"}}
 %---
