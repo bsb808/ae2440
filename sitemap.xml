@@ -1,67 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://bsb808.github.io/ae2440/weeks/w07_twodim_optimization/assignment.html</loc>
+    <lastmod>2026-11-17T03:43:23.873Z</lastmod>
+  </url>
+  <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w05_funcvectors_odes/assignment.html</loc>
-    <lastmod>2026-11-13T22:43:04.364Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.863Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w03_functions_conditionals/report.html</loc>
-    <lastmod>2026-11-13T22:43:04.360Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.860Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w02_loops_vectors/report.html</loc>
-    <lastmod>2026-11-13T22:43:04.358Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.858Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w01_modeling_scripts/assignment.html</loc>
-    <lastmod>2026-11-13T22:43:04.344Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.847Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/resources/textbook.html</loc>
-    <lastmod>2026-11-13T22:43:04.343Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.846Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/resources/installing_matlab.html</loc>
-    <lastmod>2026-11-13T22:43:04.343Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.846Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/assignments.html</loc>
-    <lastmod>2026-11-13T22:43:04.335Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.838Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/archive/ay26q3/schedule.html</loc>
-    <lastmod>2026-11-13T22:43:04.335Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.838Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/archive/ay26q3/assignments.html</loc>
-    <lastmod>2026-11-13T22:43:04.335Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.838Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/archive/index.html</loc>
-    <lastmod>2026-11-13T22:43:04.335Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.838Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/index.html</loc>
-    <lastmod>2026-11-13T22:43:04.335Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.838Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/resources/matlab.html</loc>
-    <lastmod>2026-11-13T22:43:04.343Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.846Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/syllabus.html</loc>
-    <lastmod>2026-11-13T22:43:04.343Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.846Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w02_loops_vectors/assignment.html</loc>
-    <lastmod>2026-11-13T22:43:04.350Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.851Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w03_functions_conditionals/assignment.html</loc>
-    <lastmod>2026-11-13T22:43:04.358Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.858Z</lastmod>
   </url>
   <url>
     <loc>https://bsb808.github.io/ae2440/weeks/w04_datatypes_fzero/assignment.html</loc>
-    <lastmod>2026-11-13T22:43:04.360Z</lastmod>
+    <lastmod>2026-11-17T03:43:23.860Z</lastmod>
+  </url>
+  <url>
+    <loc>https://bsb808.github.io/ae2440/weeks/w06_matrices_secondorder/assignment.html</loc>
+    <lastmod>2026-11-17T03:43:23.869Z</lastmod>
   </url>
 </urlset>
