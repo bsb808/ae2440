@@ -167,6 +167,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 - Before class: Read Chapter 9, Functions of Vectors: [Textbook](resources/textbook.qmd). We covered much of Chapter 9 earlier, with logical comparisons of vectors and `find`.
 - Slides: [ae2440_ode_history.pdf](weeks/w05_funcvectors_odes/files/ae2440_ode_history.pdf)
+- Review Assignment 4, USV draft exercise.  Emphasize the human role of posing the question and verifying the answer.
 
 **Tuesday:** Introduction to numerical ODE solvers
 
