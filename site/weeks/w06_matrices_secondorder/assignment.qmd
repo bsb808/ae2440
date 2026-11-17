@@ -1,0 +1,52 @@
+---
+title: "Assignment 6: Matrices and Systems of ODEs"
+---
+
+Submit via [Sakai]({{< var sakai_url >}}). Textbook: Chapters 11 and 12 ([Textbook](../../resources/textbook.qmd)).
+
+## Exercise 1: Matrices in MATLAB
+
+This exercise is a set of short problems reviewing the syntax for creating, indexing, and doing arithmetic with matrices and vectors. Each one takes a few lines of code.
+
+The prototype live script [matrix_basics.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/assign/matrix_basics.m) defines the exercise. Complete the missing code in each section and submit `matrix_basics.m`.
+
+## Exercise 2: Lorenz
+
+Adapted from PMM Exercise 11.2.
+
+The [Lorenz system](https://en.wikipedia.org/wiki/Lorenz_system) is a system of differential equations based on a model of fluid dynamics in the atmosphere. It is interesting in part because its solutions are chaotic: small changes in the initial conditions yield big differences in the solutions. This exercise takes you step by step through setting up the mathematical model (the equations), implementing it (as a local rate function), setting up the ODE solver, and interpreting the results.
+
+The system is described by these differential equations:
+
+$$
+\begin{aligned}
+\frac{dx}{dt} &= \sigma (y - x) \\
+\frac{dy}{dt} &= x (\rho - z) - y \\
+\frac{dz}{dt} &= x y - \beta z
+\end{aligned}
+$$
+
+Common values for the parameters are
+
+$$
+\sigma = 10, \quad \beta = 8/3, \quad \rho = 28.
+$$
+
+For this exercise, submit a live script named `lorenz.m`. You will develop this script from scratch based on the steps below. You may use the [Lorenz code from the book]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lorenz.m) as inspiration.
+
+1. Create a live script named `lorenz.m`.
+2. Formulate the model before implementing it in code. In your live script, write the differential equations in state-space form, as in Chapter 11. The purpose is to be intentional with the model and to state the state vector clearly. For the Lorenz problem the state vector could be $x$, $y$ and $z$ in any order.
+3. Create a local function named `lorenz_rate` that implements the Lorenz equations. The rate function should take `t` and `vv` as inputs, where the elements of `vv` are the current values of $x$, $y$ and $z$ (the state vector). It should compute the corresponding derivatives and return them in a single column vector. Keep the definition of the state vector consistent: the order you choose must be the same in the rate function you give to `ode45` and in the rest of your script (initial conditions and plots).
+4. Test the function by calling it with values like $t = 0$, $x = 1$, $y = 2$ and $z = 3$. Once the function works, suppress its output before calling `ode45`.
+5. Use `ode45` to estimate the solution for the time span $[0, 30]$ with the initial condition $x(0) = 1$, $y(0) = 2$, $z(0) = 3$.
+6. Plot the results as time series, that is, each element of the state vector as a function of time, with a legend labeling each series. `ode45` returns the solution as a matrix in which each column corresponds to one element of the state vector. Make this plot two ways:
+    a. Unpack the matrix returned by `ode45` into three vectors, one each for $x$, $y$ and $z$, each the same length as the time vector. Then plot each vector separately.
+    b. Plot all three time series at once by plotting the time vector against the solution matrix. This works because, from the [plot documentation](https://www.mathworks.com/help/matlab/ref/plot.html#mw_52c5aef5-9f3e-4d29-b95f-485d73104bec), "If all the sets share the same *x*- or *y*-coordinates, specify the shared coordinates as a vector and the other coordinates as a matrix. The length of the vector must match one of the dimensions of the matrix."
+7. Use `plot3` to plot the trajectory of $x$, $y$ and $z$ in three dimensions. Rotate the 3D view in the figure to see the [butterfly curve](https://homepages.math.uic.edu/~kjerland/Lorenz/lorenz_attractor.html) emblematic of a chaotic system.
+
+### Submit and Verify
+
+Submit two `.m` files:
+
+- Exercise 1: `matrix_basics.m`
+- Exercise 2: `lorenz.m`
