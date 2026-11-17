@@ -1,0 +1,30 @@
+---
+title: "Assignment 4 Report: Data Types, Function Handles and Zero-Finding"
+---
+
+Assignment evaluation. Four graded tests, all on file names and the USV draft exercise:
+
+- F1: all three files present with exact names.
+- S1: `usv_draft.m` defines a local function for the buoyancy model.
+- S2: `usv_draft.m` calls `fzero` with a function handle.
+- V1: `usv_draft.m` arrives at the draft, 0.0843 m.
+- Grade: 100, minus 5 per failed test (100 down to 80).
+
+And spot checks of the code in all three files.
+
+## Results
+
+| | Count |
+|---|---|
+| Grade 100 | 22 |
+| Grade 95 | 3 |
+| All three files with exact names | 24 of 25 |
+| Local function for the model | 24 of 25 |
+| `fzero` with a function handle | 25 of 25 |
+| Correct draft, 0.0843 m | 23 of 25 |
+
+## To Discuss
+
+- Two ways to give a function its parameters. 14 of 25 wrote `f(d)` with R, L, m and rho set inside the function, as in the reference. 10 of 25 passed them in, `f(d, R, L, m, rho)`, and handed `fzero` a one-input wrapper, `@(d) f(d, R, L, m, rho)`. Both are correct. We have not covered the second form yet (anonymous functions come in week 7), so it is worth understanding why it works: `fzero` only ever calls its function with one input.
+- Count both hulls. One draft came out at 0.138 m, which is the answer for a single hull: the factor of 2 is missing. When an answer is off by a clean factor, look for a missing count, constant or unit.
+- Write the model before the code. 20 of 25 wrote both the equilibrium equation and the rearranged f(d) = 0 in text. The one-hull and missing-length mistakes this week would both have shown up in a written equation.
