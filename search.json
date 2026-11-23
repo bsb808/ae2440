@@ -297,15 +297,15 @@
     "objectID": "index.html#week-9",
     "href": "index.html#week-9",
     "title": "Schedule",
-    "section": "Week 9 — 23 Nov: Matrices and Systems of ODEs; Second-Order Systems",
-    "text": "Week 9 — 23 Nov: Matrices and Systems of ODEs; Second-Order Systems\nIf you are unfamiliar with matrix arithmetic (rows and columns, addition, multiplication, transpose), review Chapter 6 of Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares before Monday.\nMonday: Matrices and systems of ODEs\n\nBefore class: Read Chapter 11, Matrices and Systems of ODEs: Textbook\nLessons:\n\nlesson_matrices.m\nlesson_system_of_odes.m\nlesson_two_odes.m\n\n\nTuesday: Second-order systems\n\nBefore class: Read Chapter 12, Second-Order Systems: Textbook\nLesson: lesson_secondorder.m\n\nWednesday and Thursday: No class. Thanksgiving (Thu 26 Nov).\n\nDue Friday 27 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
+    "section": "Week 9 — 23 Nov: Matrices and Systems of ODEs",
+    "text": "Week 9 — 23 Nov: Matrices and Systems of ODEs\nIf you are unfamiliar with matrix arithmetic (rows and columns, addition, multiplication, transpose), review Chapter 6 of Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares before Monday.\nMonday: Matrices and systems of ODEs\n\nBefore class: Read Chapter 11, Matrices and Systems of ODEs: Textbook\nLessons:\n\nlesson_system_of_odes.m\nlesson_matrices.m\n\n\nTuesday: Assignment 6 preview\n\nPreview: Assignment 6: Matrices and Systems of ODEs\n\nWednesday and Thursday: No class. Thanksgiving (Thu 26 Nov).\n\nDue Friday 27 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
   },
   {
     "objectID": "index.html#week-10",
     "href": "index.html#week-10",
     "title": "Schedule",
-    "section": "Week 10 — 30 Nov: Two Dimensions; Optimization",
-    "text": "Week 10 — 30 Nov: Two Dimensions; Optimization\nMonday: Two dimensions; anonymous functions\n\nBefore class: Read Chapter 13, Two Dimensions: Textbook\nLesson: lesson_anonymous.m\n\nTuesday: Simulating a parameterized model: the pendulum\n\nLesson: lesson_anonymous_pendulum.m\n\nWednesday: Optimization\n\nBefore class: Read Chapter 14, Optimization: Textbook\nLesson: lesson_optimization_intro.m\n\nThursday: Work on Assignment 7\n\nWorked example, getting started on the stress–strain exercise: optimal_stressstrain_partialsoln.m\nDue Friday 4 Dec, 1700: Assignment 7: Two Dimensions and Optimization"
+    "section": "Week 10 — 30 Nov: Higher-Order ODEs; Two Dimensions; Optimization",
+    "text": "Week 10 — 30 Nov: Higher-Order ODEs; Two Dimensions; Optimization\nMonday: Higher-order ODEs; two dimensions; anonymous functions\n\nBefore class: Read Chapter 12, Second-Order Systems, and Chapter 13, Two Dimensions: Textbook\nLesson: lesson_higher_order_odes.m\nLesson: lesson_anonymous.m\n\nTuesday: Simulating a parameterized model: the pendulum\n\nLesson: lesson_anonymous_pendulum.m\n\nWednesday: Optimization\n\nBefore class: Read Chapter 14, Optimization: Textbook\nLesson: lesson_optimization_intro.m\n\nThursday: Work on Assignment 7\n\nWorked example, getting started on the stress–strain exercise: optimal_stressstrain_partialsoln.m\nDue Friday 4 Dec, 1700: Assignment 7: Two Dimensions and Optimization"
   },
   {
     "objectID": "index.html#week-11",
