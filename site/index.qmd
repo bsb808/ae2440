@@ -36,9 +36,9 @@ Class meets {{< var meeting >}}. Assignments are due Fridays at 1700 via Sakai.
 |  | Wed 18 Nov | Finding events in a time series; from prototype to function |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-8 "Lessons") |  |
 |  | Thu 19 Nov | Work on Assignment 5 |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignment 5: Functions of Vectors and Ordinary Differential Equations") A5 (Fri 20 Nov) |
 | [9](#week-9) | Mon 23 Nov | Matrices and Systems of ODEs | [<i class="bi bi-book" aria-label="Reading"></i> Ch 11](resources/textbook.qmd "Read Chapter 11, Matrices and Systems of ODEs") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-9 "Reading and lessons") |  |
-|  | Tue 24 Nov | Second-Order Systems | [<i class="bi bi-book" aria-label="Reading"></i> Ch 12](resources/textbook.qmd "Read Chapter 12, Second-Order Systems") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-9 "Lesson") |  |
+|  | Tue 24 Nov | Assignment 6 preview |  | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-9 "Assignment preview") |  |
 |  | Wed 25–Thu 26 Nov | *No class* ^¶^ |  |  | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A6 (Fri 27 Nov) |
-| [10](#week-10) | 30 Nov–3 Dec | Two Dimensions; Optimization ^#^  | [<i class="bi bi-book" aria-label="Reading"></i> Ch 13](resources/textbook.qmd "Read Chapter 13, Two Dimensions"), [<i class="bi bi-book" aria-label="Reading"></i> Ch 14](resources/textbook.qmd "Read Chapter 14, Optimization") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-10 "Lessons") | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A7 (Fri 4 Dec) |
+| [10](#week-10) | 30 Nov–3 Dec | Higher-Order ODEs; Two Dimensions; Optimization ^#^  | [<i class="bi bi-book" aria-label="Reading"></i> Ch 12](resources/textbook.qmd "Read Chapter 12, Second-Order Systems"), [<i class="bi bi-book" aria-label="Reading"></i> Ch 13](resources/textbook.qmd "Read Chapter 13, Two Dimensions"), [<i class="bi bi-book" aria-label="Reading"></i> Ch 14](resources/textbook.qmd "Read Chapter 14, Optimization") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-10 "Lessons") | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A7 (Fri 4 Dec) |
 | [11](#week-11) | 7–10 Dec | Interpolation, Curve Fitting and Regression ^¶^ | [<i class="bi bi-book" aria-label="Reading"></i> Ch 15](resources/textbook.qmd "Read Chapter 15, Interpolation, Curve Fitting, and Regression") | [<i class="bi bi-card-list" aria-label="Week details"></i>](#week-11 "Lessons") | [<i class="bi bi-pencil-square" aria-label="Assignment"></i>](assignments.qmd "Assignments") A9 (Fri 11 Dec) |
 :::
 
@@ -184,7 +184,7 @@ No class this week: Columbus Day on Monday 12 Oct and instructor travel for the 
 
 - Due Friday 20 Nov, 1700: [Assignment 5: Solving First-Order Ordinary Differential Equations](assignments.qmd)
 
-## Week 9 — 23 Nov: Matrices and Systems of ODEs; Second-Order Systems {#week-9}
+## Week 9 — 23 Nov: Matrices and Systems of ODEs {#week-9}
 
 If you are unfamiliar with matrix arithmetic (rows and columns, addition, multiplication, transpose), review Chapter 6 of [Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares](https://web.stanford.edu/~boyd/vmls/) before Monday.
 
@@ -192,24 +192,23 @@ If you are unfamiliar with matrix arithmetic (rows and columns, addition, multip
 
 - Before class: Read Chapter 11, Matrices and Systems of ODEs: [Textbook](resources/textbook.qmd)
 - Lessons:
-  - [lesson_matrices.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_matrices.m)
   - [lesson_system_of_odes.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_system_of_odes.m)
-  - [lesson_two_odes.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_two_odes.m)
+  - [lesson_matrices.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_matrices.m)
 
-**Tuesday:** Second-order systems
+**Tuesday:** Assignment 6 preview
 
-- Before class: Read Chapter 12, Second-Order Systems: [Textbook](resources/textbook.qmd)
-- Lesson: [lesson_secondorder.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_secondorder.m)
+- Preview: [Assignment 6: Matrices and Systems of ODEs](assignments.qmd)
 
 **Wednesday and Thursday:** No class. Thanksgiving (Thu 26 Nov).
 
 - Due Friday 27 Nov, 1700: [Assignment 6: Matrices and Systems of ODEs](assignments.qmd)
 
-## Week 10 — 30 Nov: Two Dimensions; Optimization {#week-10}
+## Week 10 — 30 Nov: Higher-Order ODEs; Two Dimensions; Optimization {#week-10}
 
-**Monday:** Two dimensions; anonymous functions
+**Monday:** Higher-order ODEs; two dimensions; anonymous functions
 
-- Before class: Read Chapter 13, Two Dimensions: [Textbook](resources/textbook.qmd)
+- Before class: Read Chapter 12, Second-Order Systems, and Chapter 13, Two Dimensions: [Textbook](resources/textbook.qmd)
+- Lesson: [lesson_higher_order_odes.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_higher_order_odes.m)
 - Lesson: [lesson_anonymous.m]({{< var repo_blob >}}/book/w07_twodim_optimization/lessons/lesson_anonymous.m)
 
 **Tuesday:** Simulating a parameterized model: the pendulum
