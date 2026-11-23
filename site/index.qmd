@@ -193,7 +193,7 @@ If you are unfamiliar with matrix arithmetic (rows and columns, addition, multip
 - Before class: Read Chapter 11, Matrices and Systems of ODEs: [Textbook](resources/textbook.qmd)
 - Lessons:
   - [lesson_system_of_odes.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_system_of_odes.m)
-  - [lesson_matrices.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_matrices.m)
+  - [lesson_matrices_abridged.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/lessons/lesson_matrices_abridged.m)
 
 **Tuesday:** Assignment 6 preview
 
