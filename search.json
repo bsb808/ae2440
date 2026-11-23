@@ -298,7 +298,7 @@
     "href": "index.html#week-9",
     "title": "Schedule",
     "section": "Week 9 — 23 Nov: Matrices and Systems of ODEs",
-    "text": "Week 9 — 23 Nov: Matrices and Systems of ODEs\nIf you are unfamiliar with matrix arithmetic (rows and columns, addition, multiplication, transpose), review Chapter 6 of Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares before Monday.\nMonday: Matrices and systems of ODEs\n\nBefore class: Read Chapter 11, Matrices and Systems of ODEs: Textbook\nLessons:\n\nlesson_system_of_odes.m\nlesson_matrices.m\n\n\nTuesday: Assignment 6 preview\n\nPreview: Assignment 6: Matrices and Systems of ODEs\n\nWednesday and Thursday: No class. Thanksgiving (Thu 26 Nov).\n\nDue Friday 27 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
+    "text": "Week 9 — 23 Nov: Matrices and Systems of ODEs\nIf you are unfamiliar with matrix arithmetic (rows and columns, addition, multiplication, transpose), review Chapter 6 of Introduction to Applied Linear Algebra: Vectors, Matrices, and Least Squares before Monday.\nMonday: Matrices and systems of ODEs\n\nBefore class: Read Chapter 11, Matrices and Systems of ODEs: Textbook\nLessons:\n\nlesson_system_of_odes.m\nlesson_matrices_abridged.m\n\n\nTuesday: Assignment 6 preview\n\nPreview: Assignment 6: Matrices and Systems of ODEs\n\nWednesday and Thursday: No class. Thanksgiving (Thu 26 Nov).\n\nDue Friday 27 Nov, 1700: Assignment 6: Matrices and Systems of ODEs"
   },
   {
     "objectID": "index.html#week-10",
