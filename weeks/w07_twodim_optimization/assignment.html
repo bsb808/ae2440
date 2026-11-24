@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Assignment 7: Two Dimensions and Optimization – AE 2440 — Introduction to Scientific Programming</title>
+<title>Assignment 7: Higher-Order ODEs and Two Dimensions – AE 2440 — Introduction to Scientific Programming</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -42,7 +42,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-63b5708e65d6cd79cd7618c58d0c21e7.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-43b45d284da9b0c809dc85519545e6b1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-77d62bc3b84b1243ec23bf1f4969f4d9.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "language": {
     "search-no-results-text": "No results",
@@ -170,6 +170,11 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#pendulum-dynamics" id="toc-pendulum-dynamics" class="nav-link" data-scroll-target="#pendulum-dynamics">Pendulum dynamics</a></li>
   <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
+  </ul></li>
+  <li><a href="#exercise-2-ballistics-table" id="toc-exercise-2-ballistics-table" class="nav-link" data-scroll-target="#exercise-2-ballistics-table">Exercise 2: Ballistics Table</a>
+  <ul class="collapse">
+  <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">Model</a></li>
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise</a></li>
   <li><a href="#submit-and-verify" id="toc-submit-and-verify" class="nav-link" data-scroll-target="#submit-and-verify">Submit and Verify</a></li>
   </ul></li>
   </ul>
@@ -180,7 +185,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Assignment 7: Two Dimensions and Optimization</h1>
+<h1 class="title">Assignment 7: Higher-Order ODEs and Two Dimensions</h1>
 </div>
 
 
@@ -253,11 +258,54 @@ window.Quarto = {
 <li>What happens if the scenario violates the small-angle assumption? Change the initial condition to a larger displacement, say <span class="math inline">\(\theta(0) = 1.0\)</span> rad (still with zero initial velocity), solve again, and compare the result to the linearized approximation.</li>
 </ol>
 </section>
+</section>
+<section id="exercise-2-ballistics-table" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-ballistics-table">Exercise 2: Ballistics Table</h2>
+<p>Adapted from NPS MA2121, Project 3.</p>
+<p>A ballistics table tells a shooter how far a bullet drops, how long it is in the air and how much energy it carries at each range. In this exercise you build one for the .50 BMG round (a 750-grain bullet) by simulating its flight in two dimensions, as in Chapter 13. The model is deliberately simple: it ignores changes in air density, wind, spin drift and the rotation of the Earth.</p>
+<section id="model" class="level3">
+<h3 class="anchored" data-anchor-id="model">Model</h3>
+<p>Let <span class="math inline">\(x\)</span> be the downrange distance and <span class="math inline">\(y\)</span> the height of the bullet, both in feet, with time in seconds. Drag acts opposite to the velocity and grows with the square of the speed, so the equations of motion are</p>
+<p><span class="math display">\[
+\begin{aligned}
+\ddot{x} &amp;= -d_p \, \dot{x} \sqrt{\dot{x}^2 + \dot{y}^2} \\
+\ddot{y} &amp;= -g - d_p \, \dot{y} \sqrt{\dot{x}^2 + \dot{y}^2}
+\end{aligned}
+\]</span></p>
+<p>where <span class="math inline">\(g = 32\)</span> ft/s² and the drag parameter is <span class="math inline">\(d_p = 0.00008\)</span> 1/ft. The value of <span class="math inline">\(d_p\)</span> already includes the bullet’s mass and shape, and it is valid only in feet and seconds, so do the simulation in those units.</p>
+<p>The shot is fired level from the origin at the muzzle velocity <span class="math inline">\(v_0 = 2820\)</span> ft/s:</p>
+<p><span class="math display">\[
+x(0) = 0, \quad y(0) = 0, \quad \dot{x}(0) = v_0, \quad \dot{y}(0) = 0.
+\]</span></p>
+</section>
+<section id="exercise-1" class="level3">
+<h3 class="anchored" data-anchor-id="exercise-1">Exercise</h3>
+<p>For this exercise, submit a live script named <code>ballistics.m</code>.</p>
+<ol type="1">
+<li>Before writing any code, convert the two second-order equations into a system of four first-order equations. In your live script, define the four-element state vector and write the model in state-space form. As with the pendulum, the order of the elements is your choice, but be consistent.</li>
+<li>Write a local rate function <code>bullet_rate(t, s, dp)</code> that takes the drag parameter as a third input argument. Test it at the initial condition. Does the horizontal deceleration at the muzzle, <span class="math inline">\(d_p v_0^2\)</span>, match what your function returns?</li>
+<li><code>ode45</code> expects a rate function with exactly two inputs, <code>(t, s)</code>. Use an anonymous function to wrap <code>bullet_rate</code> with a fixed value of <code>dp</code>, as in the Wednesday lesson, and solve for the first few seconds of flight. Use a finely spaced <code>tspan</code> (for example, a step of 0.0005 s) so the solution is dense enough to read values from directly.</li>
+<li>Use the same rate function and a second anonymous wrapper to solve the case with no drag (<span class="math inline">\(d_p = 0\)</span>). Plot both trajectories on the same axes, with height in inches against downrange distance in yards out to 2500 yd.</li>
+<li>Check your no-drag solution: without drag, the time to reach 500 yd is <span class="math inline">\(t = 1500/v_0\)</span> and the drop is <span class="math inline">\(\frac{1}{2} g t^2\)</span>. Does your simulation agree?</li>
+<li>Build the ballistics table for the case with drag. For each range of 500, 1000, 1500, 2000 and 2500 yd, use <code>find</code> to locate the first sample at or beyond that range, and report:
+<ol type="a">
+<li>the bullet drop, in inches,</li>
+<li>the time of flight, in seconds,</li>
+<li>the kinetic energy, <span class="math inline">\(\frac{1}{2} m v^2\)</span>, in joules.</li>
+</ol>
+Print the table with <code>fprintf</code>, one row per range, with units in the column headings.</li>
+</ol>
+<p>Units are the hard part of this problem, on purpose: the model is in feet and seconds, the ranges are in yards, the drop is in inches, the bullet’s mass is in grains and the energy is in joules. Real engineering models look like this. Convert at the boundaries (once when you set up the problem, once when you report results) and label every quantity with its unit in a comment. You will need 1 grain = 64.79891 mg and 1 ft = 0.3048 m.</p>
+<ol start="7" type="1">
+<li>Optional: the longest confirmed sniper shot (2017) was at 3871 yd. According to this model, how far did the bullet drop?</li>
+</ol>
+</section>
 <section id="submit-and-verify" class="level3">
 <h3 class="anchored" data-anchor-id="submit-and-verify">Submit and Verify</h3>
 <p>Submit these <code>.m</code> files:</p>
 <ul>
 <li>Exercise 1: <code>pendulum.m</code></li>
+<li>Exercise 2: <code>ballistics.m</code></li>
 </ul>
 
 
