@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -166,15 +201,12 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#exercise-1-pendulum-simulation" id="toc-exercise-1-pendulum-simulation" class="nav-link active" data-scroll-target="#exercise-1-pendulum-simulation">Exercise 1: Pendulum Simulation</a>
+  <li><a href="#exercise-1-pendulum-simulation" id="toc-exercise-1-pendulum-simulation" class="nav-link active" data-scroll-target="#exercise-1-pendulum-simulation">Exercise 1: Pendulum Simulation</a></li>
+  <li><a href="#exercise-2-reproducing-a-naval-range-table" id="toc-exercise-2-reproducing-a-naval-range-table" class="nav-link" data-scroll-target="#exercise-2-reproducing-a-naval-range-table">Exercise 2: Reproducing a Naval Range Table</a>
   <ul class="collapse">
-  <li><a href="#pendulum-dynamics" id="toc-pendulum-dynamics" class="nav-link" data-scroll-target="#pendulum-dynamics">Pendulum dynamics</a></li>
-  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
-  </ul></li>
-  <li><a href="#exercise-2-ballistics-table" id="toc-exercise-2-ballistics-table" class="nav-link" data-scroll-target="#exercise-2-ballistics-table">Exercise 2: Ballistics Table</a>
-  <ul class="collapse">
+  <li><a href="#range-table" id="toc-range-table" class="nav-link" data-scroll-target="#range-table">Range table</a></li>
   <li><a href="#model" id="toc-model" class="nav-link" data-scroll-target="#model">Model</a></li>
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise</a></li>
+  <li><a href="#exercise" id="toc-exercise" class="nav-link" data-scroll-target="#exercise">Exercise</a></li>
   <li><a href="#submit-and-verify" id="toc-submit-and-verify" class="nav-link" data-scroll-target="#submit-and-verify">Submit and Verify</a></li>
   </ul></li>
   </ul>
@@ -202,110 +234,129 @@ window.Quarto = {
 </header>
 
 
-<div class="callout callout-style-default callout-warning callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Warning</span>Under construction
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This assignment is still being written.</p>
-</div>
-</div>
-<p>Submit via <a href="https://cle.nps.edu/portal/directtool/5a3445ee-66c9-47da-902f-d382eea628ab/">Sakai</a>.</p>
 <section id="exercise-1-pendulum-simulation" class="level2">
 <h2 class="anchored" data-anchor-id="exercise-1-pendulum-simulation">Exercise 1: Pendulum Simulation</h2>
 <p>Adapted from <a href="https://ocw.mit.edu/courses/2-003sc-engineering-dynamics-fall-2011/">MIT 2.003SC Engineering Dynamics, OpenCourseWare</a>, Problem Set 4.</p>
 <p>In a classic dynamics course we formulate the equations of motion (using Newton-Euler equations, Lagrange’s equations or Hamiltonian mechanics) and then infer the behavior from analytical solutions to those equations. In this exercise we use computation to simulate the equations of motion and compare the simulation to the analytical results.</p>
-<section id="pendulum-dynamics" class="level3">
-<h3 class="anchored" data-anchor-id="pendulum-dynamics">Pendulum dynamics</h3>
-<p>Consider a simple pendulum with a torsional spring at the pivot. The spring creates a restoring torque proportional to the angle of rotation. The rod has length <span class="math inline">\(2L\)</span> and is rigid and massless. The two point masses each have mass <span class="math inline">\(m\)</span>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="files/pendulum_torsional_spring.png" class="img-fluid figure-img" width="250"></p>
-<figcaption>Pendulum with a torsional spring at the pivot. Figure from MIT 2.003SC, MIT OpenCourseWare, <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA</a>.</figcaption>
-</figure>
-</div>
-<p>The second-order, nonlinear equation of motion for the system is</p>
-<p><span class="math display">\[
-5 m L^2 \ddot{\theta} + k_t \theta + 3 m g L \sin(\theta) = 0
-\]</span></p>
-<p>where the angular displacement <span class="math inline">\(\theta\)</span> is in radians.</p>
+<p>The prototype live script <a href="https://github.com/bsb808/ae2440/blob/main/book/w06_matrices_secondorder/assign/pendulum.m">pendulum.m</a> defines the exercise. It gives the model and the constants, and it gives the closed-form solution of the linearized, small-angle model, which you will use to check your simulation. Open it as a live script, fill in the missing equations, code and written answers in each section, and submit <code>pendulum.m</code>.</p>
 </section>
-<section id="exercise" class="level3">
-<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
-<p>For this exercise, submit a live script named <code>pendulum.m</code> that solves the nonlinear equation of motion.</p>
-<ol type="1">
-<li>Before writing any code, formulate the problem as a system of two first-order equations by introducing a new variable for the angular velocity, <span class="math display">\[
-\omega(t) = \dot{\theta}(t).
-\]</span>
-<ol type="a">
-<li>In your live script, define the two-element state vector <span class="math inline">\(\mathbf{x}(t)\)</span>. The order of the elements is arbitrary, but write it down as an expression and be consistent.</li>
-<li>Rewrite the second-order equation of motion in state-space form, <span class="math inline">\(\dot{\mathbf{x}}(t) = \mathbf{f}(\mathbf{x}(t), t)\)</span>.</li>
-</ol></li>
-<li>Given the constants <span class="math inline">\(m = 0.36\)</span> kg, <span class="math inline">\(k_t = 0.89\)</span> N·m/rad, <span class="math inline">\(L = 0.21\)</span> m and <span class="math inline">\(g = 9.81\)</span> m/s², write a local rate function that implements the mathematical model using the ODE solver convention. From the <code>ode45</code> documentation: “The function <code>dydt = odefun(t,y)</code>, for a scalar <code>t</code> and a column vector <code>y</code>, must return a column vector <code>dydt</code> of data type <code>single</code> or <code>double</code> that corresponds to <span class="math inline">\(f(t,y)\)</span>. <code>odefun</code> must accept both input arguments <code>t</code> and <code>y</code>, even if one of the arguments is not used in the function.” Test the function with some nominal values for time and the state vector. Do the results make intuitive sense?</li>
-<li>Estimate the response analytically using the small-angle assumption, <span class="math inline">\(\sin(\theta) \approx \theta\)</span>, which gives the linear approximation of the nonlinear model, <span class="math display">\[
-5 m L^2 \ddot{\theta} + (k_t + 3 m g L)\, \theta = 0.
-\]</span> From this linear approximation, the natural frequency of oscillation (in rad/s) is <span class="math display">\[
-\omega_n = \sqrt{\frac{k_{eq}}{I_{eq}}} = \sqrt{\frac{k_t + 3 m g L}{5 m L^2}}.
-\]</span> For a small-angle initial condition such as <span class="math inline">\(\theta(0) = \theta_0 = 0.1\)</span> rad, <span class="math inline">\(\omega(0) = 0\)</span>, the linearized solution is <span class="math display">\[
-\theta(t) \approx \theta_0 \cos(\omega_n t).
-\]</span></li>
-<li>Use <code>ode45</code> to solve the full nonlinear problem with the initial conditions <span class="math inline">\(\theta(0) = 0.1\)</span> rad, <span class="math inline">\(\omega(0) = 0\)</span>, over a time span of four periods of oscillation. Plot the angular displacement as a function of time, and on the same axes plot the linearized approximation.</li>
-<li>What happens if the scenario violates the small-angle assumption? Change the initial condition to a larger displacement, say <span class="math inline">\(\theta(0) = 1.0\)</span> rad (still with zero initial velocity), solve again, and compare the result to the linearized approximation.</li>
-</ol>
+<section id="exercise-2-reproducing-a-naval-range-table" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-2-reproducing-a-naval-range-table">Exercise 2: Reproducing a Naval Range Table</h2>
+<p>Data from Bureau of Ordnance, <a href="https://www.eugeneleeslover.com/USN-GUNS-AND-RANGE-TABLES/OP-770.php">Ordnance Pamphlet 770, Range Tables for the 16-inch/50 Caliber Gun</a>, October 1941.</p>
+<p>A range table tells a gunnery officer what angle of elevation puts a shell on a target at a given range, and how long the shell is in the air. Before computers, these tables were built from proving-ground firings and months of hand calculation. In this exercise you simulate the flight of a shell in two dimensions, as in Chapter 13, and test your model against the range table for the <a href="https://en.wikipedia.org/wiki/16-inch/50-caliber_Mark_7_gun">16-inch/50 Mark 7 guns</a> of the <a href="https://en.wikipedia.org/wiki/Iowa-class_battleship"><em>Iowa</em>-class battleships</a>. As with the pendulum, the point is to find out where a simple model can be trusted and where it cannot.</p>
+<section id="range-table" class="level3">
+<h3 class="anchored" data-anchor-id="range-table">Range table</h3>
+<p>The table below is an excerpt of five rows, from short range to the maximum range, for the 2700 lb armor-piercing projectile at an initial velocity of 2500 ft/s. The maximum ordinate is the highest point of the trajectory.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">Range (yd)</th>
+<th style="text-align: right;">Angle of elevation</th>
+<th style="text-align: right;">Time of flight (s)</th>
+<th style="text-align: right;">Striking velocity (ft/s)</th>
+<th style="text-align: right;">Maximum ordinate (ft)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">5,000</td>
+<td style="text-align: right;">2° 21.3′</td>
+<td style="text-align: right;">6.29</td>
+<td style="text-align: right;">2279</td>
+<td style="text-align: right;">158</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">10,000</td>
+<td style="text-align: right;">5° 02.9′</td>
+<td style="text-align: right;">13.24</td>
+<td style="text-align: right;">2074</td>
+<td style="text-align: right;">703</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">25,000</td>
+<td style="text-align: right;">16° 01.7′</td>
+<td style="text-align: right;">39.30</td>
+<td style="text-align: right;">1632</td>
+<td style="text-align: right;">6,230</td>
+</tr>
+<tr class="even">
+<td style="text-align: right;">35,000</td>
+<td style="text-align: right;">27° 22.3′</td>
+<td style="text-align: right;">63.22</td>
+<td style="text-align: right;">1556</td>
+<td style="text-align: right;">16,120</td>
+</tr>
+<tr class="odd">
+<td style="text-align: right;">42,345</td>
+<td style="text-align: right;">45° 00.0′</td>
+<td style="text-align: right;">95.32</td>
+<td style="text-align: right;">1686</td>
+<td style="text-align: right;">36,610</td>
+</tr>
+</tbody>
+</table>
+<p>Copy the same data into your script as a matrix. The columns are range (yd), elevation degrees, elevation minutes, time of flight (s), striking velocity (ft/s) and maximum ordinate (ft).</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode matlab code-with-copy"><code class="sourceCode matlab"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="va">rt</span> <span class="op">=</span> [ <span class="fl">5000</span>   <span class="fl">2</span>  <span class="fl">21.3</span>    <span class="fl">6.29</span>   <span class="fl">2279</span>     <span class="fl">158</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>      <span class="fl">10000</span>   <span class="fl">5</span>   <span class="fl">2.9</span>   <span class="fl">13.24</span>   <span class="fl">2074</span>     <span class="fl">703</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      <span class="fl">25000</span>  <span class="fl">16</span>   <span class="fl">1.7</span>   <span class="fl">39.30</span>   <span class="fl">1632</span>    <span class="fl">6230</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>      <span class="fl">35000</span>  <span class="fl">27</span>  <span class="fl">22.3</span>   <span class="fl">63.22</span>   <span class="fl">1556</span>   <span class="fl">16120</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      <span class="fl">42345</span>  <span class="fl">45</span>   <span class="fl">0.0</span>   <span class="fl">95.32</span>   <span class="fl">1686</span>   <span class="fl">36610</span>]<span class="op">;</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-</section>
-<section id="exercise-2-ballistics-table" class="level2">
-<h2 class="anchored" data-anchor-id="exercise-2-ballistics-table">Exercise 2: Ballistics Table</h2>
-<p>Adapted from NPS MA2121, Project 3.</p>
-<p>A ballistics table tells a shooter how far a bullet drops, how long it is in the air and how much energy it carries at each range. In this exercise you build one for the .50 BMG round (a 750-grain bullet) by simulating its flight in two dimensions, as in Chapter 13. The model is deliberately simple: it ignores changes in air density, wind, spin drift and the rotation of the Earth.</p>
 <section id="model" class="level3">
 <h3 class="anchored" data-anchor-id="model">Model</h3>
-<p>Let <span class="math inline">\(x\)</span> be the downrange distance and <span class="math inline">\(y\)</span> the height of the bullet, both in feet, with time in seconds. Drag acts opposite to the velocity and grows with the square of the speed, so the equations of motion are</p>
+<p>Let <span class="math inline">\(x\)</span> be the downrange distance and <span class="math inline">\(y\)</span> the height of the shell, both in feet, with time in seconds. Drag acts opposite to the velocity and grows with the square of the speed, so the equations of motion are</p>
 <p><span class="math display">\[
 \begin{aligned}
 \ddot{x} &amp;= -d_p \, \dot{x} \sqrt{\dot{x}^2 + \dot{y}^2} \\
 \ddot{y} &amp;= -g - d_p \, \dot{y} \sqrt{\dot{x}^2 + \dot{y}^2}
 \end{aligned}
 \]</span></p>
-<p>where <span class="math inline">\(g = 32\)</span> ft/s² and the drag parameter is <span class="math inline">\(d_p = 0.00008\)</span> 1/ft. The value of <span class="math inline">\(d_p\)</span> already includes the bullet’s mass and shape, and it is valid only in feet and seconds, so do the simulation in those units.</p>
-<p>The shot is fired level from the origin at the muzzle velocity <span class="math inline">\(v_0 = 2820\)</span> ft/s:</p>
+<p>where <span class="math inline">\(g = 32.174\)</span> ft/s² and the drag parameter is <span class="math inline">\(d_p = 5.81 \times 10^{-6}\)</span> 1/ft. The value of <span class="math inline">\(d_p\)</span> already includes the shell’s mass and shape, and it is valid only in feet and seconds, so do the simulation in those units. It was chosen so that the model matches the table at 25,000 yd.</p>
+<p>The shell is fired from the origin with initial velocity <span class="math inline">\(v_0 = 2500\)</span> ft/s at an angle of elevation <span class="math inline">\(\theta\)</span> above the horizontal:</p>
 <p><span class="math display">\[
-x(0) = 0, \quad y(0) = 0, \quad \dot{x}(0) = v_0, \quad \dot{y}(0) = 0.
+x(0) = 0, \quad y(0) = 0, \quad \dot{x}(0) = v_0 \cos\theta, \quad \dot{y}(0) = v_0 \sin\theta.
 \]</span></p>
 </section>
-<section id="exercise-1" class="level3">
-<h3 class="anchored" data-anchor-id="exercise-1">Exercise</h3>
-<p>For this exercise, submit a live script named <code>ballistics.m</code>.</p>
+<section id="exercise" class="level3">
+<h3 class="anchored" data-anchor-id="exercise">Exercise</h3>
+<p>For this exercise, submit a live script named <code>range_table.m</code>.</p>
 <ol type="1">
-<li>Before writing any code, convert the two second-order equations into a system of four first-order equations. In your live script, define the four-element state vector and write the model in state-space form. As with the pendulum, the order of the elements is your choice, but be consistent.</li>
-<li>Write a local rate function <code>bullet_rate(t, s, dp)</code> that takes the drag parameter as a third input argument. Test it at the initial condition. Does the horizontal deceleration at the muzzle, <span class="math inline">\(d_p v_0^2\)</span>, match what your function returns?</li>
-<li><code>ode45</code> expects a rate function with exactly two inputs, <code>(t, s)</code>. Use an anonymous function to wrap <code>bullet_rate</code> with a fixed value of <code>dp</code>, as in the Wednesday lesson, and solve for the first few seconds of flight. Use a finely spaced <code>tspan</code> (for example, a step of 0.0005 s) so the solution is dense enough to read values from directly.</li>
-<li>Use the same rate function and a second anonymous wrapper to solve the case with no drag (<span class="math inline">\(d_p = 0\)</span>). Plot both trajectories on the same axes, with height in inches against downrange distance in yards out to 2500 yd.</li>
-<li>Check your no-drag solution: without drag, the time to reach 500 yd is <span class="math inline">\(t = 1500/v_0\)</span> and the drop is <span class="math inline">\(\frac{1}{2} g t^2\)</span>. Does your simulation agree?</li>
-<li>Build the ballistics table for the case with drag. For each range of 500, 1000, 1500, 2000 and 2500 yd, use <code>find</code> to locate the first sample at or beyond that range, and report:
+<li><p>Before writing any code, convert the two second-order equations into a system of four first-order equations. In your live script, define the four-element state vector and write the model in state-space form. As with the pendulum, the order of the elements is your choice, but be consistent.</p></li>
+<li><p>Write a local rate function <code>shell_rate(t, xx, dp)</code> that takes the drag parameter (scalar) as a third input argument. Test it at the muzzle for a level shot, <span class="math inline">\(\theta = 0\)</span>. Does the horizontal deceleration, <span class="math inline">\(d_p v_0^2\)</span>, match what your function returns?</p></li>
+<li><p><code>ode45</code> expects a rate function with exactly two inputs, <code>(t, xx)</code>. Use an anonymous function to wrap <code>shell_rate</code> with a fixed value of <code>dp</code>, as in the Wednesday lesson, and simulate the shot for the 25,000 yd row of the table, in the middle of the gun’s range. Use a finely spaced <code>tspan</code> (for example, <code>0:0.01:120</code>) so the solution is dense enough to read values from directly. Use <code>find</code> to locate the first sample where the shell is below the level of the gun, and report the model’s</p>
 <ol type="a">
-<li>the bullet drop, in inches,</li>
-<li>the time of flight, in seconds,</li>
-<li>the kinetic energy, <span class="math inline">\(\frac{1}{2} m v^2\)</span>, in joules.</li>
+<li>range, in yards,</li>
+<li>time of flight, in seconds,</li>
+<li>striking velocity (<span class="math inline">\(v = \sqrt{\dot{x}^2 + \dot{y}^2}\)</span>), in ft/s,</li>
+<li>maximum ordinate, in feet.</li>
 </ol>
-Print the table with <code>fprintf</code>, one row per range, with units in the column headings.</li>
+<p>How do they compare with the table?</p>
+<p><strong>Checkpoint.</strong> For this shot your model should give a range of about 25,000 yd, a time of flight of roughly 39 s, a striking velocity of about 1650 ft/s and a maximum ordinate of about 6230 ft. If your numbers differ by more than a small rounding, find the problem before going on: check the conversion of the angle of elevation to radians, the initial velocity components and the feet-to-yards conversion.</p></li>
+<li><p>Repeat for all five rows of the table, at 5,000, 10,000, 25,000, 35,000 and 42,345 yd: fire at the tabulated angle of elevation and compare the model with the table. Print the comparison with <code>fprintf</code>, one row per range, with units in the column headings, and include the percent error in range. Plot all five trajectories on one set of axes, height in feet against downrange distance in yards. Hint: you will run the same steps many times, so consider putting them in a function that takes the wrapped rate function and the angle of elevation as inputs.</p>
+<p>Your plot should look like this:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="files/range_table_trajectories.png" class="img-fluid figure-img" width="500"></p>
+<figcaption>The five simulated trajectories, one for each row of the range table.</figcaption>
+</figure>
+</div></li>
+<li><p>Over what ranges does the model reproduce the table well? Where does it fail, and in which direction? Look at the maximum ordinate column and suggest a physical reason.</p></li>
 </ol>
-<p>Units are the hard part of this problem, on purpose: the model is in feet and seconds, the ranges are in yards, the drop is in inches, the bullet’s mass is in grains and the energy is in joules. Real engineering models look like this. Convert at the boundaries (once when you set up the problem, once when you report results) and label every quantity with its unit in a comment. You will need 1 grain = 64.79891 mg and 1 ft = 0.3048 m.</p>
-<ol start="7" type="1">
-<li>Optional: the longest confirmed sniper shot (2017) was at 3871 yd. According to this model, how far did the bullet drop?</li>
-</ol>
+<p>Units are part of this problem, on purpose: the model is in feet and seconds, the ranges are in yards, and the angles of elevation are in degrees and minutes while <code>cos</code> and <code>sin</code> expect radians.</p>
 </section>
 <section id="submit-and-verify" class="level3">
 <h3 class="anchored" data-anchor-id="submit-and-verify">Submit and Verify</h3>
 <p>Submit these <code>.m</code> files:</p>
 <ul>
 <li>Exercise 1: <code>pendulum.m</code></li>
-<li>Exercise 2: <code>ballistics.m</code></li>
+<li>Exercise 2: <code>range_table.m</code></li>
 </ul>
 
 
