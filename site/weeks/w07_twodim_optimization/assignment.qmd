@@ -2,13 +2,6 @@
 title: "Assignment 7: Higher-Order ODEs and Two Dimensions"
 ---
 
-::: {.callout-warning}
-## Under construction
-
-This assignment is still being written. 
-:::
-
-Submit via [Sakai]({{< var sakai_url >}}).
 
 ## Exercise 1: Pendulum Simulation
 
@@ -16,55 +9,39 @@ Adapted from [MIT 2.003SC Engineering Dynamics, OpenCourseWare](https://ocw.mit.
 
 In a classic dynamics course we formulate the equations of motion (using Newton-Euler equations, Lagrange's equations or Hamiltonian mechanics) and then infer the behavior from analytical solutions to those equations. In this exercise we use computation to simulate the equations of motion and compare the simulation to the analytical results.
 
-### Pendulum dynamics
+The prototype live script [pendulum.m]({{< var repo_blob >}}/book/w06_matrices_secondorder/assign/pendulum.m) defines the exercise. It gives the model and the constants, and it gives the closed-form solution of the linearized, small-angle model, which you will use to check your simulation. Open it as a live script, fill in the missing equations, code and written answers in each section, and submit `pendulum.m`.
 
-Consider a simple pendulum with a torsional spring at the pivot. The spring creates a restoring torque proportional to the angle of rotation. The rod has length $2L$ and is rigid and massless. The two point masses each have mass $m$.
+## Exercise 2: Reproducing a Naval Range Table
 
-![Pendulum with a torsional spring at the pivot. Figure from MIT 2.003SC, MIT OpenCourseWare, [CC BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/).](files/pendulum_torsional_spring.png){width=250px}
+Data from Bureau of Ordnance, [Ordnance Pamphlet 770, Range Tables for the 16-inch/50 Caliber Gun](https://www.eugeneleeslover.com/USN-GUNS-AND-RANGE-TABLES/OP-770.php), October 1941.
 
-The second-order, nonlinear equation of motion for the system is
+A range table tells a gunnery officer what angle of elevation puts a shell on a target at a given range, and how long the shell is in the air. Before computers, these tables were built from proving-ground firings and months of hand calculation. In this exercise you simulate the flight of a shell in two dimensions, as in Chapter 13, and test your model against the range table for the [16-inch/50 Mark 7 guns](https://en.wikipedia.org/wiki/16-inch/50-caliber_Mark_7_gun) of the [*Iowa*-class battleships](https://en.wikipedia.org/wiki/Iowa-class_battleship). As with the pendulum, the point is to find out where a simple model can be trusted and where it cannot.
 
-$$
-5 m L^2 \ddot{\theta} + k_t \theta + 3 m g L \sin(\theta) = 0
-$$
+### Range table
 
-where the angular displacement $\theta$ is in radians.
+The table below is an excerpt of five rows, from short range to the maximum range, for the 2700 lb armor-piercing projectile at an initial velocity of 2500 ft/s. The maximum ordinate is the highest point of the trajectory.
 
-### Exercise
+| Range (yd) | Angle of elevation | Time of flight (s) | Striking velocity (ft/s) | Maximum ordinate (ft) |
+|---:|---:|---:|---:|---:|
+| 5,000 | 2° 21.3′ | 6.29 | 2279 | 158 |
+| 10,000 | 5° 02.9′ | 13.24 | 2074 | 703 |
+| 25,000 | 16° 01.7′ | 39.30 | 1632 | 6,230 |
+| 35,000 | 27° 22.3′ | 63.22 | 1556 | 16,120 |
+| 42,345 | 45° 00.0′ | 95.32 | 1686 | 36,610 |
 
-For this exercise, submit a live script named `pendulum.m` that solves the nonlinear equation of motion.
+Copy the same data into your script as a matrix. The columns are range (yd), elevation degrees, elevation minutes, time of flight (s), striking velocity (ft/s) and maximum ordinate (ft).
 
-1. Before writing any code, formulate the problem as a system of two first-order equations by introducing a new variable for the angular velocity,
-   $$
-   \omega(t) = \dot{\theta}(t).
-   $$
-    a. In your live script, define the two-element state vector $\mathbf{x}(t)$. The order of the elements is arbitrary, but write it down as an expression and be consistent.
-    b. Rewrite the second-order equation of motion in state-space form, $\dot{\mathbf{x}}(t) = \mathbf{f}(\mathbf{x}(t), t)$.
-2. Given the constants $m = 0.36$ kg, $k_t = 0.89$ N·m/rad, $L = 0.21$ m and $g = 9.81$ m/s², write a local rate function that implements the mathematical model using the ODE solver convention. From the `ode45` documentation: "The function `dydt = odefun(t,y)`, for a scalar `t` and a column vector `y`, must return a column vector `dydt` of data type `single` or `double` that corresponds to $f(t,y)$. `odefun` must accept both input arguments `t` and `y`, even if one of the arguments is not used in the function." Test the function with some nominal values for time and the state vector. Do the results make intuitive sense?
-3. Estimate the response analytically using the small-angle assumption, $\sin(\theta) \approx \theta$, which gives the linear approximation of the nonlinear model,
-   $$
-   5 m L^2 \ddot{\theta} + (k_t + 3 m g L)\, \theta = 0.
-   $$
-   From this linear approximation, the natural frequency of oscillation (in rad/s) is
-   $$
-   \omega_n = \sqrt{\frac{k_{eq}}{I_{eq}}} = \sqrt{\frac{k_t + 3 m g L}{5 m L^2}}.
-   $$
-   For a small-angle initial condition such as $\theta(0) = \theta_0 = 0.1$ rad, $\omega(0) = 0$, the linearized solution is
-   $$
-   \theta(t) \approx \theta_0 \cos(\omega_n t).
-   $$
-4. Use `ode45` to solve the full nonlinear problem with the initial conditions $\theta(0) = 0.1$ rad, $\omega(0) = 0$, over a time span of four periods of oscillation. Plot the angular displacement as a function of time, and on the same axes plot the linearized approximation.
-5. What happens if the scenario violates the small-angle assumption? Change the initial condition to a larger displacement, say $\theta(0) = 1.0$ rad (still with zero initial velocity), solve again, and compare the result to the linearized approximation.
-
-## Exercise 2: Ballistics Table
-
-Adapted from NPS MA2121, Project 3.
-
-A ballistics table tells a shooter how far a bullet drops, how long it is in the air and how much energy it carries at each range. In this exercise you build one for the .50 BMG round (a 750-grain bullet) by simulating its flight in two dimensions, as in Chapter 13. The model is deliberately simple: it ignores changes in air density, wind, spin drift and the rotation of the Earth.
+```matlab
+rt = [ 5000   2  21.3    6.29   2279     158
+      10000   5   2.9   13.24   2074     703
+      25000  16   1.7   39.30   1632    6230
+      35000  27  22.3   63.22   1556   16120
+      42345  45   0.0   95.32   1686   36610];
+```
 
 ### Model
 
-Let $x$ be the downrange distance and $y$ the height of the bullet, both in feet, with time in seconds. Drag acts opposite to the velocity and grows with the square of the speed, so the equations of motion are
+Let $x$ be the downrange distance and $y$ the height of the shell, both in feet, with time in seconds. Drag acts opposite to the velocity and grows with the square of the speed, so the equations of motion are
 
 $$
 \begin{aligned}
@@ -73,37 +50,43 @@ $$
 \end{aligned}
 $$
 
-where $g = 32$ ft/s² and the drag parameter is $d_p = 0.00008$ 1/ft. The value of $d_p$ already includes the bullet's mass and shape, and it is valid only in feet and seconds, so do the simulation in those units.
+where $g = 32.174$ ft/s² and the drag parameter is $d_p = 5.81 \times 10^{-6}$ 1/ft. The value of $d_p$ already includes the shell's mass and shape, and it is valid only in feet and seconds, so do the simulation in those units. It was chosen so that the model matches the table at 25,000 yd.
 
-The shot is fired level from the origin at the muzzle velocity $v_0 = 2820$ ft/s:
+The shell is fired from the origin with initial velocity $v_0 = 2500$ ft/s at an angle of elevation $\theta$ above the horizontal:
 
 $$
-x(0) = 0, \quad y(0) = 0, \quad \dot{x}(0) = v_0, \quad \dot{y}(0) = 0.
+x(0) = 0, \quad y(0) = 0, \quad \dot{x}(0) = v_0 \cos\theta, \quad \dot{y}(0) = v_0 \sin\theta.
 $$
 
 ### Exercise
 
-For this exercise, submit a live script named `ballistics.m`.
+For this exercise, submit a live script named `range_table.m`.
 
 1. Before writing any code, convert the two second-order equations into a system of four first-order equations. In your live script, define the four-element state vector and write the model in state-space form. As with the pendulum, the order of the elements is your choice, but be consistent.
-2. Write a local rate function `bullet_rate(t, s, dp)` that takes the drag parameter as a third input argument. Test it at the initial condition. Does the horizontal deceleration at the muzzle, $d_p v_0^2$, match what your function returns?
-3. `ode45` expects a rate function with exactly two inputs, `(t, s)`. Use an anonymous function to wrap `bullet_rate` with a fixed value of `dp`, as in the Wednesday lesson, and solve for the first few seconds of flight. Use a finely spaced `tspan` (for example, a step of 0.0005 s) so the solution is dense enough to read values from directly.
-4. Use the same rate function and a second anonymous wrapper to solve the case with no drag ($d_p = 0$). Plot both trajectories on the same axes, with height in inches against downrange distance in yards out to 2500 yd.
-5. Check your no-drag solution: without drag, the time to reach 500 yd is $t = 1500/v_0$ and the drop is $\frac{1}{2} g t^2$. Does your simulation agree?
-6. Build the ballistics table for the case with drag. For each range of 500, 1000, 1500, 2000 and 2500 yd, use `find` to locate the first sample at or beyond that range, and report:
-    a. the bullet drop, in inches,
-    b. the time of flight, in seconds,
-    c. the kinetic energy, $\frac{1}{2} m v^2$, in joules.
+2. Write a local rate function `shell_rate(t, xx, dp)` that takes the drag parameter (scalar) as a third input argument. Test it at the muzzle for a level shot, $\theta = 0$. Does the horizontal deceleration, $d_p v_0^2$, match what your function returns?
+3. `ode45` expects a rate function with exactly two inputs, `(t, xx)`. Use an anonymous function to wrap `shell_rate` with a fixed value of `dp`, as in the Wednesday lesson, and simulate the shot for the 25,000 yd row of the table, in the middle of the gun's range. Use a finely spaced `tspan` (for example, `0:0.01:120`) so the solution is dense enough to read values from directly. Use `find` to locate the first sample where the shell is below the level of the gun, and report the model's
+    a. range, in yards,
+    b. time of flight, in seconds,
+    c. striking velocity ($v = \sqrt{\dot{x}^2 + \dot{y}^2}$), in ft/s,
+    d. maximum ordinate, in feet.
 
-   Print the table with `fprintf`, one row per range, with units in the column headings.
+   How do they compare with the table? 
 
-Units are the hard part of this problem, on purpose: the model is in feet and seconds, the ranges are in yards, the drop is in inches, the bullet's mass is in grains and the energy is in joules. Real engineering models look like this. Convert at the boundaries (once when you set up the problem, once when you report results) and label every quantity with its unit in a comment. You will need 1 grain = 64.79891 mg and 1 ft = 0.3048 m.
+   **Checkpoint.** For this shot your model should give a range of about 25,000 yd, a time of flight of roughly 39 s, a striking velocity of about 1650 ft/s and a maximum ordinate of about 6230 ft. If your numbers differ by more than a small rounding, find the problem before going on: check the conversion of the angle of elevation to radians, the initial velocity components and the feet-to-yards conversion. 
+4. Repeat for all five rows of the table, at 5,000, 10,000, 25,000, 35,000 and 42,345 yd: fire at the tabulated angle of elevation and compare the model with the table. Print the comparison with `fprintf`, one row per range, with units in the column headings, and include the percent error in range. Plot all five trajectories on one set of axes, height in feet against downrange distance in yards. Hint: you will run the same steps many times, so consider putting them in a function that takes the wrapped rate function and the angle of elevation as inputs.
 
-7. Optional: the longest confirmed sniper shot (2017) was at 3871 yd. According to this model, how far did the bullet drop?
+   Your plot should look like this:
+
+   ![The five simulated trajectories, one for each row of the range table.](files/range_table_trajectories.png){width=500px}
+
+5. Over what ranges does the model reproduce the table well? Where does it fail, and in which direction? Look at the maximum ordinate column and suggest a physical reason.
+
+Units are part of this problem, on purpose: the model is in feet and seconds, the ranges are in yards, and the angles of elevation are in degrees and minutes while `cos` and `sin` expect radians. 
+
 
 ### Submit and Verify
 
 Submit these `.m` files:
 
 - Exercise 1: `pendulum.m`
-- Exercise 2: `ballistics.m`
+- Exercise 2: `range_table.m`
